@@ -56,6 +56,12 @@ public class GameScreen implements Screen, InputProcessor {
         //TextureAtlas.AtlasRegion region = textureAtlas.findRegion("0001");
         sprite = new Sprite(player);
 
+        if(false) {
+            System.out.println("do nothing");
+            int useless = 1;
+            int lalalal = 2;
+        }
+
 
         point = new Texture(Gdx.files.internal("core/assets/point.png"));
         sprite = new Sprite(player);
