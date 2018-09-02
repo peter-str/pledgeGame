@@ -1,4 +1,4 @@
-package com.mygdx.maps;
+package com.mygdx.model;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -49,11 +49,11 @@ public abstract class AbstractMap {
             dialog = new Dialog("Ziel erreicht", game.uiSkin, "dialog") {
                 public void result(Object obj) {
                     if (obj.equals("menu")) {
-                        Gdx.input.setInputProcessor(gameScreen);
+                        Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                         ((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
                         dispose();
                     } else if (obj.equals("level")) {
-                        Gdx.input.setInputProcessor(gameScreen);
+                        Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                         ((Game) Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, nextMap));
                         dispose();
                     }

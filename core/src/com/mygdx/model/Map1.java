@@ -1,4 +1,4 @@
-package com.mygdx.maps;
+package com.mygdx.model;
 
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.mygdx.screens.GameScreen;

@@ -1,4 +1,4 @@
-package com.mygdx.maps;
+package com.mygdx.model;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -42,7 +42,7 @@ public class TutMap1 extends AbstractMap {
                     dotNr = 1;
                     dialog = new Dialog("Erste Regel", game.uiSkin, "dialog") {
                         public void result(Object obj) {
-                            Gdx.input.setInputProcessor(gameScreen);
+                            Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                         }
                     };
                     dialog.text("Am Anfang gehst du geradeaus, bis eine Mauer dir den Weg versperrt. " +
@@ -64,7 +64,7 @@ public class TutMap1 extends AbstractMap {
                         public void result(Object obj) {
                             dialog = new Dialog("Zweite Regel", game.uiSkin, "dialog") {
                                 public void result(Object obj) {
-                                    Gdx.input.setInputProcessor(gameScreen);
+                                    Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                                 }
                             };
                             dialog.text("Ist der Weg nach links blockiert oder der Drehungszaehler = 0, " +
@@ -89,7 +89,7 @@ public class TutMap1 extends AbstractMap {
                     dotNr = 3;
                     dialog = new Dialog("Zweiter Schritt", game.uiSkin, "dialog") {
                         public void result(Object obj) {
-                            Gdx.input.setInputProcessor(gameScreen);
+                            Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                         }
                     };
                     dialog.text("Nach links koennen wir nicht, also geht es rechts weiter. ");
@@ -110,7 +110,7 @@ public class TutMap1 extends AbstractMap {
                         public void result(Object obj) {
                             dialog = new Dialog("Dritte Regel", game.uiSkin, "dialog") {
                                 public void result(Object obj) {
-                                    Gdx.input.setInputProcessor(gameScreen);
+                                    Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                                 }
                             };
                             dialog.text("Ist der Drehungszaehler < 0 und wir kommen an eine Stelle, an der wir nach links " +
@@ -139,7 +139,7 @@ public class TutMap1 extends AbstractMap {
                     dotNr = 5;
                     dialog = new Dialog("Dritter Schritt", game.uiSkin, "dialog") {
                         public void result(Object obj) {
-                            Gdx.input.setInputProcessor(gameScreen);
+                            Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                         }
                     };
                     dialog.text("Erneut müssen wir nach links abbiegen, da der Drehungszaehler < 0 ist. ");
@@ -157,7 +157,7 @@ public class TutMap1 extends AbstractMap {
                     dotNr = 6;
                     dialog = new Dialog("Erneut Schritt 1", game.uiSkin, "dialog") {
                         public void result(Object obj) {
-                            Gdx.input.setInputProcessor(gameScreen);
+                            Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                         }
                     };
                     dialog.text("Der Weg links ist zwar frei, aber da unser Drehungszaehler 0 ist, gehen wir geradeaus. ");
@@ -177,7 +177,7 @@ public class TutMap1 extends AbstractMap {
                     dotNr = 7;
                     dialog = new Dialog("Erneut Schritt 2", game.uiSkin, "dialog") {
                         public void result(Object obj) {
-                            Gdx.input.setInputProcessor(gameScreen);
+                            Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                         }
                     };
                     dialog.text("Gleiche Situation wie am Anfang. " +
@@ -198,7 +198,7 @@ public class TutMap1 extends AbstractMap {
                     dotNr = 8;
                     dialog = new Dialog("Erneut Schritt 3", game.uiSkin, "dialog") {
                         public void result(Object obj) {
-                            Gdx.input.setInputProcessor(gameScreen);
+                            Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                         }
                     };
                     dialog.text("Drehungszaehler negativ und der Weg nach links ist frei. " +

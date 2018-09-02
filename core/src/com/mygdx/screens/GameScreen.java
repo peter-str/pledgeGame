@@ -13,17 +13,18 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
+import com.mygdx.controller.PlayerController;
 import com.mygdx.game.PledgeGame;
-import com.mygdx.maps.AbstractMap;
+import com.mygdx.model.AbstractMap;
+import com.mygdx.model.Player;
 
-public class GameScreen implements Screen, InputProcessor {
+public class GameScreen implements Screen {
 
     private final PledgeGame game;
 
     public OrthographicCamera camera, camera2;
     private TiledMapRenderer tiledMapRenderer;
-    private TiledMapTileLayer collisonLayer;
-    private Texture player;
+    private Texture texturePlayer;
     public Texture point;
     private Sprite sprite;
     private int playerDirection = 360;
@@ -40,9 +41,16 @@ public class GameScreen implements Screen, InputProcessor {
     private int currentFrame = 1;
     private String currentAtlasKey = new String("0001");
 
+
+    private PlayerController playerController;
+    private Player player;
+
     public GameScreen(final PledgeGame game, MapEnum mapEnum) {
         this.game = game;
         map = mapEnum.getMap(game, this);
+
+        player = new Player(map.getStartX(), map.getStartY());
+        playerController = new PlayerController(player, this, map);
 
         camera = new OrthographicCamera();
         camera2 = new OrthographicCamera();
@@ -51,14 +59,15 @@ public class GameScreen implements Screen, InputProcessor {
         stage = new Stage();
 
 
-        player = new Texture(Gdx.files.internal("core/assets/player.png"));
-        //textureAtlas = new TextureAtlas(Gdx.files.internal("player/spritesheet.atlas"));
+        texturePlayer = new Texture(Gdx.files.internal("core/assets/player.png"));
+        //textureAtlas = new TextureAtlas(Gdx.files.internal("texturePlayer/spritesheet.atlas"));
         //TextureAtlas.AtlasRegion region = textureAtlas.findRegion("0001");
-        sprite = new Sprite(player);
+        sprite = new Sprite(texturePlayer);
+        sprite.translate(player.getX(), player.getY());
 
 
         point = new Texture(Gdx.files.internal("core/assets/point.png"));
-        sprite = new Sprite(player);
+        sprite = new Sprite(texturePlayer);
         sprite.translate(map.getStartX(), map.getStartY());
         camera.translate(sprite.getX() - 320, sprite.getY() - 320);
         camera2.translate(sprite.getX() - 320, sprite.getY() - 320);
@@ -69,9 +78,8 @@ public class GameScreen implements Screen, InputProcessor {
         // if(mapEnum == MapEnum.MAP_1)
         //    collisonLayer = (TiledMapTileLayer) map.getTiledMap().getLayers().get(1);
         //if(mapEnum == MapEnum.TUTORIALMAP_1)
-            collisonLayer = (TiledMapTileLayer) map.getTiledMap().getLayers().get(0);
 
-        Gdx.input.setInputProcessor(this);
+        Gdx.input.setInputProcessor(playerController);
 
         label = new Label(String.valueOf(revCounter), game.uiSkin);
         label.setPosition(sprite.getX(), sprite.getY() - 320);
@@ -95,11 +103,14 @@ public class GameScreen implements Screen, InputProcessor {
             tiledMapRenderer.render();
         }
 
+        playerController.update(delta);
 
         game.spriteBatch.begin();
         game.spriteBatch.setProjectionMatrix(camera.combined);
+        //game.spriteBatch.draw(texturePlayer, player.getX(), player.getY());
         sprite.draw(game.spriteBatch);
-        overlay();
+        sprite.setPosition(player.getX(), player.getY());
+        //overlay();
 
         game.spriteBatch.setProjectionMatrix(camera2.combined);
         label.setText(String.valueOf(revCounter));
@@ -108,10 +119,12 @@ public class GameScreen implements Screen, InputProcessor {
         map.showInstructions();
         game.spriteBatch.end();
 
-        map.blueDots(sprite.getX(), sprite.getY());
+
+
+       /* map.blueDots(sprite.getX(), sprite.getY());
         if(!zielErreicht((int) sprite.getX(), (int) sprite.getY()))
             checkSurroundings((int) sprite.getX(),(int) sprite.getY());
-
+        */
         stage.act();
         stage.draw();
     }
@@ -143,6 +156,22 @@ public class GameScreen implements Screen, InputProcessor {
         point.dispose();
     }
 
+    public void rotateCamera(String dir) {
+        if(dir.equals("left")) {
+            camera.rotate(270f);
+            sprite.rotate(90f);
+        }
+        if(dir.equals("right")) {
+            camera.rotate(90f);
+            sprite.rotate(-90f);
+        }
+
+    }
+
+    public PlayerController getPlayerController() {
+        return playerController;
+    }
+
     public void playerMovementAnim() {
         Timer.schedule(new Task() {
             @Override
@@ -156,6 +185,7 @@ public class GameScreen implements Screen, InputProcessor {
         }, 0, 0.2f);
     }
 
+    /*
     public boolean zielErreicht(int x, int y) {
         if(collisonLayer.getCell(x/32, y/32).getTile().getProperties().containsKey("Ziel")) {
             map.zielErreicht(map.getNextMap());
@@ -169,8 +199,9 @@ public class GameScreen implements Screen, InputProcessor {
         drawRight = collisonLayer.getCell(x/32 +1, y/32).getTile().getProperties().containsKey("Wand");
         drawBottom = collisonLayer.getCell(x/32, y/32 -1).getTile().getProperties().containsKey("Wand");
         drawLeft = collisonLayer.getCell(x/32 -1, y/32).getTile().getProperties().containsKey("Wand");
-    }
+    }*/
 
+    /*
     public void overlay() {
         //WÄNDE (OBEN, RECHTS, UNTEN, LINKS)
 
@@ -279,17 +310,15 @@ public class GameScreen implements Screen, InputProcessor {
                     break;
             }
         }
-    }
+    }*/
 
+
+    /*
     public void setPlayerDirection(String turn) {
         if(turn.equals("left")) {
             playerDirection = (playerDirection == 90) ? 360 : playerDirection - 90;
         } else
             playerDirection = (playerDirection == 360) ? 90 : playerDirection + 90;
-    }
-
-    public boolean collision(int x, int y) {
-        return collisonLayer.getCell(x/32, y/32).getTile().getProperties().containsKey("Wand");
     }
 
     public void playerGoLeft() {
@@ -398,40 +427,5 @@ public class GameScreen implements Screen, InputProcessor {
         }
 
         return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyTyped(char character) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount) {
-        return false;
-    }
+    }*/
 }
