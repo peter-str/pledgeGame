@@ -1,0 +1,91 @@
+[33mcommit 8f1716031a41a7848ae851f25154d5a3b7239046[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Peter <peter.strauch@vodafonemail.de>
+Date:   Fri Aug 31 18:46:54 2018 +0200
+
+    Intellij commit test2
+
+0	6	core/src/com/mygdx/screens/GameScreen.java
+
+[33mcommit 6deae23e8d75471999e0dec4b9a7f6a284e2a44f[m
+Author: Peter <peter.strauch@vodafonemail.de>
+Date:   Fri Aug 31 18:43:39 2018 +0200
+
+    Intellij commit test
+
+6	0	core/src/com/mygdx/screens/GameScreen.java
+
+[33mcommit 6d9f9d32ac7c1fb315a533ac0216cee2cabbded6[m
+Author: Peter <peter.strauch@vodafonemail.de>
+Date:   Fri Aug 31 18:01:36 2018 +0200
+
+    Project to GitHub
+
+125	0	.gitignore
+84	0	build.gradle
+-	-	core/assets/34.png
+-	-	core/assets/Boden.png
+-	-	core/assets/FinishFlag.png
+33	0	core/assets/TutMap1.tmx
+-	-	core/assets/badlogic.jpg
+-	-	core/assets/badlogic2.jpg
+-	-	core/assets/bottomBlocked.png
+-	-	core/assets/bottomLeftBlocked.png
+-	-	core/assets/bottomRightBlocked.png
+101	0	core/assets/default.fnt
+-	-	core/assets/default.png
+-	-	core/assets/leftBlocked.png
+54	0	core/assets/map.tmx
+86	0	core/assets/map1.1.tmx
+46	0	core/assets/map2.tmx
+-	-	core/assets/player.png
+-	-	core/assets/player/0001.png
+-	-	core/assets/player/0002.png
+-	-	core/assets/player/0003.png
+-	-	core/assets/player/0004.png
+34	0	core/assets/player/spritesheet.atlas
+-	-	core/assets/player/spritesheet.png
+-	-	core/assets/player1.png
+-	-	core/assets/player2.png
+-	-	core/assets/point.png
+-	-	core/assets/rightBlocked.png
+-	-	core/assets/rocky01.png
+-	-	core/assets/topBlocked.png
+-	-	core/assets/topLeftBlocked.png
+-	-	core/assets/topRightBlocked.png
+199	0	core/assets/uiskin.atlas
+61	0	core/assets/uiskin.json
+-	-	core/assets/uiskin.png
+-	-	core/assets/wand/boden1.png
+-	-	core/assets/wand/boden2.png
+-	-	core/assets/wand/boden3.gif
+-	-	core/assets/wand/boden3.png
+-	-	core/assets/wand/wand1.png
+-	-	core/assets/wand/wand2.png
+11	0	core/build.gradle
+5	0	core/src/PledgeGame.gwt.xml
+56	0	core/src/com/mygdx/game/PledgeGame.java
+75	0	core/src/com/mygdx/maps/AbstractMap.java
+38	0	core/src/com/mygdx/maps/Map1.java
+247	0	core/src/com/mygdx/maps/TutMap1.java
+437	0	core/src/com/mygdx/screens/GameScreen.java
+124	0	core/src/com/mygdx/screens/LevelScreen.java
+134	0	core/src/com/mygdx/screens/MainMenuScreen.java
+23	0	core/src/com/mygdx/screens/MapEnum.java
+55	0	desktop/build.gradle
+15	0	desktop/src/com/mygdx/game/desktop/DesktopLauncher.java
+3	0	gradle.properties
+-	-	gradle/wrapper/gradle-wrapper.jar
+6	0	gradle/wrapper/gradle-wrapper.properties
+172	0	gradlew
+84	0	gradlew.bat
+85	0	html/build.gradle
+11	0	html/src/com/mygdx/game/GdxDefinition.gwt.xml
+14	0	html/src/com/mygdx/game/GdxDefinitionSuperdev.gwt.xml
+51	0	html/src/com/mygdx/game/client/HtmlLauncher.java
+3	0	html/webapp/WEB-INF/web.xml
+33	0	html/webapp/index.html
+-	-	html/webapp/refresh.png
+113	0	html/webapp/soundmanager2-jsmin.js
+1	0	html/webapp/soundmanager2-setup.js
+43	0	html/webapp/styles.css
+1	0	settings.gradle
