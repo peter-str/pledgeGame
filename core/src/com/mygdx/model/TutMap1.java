@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.mygdx.screens.GameScreen;
 import com.mygdx.game.PledgeGame;
-import com.mygdx.screens.MapEnum;
+import com.mygdx.enums.MapEnum;
 
 public class TutMap1 extends AbstractMap {
 
@@ -215,12 +215,12 @@ public class TutMap1 extends AbstractMap {
     }
 
     @Override
-    public float getStartX() {
+    public int getStartX() {
         return 2*32;
     }
 
     @Override
-    public float getStartY() {
+    public int getStartY() {
         return 2*32;
     }
 

@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.mygdx.screens.GameScreen;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.screens.MainMenuScreen;
-import com.mygdx.screens.MapEnum;
+import com.mygdx.enums.MapEnum;
 
 public abstract class AbstractMap {
 
@@ -31,8 +31,8 @@ public abstract class AbstractMap {
     }
 
     public void blueDots(float x, float y){};
-    public abstract float getStartX();
-    public abstract float getStartY();
+    public abstract int getStartX();
+    public abstract int getStartY();
     public abstract void showControls();
     public void showInstructions(){};
 

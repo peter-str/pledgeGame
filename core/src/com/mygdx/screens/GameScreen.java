@@ -7,13 +7,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.controller.PlayerController;
+import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.model.AbstractMap;
 import com.mygdx.model.Player;
@@ -50,7 +50,7 @@ public class GameScreen implements Screen {
         map = mapEnum.getMap(game, this);
 
         player = new Player(map.getStartX(), map.getStartY());
-        playerController = new PlayerController(player, this, map);
+        playerController = new PlayerController(game, player, this, map);
 
         camera = new OrthographicCamera();
         camera2 = new OrthographicCamera();
@@ -67,7 +67,6 @@ public class GameScreen implements Screen {
 
 
         point = new Texture(Gdx.files.internal("core/assets/point.png"));
-        sprite = new Sprite(texturePlayer);
         sprite.translate(map.getStartX(), map.getStartY());
         camera.translate(sprite.getX() - 320, sprite.getY() - 320);
         camera2.translate(sprite.getX() - 320, sprite.getY() - 320);
@@ -98,18 +97,16 @@ public class GameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         camera.update();
         camera2.update();
-        if(mapRendererEnabled) {
+
+        if (mapRendererEnabled) {
             tiledMapRenderer.setView(camera);
             tiledMapRenderer.render();
         }
 
-        playerController.update(delta);
-
         game.spriteBatch.begin();
         game.spriteBatch.setProjectionMatrix(camera.combined);
-        //game.spriteBatch.draw(texturePlayer, player.getX(), player.getY());
         sprite.draw(game.spriteBatch);
-        sprite.setPosition(player.getX(), player.getY());
+        sprite.setPosition(player.getAnimX(), player.getAnimY());
         //overlay();
 
         game.spriteBatch.setProjectionMatrix(camera2.combined);
@@ -120,13 +117,20 @@ public class GameScreen implements Screen {
         game.spriteBatch.end();
 
 
-
        /* map.blueDots(sprite.getX(), sprite.getY());
         if(!zielErreicht((int) sprite.getX(), (int) sprite.getY()))
             checkSurroundings((int) sprite.getX(),(int) sprite.getY());
         */
         stage.act();
         stage.draw();
+
+
+        playerController.update(delta);
+        player.update(delta);
+        if(player.getMoveCameraUpBool())
+            moveCamera(1);
+        if(player.getMoveCameraDownBool())
+            moveCamera(-1);
     }
 
     @Override
@@ -157,15 +161,31 @@ public class GameScreen implements Screen {
     }
 
     public void rotateCamera(String dir) {
-        if(dir.equals("left")) {
+        if (dir.equals("left")) {
             camera.rotate(270f);
             sprite.rotate(90f);
         }
-        if(dir.equals("right")) {
+        if (dir.equals("right")) {
             camera.rotate(90f);
             sprite.rotate(-90f);
         }
+    }
 
+    public void moveCamera(int dir) {
+        switch (player.getDirection()) {
+            case NORTH:
+                camera.translate(0, dir);
+                break;
+            case EAST:
+                camera.translate(dir, 0);
+                break;
+            case SOUTH:
+                camera.translate(0, -dir);
+                break;
+            case WEST:
+                camera.translate(-dir, 0);
+                break;
+        }
     }
 
     public PlayerController getPlayerController() {
@@ -177,7 +197,7 @@ public class GameScreen implements Screen {
             @Override
             public void run() {
                 currentFrame++;
-                if(currentFrame > 4)
+                if (currentFrame > 4)
                     currentFrame = 1;
                 currentAtlasKey = String.format("%04d", currentFrame);
                 sprite.setRegion(textureAtlas.findRegion(currentAtlasKey));

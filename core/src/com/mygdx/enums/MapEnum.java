@@ -1,9 +1,10 @@
-package com.mygdx.screens;
+package com.mygdx.enums;
 
 import com.mygdx.game.PledgeGame;
 import com.mygdx.model.AbstractMap;
 import com.mygdx.model.Map1;
 import com.mygdx.model.TutMap1;
+import com.mygdx.screens.GameScreen;
 
 public enum MapEnum {
 
