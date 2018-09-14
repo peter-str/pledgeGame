@@ -13,7 +13,7 @@ public class Map1 extends AbstractMap {
 
     @Override
     public int getStartX() {
-        return 2*32;//20
+        return 32*32;//20
     }
 
     @Override

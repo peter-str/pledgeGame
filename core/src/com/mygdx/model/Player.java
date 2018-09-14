@@ -29,6 +29,7 @@ public class Player {
     private TextureRegion standing;
     private boolean moveRequestThisFrame;
     private Player_State state;
+    private int revCounter = 0;
 
     public Player(int x, int y) {
         this.x = x;
@@ -42,7 +43,7 @@ public class Player {
         standing = textureAtlas.findRegion("standing_north");
         this.sprite = new Sprite(standing);
 
-        walking = new Animation(0.4f/2f, textureAtlas.findRegions("walking_north"), PlayMode.LOOP_PINGPONG);
+        walking = new Animation(0.5f/2f, textureAtlas.findRegions("walking_north"), PlayMode.LOOP_PINGPONG);
     }
 
     public enum Player_State {
@@ -118,7 +119,8 @@ public class Player {
                 walkTimer -= leftOverTime;
                 finishMove();
                 if(moveRequestThisFrame)
-                    move(32);
+                    //move(32);
+                    return;
                 else
                     walkTimer = 0;
             }
@@ -141,6 +143,7 @@ public class Player {
                 direction = Direction.SOUTH;
                 break;
         }
+        revCounter++;
     }
 
     public void rotateRight() {
@@ -158,6 +161,7 @@ public class Player {
                 direction = Direction.NORTH;
                 break;
         }
+        revCounter--;
     }
 
     public boolean isTop() {
@@ -192,11 +196,11 @@ public class Player {
         this.bottom = bottom;
     }
 
-    public float getX() {
+    public int getX() {
         return x;
     }
 
-    public float getY() {
+    public int getY() {
         return y;
     }
 
@@ -218,6 +222,10 @@ public class Player {
 
     public boolean getMoveCameraDownBool() {
         return moveCameraDownBool;
+    }
+
+    public int getRevCounter() {
+        return revCounter;
     }
 
     public Sprite getSprite() {
