@@ -1,5 +1,11 @@
 package com.mygdx.model;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
 import com.mygdx.enums.Direction;
 
@@ -9,16 +15,19 @@ public class Player {
     private int y;
     private boolean top, right, left, bottom;
     private Direction direction;
-
     private float animX, animY;
-
     private int srcX, srcY;
     private int destX, destY;
     private float animTimer;
     private float ANIM_TIME = 0.5f;
     private boolean moveCameraUpBool;
     private boolean moveCameraDownBool;
-
+    private TextureAtlas textureAtlas;
+    private Sprite sprite;
+    private float walkTimer;
+    private Animation walking;
+    private TextureRegion standing;
+    private boolean moveRequestThisFrame;
     private Player_State state;
 
     public Player(int x, int y) {
@@ -28,6 +37,12 @@ public class Player {
         this.animY = y;
         this.direction = Direction.NORTH;
         this.state = Player_State.STANDING;
+
+        textureAtlas = new TextureAtlas(Gdx.files.internal("core/assets/player/textures.atlas"));
+        standing = textureAtlas.findRegion("standing_north");
+        this.sprite = new Sprite(standing);
+
+        walking = new Animation(0.4f/2f, textureAtlas.findRegions("walking_north"), PlayMode.LOOP_PINGPONG);
     }
 
     public enum Player_State {
@@ -36,8 +51,10 @@ public class Player {
     }
 
     public void move(int dir) {
-        if(state != Player_State.STANDING)
+        if(state == Player_State.WALKING) {
+            moveRequestThisFrame = true;
             return;
+        }
 
         switch (direction) {
             case NORTH:
@@ -91,14 +108,22 @@ public class Player {
     }
 
     public void update(float delta) {
-        System.out.println(y + " " + animY);
         if(state == Player_State.WALKING) {
             animTimer += delta;
+            walkTimer += delta;
             animX = Interpolation.linear.apply(srcX, destX, animTimer/ANIM_TIME);
             animY = Interpolation.linear.apply(srcY, destY, animTimer/ANIM_TIME);
-            if(animTimer > ANIM_TIME)
+            if(animTimer > ANIM_TIME) {
+                float leftOverTime = animTimer-ANIM_TIME;
+                walkTimer -= leftOverTime;
                 finishMove();
+                if(moveRequestThisFrame)
+                    move(32);
+                else
+                    walkTimer = 0;
+            }
         }
+        moveRequestThisFrame = false;
     }
 
     public void rotateLeft() {
@@ -175,14 +200,6 @@ public class Player {
         return y;
     }
 
-    public float getXDivided() {
-        return x / 32;
-    }
-
-    public float getYDivided() {
-        return y / 32;
-    }
-
     public Direction getDirection() {
         return direction;
     }
@@ -201,5 +218,15 @@ public class Player {
 
     public boolean getMoveCameraDownBool() {
         return moveCameraDownBool;
+    }
+
+    public Sprite getSprite() {
+        if(state == Player_State.WALKING) {
+            sprite.setRegion((TextureRegion) walking.getKeyFrame(walkTimer));
+            return sprite;
+        }
+        else
+            sprite.setRegion(standing);
+            return sprite;
     }
 }

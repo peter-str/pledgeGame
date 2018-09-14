@@ -10,8 +10,6 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.utils.Timer;
-import com.badlogic.gdx.utils.Timer.Task;
 import com.mygdx.controller.PlayerController;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
@@ -21,10 +19,8 @@ import com.mygdx.model.Player;
 public class GameScreen implements Screen {
 
     private final PledgeGame game;
-
     public OrthographicCamera camera, camera2;
     private TiledMapRenderer tiledMapRenderer;
-    private Texture texturePlayer;
     public Texture point;
     private Sprite sprite;
     private int playerDirection = 360;
@@ -37,11 +33,6 @@ public class GameScreen implements Screen {
     private AbstractMap map;
     private Label label;
     private boolean mapRendererEnabled = true;
-    private TextureAtlas textureAtlas;
-    private int currentFrame = 1;
-    private String currentAtlasKey = new String("0001");
-
-
     private PlayerController playerController;
     private Player player;
 
@@ -59,11 +50,15 @@ public class GameScreen implements Screen {
         stage = new Stage();
 
 
-        texturePlayer = new Texture(Gdx.files.internal("core/assets/player.png"));
+        //texturePlayer = new Texture(Gdx.files.internal("core/assets/player.png"));
         //textureAtlas = new TextureAtlas(Gdx.files.internal("texturePlayer/spritesheet.atlas"));
         //TextureAtlas.AtlasRegion region = textureAtlas.findRegion("0001");
-        sprite = new Sprite(texturePlayer);
-        sprite.translate(player.getX(), player.getY());
+
+
+
+        //sprite = new Sprite(texturePlayer);
+        sprite = player.getSprite();
+        //sprite.translate(player.getX(), player.getY());
 
 
         point = new Texture(Gdx.files.internal("core/assets/point.png"));
@@ -105,7 +100,7 @@ public class GameScreen implements Screen {
 
         game.spriteBatch.begin();
         game.spriteBatch.setProjectionMatrix(camera.combined);
-        sprite.draw(game.spriteBatch);
+        player.getSprite().draw(game.spriteBatch);
         sprite.setPosition(player.getAnimX(), player.getAnimY());
         //overlay();
 
@@ -155,7 +150,6 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        textureAtlas.dispose();
         stage.dispose();
         point.dispose();
     }
@@ -190,19 +184,6 @@ public class GameScreen implements Screen {
 
     public PlayerController getPlayerController() {
         return playerController;
-    }
-
-    public void playerMovementAnim() {
-        Timer.schedule(new Task() {
-            @Override
-            public void run() {
-                currentFrame++;
-                if (currentFrame > 4)
-                    currentFrame = 1;
-                currentAtlasKey = String.format("%04d", currentFrame);
-                sprite.setRegion(textureAtlas.findRegion(currentAtlasKey));
-            }
-        }, 0, 0.2f);
     }
 
     /*
@@ -330,122 +311,5 @@ public class GameScreen implements Screen {
                     break;
             }
         }
-    }*/
-
-
-    /*
-    public void setPlayerDirection(String turn) {
-        if(turn.equals("left")) {
-            playerDirection = (playerDirection == 90) ? 360 : playerDirection - 90;
-        } else
-            playerDirection = (playerDirection == 360) ? 90 : playerDirection + 90;
-    }
-
-    public void playerGoLeft() {
-        if (!collision((int) (sprite.getX() - 32), (int) sprite.getY())) {
-            camera.translate(-32, 0);
-            sprite.translate(-32, 0);
-        }
-    }
-
-    public void playerGoRight() {
-        if(!collision((int) (sprite.getX() + 32), (int) sprite.getY())) {
-            camera.translate(32, 0);
-            sprite.translate(32, 0);
-        }
-    }
-
-    public void playerGoUp() {
-        if(!collision((int) sprite.getX(), (int) (sprite.getY() + 32))) {
-            camera.translate(0, 32);
-            sprite.translate(0, 32);
-        }
-    }
-
-    public void playerGoDown() {
-        if(!collision((int) sprite.getX(), (int) (sprite.getY() - 32))) {
-            camera.translate(0, -32);
-            sprite.translate(0, -32);
-        }
-    }
-
-    @Override
-    public boolean keyDown(int keycode) {
-        if(keycode == Input.Keys.UP) {
-            switch(playerDirection) {
-                case 360: playerGoUp();
-                    break;
-                case 90: playerGoRight();
-                    break;
-                case 180: playerGoDown();
-                    break;
-                case 270: playerGoLeft();
-                    break;
-            }
-        }
-
-        if(keycode == Input.Keys.LEFT && false) {
-            switch(playerDirection) {
-                case 360: playerGoLeft();
-                    break;
-                case 90: playerGoUp();
-                    break;
-                case 180: playerGoRight();
-                    break;
-                case 270: playerGoDown();
-                    break;
-            }
-        }
-
-        if(keycode == Input.Keys.RIGHT && false) {
-            switch(playerDirection) {
-                case 360: playerGoRight();
-                    break;
-                case 90: playerGoDown();
-                    break;
-                case 180: playerGoLeft();
-                    break;
-                case 270: playerGoUp();
-                    break;
-            }
-        }
-
-        if(keycode == Input.Keys.DOWN) {
-            switch(playerDirection) {
-                case 360: playerGoDown();
-                    break;
-                case 90: playerGoLeft();
-                    break;
-                case 180: playerGoUp();
-                    break;
-                case 270: playerGoRight();
-                    break;
-            }
-        }
-
-        if(keycode == Input.Keys.LEFT) {
-            camera.rotate(270f);
-            sprite.rotate(90f);
-            setPlayerDirection("left");
-            revCounter++;
-        }
-
-        if(keycode == Input.Keys.RIGHT) {
-            camera.rotate(90f);
-            sprite.rotate(270f);
-            setPlayerDirection("right");
-            revCounter--;
-        }
-
-        if(keycode == Input.Keys.F3) {
-            mapRendererEnabled = (mapRendererEnabled) ? false : true;
-        }
-
-        if(keycode == Input.Keys.ESCAPE) {
-            game.setScreen(new MainMenuScreen(game));
-            //dispose();
-        }
-
-        return false;
     }*/
 }

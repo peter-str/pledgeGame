@@ -32,8 +32,10 @@ public class PlayerController extends InputAdapter {
 
     @Override
     public boolean keyDown(int keycode) {
-        if(keycode == Input.Keys.UP)
+        if(keycode == Input.Keys.UP) {
             up = true;
+            return false;
+        }
             //player.move(32);
 
         if(keycode == Input.Keys.DOWN)
