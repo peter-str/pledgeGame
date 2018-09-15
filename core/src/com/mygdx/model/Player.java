@@ -20,8 +20,6 @@ public class Player {
     private int destX, destY;
     private float animTimer;
     private float ANIM_TIME = 0.5f;
-    private boolean moveCameraUpBool;
-    private boolean moveCameraDownBool;
     private TextureAtlas textureAtlas;
     private Sprite sprite;
     private float walkTimer;
@@ -59,26 +57,18 @@ public class Player {
 
         switch (direction) {
             case NORTH:
-                moveCameraUpBool = dir > 0;
-                moveCameraDownBool = dir < 0;
                 initializeMove(0, dir);
                 y += dir;
                 break;
             case EAST:
-                moveCameraUpBool = dir > 0;
-                moveCameraDownBool = dir < 0;
                 initializeMove(dir, 0);
                 x += dir;
                 break;
             case SOUTH:
-                moveCameraUpBool = dir > 0;
-                moveCameraDownBool = dir < 0;
                 initializeMove(0, -dir);
                 y -= dir;
                 break;
             case WEST:
-                moveCameraUpBool = dir > 0;
-                moveCameraDownBool = dir < 0;
                 initializeMove(-dir, 0);
                 x -= dir;
                 break;
@@ -98,8 +88,6 @@ public class Player {
 
     private void finishMove() {
         state = Player_State.STANDING;
-        moveCameraUpBool = false;
-        moveCameraDownBool = false;
         this.animX = destX;
         this.animY = destY;
         this.srcX = 0;
@@ -214,14 +202,6 @@ public class Player {
 
     public float getAnimY() {
         return animY;
-    }
-
-    public boolean getMoveCameraUpBool() {
-        return moveCameraUpBool;
-    }
-
-    public boolean getMoveCameraDownBool() {
-        return moveCameraDownBool;
     }
 
     public int getRevCounter() {

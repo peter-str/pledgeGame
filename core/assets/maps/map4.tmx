@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="2018.07.13" orientation="orthogonal" renderorder="right-down" width="9" height="17" tilewidth="32" tileheight="32" infinite="0" nextlayerid="23" nextobjectid="1">
+ <tileset firstgid="1" name="Haus1" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="textures/house_1.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="5" name="Haus2" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="textures/house_2.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="9" name="Haus3" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="textures/house_3.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="13" name="Haus4" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="textures/house_4.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="17" name="BodenStadt" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="textures/floor_city.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="18" name="FinishFlag" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="textures/finish_flag.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="Ziel" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="19" name="rocky01" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="textures/wall_1.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="Wand" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="20" name="Wasser1" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="textures/water_1.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="21" name="boden3" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="textures/floor_mud.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="22" name="wand2" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="textures/wall_2.png" width="32" height="32"/>
+ </tileset>
+ <layer id="20" name="CollisionLayer" width="9" height="17">
+  <data encoding="csv">
+19,18,19,19,19,19,19,19,19,
+19,17,17,17,17,17,17,17,19,
+19,19,19,19,19,19,19,17,19,
+0,0,19,17,17,17,17,17,19,
+0,0,19,17,19,19,19,19,19,
+0,0,19,17,17,17,17,17,19,
+0,0,19,19,19,19,19,17,19,
+0,0,19,17,17,17,17,17,19,
+0,0,19,17,17,17,17,17,19,
+0,0,19,19,19,17,17,17,19,
+0,0,0,0,19,17,17,17,19,
+0,0,0,0,19,17,17,19,19,
+0,0,0,0,19,17,17,19,0,
+0,0,0,0,19,17,17,19,0,
+0,0,0,0,19,17,17,19,0,
+0,0,0,0,19,17,17,19,0,
+0,0,0,0,19,19,19,19,0
+</data>
+ </layer>
+ <layer id="21" name="BodenTextureLayer" width="9" height="17">
+  <data encoding="csv">
+21,21,21,21,21,21,21,21,21,
+21,21,21,21,21,21,21,21,21,
+21,21,21,21,21,21,21,21,21,
+0,0,21,21,21,21,21,21,21,
+0,0,21,21,21,21,21,21,21,
+0,0,21,21,21,21,21,21,21,
+0,0,21,21,21,21,21,21,21,
+0,0,21,21,21,21,21,21,21,
+0,0,21,21,21,21,21,21,21,
+0,0,21,17,17,17,17,21,21,
+0,0,0,17,17,17,17,21,21,
+0,0,0,0,21,17,17,17,17,
+0,0,0,0,21,17,17,17,17,
+0,0,0,17,17,17,17,21,21,
+0,0,0,17,17,17,17,21,21,
+0,0,0,17,17,17,17,17,17,
+0,0,0,17,17,17,17,17,17
+</data>
+ </layer>
+ <layer id="22" name="HausTextureLayer" width="9" height="17">
+  <data encoding="csv">
+22,0,22,22,22,22,22,22,22,
+22,0,0,0,0,0,0,0,22,
+22,22,22,22,22,22,22,0,22,
+0,0,22,0,0,0,0,0,22,
+0,0,22,0,22,22,22,22,22,
+0,0,22,0,0,0,0,0,22,
+0,0,22,22,22,22,22,0,22,
+0,0,22,0,0,0,0,0,22,
+0,0,22,0,0,0,0,0,22,
+0,0,0,13,14,0,0,0,22,
+0,0,0,15,16,0,0,0,22,
+0,0,0,0,22,0,0,5,6,
+0,0,0,0,22,0,0,7,8,
+0,0,0,5,6,0,0,22,0,
+0,0,0,7,8,0,0,22,0,
+0,0,0,13,14,0,0,13,14,
+0,0,0,15,16,0,0,15,16
+</data>
+ </layer>
+</map>

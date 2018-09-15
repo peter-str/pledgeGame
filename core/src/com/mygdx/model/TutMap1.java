@@ -23,11 +23,11 @@ public class TutMap1 extends AbstractMap {
 
     public TutMap1(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
         super(game, gameScreen, nextMap);
-        tiledMap = new TmxMapLoader().load("core/assets/TutMap1.tmx");
+        tiledMap = new TmxMapLoader().load("core/assets/maps/map3.tmx");
         spriteBatch2 = new SpriteBatch();
         controls = new Label("Steuerung" + "\nPfeiltaste hoch: Geradeaus" +
                 "\nPfeiltaste runter: Zurueck" + "\nF1: Linksdrehen" + "\nF2: Rechtsdrehen", game.uiSkin);
-        controls.setPosition(getStartX() + 120, getStartY() - 320);
+        controls.setPosition(getStartX() + 120, getStartY() - 250);
         instruction1.setPosition(getStartX() - 320, getStartY() + 299);
         instruction2.setPosition(getStartX() - 320, getStartY() + 279);
         //instruction2b.setPosition(getStartX() - 320, getStartY() + 259);
@@ -216,12 +216,12 @@ public class TutMap1 extends AbstractMap {
 
     @Override
     public int getStartX() {
-        return 2*32;
+        return 7*32;
     }
 
     @Override
     public int getStartY() {
-        return 2*32;
+        return 6*32;
     }
 
     public void showControls() {

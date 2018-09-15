@@ -22,6 +22,7 @@ public abstract class AbstractMap {
     protected Label controls;
     protected Dialog dialog;
     protected boolean finished = true;
+    protected boolean mapRendererBool = true;
 
 
     public AbstractMap(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
@@ -31,6 +32,7 @@ public abstract class AbstractMap {
     }
 
     public void blueDots(float x, float y){};
+    public void message(){};
     public abstract int getStartX();
     public abstract int getStartY();
     public abstract void showControls();
@@ -41,6 +43,15 @@ public abstract class AbstractMap {
     }
 
     public abstract MapEnum getNextMap();
+    public boolean getMapRendererBool() {
+        return mapRendererBool;
+    };
+    public void setMapRendererBool() {
+        if(!mapRendererBool)
+            mapRendererBool = true;
+        else
+            mapRendererBool = false;
+    };
 
     public void zielErreicht(final MapEnum nextMap) {
         if (finished) {

@@ -8,17 +8,17 @@ import com.mygdx.enums.MapEnum;
 public class Map1 extends AbstractMap {
     public Map1(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
         super(game, gameScreen, nextMap);
-        tiledMap = new TmxMapLoader().load("core/assets/map.tmx");
+        tiledMap = new TmxMapLoader().load("core/assets/maps/map4.tmx");
     }
 
     @Override
     public int getStartX() {
-        return 32*32;//20
+        return 5*32;//20
     }
 
     @Override
     public int getStartY() {
-        return 2*32;//14
+        return 32;//14
     }
 
     @Override

@@ -30,16 +30,20 @@ public class PlayerController extends InputAdapter {
         if(keycode == Input.Keys.DOWN)
             down = true;
 
-        if(keycode == Input.Keys.LEFT) {
+        if(keycode == Input.Keys.LEFT && !up && !down) {
             player.rotateLeft();
             gameScreen.rotateCamera("left");
         }
-        if(keycode == Input.Keys.RIGHT) {
+        if(keycode == Input.Keys.RIGHT && !up && !down) {
             player.rotateRight();
             gameScreen.rotateCamera("right");
         }
         if(keycode == Input.Keys.ESCAPE) {
             game.setScreen(new MainMenuScreen(game));
+        }
+
+        if(keycode == Input.Keys.F1) {
+            collisionController.setMapRendererBool();
         }
         return false;
     }
@@ -60,7 +64,7 @@ public class PlayerController extends InputAdapter {
             return;
 
         collisionController.checkSurroundings();
-        collisionController.overlay();
+        //collisionController.overlay();
 
         if(up && !player.isTop())
             player.move(32);

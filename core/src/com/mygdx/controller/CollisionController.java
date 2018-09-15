@@ -1,8 +1,5 @@
 package com.mygdx.controller;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.model.AbstractMap;
@@ -14,9 +11,8 @@ class CollisionController {
     private Player player;
     private AbstractMap map;
     private TiledMapTileLayer collisionLayer;
-    public Sprite overlaySprite;
-    public int texPosX;
-    public int texPosY;
+    private int texPosX;
+    private int texPosY;
 
 
     CollisionController(PledgeGame game, Player player, AbstractMap map) {
@@ -24,8 +20,6 @@ class CollisionController {
         this.player = player;
         this.map = map;
         collisionLayer = (TiledMapTileLayer) map.getTiledMap().getLayers().get(0);
-        overlaySprite = new Sprite(game.overlay[0]);
-        overlaySprite.setPosition(player.getX(), player.getY());
         texPosX = player.getX();
         texPosY = player.getY();
     }
@@ -199,5 +193,9 @@ class CollisionController {
                     break;
             }
         }*/
+    }
+
+    public void setMapRendererBool() {
+        map.setMapRendererBool();
     }
 }
