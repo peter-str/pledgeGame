@@ -19,7 +19,7 @@ public class Player {
     private int srcX, srcY;
     private int destX, destY;
     private float animTimer;
-    private float ANIM_TIME = 0.5f;
+    private float ANIM_TIME = 0.3f;
     private TextureAtlas textureAtlas;
     private Sprite sprite;
     private float walkTimer;
@@ -96,7 +96,7 @@ public class Player {
         this.destY = 0;
     }
 
-    public void update(float delta) {
+    public void update(float delta, boolean up, boolean down) {
         if(state == Player_State.WALKING) {
             animTimer += delta;
             walkTimer += delta;
@@ -106,8 +106,10 @@ public class Player {
                 float leftOverTime = animTimer-ANIM_TIME;
                 walkTimer -= leftOverTime;
                 finishMove();
-                if(moveRequestThisFrame)
+                if(moveRequestThisFrame && up)
                     move(32);
+                else if(moveRequestThisFrame && down)
+                    move(-32);
                 else
                     walkTimer = 0;
             }
@@ -209,7 +211,7 @@ public class Player {
 
     public Sprite getSprite() {
         if(state == Player_State.WALKING) {
-            sprite.setRegion((TextureRegion) walking.getKeyFrame(walkTimer, true));
+            sprite.setRegion((TextureRegion) walking.getKeyFrame(walkTimer));
             return sprite;
         }
         else

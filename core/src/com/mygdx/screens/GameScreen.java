@@ -90,7 +90,7 @@ public class GameScreen implements Screen {
         game.spriteBatch.end();
         stage.act();
         stage.draw();
-        player.update(delta);
+        player.update(delta, playerController.isUp(), playerController.isDown());
     }
 
     @Override
