@@ -64,7 +64,7 @@ public class PlayerController extends InputAdapter {
             return;
 
         collisionController.checkSurroundings();
-        //collisionController.overlay();
+        collisionController.overlay();
 
         if(up && !player.isTop())
             player.move(32);

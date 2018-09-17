@@ -12,15 +12,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.mygdx.controller.PlayerController;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
-import com.mygdx.model.AbstractMap;
-import com.mygdx.model.Player;
+import com.mygdx.model.*;
 
 public class GameScreen implements Screen {
 
     private final PledgeGame game;
     public OrthographicCamera camera, camera2;
     private TiledMapRenderer tiledMapRenderer;
-    public Texture point;
+    private Difficulty difficulty;
+    public Texture fieldOfView_low;
     private Sprite sprite;
     private float x;
     private float y;
@@ -36,7 +36,6 @@ public class GameScreen implements Screen {
         tiledMapRenderer = new OrthogonalTiledMapRenderer(map.getTiledMap());
         player = new Player(map.getStartX(), map.getStartY());
         playerController = new PlayerController(game, player, this);
-        point = new Texture(Gdx.files.internal("core/assets/fog.png"));
         camera = new OrthographicCamera();
         camera2 = new OrthographicCamera();
         camera.setToOrtho(false, 640f, 640f);
@@ -54,6 +53,7 @@ public class GameScreen implements Screen {
         revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
         revCounter.setPosition(sprite.getX(), sprite.getY() - 320);
         revCounter.setFontScale(1.5f);
+        setDifficulty(map.getDifficulty());
     }
 
     @Override
@@ -78,7 +78,8 @@ public class GameScreen implements Screen {
         sprite.setPosition(x, y);
         camera.position.x = x;
         camera.position.y = y;
-        game.spriteBatch.draw(point, x - 334, y - 334);
+        if(difficulty != null)
+            game.spriteBatch.draw(difficulty.getFOVTexture(), x - 334, y - 334);
         //overlay();
         game.spriteBatch.setProjectionMatrix(camera2.combined);
         revCounter.setText(String.valueOf(player.getRevCounter() + "            FPS: " + Gdx.graphics.getFramesPerSecond()));
@@ -107,7 +108,6 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
         stage.dispose();
-        point.dispose();
     }
 
     public void rotateCamera(String dir) {
@@ -126,5 +126,9 @@ public class GameScreen implements Screen {
     }
     public AbstractMap getMap() {
         return map;
+    }
+
+    public void setDifficulty(Difficulty diff) {
+        difficulty = diff;
     }
 }

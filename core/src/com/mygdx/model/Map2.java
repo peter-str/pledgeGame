@@ -1,11 +1,14 @@
 package com.mygdx.model;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.screens.GameScreen;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Map2 extends AbstractMap {
 
@@ -14,12 +17,66 @@ public class Map2 extends AbstractMap {
     public Map2 (final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
         super(game, gameScreen, nextMap);
         tiledMap = new TmxMapLoader().load("core/assets/maps/map5.tmx");
-        super.mapRendererBool = false;
+    }
+
+    @Override
+    public MapEnum getNextMap() {
+        return nextMap;
+    }
+
+    public void message() {
+        if(messageCounter == 0) {
+            messageCounter++;
+            Gdx.input.setInputProcessor(gameScreen.stage);
+            dialog = new Dialog("Kommst du wieder raus?", game.uiSkin, "dialog") {
+                public void result(Object obj) {
+                    Gdx.input.setInputProcessor(gameScreen.getPlayerController());
+                }
+            };
+            dialog.text("Du hast dich in der dunklen Hoehle verlaufen. Aber Halt! " +
+                    "\nDa faellt dir ein das dein Grossvater dir einen guten Algorithmus " +
+                    "\nerklaert hat, um hier zu entkommen.");
+            dialog.button("Okay");
+            dialog.show(gameScreen.stage);
+        }
+
+        if(messageCounter == 1) {
+            messageCounter++;
+            final Timer t = new Timer();
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    Gdx.input.setInputProcessor(gameScreen.stage);
+                    dialog = new Dialog("Zum Tutorial?", game.uiSkin, "dialog") {
+                        public void result(Object obj) {
+                            if(obj.equals("okay")) {
+                                Gdx.input.setInputProcessor(gameScreen.getPlayerController());
+                                messageCounter = 1;
+                            } else {
+                                ((Game) Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, nextMap));
+                            }
+                        }
+                    };
+                    dialog.text("Moechtest du noch weiter probieren? " +
+                            "\nOder moechtest du das Tutorial starten? " +
+                            "\nDieses Fenster erscheint in 30 Sekunden erneut. ");
+                    dialog.button("Weiter", "okay");
+                    dialog.button("Tutorial", "tutorial");
+                    dialog.show(gameScreen.stage);
+                    t.cancel();
+                }
+            }, 10000);
+        }
     }
 
     @Override
     public void zielErreicht(MapEnum nextMap) {
         super.zielErreicht(nextMap);
+    }
+
+    @Override
+    public Difficulty getDifficulty() {
+        return new DifficultyHigh();
     }
 
     @Override
@@ -33,31 +90,6 @@ public class Map2 extends AbstractMap {
     }
 
     @Override
-    public void showControls() {
-
-    }
-
-    @Override
-    public MapEnum getNextMap() {
-        return nextMap;
-    }
-
-    public void message() {
-        if(messageCounter == 0) {
-            messageCounter = 1;
-            Gdx.input.setInputProcessor(gameScreen.stage);
-            dotNr = 1;
-            dialog = new Dialog("Kommst du wieder raus?", game.uiSkin, "dialog") {
-                public void result(Object obj) {
-                    Gdx.input.setInputProcessor(gameScreen.getPlayerController());
-                }
-            };
-            dialog.text("Du hast dich in der dunklen Hoehle verlaufen. Aber Halt! " +
-                    "\nDa faellt dir ein das dein Grossvater dir einen guten Algorithmus " +
-                    "\nerklaert hat, um hier zu entkommen.");
-            dialog.button("Okay");
-            dialog.show(gameScreen.stage);
-        }
-    }
+    public void showControls() {    }
 
 }

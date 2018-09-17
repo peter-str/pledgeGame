@@ -31,12 +31,12 @@ public abstract class AbstractMap {
         this.nextMap = nextMap;
     }
 
-    public void blueDots(float x, float y){};
-    public void message(){};
+    public void blueDots(float x, float y){}
+    public void message(){}
     public abstract int getStartX();
     public abstract int getStartY();
     public abstract void showControls();
-    public void showInstructions(){};
+    public void showInstructions(){}
 
     public TiledMap getTiledMap() {
         return tiledMap;
@@ -45,13 +45,13 @@ public abstract class AbstractMap {
     public abstract MapEnum getNextMap();
     public boolean getMapRendererBool() {
         return mapRendererBool;
-    };
+    }
     public void setMapRendererBool() {
         if(!mapRendererBool)
             mapRendererBool = true;
         else
             mapRendererBool = false;
-    };
+    }
 
     public void zielErreicht(final MapEnum nextMap) {
         if (finished) {
@@ -77,6 +77,8 @@ public abstract class AbstractMap {
             dialog.show(gameScreen.stage);
         }
     }
+
+    public abstract Difficulty getDifficulty();
 
     public void dispose() {
         tiledMap.dispose();

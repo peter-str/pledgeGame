@@ -37,11 +37,11 @@ public class Player {
         this.direction = Direction.NORTH;
         this.state = Player_State.STANDING;
 
-        textureAtlas = new TextureAtlas(Gdx.files.internal("core/assets/player/textures.atlas"));
+        textureAtlas = new TextureAtlas(Gdx.files.internal("core/assets/player/texture.atlas"));
         standing = textureAtlas.findRegion("standing_north");
         this.sprite = new Sprite(standing);
 
-        walking = new Animation(0.5f/2f, textureAtlas.findRegions("walking_north"), PlayMode.LOOP_PINGPONG);
+        walking = new Animation(0.3f/2f, textureAtlas.findRegions("walking_north"), PlayMode.LOOP_PINGPONG);
     }
 
     public enum Player_State {
@@ -107,8 +107,7 @@ public class Player {
                 walkTimer -= leftOverTime;
                 finishMove();
                 if(moveRequestThisFrame)
-                    //move(32);
-                    return;
+                    move(32);
                 else
                     walkTimer = 0;
             }
@@ -210,7 +209,7 @@ public class Player {
 
     public Sprite getSprite() {
         if(state == Player_State.WALKING) {
-            sprite.setRegion((TextureRegion) walking.getKeyFrame(walkTimer));
+            sprite.setRegion((TextureRegion) walking.getKeyFrame(walkTimer, true));
             return sprite;
         }
         else
