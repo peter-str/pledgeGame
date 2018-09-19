@@ -59,12 +59,13 @@ public class PlayerController extends InputAdapter {
         return false;
     }
 
-    public void update(float delta) {
+    public void update(float delta, boolean expertModeOn) {
         if(collisionController.zielErreicht(player.getX(), player.getY()))
             return;
 
         collisionController.checkSurroundings();
-        collisionController.overlay();
+        if(expertModeOn)
+            collisionController.overlay();
 
         if(up && !player.isTop())
             player.move(32);

@@ -7,6 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.screens.GameScreen;
+import com.mygdx.screens.MainMenuScreen;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -33,9 +35,7 @@ public class Map2 extends AbstractMap {
                     Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                 }
             };
-            dialog.text("Du hast dich in der dunklen Hoehle verlaufen. Aber Halt! " +
-                    "\nDa faellt dir ein das dein Grossvater dir einen guten Algorithmus " +
-                    "\nerklaert hat, um hier zu entkommen.");
+            dialog.text("Du hast dich in der dunklen Hoehle verlaufen. ");
             dialog.button("Okay");
             dialog.show(gameScreen.stage);
         }
@@ -52,8 +52,10 @@ public class Map2 extends AbstractMap {
                             if(obj.equals("okay")) {
                                 Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                                 messageCounter = 1;
-                            } else {
+                            } else if(obj.equals("tutorial")) {
                                 ((Game) Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, nextMap));
+                            } else if (obj.equals("menue")) {
+                                ((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
                             }
                         }
                     };
@@ -62,6 +64,7 @@ public class Map2 extends AbstractMap {
                             "\nDieses Fenster erscheint in 30 Sekunden erneut. ");
                     dialog.button("Weiter", "okay");
                     dialog.button("Tutorial", "tutorial");
+                    dialog.button("Menue", "menue");
                     dialog.show(gameScreen.stage);
                     t.cancel();
                 }

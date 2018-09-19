@@ -43,6 +43,8 @@ public class LevelScreen implements Screen {
         TextButton level1Button = new TextButton("Level 1", game.uiSkin);
         TextButton backButton = new TextButton("Zurueck", game.uiSkin);
 
+
+
         tutorialSteuerungButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {

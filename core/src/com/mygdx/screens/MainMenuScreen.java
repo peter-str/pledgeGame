@@ -8,9 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
@@ -38,9 +36,11 @@ public class MainMenuScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
         Label infoLabel = new Label("Info: Mit der Escape-Taste kommst du jederzeit ins Hauptmenue zurueck", game.uiSkin);
-        infoLabel.setPosition(60, 200);
+        infoLabel.setPosition(60, 185);
         infoLabel.setColor(Color.RED);
 
+        Label difficultyLabel = new Label("Schwierigkeit: ", game.uiSkin);
+        difficultyLabel.setPosition(60, 220);
 
         Table mainTable = new Table();
         mainTable.setFillParent(true);
@@ -51,6 +51,22 @@ public class MainMenuScreen implements Screen {
         TextButton playButton = new TextButton("Start", game.uiSkin);
         TextButton levelButton = new TextButton("Levelauswahl", game.uiSkin);
         TextButton exitButton = new TextButton("Exit", game.uiSkin);
+
+        CheckBox difficultySuperEasy = new CheckBox("SuperEasy", game.uiSkin);
+        CheckBox difficultyEasy = new CheckBox("Easy", game.uiSkin);
+        CheckBox difficultyMedium = new CheckBox("Medium", game.uiSkin);
+        CheckBox difficultyHigh = new CheckBox("High", game.uiSkin);
+        CheckBox difficultyExpert = new CheckBox("Expert", game.uiSkin);
+
+        final ButtonGroup buttonGroup = new ButtonGroup<CheckBox>();
+        buttonGroup.add(difficultySuperEasy, difficultyEasy, difficultyMedium, difficultyHigh, difficultyExpert);
+        difficultySuperEasy.setChecked(true);
+        int x = 165;
+        difficultySuperEasy.setPosition(x, 220);
+        difficultyEasy.setPosition(x + 90, 220);
+        difficultyMedium.setPosition(x + 140, 220);
+        difficultyHigh.setPosition(x + 220, 220);
+        difficultyExpert.setPosition(x + 270, 220);
 
         tutorialButton.addListener(new ClickListener() {
             @Override
@@ -63,7 +79,7 @@ public class MainMenuScreen implements Screen {
         playButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.MAP_1));
+                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.MAP_1, buttonGroup.getCheckedIndex()));
                 dispose();
             }
         });
@@ -92,8 +108,15 @@ public class MainMenuScreen implements Screen {
         mainTable.add(levelButton);
         mainTable.row();
         mainTable.add(exitButton);
+        mainTable.row();
 
         stage.addActor(mainTable);
+        stage.addActor(difficultyLabel);
+        stage.addActor(difficultySuperEasy);
+        stage.addActor(difficultyEasy);
+        stage.addActor(difficultyMedium);
+        stage.addActor(difficultyHigh);
+        stage.addActor(difficultyExpert);
         stage.addActor(infoLabel);
     }
 

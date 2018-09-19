@@ -106,11 +106,7 @@ public class Player {
                 float leftOverTime = animTimer-ANIM_TIME;
                 walkTimer -= leftOverTime;
                 finishMove();
-                if(moveRequestThisFrame && up)
-                    move(32);
-                else if(moveRequestThisFrame && down)
-                    move(-32);
-                else
+                if(!moveRequestThisFrame)
                     walkTimer = 0;
             }
         }

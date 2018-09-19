@@ -29,10 +29,37 @@ public class GameScreen implements Screen {
     private Label revCounter;
     private PlayerController playerController;
     private Player player;
+    private boolean expertModeOn;
 
     public GameScreen(final PledgeGame game, MapEnum mapEnum) {
         this.game = game;
         map = mapEnum.getMap(game, this);
+    }
+
+    public GameScreen(final PledgeGame game, MapEnum mapEnum, int diff) {
+        this.game = game;
+        map = mapEnum.getMap(game, this);
+        switch (diff) {
+            case 1:
+                difficulty = new DifficultyEasy();
+                break;
+            case 2:
+                difficulty = new DifficultyMedium();
+                break;
+            case 3:
+                difficulty = new DifficultyHigh();
+                break;
+            case 4:
+                difficulty = null;
+                expertModeOn = true;
+                break;
+            default:
+                difficulty = null;
+        }
+    }
+
+    @Override
+    public void show() {
         tiledMapRenderer = new OrthogonalTiledMapRenderer(map.getTiledMap());
         player = new Player(map.getStartX(), map.getStartY());
         playerController = new PlayerController(game, player, this);
@@ -45,15 +72,12 @@ public class GameScreen implements Screen {
         sprite.translate(map.getStartX(), map.getStartY());
         camera.translate(sprite.getX() - 320, sprite.getY() - 320);
         camera2.translate(sprite.getX() - 320, sprite.getY() - 320);
-    }
 
-    @Override
-    public void show() {
         Gdx.input.setInputProcessor(playerController);
         revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
         revCounter.setPosition(sprite.getX(), sprite.getY() - 320);
         revCounter.setFontScale(1.5f);
-        setDifficulty(map.getDifficulty());
+        //setDifficulty(map.getDifficulty());
     }
 
     @Override
@@ -65,7 +89,12 @@ public class GameScreen implements Screen {
         camera2.update();
         map.message();
 
-        if (map.getMapRendererBool()) {
+        /*if (map.getMapRendererBool()) {
+            tiledMapRenderer.setView(camera);
+            tiledMapRenderer.render();
+        }*/
+
+        if(!expertModeOn) {
             tiledMapRenderer.setView(camera);
             tiledMapRenderer.render();
         }
@@ -80,13 +109,12 @@ public class GameScreen implements Screen {
         camera.position.y = y;
         if(difficulty != null)
             game.spriteBatch.draw(difficulty.getFOVTexture(), x - 334, y - 334);
-        //overlay();
         game.spriteBatch.setProjectionMatrix(camera2.combined);
-        revCounter.setText(String.valueOf(player.getRevCounter() + "            FPS: " + Gdx.graphics.getFramesPerSecond()));
+        revCounter.setText(String.valueOf(player.getRevCounter()));
         revCounter.draw(game.spriteBatch, 1);
-        playerController.update(delta);
-        map.showControls();
-        map.showInstructions();
+        playerController.update(delta, expertModeOn);
+        //map.showControls();
+        //map.showInstructions();
         game.spriteBatch.end();
         stage.act();
         stage.draw();
