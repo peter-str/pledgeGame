@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
+import com.mygdx.model.LabyrinthErstellen;
 
 public class LevelScreen implements Screen {
 
@@ -41,6 +42,7 @@ public class LevelScreen implements Screen {
         TextButton tutorialSteuerungButton = new TextButton("Tutorial: Steuerung", game.uiSkin);
         TextButton tutorialAlgorithmusButton = new TextButton("Tutorial: Algorithmus", game.uiSkin);
         TextButton level1Button = new TextButton("Level 1", game.uiSkin);
+        TextButton endlessButton = new TextButton("Endlos Modus", game.uiSkin);
         TextButton backButton = new TextButton("Zurueck", game.uiSkin);
 
 
@@ -69,6 +71,16 @@ public class LevelScreen implements Screen {
             }
         });
 
+        endlessButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+               LabyrinthErstellen labyrinth = new LabyrinthErstellen(20, 20);
+                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game,
+                        MapEnum.ENDLESS, 0, labyrinth.getX(), labyrinth.getY()));
+                dispose();
+            }
+        });
+
         backButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -82,6 +94,8 @@ public class LevelScreen implements Screen {
         mainTable.add(tutorialAlgorithmusButton);
         mainTable.row();
         mainTable.add(level1Button);
+        mainTable.row();
+        mainTable.add(endlessButton);
         mainTable.row();
         mainTable.add(backButton);
 

@@ -35,6 +35,8 @@ public abstract class AbstractMap {
     public void message(){}
     public abstract int getStartX();
     public abstract int getStartY();
+    public void setStartX(int x){};
+    public void setStartY(int x){};
     public abstract void showControls();
     public void showInstructions(){}
 

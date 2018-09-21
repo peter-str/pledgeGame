@@ -1,10 +1,7 @@
 package com.mygdx.enums;
 
 import com.mygdx.game.PledgeGame;
-import com.mygdx.model.AbstractMap;
-import com.mygdx.model.Map1;
-import com.mygdx.model.Map2;
-import com.mygdx.model.TutMap1;
+import com.mygdx.model.*;
 import com.mygdx.screens.GameScreen;
 
 public enum MapEnum {
@@ -24,6 +21,12 @@ public enum MapEnum {
     MAP_2 {
         public AbstractMap getMap(PledgeGame game, GameScreen gameScreen) {
             return new Map2(game, gameScreen, MAP_2);
+        }
+    },
+
+    ENDLESS {
+        public AbstractMap getMap(PledgeGame game, GameScreen gameScreen) {
+            return new EndlessMap(game, gameScreen, MAP_2);
         }
     };
 

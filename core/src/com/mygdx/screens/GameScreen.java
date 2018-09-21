@@ -36,7 +36,7 @@ public class GameScreen implements Screen {
         map = mapEnum.getMap(game, this);
     }
 
-    public GameScreen(final PledgeGame game, MapEnum mapEnum, int diff) {
+    public GameScreen(final PledgeGame game, MapEnum mapEnum, int diff, int x, int y) {
         this.game = game;
         map = mapEnum.getMap(game, this);
         switch (diff) {
@@ -55,6 +55,11 @@ public class GameScreen implements Screen {
                 break;
             default:
                 difficulty = null;
+        }
+
+        if(x != 0 && y != 0) {
+            map.setStartX(x*32);
+            map.setStartY(y*32);
         }
     }
 
