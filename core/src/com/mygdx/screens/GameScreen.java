@@ -38,7 +38,6 @@ public class GameScreen implements Screen {
 
     public GameScreen(final PledgeGame game, MapEnum mapEnum, int diff, int x, int y) {
         this.game = game;
-        map = mapEnum.getMap(game, this);
         switch (diff) {
             case 1:
                 difficulty = new DifficultyEasy();
@@ -50,12 +49,14 @@ public class GameScreen implements Screen {
                 difficulty = new DifficultyHigh();
                 break;
             case 4:
-                difficulty = null;
+                difficulty = new DifficultyExpert();
                 expertModeOn = true;
                 break;
             default:
-                difficulty = null;
+                difficulty = new DifficultyTutorial();
         }
+
+        map = mapEnum.getMap(game, this);
 
         if(x != 0 && y != 0) {
             map.setStartX(x*32);
@@ -112,7 +113,7 @@ public class GameScreen implements Screen {
         sprite.setPosition(x, y);
         camera.position.x = x;
         camera.position.y = y;
-        if(difficulty != null)
+        if(difficulty.hasTexture())
             game.spriteBatch.draw(difficulty.getFOVTexture(), x - 334, y - 334);
         game.spriteBatch.setProjectionMatrix(camera2.combined);
         revCounter.setText(String.valueOf(player.getRevCounter()));

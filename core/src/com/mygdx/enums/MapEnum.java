@@ -28,6 +28,12 @@ public enum MapEnum {
         public AbstractMap getMap(PledgeGame game, GameScreen gameScreen) {
             return new EndlessMap(game, gameScreen, MAP_2);
         }
+    },
+
+    ENDLESS_MAZE {
+        public AbstractMap getMap(PledgeGame game, GameScreen gameScreen) {
+            return new EndlessMazeMap(game, gameScreen, MAP_2);
+        }
     };
 
     public abstract AbstractMap getMap(PledgeGame game, GameScreen gameScreen);

@@ -1,5 +1,8 @@
 package com.mygdx.model;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
@@ -12,26 +15,35 @@ public class LabyrinthErstellen2 {
     private int breite;
     private int totalCells;
     private int visitedCells = 1;
+    private StringBuilder sb;
+    private final String mapFileEnding = "</data>\n" +
+            " </layer>\n" +
+            "</map>";
 
     public LabyrinthErstellen2(int höhe, int breite) {
         this.höhe = höhe;
         this.breite = breite;
         labyrinth = new int[(höhe*2)+1][(breite*2)+1];
+
         for (int i = 0; i < labyrinth.length; i++) {
             for (int j = 0; j < labyrinth.length; j++) {
                 labyrinth[i][j] = 1;
             }
 
         }
-        labyrinth[1][0] = 0;
-        labyrinth[labyrinth.length-2][labyrinth.length-1] = 0;
+
+        labyrinth[0][labyrinth.length-2] = 2;
         cells = new Cell[höhe][breite];
         totalCells = höhe*breite;
-
         initializeCells();
         algorithm();
         createLabyrinth();
-        printLabyrinth();
+        //printLabyrinth();
+        sb = new StringBuilder();
+        sb.append(getMapFileBeginning(Integer.toString((höhe*2)+1), Integer.toString((breite*2)+1)));
+        ausgeben();
+        sb.append(mapFileEnding);
+        createMapFile(sb.toString());
     }
 
     public void initializeCells() {
@@ -123,6 +135,19 @@ public class LabyrinthErstellen2 {
         }
     }
 
+    //Fügt dem StringBuilder die Einträge des labyrinth-Arrays hinzu
+    public void ausgeben() {
+        for(int i = 0; i < labyrinth.length; i++) {
+            for(int j = 0; j < labyrinth[i].length; j++) {
+                sb.append(labyrinth[i][j]);
+                sb.append(",");
+            }
+            sb.append("\n");
+        }
+    }
+
+    //Erstellt aus dem cells-Array ein labyrinth-Array
+    //Mauern sind im cells-Array kein eigener Array-Eintrag, sondern sind in Cell abgespeichert
     public void createLabyrinth() {
         int a = 0;
         int b = 0;
@@ -164,6 +189,50 @@ public class LabyrinthErstellen2 {
             }
             System.out.println();
         }
+    }
+
+    public void createMapFile(String content) {
+        File file = new File("core\\assets\\maps\\randomMap.tmx");
+
+        try (FileOutputStream fop = new FileOutputStream(file)) {
+            // get the content in bytes
+            byte[] contentInBytes = content.getBytes();
+
+            fop.write(contentInBytes);
+            fop.flush();
+            fop.close();
+
+            System.out.println("Done");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getMapFileBeginning(String x, String y) {
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<map version=\"1.0\" tiledversion=\"2018.07.13\" orientation=\"orthogonal\" renderorder=\"right-down\" width=\"10\" height=\"10\" tilewidth=\"32\" tileheight=\"32\" infinite=\"0\" nextlayerid=\"33\" nextobjectid=\"1\">\n" +
+                " <tileset firstgid=\"1\" name=\"rocky01\" tilewidth=\"32\" tileheight=\"32\" tilecount=\"1\" columns=\"1\">\n" +
+                "  <image source=\"textures/wall_1.png\" width=\"32\" height=\"32\"/>\n" +
+                "  <tile id=\"0\">\n" +
+                "   <properties>\n" +
+                "    <property name=\"Wand\" value=\"\"/>\n" +
+                "   </properties>\n" +
+                "  </tile>\n" +
+                " </tileset>\n" +
+                " <tileset firstgid=\"0\" name=\"BodenStadt\" tilewidth=\"32\" tileheight=\"32\" tilecount=\"1\" columns=\"1\">\n" +
+                "  <image source=\"textures/floor_city.png\" width=\"32\" height=\"32\"/>\n" +
+                " </tileset>\n" +
+                " <tileset firstgid=\"2\" name=\"FinishFlag\" tilewidth=\"32\" tileheight=\"32\" tilecount=\"1\" columns=\"1\">\n" +
+                "   <image source=\"textures/finish_flag.png\" width=\"32\" height=\"32\"/>\n" +
+                "   <tile id=\"0\">\n" +
+                "    <properties>\n" +
+                "     <property name=\"Ziel\" value=\"\"/>\n" +
+                "    </properties>\n" +
+                "   </tile>\n" +
+                "  </tileset>\n" +
+                " <layer id=\"32\" name=\"Kachelebene 1\" width=\"" + x + "\" height=\"" + y + "\">\n" +
+                "  <data encoding=\"csv\">";
     }
 
     public static void main(String[] args) {

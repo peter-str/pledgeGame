@@ -10,6 +10,7 @@ public class DifficultyMedium implements Difficulty {
 
     public DifficultyMedium() {
         fieldOfView_medium = new Texture(Gdx.files.internal("core/assets/fov_medium.png"));
+        createMap();
     }
 
     @Override
@@ -18,7 +19,12 @@ public class DifficultyMedium implements Difficulty {
     }
 
     @Override
-    public TiledMap createMap() {
-        return null;
+    public void createMap() {
+        new LabyrinthErstellen2(7, 7);
+    }
+
+    @Override
+    public boolean hasTexture() {
+        return true;
     }
 }

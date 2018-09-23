@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
+import com.mygdx.model.LabyrinthErstellen2;
 
 public class MainMenuScreen implements Screen {
 
@@ -71,7 +72,9 @@ public class MainMenuScreen implements Screen {
         tutorialButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.TUTORIALMAP_1));
+                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game,
+                        MapEnum.ENDLESS_MAZE, buttonGroup.getCheckedIndex(), 1, 1));
+                //((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.TUTORIALMAP_1));
                 dispose();
             }
         });

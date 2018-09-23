@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.model.LabyrinthErstellen;
+import com.mygdx.model.LabyrinthErstellen2;
 
 public class LevelScreen implements Screen {
 

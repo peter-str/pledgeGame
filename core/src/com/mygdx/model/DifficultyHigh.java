@@ -10,6 +10,7 @@ public class DifficultyHigh implements Difficulty {
 
     public DifficultyHigh() {
         fieldOfView_low = new Texture(Gdx.files.internal("core/assets/fov_low.png"));
+        createMap();
     }
 
     @Override
@@ -18,7 +19,12 @@ public class DifficultyHigh implements Difficulty {
     }
 
     @Override
-    public TiledMap createMap() {
-        return null;
+    public void createMap() {
+        new LabyrinthErstellen2(10, 10);
+    }
+
+    @Override
+    public boolean hasTexture() {
+        return true;
     }
 }
