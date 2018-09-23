@@ -13,6 +13,8 @@ import com.mygdx.controller.PlayerController;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.model.*;
+import com.mygdx.model.difficulties.*;
+import com.mygdx.model.maps.AbstractMap;
 
 public class GameScreen implements Screen {
 
@@ -71,7 +73,7 @@ public class GameScreen implements Screen {
         playerController = new PlayerController(game, player, this);
         camera = new OrthographicCamera();
         camera2 = new OrthographicCamera();
-        camera.setToOrtho(false, 1000f, 1000f);
+        camera.setToOrtho(false, 640f, 640f);
         camera2.setToOrtho(false, 640f, 640f);
         stage = new Stage();
         sprite = player.getSprite();
@@ -95,11 +97,6 @@ public class GameScreen implements Screen {
         camera2.update();
         map.message();
 
-        /*if (map.getMapRendererBool()) {
-            tiledMapRenderer.setView(camera);
-            tiledMapRenderer.render();
-        }*/
-
         if(!expertModeOn) {
             tiledMapRenderer.setView(camera);
             tiledMapRenderer.render();
@@ -119,8 +116,8 @@ public class GameScreen implements Screen {
         revCounter.setText(String.valueOf(player.getRevCounter()));
         revCounter.draw(game.spriteBatch, 1);
         playerController.update(delta, expertModeOn);
-        //map.showControls();
-        //map.showInstructions();
+        map.showControls();
+        map.showInstructions();
         game.spriteBatch.end();
         stage.act();
         stage.draw();

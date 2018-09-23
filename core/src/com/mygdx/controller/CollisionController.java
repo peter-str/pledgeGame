@@ -2,7 +2,7 @@ package com.mygdx.controller;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.mygdx.game.PledgeGame;
-import com.mygdx.model.AbstractMap;
+import com.mygdx.model.maps.AbstractMap;
 import com.mygdx.model.Player;
 
 class CollisionController {
@@ -87,9 +87,5 @@ class CollisionController {
         if(player.isLeft()) {
             game.spriteBatch.draw(game.overlay[1], texPosX - 320, texPosY - 288);
         }
-    }
-
-    public void setMapRendererBool() {
-        map.setMapRendererBool();
     }
 }

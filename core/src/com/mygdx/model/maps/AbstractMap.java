@@ -1,4 +1,4 @@
-package com.mygdx.model;
+package com.mygdx.model.maps;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.screens.GameScreen;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.screens.MainMenuScreen;
@@ -22,7 +23,6 @@ public abstract class AbstractMap {
     protected Label controls;
     protected Dialog dialog;
     protected boolean finished = true;
-    protected boolean mapRendererBool = true;
 
 
     public AbstractMap(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
@@ -45,15 +45,6 @@ public abstract class AbstractMap {
     }
 
     public abstract MapEnum getNextMap();
-    public boolean getMapRendererBool() {
-        return mapRendererBool;
-    }
-    public void setMapRendererBool() {
-        if(!mapRendererBool)
-            mapRendererBool = true;
-        else
-            mapRendererBool = false;
-    }
 
     public void zielErreicht(final MapEnum nextMap) {
         if (finished) {

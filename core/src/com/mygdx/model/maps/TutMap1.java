@@ -1,8 +1,9 @@
-package com.mygdx.model;
+package com.mygdx.model.maps;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.screens.GameScreen;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.enums.MapEnum;
@@ -17,7 +18,7 @@ public class TutMap1 extends AbstractMap {
 
     public TutMap1(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
         super(game, gameScreen, nextMap);
-        tiledMap = new TmxMapLoader().load("core/assets/maps/randomMap.tmx");//map3
+        tiledMap = new TmxMapLoader().load("core/assets/maps/map3.tmx");
         spriteBatch2 = new SpriteBatch();
         controls = new Label("Steuerung" + "\nPfeiltaste hoch: Geradeaus" +
                 "\nPfeiltaste runter: Zurueck" + "\nF1: Linksdrehen" + "\nF2: Rechtsdrehen", game.uiSkin);

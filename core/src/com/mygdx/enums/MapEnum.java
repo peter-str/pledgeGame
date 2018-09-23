@@ -1,7 +1,7 @@
 package com.mygdx.enums;
 
 import com.mygdx.game.PledgeGame;
-import com.mygdx.model.*;
+import com.mygdx.model.maps.*;
 import com.mygdx.screens.GameScreen;
 
 public enum MapEnum {

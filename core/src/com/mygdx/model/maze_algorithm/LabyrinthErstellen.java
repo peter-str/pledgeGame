@@ -1,4 +1,4 @@
-package com.mygdx.model;
+package com.mygdx.model.maze_algorithm;
 
 
 import java.io.File;

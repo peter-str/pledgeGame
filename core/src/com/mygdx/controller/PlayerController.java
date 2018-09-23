@@ -43,7 +43,7 @@ public class PlayerController extends InputAdapter {
         }
 
         if(keycode == Input.Keys.F1) {
-            collisionController.setMapRendererBool();
+
         }
         return false;
     }

@@ -1,10 +1,11 @@
-package com.mygdx.model;
+package com.mygdx.model.difficulties;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.model.maze_algorithm.LabyrinthErstellen2;
 
-public class DifficultyTutorial implements Difficulty {
+public class DifficultyExpert implements Difficulty {
 
-    public DifficultyTutorial() {
+    public DifficultyExpert() {
         createMap();
     }
 
@@ -15,7 +16,7 @@ public class DifficultyTutorial implements Difficulty {
 
     @Override
     public void createMap() {
-        new LabyrinthErstellen2(3, 3);
+        new LabyrinthErstellen2(12, 12);
     }
 
     @Override

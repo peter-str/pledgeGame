@@ -1,8 +1,9 @@
-package com.mygdx.model;
+package com.mygdx.model.maps;
 
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
+import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.screens.GameScreen;
 
 public class EndlessMazeMap extends AbstractMap {

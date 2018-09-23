@@ -12,8 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
-import com.mygdx.model.LabyrinthErstellen;
-import com.mygdx.model.LabyrinthErstellen2;
+import com.mygdx.model.maze_algorithm.LabyrinthErstellen;
 
 public class LevelScreen implements Screen {
 
