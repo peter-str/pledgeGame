@@ -70,7 +70,7 @@ public class GameScreen implements Screen {
         playerController = new PlayerController(game, player, this);
         camera = new OrthographicCamera();
         camera2 = new OrthographicCamera();
-        camera.setToOrtho(false, 640f, 640f);
+        camera.setToOrtho(false, 1000f, 1000f);
         camera2.setToOrtho(false, 640f, 640f);
         stage = new Stage();
         sprite = player.getSprite();

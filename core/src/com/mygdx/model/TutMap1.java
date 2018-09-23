@@ -17,7 +17,7 @@ public class TutMap1 extends AbstractMap {
 
     public TutMap1(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
         super(game, gameScreen, nextMap);
-        tiledMap = new TmxMapLoader().load("core/assets/maps/map3.tmx");
+        tiledMap = new TmxMapLoader().load("core/assets/maps/randomMap.tmx");//map3
         spriteBatch2 = new SpriteBatch();
         controls = new Label("Steuerung" + "\nPfeiltaste hoch: Geradeaus" +
                 "\nPfeiltaste runter: Zurueck" + "\nF1: Linksdrehen" + "\nF2: Rechtsdrehen", game.uiSkin);
