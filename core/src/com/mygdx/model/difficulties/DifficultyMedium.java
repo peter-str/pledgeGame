@@ -9,7 +9,7 @@ public class DifficultyMedium implements Difficulty {
     private Texture fieldOfView_medium;
 
     public DifficultyMedium() {
-        fieldOfView_medium = new Texture(Gdx.files.internal("core/assets/fov_medium.png"));
+        fieldOfView_medium = new Texture(Gdx.files.internal("core/assets/fov_medium_75.png"));
         createMap();
     }
 

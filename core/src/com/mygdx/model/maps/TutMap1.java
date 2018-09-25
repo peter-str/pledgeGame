@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.mygdx.model.difficulties.Difficulty;
+import com.mygdx.model.difficulties.DifficultyTutorial;
 import com.mygdx.screens.GameScreen;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.enums.MapEnum;
@@ -62,6 +63,6 @@ public class TutMap1 extends AbstractMap {
 
     @Override
     public Difficulty getDifficulty() {
-        return null;
+        return new DifficultyTutorial();
     }
 }

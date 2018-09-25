@@ -40,6 +40,7 @@ public class Map2 extends AbstractMap {
             dialog.text("Du hast dich in der dunklen Hoehle verlaufen. ");
             dialog.button("Okay");
             dialog.show(gameScreen.stage);
+
         }
 
         if(messageCounter == 1) {

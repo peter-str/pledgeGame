@@ -16,7 +16,7 @@ public class DifficultyTutorial implements Difficulty {
 
     @Override
     public void createMap() {
-        new LabyrinthErstellen2(3, 3);
+        new LabyrinthErstellen2(4, 4);
     }
 
     @Override

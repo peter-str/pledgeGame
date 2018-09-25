@@ -9,7 +9,7 @@ public class DifficultyEasy implements Difficulty {
     private Texture fieldOfView_high;
 
     public DifficultyEasy() {
-        fieldOfView_high = new Texture(Gdx.files.internal("core/assets/fov_high.png"));
+        fieldOfView_high = new Texture(Gdx.files.internal("core/assets/fov_high_50.png"));
         createMap();
     }
 

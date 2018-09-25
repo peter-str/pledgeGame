@@ -36,6 +36,7 @@ public class GameScreen implements Screen {
     public GameScreen(final PledgeGame game, MapEnum mapEnum) {
         this.game = game;
         map = mapEnum.getMap(game, this);
+        difficulty = map.getDifficulty();
     }
 
     public GameScreen(final PledgeGame game, MapEnum mapEnum, int diff, int x, int y) {
