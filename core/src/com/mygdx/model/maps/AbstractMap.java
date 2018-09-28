@@ -2,13 +2,10 @@ package com.mygdx.model.maps;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.mygdx.model.difficulties.Difficulty;
+import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 import com.mygdx.screens.GameScreen;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.screens.MainMenuScreen;
@@ -20,11 +17,9 @@ public abstract class AbstractMap {
     protected GameScreen gameScreen;
     protected MapEnum nextMap;
     protected TiledMap tiledMap;
-    protected SpriteBatch spriteBatch2;
-    protected int dotNr = 0;
-    protected Label controls;
     protected Dialog dialog;
     protected boolean finished = true;
+    protected Window window;
 
 
     public AbstractMap(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
@@ -33,14 +28,12 @@ public abstract class AbstractMap {
         this.nextMap = nextMap;
     }
 
-    public void blueDots(float x, float y){    }
     public void message(){}
     public abstract int getStartX();
     public abstract int getStartY();
     public void setStartX(int x){};
     public void setStartY(int x){};
     public void showInstructions(){}
-    public ClickListener getPlayButton(){return null;}
     public Window getWindow(){return null;}
     public abstract boolean getTutorialFlag();
 
@@ -77,6 +70,8 @@ public abstract class AbstractMap {
             dialog.show(gameScreen.stage);
         }
     }
+
+    public TutorialStrategy getStartStrategy() {return null;}
 
     public abstract Difficulty getDifficulty();
 

@@ -17,16 +17,15 @@ import com.mygdx.game.PledgeGame;
 import com.mygdx.model.*;
 import com.mygdx.model.difficulties.*;
 import com.mygdx.model.maps.AbstractMap;
+import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 
 public class GameScreen implements Screen {
 
     private final PledgeGame game;
-    public OrthographicCamera camera, camera2;
+    private OrthographicCamera camera, camera2;
     private TiledMapRenderer tiledMapRenderer;
     private Difficulty difficulty;
     private Sprite sprite;
-    private float x;
-    private float y;
     public Stage stage;
     private AbstractMap map;
     private Label revCounter;
@@ -35,9 +34,8 @@ public class GameScreen implements Screen {
     private boolean expertModeOn;
     private boolean tutorialFlag;
     private TextButton textButton;
-    private TextButton resetButton;
     private MapEnum mapEnum;
-    private ClickListener clickListener;
+    private TutorialStrategy strategy;
 
     public GameScreen(final PledgeGame game, MapEnum mapEnum, boolean tutorialFlag) {
         this.game = game;
@@ -91,6 +89,8 @@ public class GameScreen implements Screen {
         if(!tutorialFlag) {
             camera.position.x = player.getX();
             camera.position.y = player.getY();
+            camera2.position.x = player.getX();
+            camera2.position.y = player.getY();
             Gdx.input.setInputProcessor(playerController);
             revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
             revCounter.setPosition(sprite.getX(), sprite.getY() - 320);
@@ -106,14 +106,19 @@ public class GameScreen implements Screen {
             textButton = new TextButton("Schritt", game.uiSkin);
             textButton.setPosition(camera.position.x, camera.position.y);
 
-            resetButton = new TextButton("Reset", game.uiSkin);
+            TextButton resetButton = new TextButton("Reset", game.uiSkin);
             resetButton.setPosition(camera.position.x + 64, camera.position.y);
 
             stage.addActor(textButton);
             stage.addActor(resetButton);
             stage.addActor(map.getWindow());
-            clickListener = map.getPlayButton();
-            textButton.addListener(clickListener);
+            strategy = map.getStartStrategy();
+            textButton.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    strategy.algorithm(GameScreen.this);
+                }
+            });
 
             resetButton.addListener(new ClickListener() {
                 @Override
@@ -127,7 +132,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1); //blue 0.4f
+        Gdx.gl.glClearColor(0, 0, 0.4f, 1); //blue 0.4f
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         camera.update();
@@ -143,8 +148,8 @@ public class GameScreen implements Screen {
 
         game.spriteBatch.setProjectionMatrix(camera.combined);
         player.getSprite().draw(game.spriteBatch);
-        x = player.getAnimX();
-        y = player.getAnimY();
+        float x = player.getAnimX();
+        float y = player.getAnimY();
         sprite.setPosition(x, y);
         if(!tutorialFlag) {
             camera.position.x = x;
@@ -181,6 +186,7 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
         stage.dispose();
+        map.dispose();
     }
 
     public void rotateCamera(String dir) {
@@ -205,8 +211,7 @@ public class GameScreen implements Screen {
     public void setDifficulty(Difficulty diff) {
         difficulty = diff;
     }
-    public void setButtonListener(ClickListener clickListener) {
-        textButton.removeListener(this.clickListener);
-        textButton.addListener(clickListener);
+    public void setButtonStrategy(TutorialStrategy strategy) {
+        this.strategy = strategy;
     }
 }

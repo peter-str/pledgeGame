@@ -1,6 +1,5 @@
 package com.mygdx.model.maps;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
@@ -14,26 +13,18 @@ import com.mygdx.game.TutorialTexts;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyTutorial;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
-import com.mygdx.model.tutorialStrategies.level_2.Strategy2A;
 import com.mygdx.model.tutorialStrategies.level_2.Strategy2B;
-import com.mygdx.model.tutorialStrategies.level_2.Strategy2C;
 import com.mygdx.model.tutorialStrategies.level_3.Strategy3A;
 import com.mygdx.model.tutorialStrategies.level_3.Strategy3B;
 import com.mygdx.model.tutorialStrategies.level_3.Strategy3C;
 import com.mygdx.screens.GameScreen;
 
-public class TutMap3 extends AbstractMap{
-    private Label textArea;
-    private Window window;
-    private ButtonGroup<CheckBox> buttonGroup;
-    private TutorialStrategy strategy;
-
+public class TutMap3 extends AbstractMap {
 
     public TutMap3(final PledgeGame game, final GameScreen gameScreen, MapEnum nextMap) {
         super(game, gameScreen, nextMap);
         tiledMap = new TmxMapLoader().load("core/assets/maps/TutorialMap3.tmx");
-        spriteBatch2 = new SpriteBatch();
-        textArea = new Label(TutorialTexts.LEVEL1, game.uiSkin);
+        Label textArea = new Label(TutorialTexts.LEVEL1, game.uiSkin);
         window = new Window("Anfang des Algorithmus", game.uiSkin);
         CheckBox checkBoxA = new CheckBox("A", game.uiSkin);
         CheckBox checkBoxB = new CheckBox("B", game.uiSkin);
@@ -42,25 +33,25 @@ public class TutMap3 extends AbstractMap{
         checkBoxA.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonListener(getPlayButton());
+                gameScreen.setButtonStrategy(new Strategy3A());
             }
         });
 
         checkBoxB.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonListener(getPlayButton());
+                gameScreen.setButtonStrategy(new Strategy3B());
             }
         });
 
         checkBoxC.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonListener(getPlayButton());
+                gameScreen.setButtonStrategy(new Strategy3C());
             }
         });
 
-        buttonGroup = new ButtonGroup<>(checkBoxA, checkBoxB, checkBoxC);
+        ButtonGroup<CheckBox> buttonGroup = new ButtonGroup<>(checkBoxA, checkBoxB, checkBoxC);
         window.add(textArea);
         window.row();
         window.add(checkBoxA);
@@ -83,28 +74,8 @@ public class TutMap3 extends AbstractMap{
     }
 
     @Override
-    public ClickListener getPlayButton() {
-        switch(buttonGroup.getCheckedIndex()) {
-            default:
-                strategy = new Strategy2B();
-                break;
-            case 0:
-                strategy = new Strategy3A();
-                break;
-            case 1:
-                strategy = new Strategy3B();
-                break;
-            case 2:
-                strategy = new Strategy3C();
-                break;
-        }
-
-        return new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                strategy.algorithm(gameScreen);
-            }
-        };
+    public TutorialStrategy getStartStrategy() {
+        return new Strategy2B();
     }
 
     @Override
