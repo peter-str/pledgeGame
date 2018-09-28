@@ -37,6 +37,7 @@ public class GameScreen implements Screen {
     private TextButton textButton;
     private TextButton resetButton;
     private MapEnum mapEnum;
+    private ClickListener clickListener;
 
     public GameScreen(final PledgeGame game, MapEnum mapEnum, boolean tutorialFlag) {
         this.game = game;
@@ -111,7 +112,8 @@ public class GameScreen implements Screen {
             stage.addActor(textButton);
             stage.addActor(resetButton);
             stage.addActor(map.getWindow());
-            textButton.addListener(map.getPlayButton());
+            clickListener = map.getPlayButton();
+            textButton.addListener(clickListener);
 
             resetButton.addListener(new ClickListener() {
                 @Override
@@ -204,7 +206,7 @@ public class GameScreen implements Screen {
         difficulty = diff;
     }
     public void setButtonListener(ClickListener clickListener) {
-        textButton.clearListeners();
+        textButton.removeListener(this.clickListener);
         textButton.addListener(clickListener);
     }
 }

@@ -17,6 +17,9 @@ import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 import com.mygdx.model.tutorialStrategies.level_2.Strategy2A;
 import com.mygdx.model.tutorialStrategies.level_2.Strategy2B;
 import com.mygdx.model.tutorialStrategies.level_2.Strategy2C;
+import com.mygdx.model.tutorialStrategies.level_3.Strategy3A;
+import com.mygdx.model.tutorialStrategies.level_3.Strategy3B;
+import com.mygdx.model.tutorialStrategies.level_3.Strategy3C;
 import com.mygdx.screens.GameScreen;
 
 public class TutMap3 extends AbstractMap{
@@ -83,16 +86,16 @@ public class TutMap3 extends AbstractMap{
     public ClickListener getPlayButton() {
         switch(buttonGroup.getCheckedIndex()) {
             default:
-                strategy = new Strategy2A();
-                break;
-            case 0:
-                strategy = new Strategy2A();
-                break;
-            case 1:
                 strategy = new Strategy2B();
                 break;
+            case 0:
+                strategy = new Strategy3A();
+                break;
+            case 1:
+                strategy = new Strategy3B();
+                break;
             case 2:
-                strategy = new Strategy2C();
+                strategy = new Strategy3C();
                 break;
         }
 
