@@ -3,12 +3,14 @@ package com.mygdx.screens;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.controller.PlayerController;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
@@ -22,7 +24,6 @@ public class GameScreen implements Screen {
     public OrthographicCamera camera, camera2;
     private TiledMapRenderer tiledMapRenderer;
     private Difficulty difficulty;
-    public Texture fieldOfView_low;
     private Sprite sprite;
     private float x;
     private float y;
@@ -32,10 +33,16 @@ public class GameScreen implements Screen {
     private PlayerController playerController;
     private Player player;
     private boolean expertModeOn;
+    private boolean tutorialFlag;
+    private TextButton textButton;
+    private TextButton resetButton;
+    private MapEnum mapEnum;
 
-    public GameScreen(final PledgeGame game, MapEnum mapEnum) {
+    public GameScreen(final PledgeGame game, MapEnum mapEnum, boolean tutorialFlag) {
         this.game = game;
         map = mapEnum.getMap(game, this);
+        this.mapEnum = mapEnum;
+        this.tutorialFlag = tutorialFlag;
         difficulty = map.getDifficulty();
     }
 
@@ -79,19 +86,46 @@ public class GameScreen implements Screen {
         stage = new Stage();
         sprite = player.getSprite();
         sprite.translate(map.getStartX(), map.getStartY());
-        camera.translate(sprite.getX() - 320, sprite.getY() - 320);
-        camera2.translate(sprite.getX() - 320, sprite.getY() - 320);
 
-        Gdx.input.setInputProcessor(playerController);
-        revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
-        revCounter.setPosition(sprite.getX(), sprite.getY() - 320);
-        revCounter.setFontScale(1.5f);
-        //setDifficulty(map.getDifficulty());
+        if(!tutorialFlag) {
+            camera.position.x = player.getX();
+            camera.position.y = player.getY();
+            Gdx.input.setInputProcessor(playerController);
+            revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
+            revCounter.setPosition(sprite.getX(), sprite.getY() - 320);
+            revCounter.setFontScale(1.5f);
+            //setDifficulty(map.getDifficulty());
+        }
+
+        if(tutorialFlag) {
+            Gdx.input.setInputProcessor(stage);
+            camera.translate(-64,-64);
+            revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
+            revCounter.setPosition(sprite.getX(), sprite.getY() - 320);
+            textButton = new TextButton("Schritt", game.uiSkin);
+            textButton.setPosition(camera.position.x, camera.position.y);
+
+            resetButton = new TextButton("Reset", game.uiSkin);
+            resetButton.setPosition(camera.position.x + 64, camera.position.y);
+
+            stage.addActor(textButton);
+            stage.addActor(resetButton);
+            stage.addActor(map.getWindow());
+            textButton.addListener(map.getPlayButton());
+
+            resetButton.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, mapEnum, true));
+                    dispose();
+                }
+            });
+        }
     }
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0.4f, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 1); //blue 0.4f
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         camera.update();
@@ -104,25 +138,30 @@ public class GameScreen implements Screen {
         }
 
         game.spriteBatch.begin();
+
         game.spriteBatch.setProjectionMatrix(camera.combined);
         player.getSprite().draw(game.spriteBatch);
         x = player.getAnimX();
         y = player.getAnimY();
         sprite.setPosition(x, y);
-        camera.position.x = x;
-        camera.position.y = y;
+        if(!tutorialFlag) {
+            camera.position.x = x;
+            camera.position.y = y;
+        }
         if(difficulty.hasTexture())
             game.spriteBatch.draw(difficulty.getFOVTexture(), x - 334, y - 334);
+
         game.spriteBatch.setProjectionMatrix(camera2.combined);
         revCounter.setText(String.valueOf(player.getRevCounter()));
         revCounter.draw(game.spriteBatch, 1);
         playerController.update(delta, expertModeOn);
-        map.showControls();
         map.showInstructions();
+
         game.spriteBatch.end();
+
         stage.act();
         stage.draw();
-        player.update(delta, playerController.isUp(), playerController.isDown());
+        player.update(delta);
     }
 
     @Override
@@ -144,11 +183,11 @@ public class GameScreen implements Screen {
 
     public void rotateCamera(String dir) {
         if (dir.equals("left")) {
-            camera.rotate(270f);
+            //camera.rotate(270f);
             sprite.rotate(90f);
         }
         if (dir.equals("right")) {
-            camera.rotate(90f);
+            //camera.rotate(90f);
             sprite.rotate(-90f);
         }
     }
@@ -159,8 +198,13 @@ public class GameScreen implements Screen {
     public AbstractMap getMap() {
         return map;
     }
+    public Player getPlayer() {return player;}
 
     public void setDifficulty(Difficulty diff) {
         difficulty = diff;
+    }
+    public void setButtonListener(ClickListener clickListener) {
+        textButton.clearListeners();
+        textButton.addListener(clickListener);
     }
 }

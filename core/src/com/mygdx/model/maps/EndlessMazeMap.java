@@ -34,8 +34,8 @@ public class EndlessMazeMap extends AbstractMap {
     }
 
     @Override
-    public void showControls() {
-
+    public boolean getTutorialFlag() {
+        return false;
     }
 
     @Override

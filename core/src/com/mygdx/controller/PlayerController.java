@@ -14,6 +14,8 @@ public class PlayerController extends InputAdapter {
     private GameScreen gameScreen;
     private CollisionController collisionController;
     private boolean up, down;
+    int state = 2;
+
 
     public PlayerController(PledgeGame game, Player player, GameScreen screen) {
         this.game = game;
@@ -72,13 +74,41 @@ public class PlayerController extends InputAdapter {
 
         if(down && !player.isBottom())
             player.move(-32);
+
+        test();
     }
 
-    public boolean isUp() {
-        return up;
-    }
+    public void test() {
+        if(state == 0) {
+            if (!player.isTop()) {
+                player.move(32);
+            }
 
-    public boolean isDown() {
-        return down;
+            if(player.isTop()) {
+                player.rotateRight();
+                state = 1;
+            }
+        }
+
+        if(state == 1) {
+            if(!player.isLeft()) {
+                player.rotateLeft();
+                player.move(32);
+            }
+
+            if(player.isTop() && player.isLeft()) {
+                player.rotateRight();
+                player.move(32);
+            }
+
+            if(!player.isTop() && player.isLeft()) {
+                player.move(32);
+            }
+
+
+
+            if(player.getRevCounter() == 0)
+                state = 0;
+        }
     }
 }

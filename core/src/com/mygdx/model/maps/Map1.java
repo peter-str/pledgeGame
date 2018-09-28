@@ -24,18 +24,18 @@ public class Map1 extends AbstractMap {
     }
 
     @Override
-    public void zielErreicht(MapEnum nextMap) {
-        super.zielErreicht(nextMap);
+    public boolean getTutorialFlag() {
+        return false;
+    }
+
+    @Override
+    public void zielErreicht(MapEnum nextMap, boolean tutorialFlag) {
+        super.zielErreicht(nextMap, false);
     }
 
     @Override
     public Difficulty getDifficulty() {
         return new DifficultyEasy();
-    }
-
-    @Override
-    public void showControls() {
-
     }
 
     @Override

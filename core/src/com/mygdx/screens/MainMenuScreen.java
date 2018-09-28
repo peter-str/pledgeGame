@@ -52,7 +52,11 @@ public class MainMenuScreen implements Screen {
         TextButton levelButton = new TextButton("Levelauswahl", game.uiSkin);
         TextButton exitButton = new TextButton("Exit", game.uiSkin);
 
-        CheckBox difficultySuperEasy = new CheckBox("SuperEasy", game.uiSkin);
+        String[] astr = {"Schwierigkeit waehlen:", "Super Easy", "Easy", "Medium", "Hard", "Expert"};
+        final SelectBox<String> selectBox = new SelectBox<>(game.uiSkin);
+        selectBox.setItems(astr);
+
+        /*CheckBox difficultySuperEasy = new CheckBox("SuperEasy", game.uiSkin);
         CheckBox difficultyEasy = new CheckBox("Easy", game.uiSkin);
         CheckBox difficultyMedium = new CheckBox("Medium", game.uiSkin);
         CheckBox difficultyHigh = new CheckBox("High", game.uiSkin);
@@ -67,13 +71,13 @@ public class MainMenuScreen implements Screen {
         difficultyMedium.setPosition(x + 140, 220);
         difficultyHigh.setPosition(x + 220, 220);
         difficultyExpert.setPosition(x + 270, 220);
+        */
 
         tutorialButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game,
-                        MapEnum.ENDLESS_MAZE, buttonGroup.getCheckedIndex(), 1, 1));
-                //((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.TUTORIALMAP_1));
+                //((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.ENDLESS_MAZE, selectBox.getSelectedIndex()-1, 1, 1));
+                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.TUTORIALMAP_1, true));
                 dispose();
             }
         });
@@ -81,7 +85,7 @@ public class MainMenuScreen implements Screen {
         playButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.MAP_1, buttonGroup.getCheckedIndex(), 0, 0));
+                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.MAP_1, selectBox.getSelectedIndex()-1, 0, 0));
                 dispose();
             }
         });
@@ -111,14 +115,16 @@ public class MainMenuScreen implements Screen {
         mainTable.row();
         mainTable.add(exitButton);
         mainTable.row();
+        mainTable.add(selectBox);
+        mainTable.row();
 
         stage.addActor(mainTable);
-        stage.addActor(difficultyLabel);
-        stage.addActor(difficultySuperEasy);
-        stage.addActor(difficultyEasy);
+        //stage.addActor(difficultyLabel);
+        //stage.addActor(difficultySuperEasy);
+        /*stage.addActor(difficultyEasy);
         stage.addActor(difficultyMedium);
         stage.addActor(difficultyHigh);
-        stage.addActor(difficultyExpert);
+        stage.addActor(difficultyExpert);*/
         stage.addActor(infoLabel);
     }
 

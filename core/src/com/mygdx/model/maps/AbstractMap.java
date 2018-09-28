@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.screens.GameScreen;
 import com.mygdx.game.PledgeGame;
@@ -31,14 +33,16 @@ public abstract class AbstractMap {
         this.nextMap = nextMap;
     }
 
-    public void blueDots(float x, float y){}
+    public void blueDots(float x, float y){    }
     public void message(){}
     public abstract int getStartX();
     public abstract int getStartY();
     public void setStartX(int x){};
     public void setStartY(int x){};
-    public abstract void showControls();
     public void showInstructions(){}
+    public ClickListener getPlayButton(){return null;}
+    public Window getWindow(){return null;}
+    public abstract boolean getTutorialFlag();
 
     public TiledMap getTiledMap() {
         return tiledMap;
@@ -46,7 +50,7 @@ public abstract class AbstractMap {
 
     public abstract MapEnum getNextMap();
 
-    public void zielErreicht(final MapEnum nextMap) {
+    public void zielErreicht(final MapEnum nextMap, final boolean tutorialFlag) {
         if (finished) {
             finished = false;
             Gdx.input.setInputProcessor(gameScreen.stage);
@@ -56,9 +60,12 @@ public abstract class AbstractMap {
                         Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                         ((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
                         dispose();
-                    } else if (obj.equals("level")) {
+                    } else if (obj.equals("level") && !tutorialFlag) {
                         Gdx.input.setInputProcessor(gameScreen.getPlayerController());
-                        ((Game) Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, nextMap));
+                        ((Game) Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, nextMap, false));
+                        dispose();
+                    } else if (obj.equals("level") && tutorialFlag) {
+                        ((Game) Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, nextMap, true));
                         dispose();
                     }
                 }

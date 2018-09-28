@@ -96,7 +96,7 @@ public class Player {
         this.destY = 0;
     }
 
-    public void update(float delta, boolean up, boolean down) {
+    public void update(float delta) {
         if(state == Player_State.WALKING) {
             animTimer += delta;
             walkTimer += delta;

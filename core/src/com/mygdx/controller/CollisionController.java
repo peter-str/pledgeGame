@@ -59,7 +59,7 @@ class CollisionController {
 
     boolean zielErreicht(int x, int y) {
         if(collisionLayer.getCell(x/32, y/32).getTile().getProperties().containsKey("Ziel")) {
-            map.zielErreicht(map.getNextMap());
+            map.zielErreicht(map.getNextMap(), map.getTutorialFlag());
             return true;
         }
         return false;

@@ -56,7 +56,7 @@ public class Map2 extends AbstractMap {
                                 Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                                 messageCounter = 1;
                             } else if(obj.equals("tutorial")) {
-                                ((Game) Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, nextMap));
+                                ((Game) Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, nextMap, false));
                             } else if (obj.equals("menue")) {
                                 ((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
                             }
@@ -76,8 +76,8 @@ public class Map2 extends AbstractMap {
     }
 
     @Override
-    public void zielErreicht(MapEnum nextMap) {
-        super.zielErreicht(nextMap);
+    public void zielErreicht(MapEnum nextMap, boolean tutorialFlag) {
+        super.zielErreicht(nextMap, false);
     }
 
     @Override
@@ -96,6 +96,7 @@ public class Map2 extends AbstractMap {
     }
 
     @Override
-    public void showControls() {    }
-
+    public boolean getTutorialFlag() {
+        return false;
+    }
 }
