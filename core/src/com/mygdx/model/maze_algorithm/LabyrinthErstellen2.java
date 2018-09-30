@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
 
+import static com.mygdx.game.ResourcePaths.MAZE;
+
 public class LabyrinthErstellen2 {
 
     private int[][] labyrinth;
@@ -192,7 +194,7 @@ public class LabyrinthErstellen2 {
     }
 
     public void createMapFile(String content) {
-        File file = new File("core\\assets\\maps\\randomMap.tmx");
+        File file = new File(MAZE);
 
         try (FileOutputStream fop = new FileOutputStream(file)) {
             // get the content in bytes

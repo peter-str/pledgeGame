@@ -33,7 +33,6 @@ public class GameScreen implements Screen {
     private Player player;
     private boolean expertModeOn;
     private boolean tutorialFlag;
-    private TextButton textButton;
     private MapEnum mapEnum;
     private TutorialStrategy strategy;
 
@@ -101,19 +100,26 @@ public class GameScreen implements Screen {
         if(tutorialFlag) {
             Gdx.input.setInputProcessor(stage);
             camera.translate(-64,-64);
-            revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
-            revCounter.setPosition(sprite.getX(), sprite.getY() - 320);
-            textButton = new TextButton("Schritt", game.uiSkin);
-            textButton.setPosition(camera.position.x, camera.position.y);
+            TextButton goButton = new TextButton("Schritt", game.uiSkin);
+            goButton.setPosition(64, 32);
 
             TextButton resetButton = new TextButton("Reset", game.uiSkin);
-            resetButton.setPosition(camera.position.x + 64, camera.position.y);
+            resetButton.setPosition(goButton.getWidth() + 64, 32);
 
-            stage.addActor(textButton);
+            TextButton menuButton = new TextButton("Menue", game.uiSkin);
+            menuButton.setPosition(0, 0);
+
+            revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
+            revCounter.setPosition(resetButton.getX() + 48, resetButton.getY());
+
+            stage.addActor(goButton);
             stage.addActor(resetButton);
+            stage.addActor(menuButton);
             stage.addActor(map.getWindow());
+            stage.addActor(map.getAlgoWindow());
             strategy = map.getStartStrategy();
-            textButton.addListener(new ClickListener() {
+
+            goButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     strategy.algorithm(GameScreen.this);
@@ -124,6 +130,14 @@ public class GameScreen implements Screen {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, mapEnum, true));
+                    dispose();
+                }
+            });
+
+            menuButton.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    ((Game)Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
                     dispose();
                 }
             });
@@ -159,7 +173,7 @@ public class GameScreen implements Screen {
             game.spriteBatch.draw(difficulty.getFOVTexture(), x - 334, y - 334);
 
         game.spriteBatch.setProjectionMatrix(camera2.combined);
-        revCounter.setText(String.valueOf(player.getRevCounter()));
+        revCounter.setText("Zaehler: " + String.valueOf(player.getRevCounter()));
         revCounter.draw(game.spriteBatch, 1);
         playerController.update(delta, expertModeOn);
         map.showInstructions();

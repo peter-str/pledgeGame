@@ -76,7 +76,7 @@ public class LevelScreen implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                LabyrinthErstellen labyrinth = new LabyrinthErstellen(20, 20);
                 ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game,
-                        MapEnum.ENDLESS, 0, labyrinth.getX(), labyrinth.getY()));
+                        MapEnum.ENDLESS_MAZE, 0, labyrinth.getX(), labyrinth.getY()));
                 dispose();
             }
         });

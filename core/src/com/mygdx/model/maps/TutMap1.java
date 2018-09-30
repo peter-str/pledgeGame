@@ -1,5 +1,6 @@
 package com.mygdx.model.maps;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
@@ -12,16 +13,25 @@ import com.mygdx.screens.GameScreen;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.enums.MapEnum;
 
+import static com.mygdx.game.ResourcePaths.TUTMAP1;
+
 public class TutMap1 extends AbstractMap {
 
     public TutMap1(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
         super(game, gameScreen, nextMap);
-        tiledMap = new TmxMapLoader().load("core/assets/maps/TutorialMap1.tmx");
-        window = new Window("Anfang des Algorithmus", game.uiSkin);
+        tiledMap = new TmxMapLoader().load(TUTMAP1);
+        window = new Window("Die erste Regel", game.uiSkin);
         Label textArea = new Label(TutorialTexts.LEVEL1, game.uiSkin);
         window.add(textArea);
         window.pack();
-        window.setPosition(64, 500);
+        window.setPosition(64, Gdx.graphics.getHeight());
+
+        algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
+        Label algoText = new Label("1: Laufe geradeaus ", game.uiSkin);
+        algoText.setFontScale(0.9f);
+        algoWindow.add(algoText);
+        algoWindow.pack();
+        algoWindow.setPosition(Gdx.graphics.getWidth() / algoWindow.getWidth() + 64, Gdx.graphics.getHeight()/2f);
     }
 
     @Override
@@ -42,6 +52,11 @@ public class TutMap1 extends AbstractMap {
     @Override
     public Window getWindow() {
         return window;
+    }
+
+    @Override
+    public Window getAlgoWindow() {
+        return algoWindow;
     }
 
     @Override

@@ -6,13 +6,15 @@ import com.mygdx.game.PledgeGame;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.screens.GameScreen;
 
+import static com.mygdx.game.ResourcePaths.MAZE;
+
 public class EndlessMazeMap extends AbstractMap {
     private int startX;
     private int startY;
 
     public EndlessMazeMap(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
         super(game, gameScreen, nextMap);
-        tiledMap = new TmxMapLoader().load("core/assets/maps/randomMap.tmx");
+        tiledMap = new TmxMapLoader().load(MAZE);
     }
 
     @Override

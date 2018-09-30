@@ -20,7 +20,19 @@ public enum MapEnum {
 
     TUTORIALMAP_3 {
         public AbstractMap getMap(PledgeGame game, GameScreen gameScreen) {
-            return new TutMap3(game, gameScreen, MAP_1);
+            return new TutMap3(game, gameScreen, TUTORIALMAP_4);
+        }
+    },
+
+    TUTORIALMAP_4 {
+        public AbstractMap getMap(PledgeGame game, GameScreen gameScreen) {
+            return new TutMap4(game, gameScreen, TUTORIALMAP_5);
+        }
+    },
+
+    TUTORIALMAP_5 {
+        public AbstractMap getMap(PledgeGame game, GameScreen gameScreen) {
+            return new TutMap5(game, gameScreen, MAP_1);
         }
     },
 
@@ -44,7 +56,7 @@ public enum MapEnum {
 
     ENDLESS_MAZE {
         public AbstractMap getMap(PledgeGame game, GameScreen gameScreen) {
-            return new EndlessMazeMap(game, gameScreen, MAP_2);
+            return new EndlessMazeMap(game, gameScreen, ENDLESS_MAZE);
         }
     };
 

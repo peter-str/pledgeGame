@@ -15,7 +15,9 @@ public class DifficultyTutorial implements Difficulty {
     }
 
     @Override
-    public void createMap() {    }
+    public void createMap() {
+        new LabyrinthErstellen2(3, 3);
+    }
 
     @Override
     public boolean hasTexture() {

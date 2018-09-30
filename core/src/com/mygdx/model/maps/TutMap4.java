@@ -1,12 +1,11 @@
 package com.mygdx.model.maps;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
-import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
@@ -14,55 +13,59 @@ import com.mygdx.game.TutorialTexts;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyTutorial;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
-import com.mygdx.model.tutorialStrategies.level_1.Strategy1A;
-import com.mygdx.model.tutorialStrategies.level_2.Strategy2A;
-import com.mygdx.model.tutorialStrategies.level_2.Strategy2B;
-import com.mygdx.model.tutorialStrategies.level_2.Strategy2C;
+import com.mygdx.model.tutorialStrategies.level_3.Strategy3A;
+import com.mygdx.model.tutorialStrategies.level_4.Strategy4A;
+import com.mygdx.model.tutorialStrategies.level_4.Strategy4B;
+import com.mygdx.model.tutorialStrategies.level_4.Strategy4C;
 import com.mygdx.screens.GameScreen;
 
-import static com.mygdx.game.ResourcePaths.TUTMAP2;
+import static com.mygdx.game.ResourcePaths.TUTMAP4;
 
-public class TutMap2 extends AbstractMap {
+public class TutMap4 extends AbstractMap{
 
-    public TutMap2(final PledgeGame game, final GameScreen gameScreen, MapEnum nextMap) {
+    public TutMap4(final PledgeGame game, final GameScreen gameScreen, MapEnum nextMap) {
         super(game, gameScreen, nextMap);
-        tiledMap = new TmxMapLoader().load(TUTMAP2);
-        Label textArea = new Label(TutorialTexts.LEVEL2, game.uiSkin);
-        window = new Window("Die zweite Regel", game.uiSkin);
+        tiledMap = new TmxMapLoader().load(TUTMAP4);
+        Label textArea = new Label(TutorialTexts.LEVEL4, game.uiSkin);
+        window = new Window("Algorithmus anpassen", game.uiSkin);
 
-        final String stepA = "2: Wenn eine Wand vor dir ist, drehe dich nach links ";
-        final String stepB = "2: Wenn eine Wand vor dir ist, drehe dich nach rechts ";
-        final String stepC = "2: Wenn eine Wand vor dir ist, drehe dich nach unten ";
+        final Label algoText = new Label("1: Laufe geradeaus ", game.uiSkin);
+        final Label algoText2 = new Label("2: Wand vor dir, aber links keine: Drehe dich nach links ", game.uiSkin);
+        final Label algoText3 = new Label("3: Wand vor dir: Drehe dich nach rechts ", game.uiSkin);
+        algoText.setFontScale(0.9f);
+        algoText2.setFontScale(0.9f);
+        algoText3.setFontScale(0.9f);
+
+        final String stepA = "";
+        final String stepB = "";
+        final String stepC = "";
         final Label finalStep = new Label("", game.uiSkin);
-        finalStep.setFontScale(0.9f);
 
-        CheckBox checkBoxA = new CheckBox("Links", game.uiSkin);
-        CheckBox checkBoxB = new CheckBox("Rechts", game.uiSkin);
-        CheckBox checkBoxC = new CheckBox("Unten", game.uiSkin);
+        CheckBox checkBoxA = new CheckBox("BLA BLA keine Ahnung ", game.uiSkin);
+        CheckBox checkBoxB = new CheckBox("Das Drehen nach Rechts muss angepasst werden ", game.uiSkin);
+        CheckBox checkBoxC = new CheckBox("Nach jedem Schritt ueberpruefen, ob links keine Wand ist ", game.uiSkin);
 
         checkBoxA.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonStrategy(new Strategy2A());
-                finalStep.setText(stepA);
-                algoWindow.pack();
+                gameScreen.setButtonStrategy(new Strategy4A());
             }
         });
 
         checkBoxB.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonStrategy(new Strategy2B());
-                finalStep.setText(stepB);
-                algoWindow.pack();
+                gameScreen.setButtonStrategy(new Strategy4B());
             }
         });
 
         checkBoxC.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonStrategy(new Strategy2C());
-                finalStep.setText(stepC);
+                gameScreen.setButtonStrategy(new Strategy4C());
+                algoText.setText("1: Laufe geradeaus, wenn links frei, dann 2, wenn vorne versperrt, dann 3 ");
+                algoText2.setText("2: Nach links drehen, dann 1 ");
+                algoText3.setText("3: Nach rechts drehen, dann 1 ");
                 algoWindow.pack();
             }
         });
@@ -79,13 +82,14 @@ public class TutMap2 extends AbstractMap {
         window.setPosition(64, Gdx.graphics.getHeight());
 
         algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
-        Label algoText = new Label("1: Laufe geradeaus", game.uiSkin);
-        algoText.setFontScale(0.9f);
         algoWindow.add(algoText);
         algoWindow.row();
-        algoWindow.add(finalStep);
+        algoWindow.add(algoText2);
+        algoWindow.row();
+        algoWindow.add(algoText3);
         algoWindow.pack();
         algoWindow.setPosition(Gdx.graphics.getWidth() / algoWindow.getWidth() + 64, Gdx.graphics.getHeight()/2f);
+        //Gdx.graphics.getWidth() / algoWindow.getWidth() + 64, Gdx.graphics.getHeight()/2f
     }
 
     @Override
@@ -100,7 +104,7 @@ public class TutMap2 extends AbstractMap {
 
     @Override
     public TutorialStrategy getStartStrategy() {
-        return new Strategy1A();
+        return new Strategy3A();
     }
 
     @Override

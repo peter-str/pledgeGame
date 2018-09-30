@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Interpolation;
 import com.mygdx.enums.Direction;
 
+import static com.mygdx.game.ResourcePaths.PLAYER_TEXTURE;
+
 public class Player {
 
     private int x;
@@ -37,7 +39,7 @@ public class Player {
         this.direction = Direction.NORTH;
         this.state = Player_State.STANDING;
 
-        textureAtlas = new TextureAtlas(Gdx.files.internal("core/assets/player/texture.atlas"));
+        textureAtlas = new TextureAtlas(Gdx.files.internal(PLAYER_TEXTURE));
         standing = textureAtlas.findRegion("standing_north");
         this.sprite = new Sprite(standing);
 
@@ -213,5 +215,9 @@ public class Player {
         else
             sprite.setRegion(standing);
             return sprite;
+    }
+
+    public Player_State getState() {
+        return state;
     }
 }

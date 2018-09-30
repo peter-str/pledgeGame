@@ -62,8 +62,7 @@ public class PlayerController extends InputAdapter {
     }
 
     public void update(float delta, boolean expertModeOn) {
-        if(collisionController.zielErreicht(player.getX(), player.getY()))
-            return;
+        collisionController.zielErreicht(player.getX(), player.getY());
 
         collisionController.checkSurroundings();
         if(expertModeOn)
@@ -75,7 +74,7 @@ public class PlayerController extends InputAdapter {
         if(down && !player.isBottom())
             player.move(-32);
 
-        test();
+        //test();
     }
 
     public void test() {

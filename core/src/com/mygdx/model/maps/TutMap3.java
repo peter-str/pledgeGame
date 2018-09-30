@@ -1,5 +1,6 @@
 package com.mygdx.model.maps;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
@@ -18,22 +19,32 @@ import com.mygdx.model.tutorialStrategies.level_3.Strategy3A;
 import com.mygdx.model.tutorialStrategies.level_3.Strategy3B;
 import com.mygdx.model.tutorialStrategies.level_3.Strategy3C;
 import com.mygdx.screens.GameScreen;
+import static com.mygdx.game.ResourcePaths.TUTMAP3;
 
 public class TutMap3 extends AbstractMap {
 
     public TutMap3(final PledgeGame game, final GameScreen gameScreen, MapEnum nextMap) {
         super(game, gameScreen, nextMap);
-        tiledMap = new TmxMapLoader().load("core/assets/maps/TutorialMap3.tmx");
-        Label textArea = new Label(TutorialTexts.LEVEL1, game.uiSkin);
-        window = new Window("Anfang des Algorithmus", game.uiSkin);
-        CheckBox checkBoxA = new CheckBox("A", game.uiSkin);
-        CheckBox checkBoxB = new CheckBox("B", game.uiSkin);
-        CheckBox checkBoxC = new CheckBox("C", game.uiSkin);
+        tiledMap = new TmxMapLoader().load(TUTMAP3);
+        Label textArea = new Label(TutorialTexts.LEVEL3, game.uiSkin);
+        window = new Window("Die dritte Regel", game.uiSkin);
+
+        final String stepA = "2: Wand vor dir, aber links keine: Drehe dich nach links ";
+        final String stepB = "2: Wand vor dir, aber links keine: Drehe dich nach rechts ";
+        final String stepC = "2: Wand vor dir: Drehe dich nach links ";
+        final Label finalStep = new Label("", game.uiSkin);
+        finalStep.setFontScale(0.9f);
+
+        CheckBox checkBoxA = new CheckBox("Wenn eine Wand vor dir ist, aber links keine, drehe dich nach links", game.uiSkin);
+        CheckBox checkBoxB = new CheckBox("Wenn eine Wand vor dir ist, aber links keine, drehe dich nach rechts", game.uiSkin);
+        CheckBox checkBoxC = new CheckBox("Wenn eine Wand vor dir ist, drehe dich nach links", game.uiSkin);
 
         checkBoxA.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 gameScreen.setButtonStrategy(new Strategy3A());
+                finalStep.setText(stepA);
+                algoWindow.pack();
             }
         });
 
@@ -41,6 +52,8 @@ public class TutMap3 extends AbstractMap {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 gameScreen.setButtonStrategy(new Strategy3B());
+                finalStep.setText(stepB);
+                algoWindow.pack();
             }
         });
 
@@ -48,6 +61,8 @@ public class TutMap3 extends AbstractMap {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 gameScreen.setButtonStrategy(new Strategy3C());
+                finalStep.setText(stepC);
+                algoWindow.pack();
             }
         });
 
@@ -60,7 +75,20 @@ public class TutMap3 extends AbstractMap {
         window.row();
         window.add(checkBoxC);
         window.pack();
-        window.setPosition(64, 500);
+        window.setPosition(64, Gdx.graphics.getHeight());
+
+        algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
+        Label algoText = new Label("1: Laufe geradeaus", game.uiSkin);
+        Label algoText2 = new Label("3: Wand vor dir: Drehe dich nach rechts ", game.uiSkin);
+        algoText.setFontScale(0.9f);
+        algoText2.setFontScale(0.9f);
+        algoWindow.add(algoText);
+        algoWindow.row();
+        algoWindow.add(finalStep);
+        algoWindow.row();
+        algoWindow.add(algoText2);
+        algoWindow.pack();
+        algoWindow.setPosition(Gdx.graphics.getWidth() / algoWindow.getWidth() + 64, Gdx.graphics.getHeight()/2f);
     }
 
     @Override
@@ -81,6 +109,11 @@ public class TutMap3 extends AbstractMap {
     @Override
     public Window getWindow() {
         return window;
+    }
+
+    @Override
+    public Window getAlgoWindow() {
+        return algoWindow;
     }
 
     @Override

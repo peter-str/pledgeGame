@@ -20,6 +20,7 @@ public abstract class AbstractMap {
     protected Dialog dialog;
     protected boolean finished = true;
     protected Window window;
+    protected Window algoWindow;
 
 
     public AbstractMap(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
@@ -35,6 +36,7 @@ public abstract class AbstractMap {
     public void setStartY(int x){};
     public void showInstructions(){}
     public Window getWindow(){return null;}
+    public Window getAlgoWindow(){return null;}
     public abstract boolean getTutorialFlag();
 
     public TiledMap getTiledMap() {
