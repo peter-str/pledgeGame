@@ -197,6 +197,11 @@ public class LabyrinthErstellen2 {
         File file = new File(MAZE);
 
         try (FileOutputStream fop = new FileOutputStream(file)) {
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
             // get the content in bytes
             byte[] contentInBytes = content.getBytes();
 

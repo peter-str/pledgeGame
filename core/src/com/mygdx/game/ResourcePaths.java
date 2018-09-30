@@ -19,9 +19,13 @@ public class ResourcePaths {
     public static final String TUTMAP5 = (createJarFile) ? "maps/TutorialMap5.tmx" : "core/assets/maps/TutorialMap5.tmx";
 
     //maze algorithm outpout
-    public static final String MAZE = (createJarFile) ? "maps/randomMap.tmx" : "core/assets/maps/randomMap.tmx";
+    public static final String MAZE = (createJarFile) ? "E:/randomMap.tmx" : "core/assets/maps/randomMap.tmx";
 
     //Player class
     public static final String PLAYER_TEXTURE = (createJarFile) ? "player/texture.atlas" : "core/assets/player/texture.atlas";
 
+    //Difficulty Textures (difficulties package)
+    public static final String EASY = (createJarFile) ? "fov_high_50.png" : "core/assets/fov_high_50.png";
+    public static final String MEDIUM = (createJarFile) ? "fov_medium_75.png" : "core/assets/fov_medium_75.png";
+    public static final String HIGH = (createJarFile) ? "fov_low.png" : "core/assets/fov_low.png";
 }

@@ -4,12 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.model.maze_algorithm.LabyrinthErstellen2;
 
+import static com.mygdx.game.ResourcePaths.HIGH;
+
 public class DifficultyHigh implements Difficulty {
 
     private Texture fieldOfView_low;
 
     public DifficultyHigh() {
-        fieldOfView_low = new Texture(Gdx.files.internal("core/assets/fov_low.png"));
+        fieldOfView_low = new Texture(Gdx.files.internal(HIGH));
         createMap();
     }
 
