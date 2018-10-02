@@ -35,6 +35,7 @@ public class LabyrinthErstellen2 {
         }
 
         labyrinth[0][labyrinth.length-2] = 2;
+        labyrinth[1][labyrinth.length-2] = 2;
         cells = new Cell[höhe][breite];
         totalCells = höhe*breite;
         initializeCells();
@@ -220,7 +221,7 @@ public class LabyrinthErstellen2 {
         return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<map version=\"1.0\" tiledversion=\"2018.07.13\" orientation=\"orthogonal\" renderorder=\"right-down\" width=\"10\" height=\"10\" tilewidth=\"32\" tileheight=\"32\" infinite=\"0\" nextlayerid=\"33\" nextobjectid=\"1\">\n" +
                 " <tileset firstgid=\"1\" name=\"rocky01\" tilewidth=\"32\" tileheight=\"32\" tilecount=\"1\" columns=\"1\">\n" +
-                "  <image source=\"textures/wall_1.png\" width=\"32\" height=\"32\"/>\n" +
+                "  <image source=\"wall_1.png\" width=\"32\" height=\"32\"/>\n" +
                 "  <tile id=\"0\">\n" +
                 "   <properties>\n" +
                 "    <property name=\"Wand\" value=\"\"/>\n" +
@@ -228,10 +229,10 @@ public class LabyrinthErstellen2 {
                 "  </tile>\n" +
                 " </tileset>\n" +
                 " <tileset firstgid=\"0\" name=\"BodenStadt\" tilewidth=\"32\" tileheight=\"32\" tilecount=\"1\" columns=\"1\">\n" +
-                "  <image source=\"textures/floor_city.png\" width=\"32\" height=\"32\"/>\n" +
+                "  <image source=\"floor_city.png\" width=\"32\" height=\"32\"/>\n" +
                 " </tileset>\n" +
                 " <tileset firstgid=\"2\" name=\"FinishFlag\" tilewidth=\"32\" tileheight=\"32\" tilecount=\"1\" columns=\"1\">\n" +
-                "   <image source=\"textures/finish_flag.png\" width=\"32\" height=\"32\"/>\n" +
+                "   <image source=\"finish_flag.png\" width=\"32\" height=\"32\"/>\n" +
                 "   <tile id=\"0\">\n" +
                 "    <properties>\n" +
                 "     <property name=\"Ziel\" value=\"\"/>\n" +

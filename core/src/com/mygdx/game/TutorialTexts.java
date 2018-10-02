@@ -25,7 +25,7 @@ public class TutorialTexts {
     public static final String LEVEL3 = L3_1 + BREAK + L3_2 + BREAK + BREAK + L3_3;
 
     //TUTORIAL LEVEL 4
-    private static final String L4_1 = "Der aktuelle Algorithmus laesst dich hier im Kreis um die Saule laufen. ";
+    private static final String L4_1 = "Der aktuelle Algorithmus laesst dich hier im Kreis um die Saeule laufen. ";
     private static final String L4_2 = "Das Ziel soll nun sein, den ersten Gang vor der Saeule zu nehmen. ";
     private static final String L4_3 = "Wie musst du den bestehenden Algorithmus anpassen? ";
     public static final String LEVEL4 = L4_1 + BREAK + L4_2 + BREAK + BREAK + L4_3;

@@ -19,7 +19,7 @@ public class ResourcePaths {
     public static final String TUTMAP5 = (createJarFile) ? "maps/TutorialMap5.tmx" : "core/assets/maps/TutorialMap5.tmx";
 
     //maze algorithm outpout
-    public static final String MAZE = (createJarFile) ? "E:/randomMap.tmx" : "core/assets/maps/randomMap.tmx";
+    public static final String MAZE = (createJarFile) ? "randomMap.tmx" : "core/assets/maps/randomMap.tmx";
 
     //Player class
     public static final String PLAYER_TEXTURE = (createJarFile) ? "player/texture.atlas" : "core/assets/player/texture.atlas";

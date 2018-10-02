@@ -1,9 +1,13 @@
 package com.mygdx.controller;
 
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.model.maps.AbstractMap;
 import com.mygdx.model.Player;
+import com.mygdx.screens.MainMenuScreen;
 
 class CollisionController {
 
@@ -59,8 +63,13 @@ class CollisionController {
 
     boolean zielErreicht(int x, int y) {
         if(collisionLayer.getCell(x/32, y/32).getTile().getProperties().containsKey("Ziel")) {
-            map.zielErreicht(map.getNextMap(), map.getTutorialFlag());
-            return true;
+            if(map.getNextMap().equals(MapEnum.ENDLESS_MAZE)) {
+                ((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
+                return true;
+            } else {
+                map.zielErreicht(map.getNextMap(), map.getTutorialFlag());
+                return true;
+            }
         }
         return false;
     }

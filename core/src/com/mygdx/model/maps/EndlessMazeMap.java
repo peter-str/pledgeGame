@@ -42,7 +42,7 @@ public class EndlessMazeMap extends AbstractMap {
 
     @Override
     public MapEnum getNextMap() {
-        return null;
+        return nextMap;
     }
 
     @Override
