@@ -35,6 +35,7 @@ public class GameScreen implements Screen {
     private boolean tutorialFlag;
     private MapEnum mapEnum;
     private TutorialStrategy strategy;
+    private boolean playMode;
 
     public GameScreen(final PledgeGame game, MapEnum mapEnum, boolean tutorialFlag) {
         this.game = game;
@@ -100,26 +101,45 @@ public class GameScreen implements Screen {
         if(tutorialFlag) {
             Gdx.input.setInputProcessor(stage);
             camera.translate(-64,-64);
-            TextButton goButton = new TextButton("Schritt", game.uiSkin);
-            goButton.setPosition(64, 32);
-
-            TextButton resetButton = new TextButton("Reset", game.uiSkin);
-            resetButton.setPosition(goButton.getWidth() + 64, 32);
-
             TextButton menuButton = new TextButton("Menue", game.uiSkin);
             menuButton.setPosition(0, 0);
 
-            revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
-            revCounter.setPosition(resetButton.getX() + 48, resetButton.getY());
+            TextButton playButton = new TextButton("Play/Pause", game.uiSkin);
+            playButton.setPosition(menuButton.getWidth(), 0);
 
-            stage.addActor(goButton);
-            stage.addActor(resetButton);
+            TextButton stepButton = new TextButton("Schritt", game.uiSkin);
+            stepButton.setPosition(playButton.getX() + playButton.getWidth(), 0);
+
+            TextButton resetButton = new TextButton("Reset", game.uiSkin);
+            resetButton.setPosition(stepButton.getX() + stepButton.getWidth(), 0);
+
+            revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
+            revCounter.setPosition(64, 32);
+
             stage.addActor(menuButton);
+            stage.addActor(playButton);
+            stage.addActor(stepButton);
+            stage.addActor(resetButton);
             stage.addActor(map.getWindow());
             stage.addActor(map.getAlgoWindow());
             strategy = map.getStartStrategy();
 
-            goButton.addListener(new ClickListener() {
+            menuButton.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    ((Game)Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
+                    dispose();
+                }
+            });
+
+            playButton.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    playMode = !playMode;
+                }
+            });
+
+            stepButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     strategy.algorithm(GameScreen.this);
@@ -130,14 +150,6 @@ public class GameScreen implements Screen {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, mapEnum, true));
-                    dispose();
-                }
-            });
-
-            menuButton.addListener(new ClickListener() {
-                @Override
-                public void clicked(InputEvent event, float x, float y) {
-                    ((Game)Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
                     dispose();
                 }
             });
@@ -156,6 +168,10 @@ public class GameScreen implements Screen {
         if(!expertModeOn) {
             tiledMapRenderer.setView(camera);
             tiledMapRenderer.render();
+        }
+
+        if(playMode) {
+            strategy.algorithm(this);
         }
 
         game.spriteBatch.begin();
@@ -221,6 +237,7 @@ public class GameScreen implements Screen {
         return map;
     }
     public Player getPlayer() {return player;}
+    public void setPlayMode(boolean playMode) {this.playMode = playMode;}
 
     public void setDifficulty(Difficulty diff) {
         difficulty = diff;

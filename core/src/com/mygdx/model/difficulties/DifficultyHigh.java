@@ -2,7 +2,7 @@ package com.mygdx.model.difficulties;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.model.maze_algorithm.LabyrinthErstellen2;
+import com.mygdx.model.maze_algorithm.MazeCreatorClass;
 
 import static com.mygdx.game.ResourcePaths.HIGH;
 
@@ -22,7 +22,7 @@ public class DifficultyHigh implements Difficulty {
 
     @Override
     public void createMap() {
-        new LabyrinthErstellen2(10, 10);
+        new MazeCreatorClass(10, 10);
     }
 
     @Override

@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class LabyrinthErstellen {
+public class LabyrinthErstellenOLD {
 
     private int höhe;
     private int breite;
@@ -17,7 +17,7 @@ public class LabyrinthErstellen {
             " </layer>\n" +
             "</map>";
 
-    public LabyrinthErstellen(int höhe, int breite) {
+    public LabyrinthErstellenOLD(int höhe, int breite) {
         this.höhe = höhe;
         this.breite = breite;
         this.waagerecht = new int[höhe][breite];
@@ -167,6 +167,6 @@ public class LabyrinthErstellen {
     }
 
     public static void main(String[] args) {
-        LabyrinthErstellen a = new LabyrinthErstellen(20, 20);
+        LabyrinthErstellenOLD a = new LabyrinthErstellenOLD(20, 20);
     }
 }

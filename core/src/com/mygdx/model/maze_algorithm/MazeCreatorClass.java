@@ -9,7 +9,7 @@ import java.util.Stack;
 
 import static com.mygdx.game.ResourcePaths.MAZE;
 
-public class LabyrinthErstellen2 {
+public class MazeCreatorClass {
 
     private int[][] labyrinth;
     private Cell[][] cells;
@@ -22,7 +22,7 @@ public class LabyrinthErstellen2 {
             " </layer>\n" +
             "</map>";
 
-    public LabyrinthErstellen2(int höhe, int breite) {
+    public MazeCreatorClass(int höhe, int breite) {
         this.höhe = höhe;
         this.breite = breite;
         labyrinth = new int[(höhe*2)+1][(breite*2)+1];
@@ -35,7 +35,6 @@ public class LabyrinthErstellen2 {
         }
 
         labyrinth[0][labyrinth.length-2] = 2;
-        labyrinth[1][labyrinth.length-2] = 2;
         cells = new Cell[höhe][breite];
         totalCells = höhe*breite;
         initializeCells();
@@ -244,7 +243,7 @@ public class LabyrinthErstellen2 {
     }
 
     public static void main(String[] args) {
-        new LabyrinthErstellen2(10, 10);
+        new MazeCreatorClass(10, 10);
     }
 
 }

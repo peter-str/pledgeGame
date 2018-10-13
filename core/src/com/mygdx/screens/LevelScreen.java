@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
-import com.mygdx.model.maze_algorithm.LabyrinthErstellen;
+import com.mygdx.model.maze_algorithm.LabyrinthErstellenOLD;
 
 public class LevelScreen implements Screen {
 
@@ -74,7 +74,7 @@ public class LevelScreen implements Screen {
         endlessButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-               LabyrinthErstellen labyrinth = new LabyrinthErstellen(20, 20);
+               LabyrinthErstellenOLD labyrinth = new LabyrinthErstellenOLD(20, 20);
                 ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game,
                         MapEnum.ENDLESS_MAZE, 0, labyrinth.getX(), labyrinth.getY()));
                 dispose();

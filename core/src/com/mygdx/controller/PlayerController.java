@@ -62,8 +62,10 @@ public class PlayerController extends InputAdapter {
     }
 
     public void update(float delta, boolean expertModeOn) {
-        if(collisionController.zielErreicht(player.getX(), player.getY()))
+        if(collisionController.zielErreicht(player.getX(), player.getY())) {
+            gameScreen.setPlayMode(false);
             return;
+        }
 
         collisionController.checkSurroundings();
         if(expertModeOn)
