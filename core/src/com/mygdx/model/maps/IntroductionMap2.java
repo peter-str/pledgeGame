@@ -71,6 +71,21 @@ public class IntroductionMap2 extends AbstractMap {
             dialog.button("Okay");
             dialog.show(gameScreen.stage);
         }
+
+        if(x == 2*32 && y == 16*32 && flag == 2) {
+            flag++;
+            gameScreen.getPlayerController().keyUp(Input.Keys.UP);
+            Gdx.input.setInputProcessor(gameScreen.stage);
+            dialog = new Dialog("Ein Hoehleneingang!", game.uiSkin, "dialog") {
+                public void result(Object obj) {
+                    Gdx.input.setInputProcessor(gameScreen.getPlayerController());
+                    gameScreen.getPlayerController().keyDown(Input.Keys.UP);
+                }
+            };
+            dialog.text("Du entdeckst einen Hoehleneingang und entscheidest dich hineinzugehen. ");
+            dialog.button("Okay");
+            dialog.show(gameScreen.stage);
+        }
     }
 
     @Override

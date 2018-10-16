@@ -97,6 +97,10 @@ public class GameScreen implements Screen {
             revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
             revCounter.setPosition(sprite.getX(), sprite.getY() - 320);
             revCounter.setFontScale(1.5f);
+            if(map.getWindow() != null) {
+                stage.addActor(map.getWindow());
+                stage.addActor(map.getAlgoWindow());
+            }
             //setDifficulty(map.getDifficulty());
         }
 
@@ -227,11 +231,13 @@ public class GameScreen implements Screen {
 
     public void rotateCamera(String dir) {
         if (dir.equals("left")) {
-            //camera.rotate(270f);
+            if(!tutorialFlag)
+                camera.rotate(270f);
             sprite.rotate(90f);
         }
         if (dir.equals("right")) {
-            //camera.rotate(90f);
+            if(!tutorialFlag)
+                camera.rotate(90f);
             sprite.rotate(-90f);
         }
     }

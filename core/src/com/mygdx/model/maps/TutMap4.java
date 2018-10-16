@@ -41,16 +41,16 @@ public class TutMap4 extends AbstractMap{
         final String stepC = "";
         final Label finalStep = new Label("", game.uiSkin);
 
-        CheckBox checkBoxA = new CheckBox("BLA BLA keine Ahnung ", game.uiSkin);
+        //CheckBox checkBoxA = new CheckBox("BLA BLA keine Ahnung ", game.uiSkin);
         CheckBox checkBoxB = new CheckBox("Das Drehen nach Rechts muss angepasst werden ", game.uiSkin);
         CheckBox checkBoxC = new CheckBox("Nach jedem Schritt ueberpruefen, ob links keine Wand ist ", game.uiSkin);
 
-        checkBoxA.addListener(new ClickListener() {
+        /*checkBoxA.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 gameScreen.setButtonStrategy(new Strategy4A());
             }
-        });
+        });*/
 
         checkBoxB.addListener(new ClickListener() {
             @Override
@@ -70,11 +70,11 @@ public class TutMap4 extends AbstractMap{
             }
         });
 
-        ButtonGroup<CheckBox> buttonGroup = new ButtonGroup<>(checkBoxA, checkBoxB, checkBoxC);
+        ButtonGroup<CheckBox> buttonGroup = new ButtonGroup<>(checkBoxB, checkBoxC);
         window.add(textArea);
         window.row();
-        window.add(checkBoxA);
-        window.row();
+        //window.add(checkBoxA);
+        //window.row();
         window.add(checkBoxB);
         window.row();
         window.add(checkBoxC);

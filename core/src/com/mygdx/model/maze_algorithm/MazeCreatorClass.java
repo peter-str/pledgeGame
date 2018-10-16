@@ -243,7 +243,7 @@ public class MazeCreatorClass {
     }
 
     public static void main(String[] args) {
-        new MazeCreatorClass(10, 10);
+        new MazeCreatorClass(5, 5);
     }
 
 }

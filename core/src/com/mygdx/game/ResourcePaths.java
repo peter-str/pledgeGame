@@ -20,6 +20,7 @@ public class ResourcePaths {
     public static final String TUTMAP3 = (createJarFile) ? "maps/TutorialMap3.tmx" : "core/assets/maps/TutorialMap3.tmx";
     public static final String TUTMAP4 = (createJarFile) ? "maps/TutorialMap4.tmx" : "core/assets/maps/TutorialMap4.tmx";
     public static final String TUTMAP5 = (createJarFile) ? "maps/TutorialMap5.tmx" : "core/assets/maps/TutorialMap5.tmx";
+    public static final String TUTMAP6 = (createJarFile) ? "maps/TutorialMap5.tmx" : "core/assets/maps/TutorialMap6.tmx";
 
     //maze algorithm outpout
     public static final String MAZE = (createJarFile) ? "randomMap.tmx" : "core/assets/maps/randomMap.tmx";

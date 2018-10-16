@@ -126,7 +126,8 @@ public class TutMap5 extends AbstractMap{
 
     @Override
     public void zielErreicht(MapEnum nextMap, boolean tutorialFlag) {
-        ((Game)Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
+        super.zielErreicht(nextMap, false);
+        //((Game)Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
     }
 
     @Override

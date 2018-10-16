@@ -10,7 +10,7 @@ public class Strategy2B implements TutorialStrategy {
     @Override
     public void algorithm(GameScreen gameScreen) {
         if(!gameScreen.getPlayer().isTop()) {
-            gameScreen.getPlayer().move(16);
+            gameScreen.getPlayer().move(32);
             justTurned = false;
         }
         else if(gameScreen.getPlayer().isTop() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
