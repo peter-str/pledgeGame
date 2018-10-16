@@ -35,6 +35,7 @@ public abstract class AbstractMap {
     public void setStartX(int x){};
     public void setStartY(int x){};
     public void showInstructions(){}
+    public void showInstructions(int x, int y){}
     public Window getWindow(){return null;}
     public Window getAlgoWindow(){return null;}
     public abstract boolean getTutorialFlag();

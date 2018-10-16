@@ -6,6 +6,12 @@ import com.mygdx.screens.GameScreen;
 
 public enum MapEnum {
 
+    INTRODUCTION_1 {
+        public AbstractMap getMap(PledgeGame game, GameScreen gameScreen) {
+            return new IntroductionMap1(game, gameScreen, TUTORIALMAP_1);
+        }
+    },
+
     TUTORIALMAP_1 {
         public AbstractMap getMap(PledgeGame game, GameScreen gameScreen) {
             return new TutMap1(game, gameScreen, TUTORIALMAP_2);

@@ -192,7 +192,7 @@ public class GameScreen implements Screen {
         revCounter.setText("Zaehler: " + String.valueOf(player.getRevCounter()));
         revCounter.draw(game.spriteBatch, 1);
         playerController.update(delta, expertModeOn);
-        map.showInstructions();
+        map.showInstructions(player.getX(), player.getY());
 
         game.spriteBatch.end();
 
