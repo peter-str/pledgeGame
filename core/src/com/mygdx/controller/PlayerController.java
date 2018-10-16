@@ -2,6 +2,7 @@ package com.mygdx.controller;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.model.Player;
 import com.mygdx.screens.GameScreen;
@@ -42,10 +43,12 @@ public class PlayerController extends InputAdapter {
         }
         if(keycode == Input.Keys.ESCAPE) {
             game.setScreen(new MainMenuScreen(game));
+            gameScreen.dispose();
         }
 
         if(keycode == Input.Keys.F1) {
-
+            game.setScreen(new GameScreen(game, MapEnum.TUTORIALMAP_1, true));
+            gameScreen.dispose();
         }
         return false;
     }

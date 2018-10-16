@@ -43,6 +43,8 @@ public class GameScreen implements Screen {
         this.mapEnum = mapEnum;
         this.tutorialFlag = tutorialFlag;
         difficulty = map.getDifficulty();
+        if(difficulty.getClass().equals(DifficultyExpert.class))
+            expertModeOn = true;
     }
 
     public GameScreen(final PledgeGame game, MapEnum mapEnum, int diff, int x, int y) {
@@ -188,11 +190,12 @@ public class GameScreen implements Screen {
         if(difficulty.hasTexture())
             game.spriteBatch.draw(difficulty.getFOVTexture(), x - 334, y - 334);
 
+        map.showInstructions(player.getX(), player.getY());
+
         game.spriteBatch.setProjectionMatrix(camera2.combined);
         revCounter.setText("Zaehler: " + String.valueOf(player.getRevCounter()));
         revCounter.draw(game.spriteBatch, 1);
         playerController.update(delta, expertModeOn);
-        map.showInstructions(player.getX(), player.getY());
 
         game.spriteBatch.end();
 

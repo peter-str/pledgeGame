@@ -11,22 +11,22 @@ import com.mygdx.model.difficulties.DifficultyEasy;
 import com.mygdx.model.difficulties.DifficultyTutorial;
 import com.mygdx.screens.GameScreen;
 
-public class IntroductionMap1 extends AbstractMap {
+public class IntroductionMap2 extends AbstractMap {
     private int flag = 0;
 
-    public IntroductionMap1(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
+    public IntroductionMap2(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
         super(game, gameScreen, nextMap);
-        tiledMap = new TmxMapLoader().load("core/assets/maps/Introduction1.tmx");
+        tiledMap = new TmxMapLoader().load("core/assets/maps/Introduction2.tmx");
     }
 
     @Override
     public int getStartX() {
-        return 32 * 14;//3
+        return 32 * 15;
     }
 
     @Override
     public int getStartY() {
-        return 32 * 8;//4
+        return 32;
     }
 
     @Override
@@ -36,12 +36,12 @@ public class IntroductionMap1 extends AbstractMap {
 
     @Override
     public void zielErreicht(MapEnum nextMap, boolean tutorialFlag) {
-            super.zielErreicht(nextMap, false);
+        super.zielErreicht(nextMap, false);
     }
 
     @Override
     public void showInstructions(int x, int y) {
-        if((x == 14*32 || x == 17*32) && y == 9*32 && flag == 0) {
+        /*if((x == 14*32 || x == 17*32) && y == 9*32 && flag == 0) {
             flag++;
             gameScreen.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreen.stage);
@@ -54,7 +54,7 @@ public class IntroductionMap1 extends AbstractMap {
                     "Prima! ");
             dialog.button("Okay");
             dialog.show(gameScreen.stage);
-        }
+        }*/
     }
 
     @Override
@@ -67,3 +67,4 @@ public class IntroductionMap1 extends AbstractMap {
         return nextMap;
     }
 }
+

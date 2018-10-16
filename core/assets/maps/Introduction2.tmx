@@ -1,17 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.07.13" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="32" tileheight="32" infinite="0" nextlayerid="2" nextobjectid="1">
- <layer id="1" name="Kachelebene 1" width="10" height="10">
+<map version="1.0" tiledversion="2018.07.13" orientation="orthogonal" renderorder="right-down" width="19" height="18" tilewidth="32" tileheight="32" infinite="0" nextlayerid="29" nextobjectid="1">
+ <tileset firstgid="1" name="Haus1" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="textures/house_1.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="5" name="Haus2" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="textures/house_2.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="9" name="Haus3" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="textures/house_3.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="13" name="Haus4" tilewidth="32" tileheight="32" tilecount="4" columns="2">
+  <image source="textures/house_4.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="17" name="BodenStadt" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="textures/floor_city.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="18" name="FinishFlag" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <properties>
+   <property name="Ziel" value=""/>
+  </properties>
+  <image source="textures/finish_flag.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="Ziel" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="19" name="boden3" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="textures/floor_mud.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="20" name="grass_1" tilewidth="32" tileheight="32" tilecount="1" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="32" height="32" source="textures/grass_1.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="21" name="bridge_1" tilewidth="64" tileheight="128" tilecount="1" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="64" height="128" source="textures/bridge_1.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="22" name="sign_1" tilewidth="32" tileheight="28" tilecount="1" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="32" height="28" source="textures/sign_1.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="23" name="sign_2" tilewidth="32" tileheight="43" tilecount="1" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="32" height="43" source="textures/sign_2.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="24" name="wall_2" tilewidth="32" tileheight="32" tilecount="1" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="32" height="32" source="textures/wall_2.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="25" name="water_1" tilewidth="32" tileheight="32" tilecount="1" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="32" height="32" source="textures/water_1.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="26" name="wall_1" tilewidth="32" tileheight="32" tilecount="1" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <properties>
+    <property name="Wand" value=""/>
+   </properties>
+   <image width="32" height="32" source="textures/wall_1.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="27" name="wall_3" tilewidth="32" tileheight="32" tilecount="1" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="32" height="32" source="textures/wall_3.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="28" name="wall_4" tilewidth="32" tileheight="40" tilecount="1" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="32" height="40" source="textures/wall_4.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="29" name="wall_5" tilewidth="32" tileheight="32" tilecount="1" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="32" height="32" source="textures/wall_5.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="30" name="wall_6" tilewidth="32" tileheight="32" tilecount="1" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="32" height="32" source="textures/wall_6.png"/>
+  </tile>
+ </tileset>
+ <layer id="26" name="CollisionLayer" width="19" height="18">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,0,0,0,0,
+26,18,19,19,19,19,19,19,19,19,19,19,19,19,26,0,0,0,0,
+26,19,19,26,26,26,26,19,19,19,26,26,26,19,26,0,0,0,0,
+26,19,19,26,19,19,19,19,19,19,19,19,19,19,26,0,0,0,0,
+26,19,19,26,19,26,26,26,26,26,26,19,26,26,26,0,0,0,0,
+26,19,26,26,19,26,19,19,19,19,19,19,19,19,26,0,0,0,0,
+26,19,26,19,19,26,19,26,26,26,26,26,26,26,26,0,0,0,0,
+26,26,26,19,19,26,19,19,19,19,19,26,19,19,26,0,0,0,0,
+26,19,19,19,19,26,26,26,26,19,19,26,19,19,26,0,0,0,0,
+26,19,19,19,19,26,19,19,19,19,19,26,19,26,26,26,26,26,0,
+26,19,26,26,26,26,19,19,26,26,26,26,19,26,19,19,19,26,0,
+26,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,26,0,
+26,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,26,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,19,19,26,26,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,19,19,26,26,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,26,19,19,26,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,26,19,19,26,0,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26
+</data>
+ </layer>
+ <layer id="27" name="BodenTextureLayer" width="19" height="18">
+  <data encoding="csv">
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,0,0,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,0,0,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,20,20
+</data>
+ </layer>
+ <layer id="28" name="HausTextureLayer" width="19" height="18">
+  <data encoding="csv">
+29,30,29,29,29,29,29,29,29,29,29,29,29,29,24,0,0,0,0,
+28,0,0,0,0,0,0,0,0,0,0,0,0,0,27,0,0,0,0,
+27,0,0,28,28,28,27,0,0,0,27,27,27,0,24,0,0,0,0,
+28,0,0,27,0,0,0,0,0,0,0,0,0,0,24,0,0,0,0,
+28,0,0,28,0,28,28,28,27,28,28,0,28,27,24,0,0,0,0,
+27,0,28,28,0,27,0,0,0,0,0,0,0,0,24,0,0,0,0,
+28,0,27,0,0,28,0,28,28,27,28,28,28,28,24,0,0,0,0,
+28,28,28,0,0,28,0,0,0,0,0,28,0,0,27,0,0,0,0,
+27,0,0,0,0,28,28,28,27,0,0,27,0,0,24,0,0,0,0,
+28,0,0,0,0,28,0,0,0,0,0,27,0,28,24,22,23,24,0,
+28,0,28,28,27,28,0,0,28,28,28,28,0,28,0,0,0,24,0,
+27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,0,
+27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,0,
+25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,0,0,25,25,
+3221225497,3221225497,3221225497,3221225497,3221225497,3221225497,3221225497,3221225497,3221225497,3221225497,3221225497,3221225497,3221225497,3221225497,3221225497,0,0,3221225497,3221225497,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
 </map>

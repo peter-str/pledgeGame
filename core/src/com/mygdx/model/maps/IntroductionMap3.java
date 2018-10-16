@@ -8,25 +8,25 @@ import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyEasy;
-import com.mygdx.model.difficulties.DifficultyTutorial;
+import com.mygdx.model.difficulties.DifficultyExpert;
 import com.mygdx.screens.GameScreen;
 
-public class IntroductionMap1 extends AbstractMap {
+public class IntroductionMap3 extends AbstractMap {
     private int flag = 0;
 
-    public IntroductionMap1(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
+    public IntroductionMap3(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
         super(game, gameScreen, nextMap);
-        tiledMap = new TmxMapLoader().load("core/assets/maps/Introduction1.tmx");
+        tiledMap = new TmxMapLoader().load("core/assets/maps/Introduction3.tmx");
     }
 
     @Override
     public int getStartX() {
-        return 32 * 14;//3
+        return 32;
     }
 
     @Override
     public int getStartY() {
-        return 32 * 8;//4
+        return 32;
     }
 
     @Override
@@ -36,22 +36,22 @@ public class IntroductionMap1 extends AbstractMap {
 
     @Override
     public void zielErreicht(MapEnum nextMap, boolean tutorialFlag) {
-            super.zielErreicht(nextMap, false);
+        super.zielErreicht(nextMap, true);
     }
 
     @Override
     public void showInstructions(int x, int y) {
-        if((x == 14*32 || x == 17*32) && y == 9*32 && flag == 0) {
+        if(flag == 0) {
             flag++;
             gameScreen.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreen.stage);
-            dialog = new Dialog("Kompass gefunden!", game.uiSkin, "dialog") {
+            dialog = new Dialog("Verlaufen!", game.uiSkin, "dialog") {
                 public void result(Object obj) {
                     Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                 }
             };
-            dialog.text("Du hast deinen Kompass auf dem Rand des Brunnens wiedergefunden. \n" +
-                    "Prima! ");
+            dialog.text("Nach einiger Zeit hast du dich in der dunklen Hoehle verlaufen. \n" +
+                    "Du kannst es dennoch probieren, den Ausgang zu finden. ");
             dialog.button("Okay");
             dialog.show(gameScreen.stage);
         }
@@ -59,7 +59,7 @@ public class IntroductionMap1 extends AbstractMap {
 
     @Override
     public Difficulty getDifficulty() {
-        return new DifficultyTutorial();
+        return new DifficultyExpert();
     }
 
     @Override
@@ -67,3 +67,4 @@ public class IntroductionMap1 extends AbstractMap {
         return nextMap;
     }
 }
+

@@ -8,7 +8,19 @@ public enum MapEnum {
 
     INTRODUCTION_1 {
         public AbstractMap getMap(PledgeGame game, GameScreen gameScreen) {
-            return new IntroductionMap1(game, gameScreen, TUTORIALMAP_1);
+            return new IntroductionMap1(game, gameScreen, INTRODUCTION_2);
+        }
+    },
+
+    INTRODUCTION_2 {
+        public AbstractMap getMap(PledgeGame game, GameScreen gameScreen) {
+            return new IntroductionMap2(game, gameScreen, INTRODUCTION_3);
+        }
+    },
+
+    INTRODUCTION_3 {
+        public AbstractMap getMap(PledgeGame game, GameScreen gameScreen) {
+            return new IntroductionMap3(game, gameScreen, TUTORIALMAP_1);
         }
     },
 

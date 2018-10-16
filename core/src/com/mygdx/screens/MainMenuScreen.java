@@ -84,7 +84,7 @@ public class MainMenuScreen implements Screen {
         playButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.INTRODUCTION_1, selectBox.getSelectedIndex()-1, 1, 1));
+                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.INTRODUCTION_3, false));
                 dispose();
             }
         });
