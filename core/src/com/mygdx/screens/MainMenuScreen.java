@@ -49,6 +49,7 @@ public class MainMenuScreen implements Screen {
         Label headline = new Label("Willkommen zum Pledge-Algorithmus-Spiel", game.uiSkin);
         TextButton tutorialButton = new TextButton("Tutorial", game.uiSkin);
         TextButton playButton = new TextButton("Start", game.uiSkin);
+        TextButton endlessButton = new TextButton("Endlos-Modus", game.uiSkin);
         TextButton levelButton = new TextButton("Levelauswahl", game.uiSkin);
         TextButton exitButton = new TextButton("Exit", game.uiSkin);
 
@@ -84,7 +85,15 @@ public class MainMenuScreen implements Screen {
         playButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.INTRODUCTION_3, false));
+                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.INTRODUCTION_1, false));
+                dispose();
+            }
+        });
+
+        endlessButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.ENDLESS_MAZE, selectBox.getSelectedIndex()-1));
                 dispose();
             }
         });
@@ -109,6 +118,8 @@ public class MainMenuScreen implements Screen {
         mainTable.add(tutorialButton);
         mainTable.row();
         mainTable.add(playButton);
+        mainTable.row();
+        mainTable.add(endlessButton);
         mainTable.row();
         mainTable.add(levelButton);
         mainTable.row();

@@ -51,7 +51,8 @@ public class IntroductionMap3 extends AbstractMap {
                 }
             };
             dialog.text("Nach einiger Zeit hast du dich in der dunklen Hoehle verlaufen. \n" +
-                    "Du kannst es dennoch probieren, den Ausgang zu finden. ");
+                    "Du kannst dennoch probieren, den Ausgang zu finden. \n" +
+                    "Oder druecke F1, um zu erfahren, wie du hier dennoch entkommen kannst. ");
             dialog.button("Okay");
             dialog.show(gameScreen.stage);
         }
@@ -59,7 +60,7 @@ public class IntroductionMap3 extends AbstractMap {
 
     @Override
     public Difficulty getDifficulty() {
-        return new DifficultyExpert();
+        return new DifficultyExpert(false);
     }
 
     @Override

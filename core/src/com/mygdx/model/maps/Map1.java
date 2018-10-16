@@ -35,7 +35,7 @@ public class Map1 extends AbstractMap {
 
     @Override
     public Difficulty getDifficulty() {
-        return new DifficultyEasy();
+        return new DifficultyEasy(false);
     }
 
     @Override

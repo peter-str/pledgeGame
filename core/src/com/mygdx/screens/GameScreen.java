@@ -3,6 +3,7 @@ package com.mygdx.screens;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -19,11 +20,14 @@ import com.mygdx.model.difficulties.*;
 import com.mygdx.model.maps.AbstractMap;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 
+import static com.mygdx.game.ResourcePaths.COMPASS;
+
 public class GameScreen implements Screen {
 
     private final PledgeGame game;
     private OrthographicCamera camera, camera2;
     private TiledMapRenderer tiledMapRenderer;
+    private Texture compass;
     private Difficulty difficulty;
     private Sprite sprite;
     public Stage stage;
@@ -47,36 +51,32 @@ public class GameScreen implements Screen {
             expertModeOn = true;
     }
 
-    public GameScreen(final PledgeGame game, MapEnum mapEnum, int diff, int x, int y) {
+    public GameScreen(final PledgeGame game, MapEnum mapEnum, int diff) {
         this.game = game;
         switch (diff) {
             case 1:
-                difficulty = new DifficultyEasy();
+                difficulty = new DifficultyEasy(true);
                 break;
             case 2:
-                difficulty = new DifficultyMedium();
+                difficulty = new DifficultyMedium(true);
                 break;
             case 3:
-                difficulty = new DifficultyHigh();
+                difficulty = new DifficultyHigh(true);
                 break;
             case 4:
-                difficulty = new DifficultyExpert();
+                difficulty = new DifficultyExpert(true);
                 expertModeOn = true;
                 break;
             default:
-                difficulty = new DifficultyTutorial();
+                difficulty = new DifficultyTutorial(true);
         }
 
         map = mapEnum.getMap(game, this);
-
-        if(x != 0 && y != 0) {
-            map.setStartX(x*32);
-            map.setStartY(y*32);
-        }
     }
 
     @Override
     public void show() {
+        compass = new Texture(Gdx.files.internal(COMPASS));
         tiledMapRenderer = new OrthogonalTiledMapRenderer(map.getTiledMap());
         player = new Player(map.getStartX(), map.getStartY());
         playerController = new PlayerController(game, player, this);
@@ -193,8 +193,11 @@ public class GameScreen implements Screen {
         map.showInstructions(player.getX(), player.getY());
 
         game.spriteBatch.setProjectionMatrix(camera2.combined);
-        revCounter.setText("Zaehler: " + String.valueOf(player.getRevCounter()));
-        revCounter.draw(game.spriteBatch, 1);
+        revCounter.setText(String.valueOf(player.getRevCounter()));
+        if(mapEnum != MapEnum.INTRODUCTION_1) {
+            game.spriteBatch.draw(compass, revCounter.getX() - 48, revCounter.getY());
+            revCounter.draw(game.spriteBatch, 1);
+        }
         playerController.update(delta, expertModeOn);
 
         game.spriteBatch.end();

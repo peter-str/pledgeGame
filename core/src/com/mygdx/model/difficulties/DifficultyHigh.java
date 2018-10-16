@@ -10,9 +10,10 @@ public class DifficultyHigh implements Difficulty {
 
     private Texture fieldOfView_low;
 
-    public DifficultyHigh() {
+    public DifficultyHigh(boolean createMap) {
         fieldOfView_low = new Texture(Gdx.files.internal(HIGH));
-        createMap();
+        if(createMap)
+            createMap();
     }
 
     @Override

@@ -10,9 +10,10 @@ public class DifficultyMedium implements Difficulty {
 
     private Texture fieldOfView_medium;
 
-    public DifficultyMedium() {
+    public DifficultyMedium(boolean createMap) {
         fieldOfView_medium = new Texture(Gdx.files.internal(MEDIUM));
-        createMap();
+        if(createMap)
+            createMap();
     }
 
     @Override

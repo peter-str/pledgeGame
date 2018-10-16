@@ -10,9 +10,10 @@ public class DifficultyEasy implements Difficulty {
 
     private Texture fieldOfView_high;
 
-    public DifficultyEasy() {
+    public DifficultyEasy(boolean createMap) {
         fieldOfView_high = new Texture(Gdx.files.internal(EASY));
-        createMap();
+        if(createMap)
+            createMap();
     }
 
     @Override

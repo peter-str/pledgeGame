@@ -41,25 +41,41 @@ public class IntroductionMap2 extends AbstractMap {
 
     @Override
     public void showInstructions(int x, int y) {
-        /*if((x == 14*32 || x == 17*32) && y == 9*32 && flag == 0) {
+        if((x == 15*32 || x == 16*32) && y == 6*32 && flag == 0) {
             flag++;
             gameScreen.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreen.stage);
-            dialog = new Dialog("Kompass gefunden!", game.uiSkin, "dialog") {
+            dialog = new Dialog("Strasse gesperrt!", game.uiSkin, "dialog") {
                 public void result(Object obj) {
                     Gdx.input.setInputProcessor(gameScreen.getPlayerController());
                 }
             };
-            dialog.text("Du hast deinen Kompass auf dem Rand des Brunnens wiedergefunden. \n" +
-                    "Prima! ");
+            dialog.text("Du kannst hier nicht weiter, finde einen anderen Weg! \n" +
+                    "Moeglicherweise gibt es einen Weg durch den Wald... ");
             dialog.button("Okay");
             dialog.show(gameScreen.stage);
-        }*/
+        }
+
+        if(x == 12*32 && (y == 5*32 || y == 6*32) && flag == 1) {
+            flag++;
+            gameScreen.getPlayerController().keyUp(Input.Keys.UP);
+            Gdx.input.setInputProcessor(gameScreen.stage);
+            dialog = new Dialog("Kompass beobachten!", game.uiSkin, "dialog") {
+                public void result(Object obj) {
+                    Gdx.input.setInputProcessor(gameScreen.getPlayerController());
+                }
+            };
+            dialog.text("Beobachte deinen Kompass(die Zahl), am unteren Rand. \n" +
+                    "Kannst du herausfinden, wie er funktioniert? \n" +
+                    "Drehe dich nach links und rechts, um es herauszufinden. ");
+            dialog.button("Okay");
+            dialog.show(gameScreen.stage);
+        }
     }
 
     @Override
     public Difficulty getDifficulty() {
-        return new DifficultyTutorial();
+        return new DifficultyTutorial(false);
     }
 
     @Override

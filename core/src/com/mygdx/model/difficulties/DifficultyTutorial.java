@@ -5,8 +5,9 @@ import com.mygdx.model.maze_algorithm.MazeCreatorClass;
 
 public class DifficultyTutorial implements Difficulty {
 
-    public DifficultyTutorial() {
-        createMap();
+    public DifficultyTutorial(boolean createMap) {
+        if(createMap)
+            createMap();
     }
 
     @Override

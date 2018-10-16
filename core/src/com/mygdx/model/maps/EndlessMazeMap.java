@@ -19,12 +19,12 @@ public class EndlessMazeMap extends AbstractMap {
 
     @Override
     public int getStartX() {
-        return startX;
+        return 32;
     }
 
     @Override
     public int getStartY() {
-        return startY;
+        return 32;
     }
 
     public void setStartX(int x) {

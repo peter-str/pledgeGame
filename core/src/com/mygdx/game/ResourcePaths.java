@@ -8,8 +8,11 @@ public class ResourcePaths {
 
     //PledgeGame Class (package game)
     public static final String UIPATH = (createJarFile) ? "skins/uiskin.json" : "core/assets/skins/uiskin.json";
-    public static final String NEUTRAL = (createJarFile) ? "collision/neutral.png" : "core/assets/collision/neutral.png";
+    public static final String NEUTRAL = (createJarFile) ? "collision/neutral.png" : "core/assets/collision/neutral2.png";
     public static final String WALL = (createJarFile) ? "collision/wall.png" : "core/assets/collision/wall.png";
+
+    //GameScreen Class
+    public static final String COMPASS = (createJarFile) ? "maps/textures/compass.png" : "core/assets/maps/textures/compass.png";
 
     //maps package
     public static final String TUTMAP1 = (createJarFile) ? "maps/TutorialMap1.tmx" : "core/assets/maps/TutorialMap1.tmx";

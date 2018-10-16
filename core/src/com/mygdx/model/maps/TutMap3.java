@@ -133,6 +133,6 @@ public class TutMap3 extends AbstractMap {
 
     @Override
     public Difficulty getDifficulty() {
-        return new DifficultyTutorial();
+        return new DifficultyTutorial(false);
     }
 }

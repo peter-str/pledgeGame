@@ -7,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.model.difficulties.Difficulty;
-import com.mygdx.model.difficulties.DifficultyEasy;
 import com.mygdx.model.difficulties.DifficultyTutorial;
 import com.mygdx.screens.GameScreen;
 
@@ -21,12 +20,12 @@ public class IntroductionMap1 extends AbstractMap {
 
     @Override
     public int getStartX() {
-        return 32 * 14;//3
+        return 32 * 3;
     }
 
     @Override
     public int getStartY() {
-        return 32 * 8;//4
+        return 32 * 4;
     }
 
     @Override
@@ -41,7 +40,40 @@ public class IntroductionMap1 extends AbstractMap {
 
     @Override
     public void showInstructions(int x, int y) {
-        if((x == 14*32 || x == 17*32) && y == 9*32 && flag == 0) {
+        if(flag == 0) {
+            flag++;
+            gameScreen.getPlayerController().keyUp(Input.Keys.UP);
+            Gdx.input.setInputProcessor(gameScreen.stage);
+            dialog = new Dialog("Auf ins Abenteuer!", game.uiSkin, "dialog") {
+                public void result(Object obj) {
+                    Gdx.input.setInputProcessor(gameScreen.getPlayerController());
+                }
+            };
+            dialog.text("Du moechtest dich auf eine Expedition begeben. \n" +
+                    "Dummerweise hast du deinen Kompass verloren... \n" +
+                    "Du erinnerst dich, dass du ihn das letzte Mal am Stadtbrunnen hattest. \n" +
+                    "Du beschliesst zum Brunnen zu gehen. ");
+            dialog.button("Okay");
+            dialog.show(gameScreen.stage);
+        }
+
+        if(x == 6*32 && y == 12*32 && flag == 1) {
+            flag++;
+            gameScreen.getPlayerController().keyUp(Input.Keys.UP);
+            Gdx.input.setInputProcessor(gameScreen.stage);
+            dialog = new Dialog("Beruehrungsanzeige", game.uiSkin, "dialog") {
+                public void result(Object obj) {
+                    Gdx.input.setInputProcessor(gameScreen.getPlayerController());
+                }
+            };
+            dialog.text("Beobachte die Anzeige im unteren linken Rand. \n" +
+                    "Diese zeigt dir an, ob vor, hinter, links oder rechts von dir ein Hindernis ist. \n" +
+                    "Das wirst du spaeter noch benutzen muessen. ");
+            dialog.button("Okay");
+            dialog.show(gameScreen.stage);
+        }
+
+        if((x == 14*32 || x == 17*32) && y == 9*32 && flag == 2) {
             flag++;
             gameScreen.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreen.stage);
@@ -51,7 +83,9 @@ public class IntroductionMap1 extends AbstractMap {
                 }
             };
             dialog.text("Du hast deinen Kompass auf dem Rand des Brunnens wiedergefunden. \n" +
-                    "Prima! ");
+                    "Prima! \n" +
+                    "Nun kannst du dich auf die Expedition begeben. \n" +
+                    "Verlasse die Stadt. ");
             dialog.button("Okay");
             dialog.show(gameScreen.stage);
         }
@@ -59,7 +93,7 @@ public class IntroductionMap1 extends AbstractMap {
 
     @Override
     public Difficulty getDifficulty() {
-        return new DifficultyTutorial();
+        return new DifficultyTutorial(false);
     }
 
     @Override
