@@ -11,12 +11,14 @@ import com.mygdx.model.difficulties.DifficultyEasy;
 import com.mygdx.model.difficulties.DifficultyTutorial;
 import com.mygdx.screens.GameScreen;
 
+import static com.mygdx.game.ResourcePaths.INTRODUCTIONMAP2;
+
 public class IntroductionMap2 extends AbstractMap {
     private int flag = 0;
 
     public IntroductionMap2(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
         super(game, gameScreen, nextMap);
-        tiledMap = new TmxMapLoader().load("core/assets/maps/Introduction2.tmx");
+        tiledMap = new TmxMapLoader().load(INTRODUCTIONMAP2);
     }
 
     @Override

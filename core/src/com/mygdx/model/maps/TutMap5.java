@@ -39,7 +39,7 @@ public class TutMap5 extends AbstractMap{
         algoText2.setFontScale(0.9f);
         algoText3.setFontScale(0.9f);
 
-        CheckBox checkBoxA = new CheckBox("Genauso oft wie die Anzahl der Rechtsdrehungen", game.uiSkin);
+        CheckBox checkBoxA = new CheckBox("Maximal genauso oft wie die Anzahl der Rechtsdrehungen", game.uiSkin);
         CheckBox checkBoxB = new CheckBox("Weniger als die Anzahl der Rechtsdrehungen", game.uiSkin);
         CheckBox checkBoxC = new CheckBox("Oefter als die Anzahl der Rechtsdrehungen", game.uiSkin);
 

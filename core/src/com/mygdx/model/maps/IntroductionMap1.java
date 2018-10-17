@@ -10,12 +10,14 @@ import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyTutorial;
 import com.mygdx.screens.GameScreen;
 
+import static com.mygdx.game.ResourcePaths.INTRODUCTIONMAP1;
+
 public class IntroductionMap1 extends AbstractMap {
     private int flag = 0;
 
     public IntroductionMap1(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
         super(game, gameScreen, nextMap);
-        tiledMap = new TmxMapLoader().load("core/assets/maps/Introduction1.tmx");
+        tiledMap = new TmxMapLoader().load(INTRODUCTIONMAP1);
     }
 
     @Override
@@ -52,7 +54,7 @@ public class IntroductionMap1 extends AbstractMap {
             dialog.text("Du moechtest dich auf eine Expedition begeben. \n" +
                     "Dummerweise hast du deinen Kompass verloren... \n" +
                     "Du erinnerst dich, dass du ihn das letzte Mal am Stadtbrunnen hattest. \n" +
-                    "Du beschliesst zum Brunnen zu gehen. ");
+                    "Du beschliesst zum Brunnen zu gehen.(Benutze die Pfeiltasten) ");
             dialog.button("Okay");
             dialog.show(gameScreen.stage);
         }

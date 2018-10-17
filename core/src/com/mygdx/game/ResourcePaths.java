@@ -8,7 +8,7 @@ public class ResourcePaths {
 
     //PledgeGame Class (package game)
     public static final String UIPATH = (createJarFile) ? "skins/uiskin.json" : "core/assets/skins/uiskin.json";
-    public static final String NEUTRAL = (createJarFile) ? "collision/neutral.png" : "core/assets/collision/neutral2.png";
+    public static final String NEUTRAL = (createJarFile) ? "collision/neutral2.png" : "core/assets/collision/neutral2.png";
     public static final String WALL = (createJarFile) ? "collision/wall.png" : "core/assets/collision/wall.png";
 
     //GameScreen Class
@@ -20,7 +20,11 @@ public class ResourcePaths {
     public static final String TUTMAP3 = (createJarFile) ? "maps/TutorialMap3.tmx" : "core/assets/maps/TutorialMap3.tmx";
     public static final String TUTMAP4 = (createJarFile) ? "maps/TutorialMap4.tmx" : "core/assets/maps/TutorialMap4.tmx";
     public static final String TUTMAP5 = (createJarFile) ? "maps/TutorialMap5.tmx" : "core/assets/maps/TutorialMap5.tmx";
-    public static final String TUTMAP6 = (createJarFile) ? "maps/TutorialMap5.tmx" : "core/assets/maps/TutorialMap6.tmx";
+    public static final String TUTMAP6 = (createJarFile) ? "maps/TutorialMap6.tmx" : "core/assets/maps/TutorialMap6.tmx";
+
+    public static final String INTRODUCTIONMAP1 = (createJarFile) ? "maps/Introduction1.tmx" : "core/assets/maps/Introduction1.tmx";
+    public static final String INTRODUCTIONMAP2 = (createJarFile) ? "maps/Introduction2.tmx" : "core/assets/maps/Introduction2.tmx";
+    public static final String INTRODUCTIONMAP3 = (createJarFile) ? "maps/Introduction3.tmx" : "core/assets/maps/Introduction3.tmx";
 
     //maze algorithm outpout
     public static final String MAZE = (createJarFile) ? "randomMap.tmx" : "core/assets/maps/randomMap.tmx";

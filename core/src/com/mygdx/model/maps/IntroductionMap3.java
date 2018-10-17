@@ -6,17 +6,17 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
-import com.mygdx.model.difficulties.Difficulty;
-import com.mygdx.model.difficulties.DifficultyEasy;
-import com.mygdx.model.difficulties.DifficultyExpert;
+import com.mygdx.model.difficulties.*;
 import com.mygdx.screens.GameScreen;
+
+import static com.mygdx.game.ResourcePaths.INTRODUCTIONMAP3;
 
 public class IntroductionMap3 extends AbstractMap {
     private int flag = 0;
 
     public IntroductionMap3(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
         super(game, gameScreen, nextMap);
-        tiledMap = new TmxMapLoader().load("core/assets/maps/Introduction3.tmx");
+        tiledMap = new TmxMapLoader().load(INTRODUCTIONMAP3);
     }
 
     @Override

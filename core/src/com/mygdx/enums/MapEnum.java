@@ -56,7 +56,7 @@ public enum MapEnum {
 
     TUTORIALMAP_6 {
         public AbstractMap getMap(PledgeGame game, GameScreen gameScreen) {
-            return new TutMap6(game, gameScreen, MAP_1);
+            return new TutMap6(game, gameScreen, INTRODUCTION_3);
         }
     },
 
