@@ -23,8 +23,8 @@ import static com.mygdx.game.ResourcePaths.TUTMAP3;
 
 public class TutMap3 extends AbstractMap {
 
-    public TutMap3(final PledgeGame game, final GameScreen gameScreen, MapEnum nextMap) {
-        super(game, gameScreen, nextMap);
+    public TutMap3(final PledgeGame game, MapEnum nextMap) {
+        super(game, nextMap);
         tiledMap = new TmxMapLoader().load(TUTMAP3);
         Label textArea = new Label(TutorialTexts.LEVEL3, game.uiSkin);
         window = new Window("Die dritte Regel", game.uiSkin);
@@ -32,7 +32,7 @@ public class TutMap3 extends AbstractMap {
         final String stepA = "2: Wand vor dir, aber links keine: Drehe dich nach links ";
         final String stepB = "2: Wand vor dir, aber links keine: Drehe dich nach rechts ";
         final String stepC = "2: Wand vor dir: Drehe dich nach links ";
-        final Label finalStep = new Label("", game.uiSkin);
+        final Label finalStep = new Label("2: -", game.uiSkin);
         finalStep.setFontScale(0.9f);
 
         CheckBox checkBoxA = new CheckBox("Wenn eine Wand vor dir ist, aber links keine, drehe dich nach links", game.uiSkin);
@@ -42,7 +42,8 @@ public class TutMap3 extends AbstractMap {
         checkBoxA.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonStrategy(new Strategy3A());
+                //gameScreen.setButtonStrategy(new Strategy3A());
+                notifyObserver(new Strategy3A());
                 finalStep.setText(stepA);
                 algoWindow.pack();
             }
@@ -51,7 +52,8 @@ public class TutMap3 extends AbstractMap {
         checkBoxB.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonStrategy(new Strategy3B());
+                //gameScreen.setButtonStrategy(new Strategy3B());
+                notifyObserver(new Strategy3B());
                 finalStep.setText(stepB);
                 algoWindow.pack();
             }

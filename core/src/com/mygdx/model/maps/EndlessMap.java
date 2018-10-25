@@ -11,8 +11,8 @@ public class EndlessMap extends AbstractMap {
     private int startX;
     private int startY;
 
-    public EndlessMap(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
-        super(game, gameScreen, nextMap);
+    public EndlessMap(final PledgeGame game, MapEnum nextMap) {
+        super(game, nextMap);
         tiledMap = new TmxMapLoader().load("core/assets/maps/newfile.tmx");
     }
 

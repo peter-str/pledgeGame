@@ -24,8 +24,8 @@ import static com.mygdx.game.ResourcePaths.TUTMAP2;
 
 public class TutMap2 extends AbstractMap {
 
-    public TutMap2(final PledgeGame game, final GameScreen gameScreen, MapEnum nextMap) {
-        super(game, gameScreen, nextMap);
+    public TutMap2(final PledgeGame game, MapEnum nextMap) {
+        super(game, nextMap);
         tiledMap = new TmxMapLoader().load(TUTMAP2);
         Label textArea = new Label(TutorialTexts.LEVEL2, game.uiSkin);
         window = new Window("Die zweite Regel", game.uiSkin);
@@ -43,7 +43,8 @@ public class TutMap2 extends AbstractMap {
         checkBoxA.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonStrategy(new Strategy2A());
+                //gameScreen.setButtonStrategy(new Strategy2A());
+                notifyObserver(new Strategy2A());
                 finalStep.setText(stepA);
                 algoWindow.pack();
             }
@@ -52,7 +53,8 @@ public class TutMap2 extends AbstractMap {
         checkBoxB.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonStrategy(new Strategy2B());
+                //gameScreen.setButtonStrategy(new Strategy2B());
+                notifyObserver(new Strategy2B());
                 finalStep.setText(stepB);
                 algoWindow.pack();
             }
@@ -61,7 +63,8 @@ public class TutMap2 extends AbstractMap {
         checkBoxC.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonStrategy(new Strategy2C());
+                //gameScreen.setButtonStrategy(new Strategy2C());
+                notifyObserver(new Strategy2C());
                 finalStep.setText(stepC);
                 algoWindow.pack();
             }

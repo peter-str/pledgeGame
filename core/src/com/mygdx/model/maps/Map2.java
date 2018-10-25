@@ -18,8 +18,8 @@ public class Map2 extends AbstractMap {
 
     public int messageCounter = 0;
 
-    public Map2 (final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
-        super(game, gameScreen, nextMap);
+    public Map2 (final PledgeGame game, MapEnum nextMap) {
+        super(game, nextMap);
         tiledMap = new TmxMapLoader().load("core/assets/maps/map5.tmx");
     }
 
@@ -31,15 +31,15 @@ public class Map2 extends AbstractMap {
     public void message() {
         if(messageCounter == 0) {
             messageCounter++;
-            Gdx.input.setInputProcessor(gameScreen.stage);
+            Gdx.input.setInputProcessor(gameScreenObserver.getStage());
             dialog = new Dialog("Kommst du wieder raus?", game.uiSkin, "dialog") {
                 public void result(Object obj) {
-                    Gdx.input.setInputProcessor(gameScreen.getPlayerController());
+                    Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
                 }
             };
             dialog.text("Du hast dich in der dunklen Hoehle verlaufen. ");
             dialog.button("Okay");
-            dialog.show(gameScreen.stage);
+            dialog.show(gameScreenObserver.getStage());
 
         }
 
@@ -49,11 +49,11 @@ public class Map2 extends AbstractMap {
             t.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    Gdx.input.setInputProcessor(gameScreen.stage);
+                    Gdx.input.setInputProcessor(gameScreenObserver.getStage());
                     dialog = new Dialog("Zum Tutorial?", game.uiSkin, "dialog") {
                         public void result(Object obj) {
                             if(obj.equals("okay")) {
-                                Gdx.input.setInputProcessor(gameScreen.getPlayerController());
+                                Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
                                 messageCounter = 1;
                             } else if(obj.equals("tutorial")) {
                                 ((Game) Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, nextMap, false));
@@ -68,7 +68,7 @@ public class Map2 extends AbstractMap {
                     dialog.button("Weiter", "okay");
                     dialog.button("Tutorial", "tutorial");
                     dialog.button("Menue", "menue");
-                    dialog.show(gameScreen.stage);
+                    dialog.show(gameScreenObserver.getStage());
                     t.cancel();
                 }
             }, 10000);

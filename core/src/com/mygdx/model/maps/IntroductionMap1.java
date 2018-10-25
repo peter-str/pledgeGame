@@ -15,8 +15,8 @@ import static com.mygdx.game.ResourcePaths.INTRODUCTIONMAP1;
 public class IntroductionMap1 extends AbstractMap {
     private int flag = 0;
 
-    public IntroductionMap1(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
-        super(game, gameScreen, nextMap);
+    public IntroductionMap1(final PledgeGame game, MapEnum nextMap) {
+        super(game, nextMap);
         tiledMap = new TmxMapLoader().load(INTRODUCTIONMAP1);
     }
 
@@ -44,11 +44,11 @@ public class IntroductionMap1 extends AbstractMap {
     public void showInstructions(int x, int y) {
         if(flag == 0) {
             flag++;
-            gameScreen.getPlayerController().keyUp(Input.Keys.UP);
-            Gdx.input.setInputProcessor(gameScreen.stage);
+            gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
+            Gdx.input.setInputProcessor(gameScreenObserver.getStage());
             dialog = new Dialog("Auf ins Abenteuer!", game.uiSkin, "dialog") {
                 public void result(Object obj) {
-                    Gdx.input.setInputProcessor(gameScreen.getPlayerController());
+                    Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
                 }
             };
             dialog.text("Du moechtest dich auf eine Expedition begeben. \n" +
@@ -56,32 +56,32 @@ public class IntroductionMap1 extends AbstractMap {
                     "Du erinnerst dich, dass du ihn das letzte Mal am Stadtbrunnen hattest. \n" +
                     "Du beschliesst zum Brunnen zu gehen.(Benutze die Pfeiltasten) ");
             dialog.button("Okay");
-            dialog.show(gameScreen.stage);
+            dialog.show(gameScreenObserver.getStage());
         }
 
         if(x == 6*32 && y == 12*32 && flag == 1) {
             flag++;
-            gameScreen.getPlayerController().keyUp(Input.Keys.UP);
-            Gdx.input.setInputProcessor(gameScreen.stage);
+            gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
+            Gdx.input.setInputProcessor(gameScreenObserver.getStage());
             dialog = new Dialog("Beruehrungsanzeige", game.uiSkin, "dialog") {
                 public void result(Object obj) {
-                    Gdx.input.setInputProcessor(gameScreen.getPlayerController());
+                    Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
                 }
             };
             dialog.text("Beobachte die Anzeige im unteren linken Rand. \n" +
                     "Diese zeigt dir an, ob vor, hinter, links oder rechts von dir ein Hindernis ist. \n" +
                     "Das wirst du spaeter noch benutzen muessen. ");
             dialog.button("Okay");
-            dialog.show(gameScreen.stage);
+            dialog.show(gameScreenObserver.getStage());
         }
 
         if((x == 14*32 || x == 17*32) && y == 9*32 && flag == 2) {
             flag++;
-            gameScreen.getPlayerController().keyUp(Input.Keys.UP);
-            Gdx.input.setInputProcessor(gameScreen.stage);
+            gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
+            Gdx.input.setInputProcessor(gameScreenObserver.getStage());
             dialog = new Dialog("Kompass gefunden!", game.uiSkin, "dialog") {
                 public void result(Object obj) {
-                    Gdx.input.setInputProcessor(gameScreen.getPlayerController());
+                    Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
                 }
             };
             dialog.text("Du hast deinen Kompass auf dem Rand des Brunnens wiedergefunden. \n" +
@@ -89,7 +89,7 @@ public class IntroductionMap1 extends AbstractMap {
                     "Nun kannst du dich auf die Expedition begeben. \n" +
                     "Verlasse die Stadt. ");
             dialog.button("Okay");
-            dialog.show(gameScreen.stage);
+            dialog.show(gameScreenObserver.getStage());
         }
     }
 

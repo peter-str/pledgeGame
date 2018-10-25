@@ -19,8 +19,8 @@ import com.mygdx.enums.MapEnum;
 import static com.mygdx.game.ResourcePaths.TUTMAP1;
 
 public class TutMap1 extends AbstractMap {
-    public TutMap1(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
-        super(game, gameScreen, nextMap);
+    public TutMap1(final PledgeGame game, MapEnum nextMap) {
+        super(game, nextMap);
         tiledMap = new TmxMapLoader().load(TUTMAP1);
         window = new Window("Die erste Regel", game.uiSkin);
         Label textArea = new Label(TutorialTexts.LEVEL1, game.uiSkin);

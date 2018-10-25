@@ -1,8 +1,6 @@
 package com.mygdx.model.maps;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
@@ -14,17 +12,15 @@ import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyTutorial;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 import com.mygdx.model.tutorialStrategies.level_3.Strategy3A;
-import com.mygdx.model.tutorialStrategies.level_4.Strategy4A;
 import com.mygdx.model.tutorialStrategies.level_4.Strategy4B;
 import com.mygdx.model.tutorialStrategies.level_4.Strategy4C;
-import com.mygdx.screens.GameScreen;
 
 import static com.mygdx.game.ResourcePaths.TUTMAP4;
 
 public class TutMap4 extends AbstractMap{
 
-    public TutMap4(final PledgeGame game, final GameScreen gameScreen, MapEnum nextMap) {
-        super(game, gameScreen, nextMap);
+    public TutMap4(final PledgeGame game, MapEnum nextMap) {
+        super(game, nextMap);
         tiledMap = new TmxMapLoader().load(TUTMAP4);
         Label textArea = new Label(TutorialTexts.LEVEL4, game.uiSkin);
         window = new Window("Algorithmus anpassen", game.uiSkin);
@@ -55,14 +51,16 @@ public class TutMap4 extends AbstractMap{
         checkBoxB.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonStrategy(new Strategy4B());
+                //gameScreen.setButtonStrategy(new Strategy4B());
+                notifyObserver(new Strategy4B());
             }
         });
 
         checkBoxC.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonStrategy(new Strategy4C());
+                //gameScreen.setButtonStrategy(new Strategy4C());
+                notifyObserver(new Strategy4C());
                 algoText.setText("1: Laufe geradeaus, wenn links frei, dann 2, wenn vorne versperrt, dann 3 ");
                 algoText2.setText("2: Nach links drehen, dann 1 ");
                 algoText3.setText("3: Nach rechts drehen, dann 1 ");

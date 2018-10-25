@@ -26,15 +26,15 @@ import static com.mygdx.game.ResourcePaths.TUTMAP5;
 
 public class TutMap5 extends AbstractMap{
 
-    public TutMap5(final PledgeGame game, final GameScreen gameScreen, MapEnum nextMap) {
-        super(game, gameScreen, nextMap);
+    public TutMap5(final PledgeGame game, MapEnum nextMap) {
+        super(game, nextMap);
         tiledMap = new TmxMapLoader().load(TUTMAP5);
         Label textArea = new Label(TutorialTexts.LEVEL5, game.uiSkin);
         window = new Window("Algorithmus finalisieren", game.uiSkin);
 
-        final Label algoText = new Label("1: Laufe geradeaus ", game.uiSkin);
-        final Label algoText2 = new Label("2: Wand vor dir, aber links keine: Drehe dich nach links ", game.uiSkin);
-        final Label algoText3 = new Label("3: Wand vor dir: Drehe dich nach rechts ", game.uiSkin);
+        final Label algoText = new Label("1: Laufe geradeaus, wenn links frei, dann 2, wenn vorne versperrt, dann 3 ", game.uiSkin);
+        final Label algoText2 = new Label("2: Nach links drehen, dann 1 ", game.uiSkin);
+        final Label algoText3 = new Label("3: Nach rechts drehen, dann 1 ", game.uiSkin);
         algoText.setFontScale(0.9f);
         algoText2.setFontScale(0.9f);
         algoText3.setFontScale(0.9f);
@@ -46,7 +46,8 @@ public class TutMap5 extends AbstractMap{
         checkBoxA.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonStrategy(new Strategy5A());
+                //gameScreen.setButtonStrategy(new Strategy5A());
+                notifyObserver(new Strategy5A());
                 algoText2.setText("2: Wand vor dir, aber links keine und Zaehler < 0:\nDrehe dich nach links und Zaehler + 1 ");
                 algoText3.setText("3: Wand vor dir: Drehe dich nach rechts und Zaehler - 1 ");
                 algoWindow.pack();
@@ -56,14 +57,16 @@ public class TutMap5 extends AbstractMap{
         checkBoxB.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonStrategy(new Strategy5B());
+                //gameScreen.setButtonStrategy(new Strategy5B());
+                notifyObserver(new Strategy5B());
             }
         });
 
         checkBoxC.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonStrategy(new Strategy5C());
+                //gameScreen.setButtonStrategy(new Strategy5C());
+                notifyObserver(new Strategy5C());
             }
         });
 

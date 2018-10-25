@@ -22,7 +22,7 @@ import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 
 import static com.mygdx.game.ResourcePaths.COMPASS;
 
-public class GameScreen implements Screen {
+public class GameScreen implements Screen, GameScreenInterface {
 
     private final PledgeGame game;
     private OrthographicCamera camera, camera2;
@@ -30,7 +30,7 @@ public class GameScreen implements Screen {
     private Texture compass;
     private Difficulty difficulty;
     private Sprite sprite;
-    public Stage stage;
+    private Stage stage;
     private AbstractMap map;
     private Label revCounter;
     private PlayerController playerController;
@@ -43,7 +43,8 @@ public class GameScreen implements Screen {
 
     public GameScreen(final PledgeGame game, MapEnum mapEnum, boolean tutorialFlag) {
         this.game = game;
-        map = mapEnum.getMap(game, this);
+        map = mapEnum.getMap(game);
+        map.register(this);
         this.mapEnum = mapEnum;
         this.tutorialFlag = tutorialFlag;
         difficulty = map.getDifficulty();
@@ -71,7 +72,7 @@ public class GameScreen implements Screen {
                 difficulty = new DifficultyTutorial(true);
         }
 
-        map = mapEnum.getMap(game, this);
+        map = mapEnum.getMap(game);
     }
 
     @Override
@@ -199,7 +200,7 @@ public class GameScreen implements Screen {
         game.spriteBatch.setProjectionMatrix(camera2.combined);
         revCounter.setText(String.valueOf(player.getRevCounter()));
         if(mapEnum != MapEnum.INTRODUCTION_1) {
-            game.spriteBatch.draw(compass, revCounter.getX() - 48, revCounter.getY());
+            game.spriteBatch.draw(compass, revCounter.getX()-12, revCounter.getY());
             revCounter.draw(game.spriteBatch, 1);
         }
         playerController.update(delta, expertModeOn);
@@ -245,6 +246,12 @@ public class GameScreen implements Screen {
     public PlayerController getPlayerController() {
         return playerController;
     }
+
+    @Override
+    public Stage getStage() {
+        return stage;
+    }
+
     public AbstractMap getMap() {
         return map;
     }
@@ -254,7 +261,14 @@ public class GameScreen implements Screen {
     public void setDifficulty(Difficulty diff) {
         difficulty = diff;
     }
+
+    //DEPRECATED
     public void setButtonStrategy(TutorialStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    @Override
+    public void updateStrategy(TutorialStrategy strategy) {
         this.strategy = strategy;
     }
 }

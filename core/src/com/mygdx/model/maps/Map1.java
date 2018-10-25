@@ -8,8 +8,8 @@ import com.mygdx.game.PledgeGame;
 import com.mygdx.enums.MapEnum;
 
 public class Map1 extends AbstractMap {
-    public Map1(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
-        super(game, gameScreen, nextMap);
+    public Map1(final PledgeGame game, MapEnum nextMap) {
+        super(game, nextMap);
         tiledMap = new TmxMapLoader().load("core/assets/maps/map4.tmx");
     }
 

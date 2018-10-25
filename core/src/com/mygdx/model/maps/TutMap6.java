@@ -19,8 +19,8 @@ import static com.mygdx.game.ResourcePaths.TUTMAP6;
 
 public class TutMap6 extends AbstractMap{
 
-    public TutMap6(final PledgeGame game, final GameScreen gameScreen, MapEnum nextMap) {
-        super(game, gameScreen, nextMap);
+    public TutMap6(final PledgeGame game, MapEnum nextMap) {
+        super(game, nextMap);
         tiledMap = new TmxMapLoader().load(TUTMAP6);
         Label textArea = new Label(TutorialTexts.LEVEL6, game.uiSkin);
         window = new Window("Algorithmus fertiggestellt", game.uiSkin);

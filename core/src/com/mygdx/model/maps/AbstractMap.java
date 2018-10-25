@@ -8,25 +8,33 @@ import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 import com.mygdx.screens.GameScreen;
 import com.mygdx.game.PledgeGame;
+import com.mygdx.screens.GameScreenInterface;
 import com.mygdx.screens.MainMenuScreen;
 import com.mygdx.enums.MapEnum;
 
 public abstract class AbstractMap {
 
     protected final PledgeGame game;
-    protected GameScreen gameScreen;
     protected MapEnum nextMap;
     protected TiledMap tiledMap;
     protected Dialog dialog;
     protected boolean finished = true;
     protected Window window;
     protected Window algoWindow;
+    protected GameScreenInterface gameScreenObserver;
 
 
-    public AbstractMap(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
+    public AbstractMap(final PledgeGame game, MapEnum nextMap) {
         this.game = game;
-        this.gameScreen = gameScreen;
         this.nextMap = nextMap;
+    }
+
+    public void register(GameScreenInterface newObserver) {
+        gameScreenObserver = newObserver;
+    }
+
+    protected void notifyObserver(TutorialStrategy strategy) {
+        gameScreenObserver.updateStrategy(strategy);
     }
 
     public void message(){}
@@ -49,15 +57,15 @@ public abstract class AbstractMap {
     public void zielErreicht(final MapEnum nextMap, final boolean tutorialFlag) {
         if (finished) {
             finished = false;
-            Gdx.input.setInputProcessor(gameScreen.stage);
+            Gdx.input.setInputProcessor(gameScreenObserver.getStage());
             dialog = new Dialog("Ziel erreicht", game.uiSkin, "dialog") {
                 public void result(Object obj) {
                     if (obj.equals("menu")) {
-                        Gdx.input.setInputProcessor(gameScreen.getPlayerController());
+                        Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
                         ((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
                         dispose();
                     } else if (obj.equals("level") && !tutorialFlag) {
-                        Gdx.input.setInputProcessor(gameScreen.getPlayerController());
+                        Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
                         ((Game) Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, nextMap, false));
                         dispose();
                     } else if (obj.equals("level") && tutorialFlag) {
@@ -70,7 +78,7 @@ public abstract class AbstractMap {
                     "\nZurueck zum Hauptmenue oder naechstes Level? ");
             dialog.button("Hauptmenue", "menu");
             dialog.button("Naechstes Level", "level");
-            dialog.show(gameScreen.stage);
+            dialog.show(gameScreenObserver.getStage());
         }
     }
 

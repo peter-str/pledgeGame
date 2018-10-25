@@ -12,8 +12,8 @@ public class EndlessMazeMap extends AbstractMap {
     private int startX;
     private int startY;
 
-    public EndlessMazeMap(final PledgeGame game, GameScreen gameScreen, MapEnum nextMap) {
-        super(game, gameScreen, nextMap);
+    public EndlessMazeMap(final PledgeGame game, MapEnum nextMap) {
+        super(game, nextMap);
         tiledMap = new TmxMapLoader().load(MAZE);
     }
 
