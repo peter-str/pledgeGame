@@ -3,7 +3,6 @@ package com.mygdx.model.maps;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyEasy;
-import com.mygdx.screens.GameScreen;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.enums.MapEnum;
 
@@ -29,8 +28,8 @@ public class Map1 extends AbstractMap {
     }
 
     @Override
-    public void zielErreicht(MapEnum nextMap, boolean tutorialFlag) {
-        super.zielErreicht(nextMap, false);
+    public void goalAchieved(MapEnum nextMap, boolean tutorialFlag) {
+        super.goalAchieved(nextMap, false);
     }
 
     @Override

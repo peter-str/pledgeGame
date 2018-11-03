@@ -51,7 +51,6 @@ public class TutMap4 extends AbstractMap{
         checkBoxB.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                //gameScreen.setButtonStrategy(new Strategy4B());
                 notifyObserver(new Strategy4B());
             }
         });
@@ -59,7 +58,6 @@ public class TutMap4 extends AbstractMap{
         checkBoxC.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                //gameScreen.setButtonStrategy(new Strategy4C());
                 notifyObserver(new Strategy4C());
                 algoText.setText("1: Laufe geradeaus, wenn links frei, dann 2, wenn vorne versperrt, dann 3 ");
                 algoText2.setText("2: Nach links drehen, dann 1 ");
@@ -126,8 +124,8 @@ public class TutMap4 extends AbstractMap{
     }
 
     @Override
-    public void zielErreicht(MapEnum nextMap, boolean tutorialFlag) {
-        super.zielErreicht(nextMap, true);
+    public void goalAchieved(MapEnum nextMap, boolean tutorialFlag) {
+        super.goalAchieved(nextMap, true);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.mygdx.model.maps;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -11,9 +10,7 @@ import com.mygdx.game.TutorialTexts;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyTutorial;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
-import com.mygdx.model.tutorialStrategies.level_4.Strategy4C;
-import com.mygdx.screens.GameScreen;
-import com.mygdx.screens.MainMenuScreen;
+import com.mygdx.model.tutorialStrategies.level_5.Strategy5A;
 
 import static com.mygdx.game.ResourcePaths.TUTMAP6;
 
@@ -59,7 +56,7 @@ public class TutMap6 extends AbstractMap{
 
     @Override
     public TutorialStrategy getStartStrategy() {
-        return new Strategy4C();
+        return new Strategy5A();
     }
 
     @Override
@@ -88,8 +85,8 @@ public class TutMap6 extends AbstractMap{
     }
 
     @Override
-    public void zielErreicht(MapEnum nextMap, boolean tutorialFlag) {
-        super.zielErreicht(nextMap, false);
+    public void goalAchieved(MapEnum nextMap, boolean tutorialFlag) {
+        super.goalAchieved(nextMap, false);
         //((Game)Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
     }
 

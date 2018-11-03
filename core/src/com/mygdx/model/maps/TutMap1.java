@@ -2,17 +2,13 @@ package com.mygdx.model.maps;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.game.TutorialTexts;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyTutorial;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 import com.mygdx.model.tutorialStrategies.level_1.Strategy1A;
-import com.mygdx.screens.GameScreen;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.enums.MapEnum;
 
@@ -72,8 +68,8 @@ public class TutMap1 extends AbstractMap {
     }
 
     @Override
-    public void zielErreicht(MapEnum nextMap, boolean tutorialFlag) {
-        super.zielErreicht(nextMap, true);
+    public void goalAchieved(MapEnum nextMap, boolean tutorialFlag) {
+        super.goalAchieved(nextMap, true);
     }
 
     @Override

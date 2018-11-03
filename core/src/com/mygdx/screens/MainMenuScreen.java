@@ -1,6 +1,5 @@
 package com.mygdx.screens;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -77,7 +76,7 @@ public class MainMenuScreen implements Screen {
         tutorialButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.TUTORIALMAP_1, true));
+                game.setScreen(new GameScreen(game, MapEnum.TUTORIALMAP_1, true));
                 dispose();
             }
         });
@@ -85,7 +84,7 @@ public class MainMenuScreen implements Screen {
         playButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.INTRODUCTION_1, false));
+                game.setScreen(new GameScreen(game, MapEnum.INTRODUCTION_1, false));
                 dispose();
             }
         });
@@ -93,7 +92,7 @@ public class MainMenuScreen implements Screen {
         endlessButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, MapEnum.ENDLESS_MAZE, selectBox.getSelectedIndex()-1));
+                game.setScreen(new GameScreen(game, MapEnum.ENDLESS_MAZE, selectBox.getSelectedIndex()-1));
                 dispose();
             }
         });
@@ -101,7 +100,7 @@ public class MainMenuScreen implements Screen {
         levelButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ((Game)Gdx.app.getApplicationListener()).setScreen(new LevelScreen(game));
+                game.setScreen(new LevelScreen(game));
                 dispose();
             }
         });

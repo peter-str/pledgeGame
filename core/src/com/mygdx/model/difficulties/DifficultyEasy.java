@@ -17,7 +17,7 @@ public class DifficultyEasy implements Difficulty {
     }
 
     @Override
-    public Texture getFOVTexture() {
+    public Texture getFovTexture() {
         return fieldOfView_high;
     }
 

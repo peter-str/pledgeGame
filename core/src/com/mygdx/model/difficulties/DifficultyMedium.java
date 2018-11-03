@@ -17,7 +17,7 @@ public class DifficultyMedium implements Difficulty {
     }
 
     @Override
-    public Texture getFOVTexture() {
+    public Texture getFovTexture() {
         return fieldOfView_medium;
     }
 

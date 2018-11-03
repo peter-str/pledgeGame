@@ -25,7 +25,7 @@ public class Player {
     private TextureAtlas textureAtlas;
     private Sprite sprite;
     private float walkTimer;
-    private Animation walking;
+    private Animation<TextureRegion> walking;
     private TextureRegion standing;
     private boolean moveRequestThisFrame;
     private Player_State state;
@@ -43,12 +43,12 @@ public class Player {
         standing = textureAtlas.findRegion("standing_north");
         this.sprite = new Sprite(standing);
 
-        walking = new Animation(0.3f/2f, textureAtlas.findRegions("walking_north"), PlayMode.LOOP_PINGPONG);
+        walking = new Animation<>(0.3f/2f, textureAtlas.findRegions("walking_north"), PlayMode.LOOP_PINGPONG);
     }
 
     public enum Player_State {
         STANDING,
-        WALKING;
+        WALKING
     }
 
     public void move(int dir) {
@@ -82,8 +82,8 @@ public class Player {
         this.srcY = y;
         this.destX = x + dx;
         this.destY = y + dy;
-        this.animX = x;
-        this.animY = y;
+        //this.animX = x;
+        //this.animY = y;
         animTimer = 0f;
         state = Player_State.WALKING;
     }
@@ -92,10 +92,10 @@ public class Player {
         state = Player_State.STANDING;
         this.animX = destX;
         this.animY = destY;
-        this.srcX = 0;
+        /*this.srcX = 0;
         this.srcY = 0;
         this.destX = 0;
-        this.destY = 0;
+        this.destY = 0;*/
     }
 
     public void update(float delta) {
@@ -209,7 +209,7 @@ public class Player {
 
     public Sprite getSprite() {
         if(state == Player_State.WALKING) {
-            sprite.setRegion((TextureRegion) walking.getKeyFrame(walkTimer));
+            sprite.setRegion(walking.getKeyFrame(walkTimer));
             return sprite;
         }
         else

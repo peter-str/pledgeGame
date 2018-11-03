@@ -54,7 +54,7 @@ public abstract class AbstractMap {
 
     public abstract MapEnum getNextMap();
 
-    public void zielErreicht(final MapEnum nextMap, final boolean tutorialFlag) {
+    public void goalAchieved(final MapEnum nextMap, final boolean tutorialFlag) {
         if (finished) {
             finished = false;
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());

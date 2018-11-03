@@ -8,7 +8,6 @@ import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyTutorial;
-import com.mygdx.screens.GameScreen;
 
 import static com.mygdx.game.ResourcePaths.INTRODUCTIONMAP1;
 
@@ -22,12 +21,12 @@ public class IntroductionMap1 extends AbstractMap {
 
     @Override
     public int getStartX() {
-        return 32 * 3;
+        return 32 * 12;
     }
 
     @Override
     public int getStartY() {
-        return 32 * 4;
+        return 32 * 13;
     }
 
     @Override
@@ -36,8 +35,8 @@ public class IntroductionMap1 extends AbstractMap {
     }
 
     @Override
-    public void zielErreicht(MapEnum nextMap, boolean tutorialFlag) {
-            super.zielErreicht(nextMap, false);
+    public void goalAchieved(MapEnum nextMap, boolean tutorialFlag) {
+            super.goalAchieved(nextMap, false);
     }
 
     @Override
@@ -59,7 +58,7 @@ public class IntroductionMap1 extends AbstractMap {
             dialog.show(gameScreenObserver.getStage());
         }
 
-        if(x == 6*32 && y == 12*32 && flag == 1) {
+        if(x == 15*32 && y == 21*32 && flag == 1) {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());
@@ -75,7 +74,7 @@ public class IntroductionMap1 extends AbstractMap {
             dialog.show(gameScreenObserver.getStage());
         }
 
-        if((x == 14*32 || x == 17*32) && y == 9*32 && flag == 2) {
+        if((x == 23*32 || x == 26*32) && y == 18*32 && flag == 2) {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());

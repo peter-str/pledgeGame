@@ -13,7 +13,7 @@ public class MazeCreatorClass {
 
     private int[][] labyrinth;
     private Cell[][] cells;
-    private int höhe;
+    private int hoehe;
     private int breite;
     private int totalCells;
     private int visitedCells = 1;
@@ -22,10 +22,10 @@ public class MazeCreatorClass {
             " </layer>\n" +
             "</map>";
 
-    public MazeCreatorClass(int höhe, int breite) {
-        this.höhe = höhe;
+    public MazeCreatorClass(int hoehe, int breite) {
+        this.hoehe = hoehe;
         this.breite = breite;
-        labyrinth = new int[(höhe*2)+1][(breite*2)+1];
+        labyrinth = new int[(hoehe *2)+1][(breite*2)+1];
 
         for (int i = 0; i < labyrinth.length; i++) {
             for (int j = 0; j < labyrinth.length; j++) {
@@ -35,30 +35,30 @@ public class MazeCreatorClass {
         }
 
         labyrinth[0][labyrinth.length-2] = 2;
-        cells = new Cell[höhe][breite];
-        totalCells = höhe*breite;
+        cells = new Cell[hoehe][breite];
+        totalCells = hoehe *breite;
         initializeCells();
         algorithm();
         createLabyrinth();
         //printLabyrinth();
         sb = new StringBuilder();
-        sb.append(getMapFileBeginning(Integer.toString((höhe*2)+1), Integer.toString((breite*2)+1)));
+        sb.append(getMapFileBeginning(Integer.toString((hoehe *2)+1), Integer.toString((breite*2)+1)));
         ausgeben();
         sb.append(mapFileEnding);
         createMapFile(sb.toString());
     }
 
-    public void initializeCells() {
-        for(int i = 0; i < höhe; i++) {
+    private void initializeCells() {
+        for(int i = 0; i < hoehe; i++) {
             for (int j = 0; j < breite; j++) {
                 cells[i][j] = new Cell(i, j);
             }
         }
     }
 
-    public void algorithm() {
+    private void algorithm() {
         Random rand = new Random();
-        int x = rand.nextInt(höhe);
+        int x = rand.nextInt(hoehe);
         int y = rand.nextInt(breite);
 
         Stack<Cell> cellstack = new Stack<>();
@@ -104,7 +104,7 @@ public class MazeCreatorClass {
             }
 
             tmpV = new Vertex();
-            if(x+1 < höhe && cells[x+1][y].checkWalls()) {
+            if(x+1 < hoehe && cells[x+1][y].checkWalls()) {
                 tmpV.x1 = x;
                 tmpV.y1 = y;
                 tmpV.x2 = x+1;
@@ -138,7 +138,7 @@ public class MazeCreatorClass {
     }
 
     //Fügt dem StringBuilder die Einträge des labyrinth-Arrays hinzu
-    public void ausgeben() {
+    private void ausgeben() {
         for(int i = 0; i < labyrinth.length; i++) {
             for(int j = 0; j < labyrinth[i].length; j++) {
                 sb.append(labyrinth[i][j]);
@@ -150,7 +150,7 @@ public class MazeCreatorClass {
 
     //Erstellt aus dem cells-Array ein labyrinth-Array
     //Mauern sind im cells-Array kein eigener Array-Eintrag, sondern sind in Cell abgespeichert
-    public void createLabyrinth() {
+    private void createLabyrinth() {
         int a = 0;
         int b = 0;
         for (int i = 0; i < labyrinth.length; i++) {
@@ -184,7 +184,7 @@ public class MazeCreatorClass {
         }
     }
 
-    public void printLabyrinth() {
+    private void printLabyrinth() {
         for(int i = 0; i < labyrinth.length; i++) {
             for(int j = 0; j < labyrinth.length; j++) {
                 System.out.print(labyrinth[i][j] + ",");
@@ -193,7 +193,7 @@ public class MazeCreatorClass {
         }
     }
 
-    public void createMapFile(String content) {
+    private void createMapFile(String content) {
         File file = new File(MAZE);
 
         try (FileOutputStream fop = new FileOutputStream(file)) {
@@ -216,7 +216,7 @@ public class MazeCreatorClass {
         }
     }
 
-    public String getMapFileBeginning(String x, String y) {
+    private String getMapFileBeginning(String x, String y) {
         return "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<map version=\"1.0\" tiledversion=\"2018.07.13\" orientation=\"orthogonal\" renderorder=\"right-down\" width=\"10\" height=\"10\" tilewidth=\"32\" tileheight=\"32\" infinite=\"0\" nextlayerid=\"33\" nextobjectid=\"1\">\n" +
                 " <tileset firstgid=\"1\" name=\"rocky01\" tilewidth=\"32\" tileheight=\"32\" tilecount=\"1\" columns=\"1\">\n" +

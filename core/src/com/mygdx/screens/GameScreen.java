@@ -3,7 +3,6 @@ package com.mygdx.screens;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -20,14 +19,12 @@ import com.mygdx.model.difficulties.*;
 import com.mygdx.model.maps.AbstractMap;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 
-import static com.mygdx.game.ResourcePaths.COMPASS;
-
 public class GameScreen implements Screen, GameScreenInterface {
 
     private final PledgeGame game;
     private OrthographicCamera camera, camera2;
     private TiledMapRenderer tiledMapRenderer;
-    private Texture compass;
+    //private Texture compass;
     private Difficulty difficulty;
     private Sprite sprite;
     private Stage stage;
@@ -77,7 +74,7 @@ public class GameScreen implements Screen, GameScreenInterface {
 
     @Override
     public void show() {
-        compass = new Texture(Gdx.files.internal(COMPASS));
+        //compass = new Texture(Gdx.files.internal(COMPASS));
         tiledMapRenderer = new OrthogonalTiledMapRenderer(map.getTiledMap());
         player = new Player(map.getStartX(), map.getStartY());
         playerController = new PlayerController(game, player, this);
@@ -134,7 +131,7 @@ public class GameScreen implements Screen, GameScreenInterface {
             menuButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                    ((Game)Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
+                    game.setScreen(new MainMenuScreen(game));
                     dispose();
                 }
             });
@@ -156,7 +153,7 @@ public class GameScreen implements Screen, GameScreenInterface {
             resetButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                    ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, mapEnum, true));
+                    game.setScreen(new GameScreen(game, mapEnum, true));
                     dispose();
                 }
             });
@@ -193,14 +190,14 @@ public class GameScreen implements Screen, GameScreenInterface {
             camera.position.y = y;
         }
         if(difficulty.hasTexture())
-            game.spriteBatch.draw(difficulty.getFOVTexture(), x - 334, y - 334);
+            game.spriteBatch.draw(difficulty.getFovTexture(), x - 334, y - 334);
 
         map.showInstructions(player.getX(), player.getY());
 
         game.spriteBatch.setProjectionMatrix(camera2.combined);
-        revCounter.setText(String.valueOf(player.getRevCounter()));
+        revCounter.setText("Kompass: " + String.valueOf(player.getRevCounter()));
         if(mapEnum != MapEnum.INTRODUCTION_1) {
-            game.spriteBatch.draw(compass, revCounter.getX()-12, revCounter.getY());
+            //game.spriteBatch.draw(compass, revCounter.getX()-12, revCounter.getY());
             revCounter.draw(game.spriteBatch, 1);
         }
         playerController.update(delta, expertModeOn);
@@ -260,11 +257,6 @@ public class GameScreen implements Screen, GameScreenInterface {
 
     public void setDifficulty(Difficulty diff) {
         difficulty = diff;
-    }
-
-    //DEPRECATED
-    public void setButtonStrategy(TutorialStrategy strategy) {
-        this.strategy = strategy;
     }
 
     @Override

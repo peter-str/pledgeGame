@@ -61,13 +61,13 @@ class CollisionController {
         }
     }
 
-    boolean zielErreicht(int x, int y) {
+    boolean goalAchieved(int x, int y) {
         if(collisionLayer.getCell(x/32, y/32).getTile().getProperties().containsKey("Ziel")) {
             if(map.getNextMap().equals(MapEnum.ENDLESS_MAZE)) {
                 ((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
                 return true;
             } else {
-                map.zielErreicht(map.getNextMap(), map.getTutorialFlag());
+                map.goalAchieved(map.getNextMap(), map.getTutorialFlag());
                 return true;
             }
         }

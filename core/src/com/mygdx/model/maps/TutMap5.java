@@ -1,6 +1,5 @@
 package com.mygdx.model.maps;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -19,8 +18,6 @@ import com.mygdx.model.tutorialStrategies.level_4.Strategy4C;
 import com.mygdx.model.tutorialStrategies.level_5.Strategy5A;
 import com.mygdx.model.tutorialStrategies.level_5.Strategy5B;
 import com.mygdx.model.tutorialStrategies.level_5.Strategy5C;
-import com.mygdx.screens.GameScreen;
-import com.mygdx.screens.MainMenuScreen;
 
 import static com.mygdx.game.ResourcePaths.TUTMAP5;
 
@@ -46,10 +43,9 @@ public class TutMap5 extends AbstractMap{
         checkBoxA.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                //gameScreen.setButtonStrategy(new Strategy5A());
                 notifyObserver(new Strategy5A());
-                algoText2.setText("2: Wand vor dir, aber links keine und Zaehler < 0:\nDrehe dich nach links und Zaehler + 1 ");
-                algoText3.setText("3: Wand vor dir: Drehe dich nach rechts und Zaehler - 1 ");
+                algoText2.setText("2: Zaehler < 0: Drehe dich nach links und Zaehler + 1\nZaehler >= 0: Weiter mit 3 ");
+                algoText3.setText("3: Drehe dich nach rechts und Zaehler - 1 ");
                 algoWindow.pack();
             }
         });
@@ -57,7 +53,6 @@ public class TutMap5 extends AbstractMap{
         checkBoxB.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                //gameScreen.setButtonStrategy(new Strategy5B());
                 notifyObserver(new Strategy5B());
             }
         });
@@ -65,7 +60,6 @@ public class TutMap5 extends AbstractMap{
         checkBoxC.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                //gameScreen.setButtonStrategy(new Strategy5C());
                 notifyObserver(new Strategy5C());
             }
         });
@@ -128,8 +122,8 @@ public class TutMap5 extends AbstractMap{
     }
 
     @Override
-    public void zielErreicht(MapEnum nextMap, boolean tutorialFlag) {
-        super.zielErreicht(nextMap, false);
+    public void goalAchieved(MapEnum nextMap, boolean tutorialFlag) {
+        super.goalAchieved(nextMap, false);
         //((Game)Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
     }
 

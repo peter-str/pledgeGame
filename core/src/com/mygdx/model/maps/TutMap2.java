@@ -18,7 +18,6 @@ import com.mygdx.model.tutorialStrategies.level_1.Strategy1A;
 import com.mygdx.model.tutorialStrategies.level_2.Strategy2A;
 import com.mygdx.model.tutorialStrategies.level_2.Strategy2B;
 import com.mygdx.model.tutorialStrategies.level_2.Strategy2C;
-import com.mygdx.screens.GameScreen;
 
 import static com.mygdx.game.ResourcePaths.TUTMAP2;
 
@@ -43,7 +42,6 @@ public class TutMap2 extends AbstractMap {
         checkBoxA.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                //gameScreen.setButtonStrategy(new Strategy2A());
                 notifyObserver(new Strategy2A());
                 finalStep.setText(stepA);
                 algoWindow.pack();
@@ -53,7 +51,6 @@ public class TutMap2 extends AbstractMap {
         checkBoxB.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                //gameScreen.setButtonStrategy(new Strategy2B());
                 notifyObserver(new Strategy2B());
                 finalStep.setText(stepB);
                 algoWindow.pack();
@@ -63,7 +60,6 @@ public class TutMap2 extends AbstractMap {
         checkBoxC.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                //gameScreen.setButtonStrategy(new Strategy2C());
                 notifyObserver(new Strategy2C());
                 finalStep.setText(stepC);
                 algoWindow.pack();
@@ -127,8 +123,8 @@ public class TutMap2 extends AbstractMap {
     }
 
     @Override
-    public void zielErreicht(MapEnum nextMap, boolean tutorialFlag) {
-        super.zielErreicht(nextMap, true);
+    public void goalAchieved(MapEnum nextMap, boolean tutorialFlag) {
+        super.goalAchieved(nextMap, true);
     }
 
     @Override

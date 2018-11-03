@@ -15,6 +15,8 @@ public class ResourcePaths {
     public static final String COMPASS = (createJarFile) ? "maps/textures/compass.png" : "core/assets/maps/textures/compass.png";
 
     //maps package
+    public static final String TESTMAP = (createJarFile) ? "maps/18x18map.tmx" : "core/assets/maps/18x18map.tmx";
+
     public static final String TUTMAP1 = (createJarFile) ? "maps/TutorialMap1.tmx" : "core/assets/maps/TutorialMap1.tmx";
     public static final String TUTMAP2 = (createJarFile) ? "maps/TutorialMap2.tmx" : "core/assets/maps/TutorialMap2.tmx";
     public static final String TUTMAP3 = (createJarFile) ? "maps/TutorialMap3.tmx" : "core/assets/maps/TutorialMap3.tmx";

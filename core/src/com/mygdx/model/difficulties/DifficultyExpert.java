@@ -11,7 +11,7 @@ public class DifficultyExpert implements Difficulty {
     }
 
     @Override
-    public Texture getFOVTexture() {
+    public Texture getFovTexture() {
         return null;
     }
 

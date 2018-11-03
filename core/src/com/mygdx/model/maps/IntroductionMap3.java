@@ -7,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.model.difficulties.*;
-import com.mygdx.screens.GameScreen;
 
 import static com.mygdx.game.ResourcePaths.INTRODUCTIONMAP3;
 
@@ -35,8 +34,8 @@ public class IntroductionMap3 extends AbstractMap {
     }
 
     @Override
-    public void zielErreicht(MapEnum nextMap, boolean tutorialFlag) {
-        super.zielErreicht(nextMap, true);
+    public void goalAchieved(MapEnum nextMap, boolean tutorialFlag) {
+        super.goalAchieved(nextMap, true);
     }
 
     @Override
