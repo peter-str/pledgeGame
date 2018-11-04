@@ -208,7 +208,7 @@ public class MazeCreatorClass {
             fop.flush();
             fop.close();
 
-            System.out.println("Done");
+            //System.out.println("Done");
 
         } catch (IOException e) {
             e.printStackTrace();
