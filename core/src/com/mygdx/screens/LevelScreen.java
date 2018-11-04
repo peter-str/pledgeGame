@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -36,6 +37,9 @@ public class LevelScreen implements Screen {
         Table mainTable = new Table();
         mainTable.setFillParent(true);
         mainTable.center();
+
+        Label headline = new Label("Leveluebersicht", game.uiSkin);
+        Label breakLabel = new Label("", game.uiSkin);
 
         TextButton introductionLevel1 = new TextButton("Einfuehrungslevel 1", game.uiSkin);
         TextButton introductionLevel2 = new TextButton("Einfuehrungslevel 2", game.uiSkin);
@@ -159,6 +163,10 @@ public class LevelScreen implements Screen {
             }
         });
 
+        mainTable.add(headline);
+        mainTable.row();
+        mainTable.add(breakLabel);
+        mainTable.row();
         mainTable.add(introductionLevel1);
         mainTable.row();
         mainTable.add(introductionLevel2);
@@ -182,6 +190,8 @@ public class LevelScreen implements Screen {
         mainTable.add(tutorialLevel8);
         mainTable.row();
         mainTable.add(finalLevel);
+        mainTable.row();
+        mainTable.add(breakLabel);
         mainTable.row();
         mainTable.add(backButton);
 

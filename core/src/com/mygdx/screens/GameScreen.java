@@ -52,6 +52,7 @@ public class GameScreen implements Screen, GameScreenInterface {
     public GameScreen(final PledgeGame game, MapEnum mapEnum, int selectedDifficulty, int selectedMapSize) {
         this.game = game;
         int mapSize;
+
         switch(selectedMapSize) {
             default:
                 mapSize = 3;
@@ -80,6 +81,7 @@ public class GameScreen implements Screen, GameScreenInterface {
         }
 
         map = mapEnum.getMap(game);
+        map.register(this);
     }
 
     @Override

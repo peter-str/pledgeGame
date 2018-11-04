@@ -1,5 +1,6 @@
 package com.mygdx.model.maps;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -10,6 +11,8 @@ import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.game.TutorialTexts;
 import com.mygdx.model.difficulties.*;
+import com.mygdx.screens.GameScreen;
+import com.mygdx.screens.MainMenuScreen;
 
 import static com.mygdx.game.ResourcePaths.INTRODUCTIONMAP3;
 
@@ -93,6 +96,27 @@ public class IntroductionMap3 extends AbstractMap {
             dialog.text("Jetzt bist du wieder dort, wo du dich am Anfang verlaufen hast. \n" +
                     "Schaffst du es nun mithilfe des Algorithmus nach draussen? ");
             dialog.button("Okay");
+            dialog.show(gameScreenObserver.getStage());
+        }
+    }
+
+    @Override
+    public void showWinningMessage() {
+        if (finished) {
+            finished = false;
+            Gdx.input.setInputProcessor(gameScreenObserver.getStage());
+            dialog = new Dialog("Ziel erreicht", game.uiSkin, "dialog") {
+                public void result(Object obj) {
+                    if (obj.equals("menu")) {
+                        game.setScreen(new MainMenuScreen(game, false));
+                        dispose();
+                    }
+                }
+            };
+            dialog.text("Super, du hast den Ausgang aus dem dunklen Labyrinth gefunden! \n" +
+                    "Du bist nun ein Experte im Umgang mit dem Pledge-Algorithmus! " +
+                    "\nIm Endlosmodus kannst du weitere Level ausprobieren. ");
+            dialog.button("Hauptmenue", "menu");
             dialog.show(gameScreenObserver.getStage());
         }
     }

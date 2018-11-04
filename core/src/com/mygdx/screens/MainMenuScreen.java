@@ -1,6 +1,5 @@
 package com.mygdx.screens;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -19,7 +18,6 @@ public class MainMenuScreen implements Screen {
     private OrthographicCamera camera;
     private Stage stage;
     private boolean endlessModeSetupMenue;
-
 
 
     public MainMenuScreen(final PledgeGame game, boolean endlessModeSetupMenue) {
@@ -144,6 +142,8 @@ public class MainMenuScreen implements Screen {
             Gdx.input.setInputProcessor(stage);
 
             Label headline = new Label("Endlos-Modus-Menue", game.uiSkin);
+            Label infoLabel = new Label ("Jedes Level das du hier startest wird neu generiert. \n" +
+                    "Du spielst also niemals zweimal das gleiche Level hintereinander. ", game.uiSkin);
             Label breakLabel = new Label("", game.uiSkin);
             Label difficultyLabel = new Label("Schwierigkeit einstellen: ", game.uiSkin);
             Label mapSizeLabel = new Label("Kartengroesse einstellen: ", game.uiSkin);
@@ -188,6 +188,10 @@ public class MainMenuScreen implements Screen {
             mainTable.row();
             mainTable.add(breakLabel);
             mainTable.row();
+            mainTable.add(infoLabel);
+            mainTable.row();
+            mainTable.add(breakLabel);
+            mainTable.row();
             mainTable.add(difficultyLabel);
             mainTable.row();
             mainTable.add(selectBox);
@@ -196,7 +200,11 @@ public class MainMenuScreen implements Screen {
             mainTable.row();
             mainTable.add(mapSizeSelectBox);
             mainTable.row();
+            mainTable.add(breakLabel);
+            mainTable.row();
             mainTable.add(playButton);
+            mainTable.row();
+            mainTable.add(breakLabel);
             mainTable.row();
             mainTable.add(backButton);
 

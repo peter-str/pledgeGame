@@ -42,7 +42,7 @@ public abstract class AbstractMap {
     public abstract int getStartY();
     public void setStartX(int x){};
     public void setStartY(int x){};
-    public void showInstructions(){}
+    public void showWinningMessage(){}
     public void showInstructions(int x, int y){}
     public void showInstructions(int revCounter, boolean a, boolean b, boolean c, boolean d){}
     public Window getWindow(){return null;}

@@ -78,21 +78,9 @@ public enum MapEnum {
         }
     },
 
-    MAP_1 {
-        public AbstractMap getMap(PledgeGame game) {
-            return new Map1(game, MAP_2);
-        }
-    },
-
-    MAP_2 {
-        public AbstractMap getMap(PledgeGame game) {
-            return new Map2(game, MAP_2);
-        }
-    },
-
     ENDLESS_MAZE {
         public AbstractMap getMap(PledgeGame game) {
-            return new EndlessMazeMap(game, ENDLESS_MAZE);
+            return new EndlessMazeMap(game, null);
         }
     };
 
