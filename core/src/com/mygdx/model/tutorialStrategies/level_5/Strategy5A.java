@@ -1,5 +1,6 @@
 package com.mygdx.model.tutorialStrategies.level_5;
 
+import com.badlogic.gdx.utils.Timer;
 import com.mygdx.model.Player;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 import com.mygdx.screens.GameScreen;
@@ -21,7 +22,14 @@ public class Strategy5A implements TutorialStrategy {
         }
 
         if(!gameScreen.getPlayer().isTop() && gameScreen.getPlayer().isLeft()) {
-            gameScreen.getPlayer().move(32);
+            Timer.schedule(new Timer.Task() {
+                @Override
+                public void run() {
+                    gameScreen.getPlayer().move(32);
+                }
+            }, 0.2f);
+
+            //gameScreen.getPlayer().move(32);
         } else if(!gameScreen.getPlayer().isLeft() && isCurrentlyStanding(gameScreen) && revCounter < 0) {
             turnLeft(gameScreen);
         } else if(!gameScreen.getPlayer().isTop()) {

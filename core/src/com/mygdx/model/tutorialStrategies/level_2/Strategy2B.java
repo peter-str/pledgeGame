@@ -18,7 +18,7 @@ public class Strategy2B implements TutorialStrategy {
                     gameScreen.getPlayer().move(32);
                     justTurned = false;
                 }
-            }, 0.1f);
+            }, 0.2f);
 
         } else if (gameScreen.getPlayer().isTop() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
 

@@ -14,7 +14,7 @@ import com.mygdx.game.TutorialTexts;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyTutorial;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
-import com.mygdx.model.tutorialStrategies.level_4.Strategy4C;
+import com.mygdx.model.tutorialStrategies.level_4.Strategy4B;
 import com.mygdx.model.tutorialStrategies.level_5.Strategy5A;
 import com.mygdx.model.tutorialStrategies.level_5.Strategy5B;
 import com.mygdx.model.tutorialStrategies.level_5.Strategy5C;
@@ -99,7 +99,7 @@ public class TutMap5 extends AbstractMap {
 
     @Override
     public TutorialStrategy getStartStrategy() {
-        return new Strategy4C();
+        return new Strategy4B();
     }
 
     @Override

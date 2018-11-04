@@ -12,8 +12,8 @@ import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyTutorial;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 import com.mygdx.model.tutorialStrategies.level_3.Strategy3A;
+import com.mygdx.model.tutorialStrategies.level_4.Strategy4A;
 import com.mygdx.model.tutorialStrategies.level_4.Strategy4B;
-import com.mygdx.model.tutorialStrategies.level_4.Strategy4C;
 
 import static com.mygdx.game.ResourcePaths.TUTMAP4;
 
@@ -37,28 +37,25 @@ public class TutMap4 extends AbstractMap {
         final String stepC = "";
         final Label finalStep = new Label("", game.uiSkin);
 
-        //CheckBox checkBoxA = new CheckBox("BLA BLA keine Ahnung ", game.uiSkin);
-        CheckBox checkBoxB = new CheckBox("Das Drehen nach Rechts muss angepasst werden. ", game.uiSkin);
-        CheckBox checkBoxC = new CheckBox("Nach jedem Schritt ueberpruefen, ob links keine Wand ist. ", game.uiSkin);
+        CheckBox checkBoxA = new CheckBox("Das Drehen nach Rechts muss angepasst werden. ", game.uiSkin);
+        CheckBox checkBoxB = new CheckBox("Nach jedem Schritt ueberpruefen, ob links keine Wand ist. ", game.uiSkin);
 
-        /*checkBoxA.addListener(new ClickListener() {
+
+        checkBoxA.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonStrategy(new Strategy4A());
+                notifyObserver(new Strategy4A());
+                algoText.setText("S-1: Laufe geradeaus, wenn links frei, dann 2, wenn vorne versperrt, dann 3 ");
+                algoText2.setText("S-2: Nach links drehen, dann 1 ");
+                algoText3.setText("S-3: Nach links drehen, dann 1 ");
+                algoWindow.pack();
             }
-        });*/
+        });
 
         checkBoxB.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 notifyObserver(new Strategy4B());
-            }
-        });
-
-        checkBoxC.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                notifyObserver(new Strategy4C());
                 algoText.setText("S-1: Laufe geradeaus, wenn links frei, dann 2, wenn vorne versperrt, dann 3 ");
                 algoText2.setText("S-2: Nach links drehen, dann 1 ");
                 algoText3.setText("S-3: Nach rechts drehen, dann 1 ");
@@ -66,14 +63,12 @@ public class TutMap4 extends AbstractMap {
             }
         });
 
-        ButtonGroup<CheckBox> buttonGroup = new ButtonGroup<>(checkBoxB, checkBoxC);
+        ButtonGroup<CheckBox> buttonGroup = new ButtonGroup<>(checkBoxA, checkBoxB);
         window.add(textArea);
         window.row();
-        //window.add(checkBoxA);
-        //window.row();
-        window.add(checkBoxB);
+        window.add(checkBoxA);
         window.row();
-        window.add(checkBoxC);
+        window.add(checkBoxB);
         window.pack();
         window.setPosition(64, Gdx.graphics.getHeight());
 

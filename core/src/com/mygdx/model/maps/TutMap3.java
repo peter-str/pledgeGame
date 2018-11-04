@@ -30,13 +30,11 @@ public class TutMap3 extends AbstractMap {
 
         final String stepA = "S-2: Wand vor dir, aber links keine: Drehe dich nach links. ";
         final String stepB = "S-2: Wand vor dir, aber links keine: Drehe dich nach rechts. ";
-        final String stepC = "S-2: Wand vor dir: Drehe dich nach links. ";
         final Label finalStep = new Label("2: -", game.uiSkin);
         finalStep.setFontScale(0.9f);
 
         CheckBox checkBoxA = new CheckBox("Wenn eine Wand vor dir ist, aber links keine, drehe dich nach links", game.uiSkin);
         CheckBox checkBoxB = new CheckBox("Wenn eine Wand vor dir ist, aber links keine, drehe dich nach rechts", game.uiSkin);
-        //CheckBox checkBoxC = new CheckBox("Wenn eine Wand vor dir ist, drehe dich nach links", game.uiSkin);
 
         checkBoxA.addListener(new ClickListener() {
             @Override
@@ -56,15 +54,6 @@ public class TutMap3 extends AbstractMap {
             }
         });
 
-        /*checkBoxC.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                gameScreen.setButtonStrategy(new Strategy3C());
-                finalStep.setText(stepC);
-                algoWindow.pack();
-            }
-        });*/
-
         ButtonGroup<CheckBox> buttonGroup = new ButtonGroup<>(checkBoxA, checkBoxB);
         window.add(textArea);
         window.row();
@@ -72,7 +61,6 @@ public class TutMap3 extends AbstractMap {
         window.row();
         window.add(checkBoxB);
         window.row();
-        //window.add(checkBoxC);
         window.pack();
         window.setPosition(64, Gdx.graphics.getHeight());
 
