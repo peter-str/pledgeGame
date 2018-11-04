@@ -40,20 +40,21 @@ public class IntroductionMap1 extends AbstractMap {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());
-            dialog = new Dialog("Auf ins Abenteuer!", game.uiSkin, "dialog") {
+            dialog = new Dialog("Aufbruch!", game.uiSkin, "dialog") {
                 public void result(Object obj) {
                     Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
                 }
             };
-            dialog.text("Du moechtest dich auf eine Expedition begeben. \n" +
-                    "Dummerweise hast du deinen Kompass verloren... \n" +
-                    "Du erinnerst dich, dass du ihn das letzte Mal am Stadtbrunnen hattest. \n" +
-                    "Du beschliesst zum Brunnen zu gehen.(Benutze die Pfeiltasten) ");
+            dialog.text("Ein neuer Tag eine neue Expedition \n" +
+                    "Dummerweise hast du deinen Kompass verloren, den du auf deinen Reisen \n" +
+                    "unbedingt benoetigst. Du kannst dich erinnern, ihn das letzte Mal am Stadtbrunnen \n" +
+                    "benutzt zu haben. Moeglicherweise liegt er noch dort... \n" +
+                    "(Benutze die Pfeiltasten) ");
             dialog.button("Okay");
             dialog.show(gameScreenObserver.getStage());
         }
 
-        if(x == 15*32 && y == 21*32 && flag == 1) {
+        if(x == 15 && y == 21 && flag == 1) {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());
@@ -69,7 +70,7 @@ public class IntroductionMap1 extends AbstractMap {
             dialog.show(gameScreenObserver.getStage());
         }
 
-        if((x == 23*32 || x == 26*32) && y == 18*32 && flag == 2) {
+        if((x == 23 || x == 26) && y == 18 && flag == 2) {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());

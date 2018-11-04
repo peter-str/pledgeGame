@@ -36,7 +36,7 @@ public class IntroductionMap2 extends AbstractMap {
 
     @Override
     public void showInstructions(int x, int y) {
-        if((x == 15*32 || x == 16*32) && y == 6*32 && flag == 0) {
+        if((x == 15 || x == 16) && y == 6 && flag == 0) {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());
@@ -51,7 +51,7 @@ public class IntroductionMap2 extends AbstractMap {
             dialog.show(gameScreenObserver.getStage());
         }
 
-        if(x == 12*32 && (y == 5*32 || y == 6*32) && flag == 1) {
+        if(x == 12 && (y == 5 || y == 6) && flag == 1) {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());
@@ -67,7 +67,7 @@ public class IntroductionMap2 extends AbstractMap {
             dialog.show(gameScreenObserver.getStage());
         }
 
-        if(x == 2*32 && y == 16*32 && flag == 2) {
+        if(x == 2 && y == 16 && flag == 2) {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());

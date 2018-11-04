@@ -55,6 +55,10 @@ public class TutMap5 extends AbstractMap {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 notifyObserver(new Strategy5B());
+                algoText.setText("S-1: Laufe geradeaus. Wenn Weg versperrt, dann S-3 ");
+                algoText2.setText("S-2: Nach links drehen und Kompass + 1 und weiter mit S-1 ");
+                algoText3.setText("S-3: Nach rechts drehen und Kompass - 1 und weiter mit S-1 ");
+                algoWindow.pack();
             }
         });
 
@@ -62,6 +66,10 @@ public class TutMap5 extends AbstractMap {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 notifyObserver(new Strategy5C());
+                algoText.setText("S-1: Wenn links frei, dann S-2, wenn nicht, dann S-3 ");
+                algoText2.setText("S-2: Nach links drehen und weiter mit S-1 ");
+                algoText3.setText("S-3: Geradeaus laufen, wenn Weg versperrt, dann S-2 ");
+                algoWindow.pack();
             }
         });
 
