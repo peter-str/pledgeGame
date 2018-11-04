@@ -1,6 +1,5 @@
 package com.mygdx.model.maps;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -10,22 +9,21 @@ import com.mygdx.game.PledgeGame;
 import com.mygdx.game.TutorialTexts;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyTutorial;
-import com.mygdx.model.tutorialStrategies.TutorialStrategy;
-import com.mygdx.model.tutorialStrategies.level_5.Strategy5A;
 
-import static com.mygdx.game.ResourcePaths.TUTMAP6;
 
-public class TutMap6 extends AbstractMap{
+import static com.mygdx.game.ResourcePaths.TUTMAP7;
+
+public class TutMap7 extends AbstractMap{
     private Label algoText;
     private Label algoText2;
     private Label algoText3;
     private boolean justTurned = false;
 
-    public TutMap6(final PledgeGame game, MapEnum nextMap) {
+    public TutMap7(final PledgeGame game, MapEnum nextMap) {
         super(game, nextMap);
-        tiledMap = new TmxMapLoader().load(TUTMAP6);
-        Label textArea = new Label(TutorialTexts.LEVEL6, game.uiSkin);
-        window = new Window("Algorithmus fertiggestellt", game.uiSkin);
+        tiledMap = new TmxMapLoader().load(TUTMAP7);
+        //Label textArea = new Label(TutorialTexts.LEVEL6, game.uiSkin);
+        //window = new Window("Algorithmus fertiggestellt", game.uiSkin);
 
         algoText = new Label("S-1: Laufe geradeaus. \nWenn links frei und Kompass < 0, dann S-2, wenn Weg versperrt, dann S-3 ", game.uiSkin);
         algoText2 = new Label("S-2: Nach links drehen und Kompass + 1 und weiter mit S-1 ", game.uiSkin);
@@ -35,9 +33,9 @@ public class TutMap6 extends AbstractMap{
         algoText3.setFontScale(0.9f);
 
 
-        window.add(textArea);
-        window.pack();
-        window.setPosition(0, Gdx.graphics.getHeight());
+        //window.add(textArea);
+        //window.pack();
+        //window.setPosition(64, Gdx.graphics.getHeight());
 
         algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
         algoWindow.add(algoText);
@@ -47,23 +45,21 @@ public class TutMap6 extends AbstractMap{
         algoWindow.add(algoText3);
         algoWindow.pack();
         algoWindow.setPosition(100, 0);
-
-        //algoText.setColor(Color.RED);
     }
 
     @Override
     public int getStartX() {
-        return 32;
+        return 32 * 20;
     }
 
     @Override
     public int getStartY() {
-        return 32;
+        return 32 * 19;
     }
 
     @Override
     public Window getWindow() {
-        return window;
+        return null;
     }
 
     @Override

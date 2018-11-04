@@ -41,9 +41,15 @@ public class TutorialTexts {
     public static final String LEVEL5 = L5_1 + BREAK + L5_2 + BREAK + BREAK + L5_3 + BREAK;
 
     //TUTORIAL LEVEL 6
-    private static final String L6_1 = "Hier siehst du nochmal den fertigen Algorithmus. Das Wichtigste zusammengefasst: ";
-    private static final String L6_2 = "Gehe geradeaus, bis eine Wand kommt, drehe dich nach Rechts! ";
-    private static final String L6_3 = "Nach Links drehst du dich nur dann, wenn der Zaehler kleiner Null ist! ";
+    private static final String L6_1 = "Der Algorithmus ist nun komplett. ";
+    private static final String L6_2 = "Du wiederholst nun nochmal das Vorgehen. ";
+    private static final String L6_3 = "Folge den rot markierten Anweisungen im unteren Fenster. ";
     public static final String LEVEL6 = L6_1 + BREAK + L6_2 + BREAK + L6_3;
+
+    /*
+     private static final String L6_1 = "Hier siehst du nochmal den fertigen Algorithmus. Das Wichtigste zusammengefasst: ";
+     private static final String L6_2 = "Gehe geradeaus, bis eine Wand kommt, drehe dich nach Rechts! ";
+     private static final String L6_3 = "Nach Links drehst du dich nur dann, wenn der Zaehler kleiner Null ist! ";
+     */
 
 }

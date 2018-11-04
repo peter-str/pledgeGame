@@ -23,6 +23,7 @@ public class ResourcePaths {
     public static final String TUTMAP4 = (createJarFile) ? "maps/TutorialMap4.tmx" : "core/assets/maps/TutorialMap4.tmx";
     public static final String TUTMAP5 = (createJarFile) ? "maps/TutorialMap5.tmx" : "core/assets/maps/TutorialMap5.tmx";
     public static final String TUTMAP6 = (createJarFile) ? "maps/TutorialMap6.tmx" : "core/assets/maps/TutorialMap6.tmx";
+    public static final String TUTMAP7 = (createJarFile) ? "maps/TutorialMap7.tmx" : "core/assets/maps/TutorialMap7.tmx";
 
     public static final String INTRODUCTIONMAP1 = (createJarFile) ? "maps/Introduction1.tmx" : "core/assets/maps/Introduction1.tmx";
     public static final String INTRODUCTIONMAP2 = (createJarFile) ? "maps/Introduction2.tmx" : "core/assets/maps/Introduction2.tmx";

@@ -93,12 +93,12 @@ public class GameScreen implements Screen, GameScreenInterface {
             camera2.position.y = player.getY();
             Gdx.input.setInputProcessor(playerController);
             revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
-            revCounter.setPosition(sprite.getX(), sprite.getY() - 320);
+            revCounter.setPosition(player.getX() - 320, player.getY() - 200);
             revCounter.setFontScale(1.5f);
-            if(map.getWindow() != null) {
+            if(map.getWindow() != null)
                 stage.addActor(map.getWindow());
+            if(map.getAlgoWindow() != null)
                 stage.addActor(map.getAlgoWindow());
-            }
             //setDifficulty(map.getDifficulty());
         }
 
@@ -192,7 +192,7 @@ public class GameScreen implements Screen, GameScreenInterface {
         if(difficulty.hasTexture())
             game.spriteBatch.draw(difficulty.getFovTexture(), x - 334, y - 334);
 
-        map.showInstructions(player.getX(), player.getY());
+        map.showInstructions(player.getRevCounter(), player.isTop(), player.isRight(), player.isBottom(), player.isLeft());
 
         game.spriteBatch.setProjectionMatrix(camera2.combined);
         revCounter.setText("Kompass: " + String.valueOf(player.getRevCounter()));

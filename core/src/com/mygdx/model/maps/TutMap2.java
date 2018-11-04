@@ -29,15 +29,15 @@ public class TutMap2 extends AbstractMap {
         Label textArea = new Label(TutorialTexts.LEVEL2, game.uiSkin);
         window = new Window("Die zweite Regel", game.uiSkin);
 
-        final String stepA = "2: Wenn eine Wand vor dir ist, drehe dich nach links ";
-        final String stepB = "2: Wenn eine Wand vor dir ist, drehe dich nach rechts ";
-        final String stepC = "2: Wenn eine Wand vor dir ist, drehe dich nach unten ";
+        final String stepA = "S-2: Wenn eine Wand vor dir ist, drehe dich nach links. ";
+        final String stepB = "S-2: Wenn eine Wand vor dir ist, drehe dich nach rechts. ";
+        final String stepC = "S-2: Wenn eine Wand vor dir ist, drehe dich nach unten. ";
         final Label finalStep = new Label("", game.uiSkin);
         finalStep.setFontScale(0.9f);
 
-        CheckBox checkBoxA = new CheckBox("Links", game.uiSkin);
-        CheckBox checkBoxB = new CheckBox("Rechts", game.uiSkin);
-        CheckBox checkBoxC = new CheckBox("Unten", game.uiSkin);
+        CheckBox checkBoxA = new CheckBox("links", game.uiSkin);
+        CheckBox checkBoxB = new CheckBox("rechts", game.uiSkin);
+        CheckBox checkBoxC = new CheckBox("unten", game.uiSkin);
 
         checkBoxA.addListener(new ClickListener() {
             @Override
@@ -78,7 +78,7 @@ public class TutMap2 extends AbstractMap {
         window.setPosition(64, Gdx.graphics.getHeight());
 
         algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
-        Label algoText = new Label("1: Laufe geradeaus", game.uiSkin);
+        Label algoText = new Label("S-1: Laufe geradeaus. ", game.uiSkin);
         algoText.setFontScale(0.9f);
         algoWindow.add(algoText);
         algoWindow.row();

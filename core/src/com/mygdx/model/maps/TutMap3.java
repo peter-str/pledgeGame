@@ -28,9 +28,9 @@ public class TutMap3 extends AbstractMap {
         Label textArea = new Label(TutorialTexts.LEVEL3, game.uiSkin);
         window = new Window("Die dritte Regel", game.uiSkin);
 
-        final String stepA = "2: Wand vor dir, aber links keine: Drehe dich nach links ";
-        final String stepB = "2: Wand vor dir, aber links keine: Drehe dich nach rechts ";
-        final String stepC = "2: Wand vor dir: Drehe dich nach links ";
+        final String stepA = "S-2: Wand vor dir, aber links keine: Drehe dich nach links. ";
+        final String stepB = "S-2: Wand vor dir, aber links keine: Drehe dich nach rechts. ";
+        final String stepC = "S-2: Wand vor dir: Drehe dich nach links. ";
         final Label finalStep = new Label("2: -", game.uiSkin);
         finalStep.setFontScale(0.9f);
 
@@ -77,8 +77,8 @@ public class TutMap3 extends AbstractMap {
         window.setPosition(64, Gdx.graphics.getHeight());
 
         algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
-        Label algoText = new Label("1: Laufe geradeaus", game.uiSkin);
-        Label algoText2 = new Label("3: Wand vor dir: Drehe dich nach rechts ", game.uiSkin);
+        Label algoText = new Label("S-1: Laufe geradeaus", game.uiSkin);
+        Label algoText2 = new Label("S-3: Wand vor dir: Drehe dich nach rechts ", game.uiSkin);
         algoText.setFontScale(0.9f);
         algoText2.setFontScale(0.9f);
         algoWindow.add(algoText);
