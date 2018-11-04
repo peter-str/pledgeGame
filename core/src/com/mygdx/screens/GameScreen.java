@@ -36,11 +36,13 @@ public class GameScreen implements Screen, GameScreenInterface {
     private MapEnum mapEnum;
     private TutorialStrategy strategy;
     private boolean playMode;
+    private boolean showAlgoWindow;
 
     public GameScreen(final PledgeGame game, MapEnum mapEnum, boolean tutorialFlag) {
         this.game = game;
         map = mapEnum.getMap(game);
         map.register(this);
+        showAlgoWindow = true;
         this.mapEnum = mapEnum;
         this.tutorialFlag = tutorialFlag;
         difficulty = map.getDifficulty();
@@ -48,9 +50,10 @@ public class GameScreen implements Screen, GameScreenInterface {
             expertModeOn = true;
     }
 
-    public GameScreen(final PledgeGame game, MapEnum mapEnum, int selectedDifficulty, int selectedMapSize) {
+    public GameScreen(final PledgeGame game, MapEnum mapEnum, int selectedDifficulty, int selectedMapSize, boolean showAlgoWindow) {
         this.game = game;
         int mapSize;
+        this.showAlgoWindow = showAlgoWindow;
 
         switch(selectedMapSize) {
             default:
@@ -107,7 +110,7 @@ public class GameScreen implements Screen, GameScreenInterface {
             revCounter.setFontScale(1.5f);
             if(map.getWindow() != null)
                 stage.addActor(map.getWindow());
-            if(map.getAlgoWindow() != null)
+            if(map.getAlgoWindow() != null && showAlgoWindow)
                 stage.addActor(map.getAlgoWindow());
         }
 

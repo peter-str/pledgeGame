@@ -119,6 +119,7 @@ public class MainMenuScreen implements Screen {
 
             TextButton playButton = new TextButton("Start", game.uiSkin);
             TextButton backButton = new TextButton("Zurueck", game.uiSkin);
+            TextButton showAlgoWindowButton = new TextButton("Algorithmus anzeigen", game.uiSkin, "toggle");
 
             String[] difficultyStrings = {"Leicht", "Mittel", "Schwer", "Experte"};
             final SelectBox<String> selectBox = new SelectBox<>(game.uiSkin);
@@ -132,7 +133,7 @@ public class MainMenuScreen implements Screen {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     System.out.println(mapSizeSelectBox.getSelectedIndex());
-                    game.setScreen(new GameScreen(game, MapEnum.ENDLESS_MAZE, selectBox.getSelectedIndex(), mapSizeSelectBox.getSelectedIndex()));
+                    game.setScreen(new GameScreen(game, MapEnum.ENDLESS_MAZE, selectBox.getSelectedIndex(), mapSizeSelectBox.getSelectedIndex(), showAlgoWindowButton.isChecked()));
                     dispose();
                 }
             });
@@ -144,6 +145,13 @@ public class MainMenuScreen implements Screen {
                     dispose();
                 }
             });
+
+            /*showAlgoWindowButton.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    System.out.println("Test");
+                }
+            });*/
 
             mainTable.add(headline);
             mainTable.row();
@@ -160,6 +168,10 @@ public class MainMenuScreen implements Screen {
             mainTable.add(mapSizeLabel);
             mainTable.row();
             mainTable.add(mapSizeSelectBox);
+            mainTable.row();
+            mainTable.add(breakLabel);
+            mainTable.row();
+            mainTable.add(showAlgoWindowButton);
             mainTable.row();
             mainTable.add(breakLabel);
             mainTable.row();

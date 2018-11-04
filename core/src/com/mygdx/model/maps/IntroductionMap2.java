@@ -60,7 +60,7 @@ public class IntroductionMap2 extends AbstractMap {
                     Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
                 }
             };
-            dialog.text("Beobachte deinen Kompass(die Zahl), am unteren Rand. \n" +
+            dialog.text("Beobachte deinen Kompass (die Zahl), am linken Rand. \n" +
                     "Kannst du herausfinden, wie er funktioniert? \n" +
                     "Drehe dich nach links und rechts, um es herauszufinden. ");
             dialog.button("Okay");

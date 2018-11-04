@@ -45,7 +45,7 @@ public class IntroductionMap1 extends AbstractMap {
                     Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
                 }
             };
-            dialog.text("Ein neuer Tag eine neue Expedition \n" +
+            dialog.text("Ein neuer Tag, eine neue Expedition. \n" +
                     "Dummerweise hast du deinen Kompass verloren, den du auf deinen Reisen \n" +
                     "unbedingt benoetigst. Du kannst dich erinnern, ihn das letzte Mal am Stadtbrunnen \n" +
                     "benutzt zu haben. Moeglicherweise liegt er noch dort... \n" +
