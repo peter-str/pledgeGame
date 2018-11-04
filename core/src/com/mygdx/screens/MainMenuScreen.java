@@ -1,5 +1,6 @@
 package com.mygdx.screens;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -49,15 +50,13 @@ public class MainMenuScreen implements Screen {
             mainTable.center();
 
             Label headline = new Label("Willkommen zum Pledge-Algorithmus-Spiel", game.uiSkin);
+            Label breakLabel = new Label("", game.uiSkin);
             TextButton tutorialButton = new TextButton("Einfuehrung", game.uiSkin);
-            TextButton playButton = new TextButton("Start", game.uiSkin);
+            //TextButton playButton = new TextButton("Start", game.uiSkin);
             TextButton endlessButton = new TextButton("Endlos-Modus", game.uiSkin);
             TextButton levelButton = new TextButton("Levelauswahl", game.uiSkin);
             TextButton exitButton = new TextButton("Exit", game.uiSkin);
 
-            String[] astr = {"Schwierigkeit waehlen:", "Super Easy", "Easy", "Medium", "Hard", "Expert"};
-            final SelectBox<String> selectBox = new SelectBox<>(game.uiSkin);
-            selectBox.setItems(astr);
 
         /*CheckBox difficultySuperEasy = new CheckBox("SuperEasy", game.uiSkin);
         CheckBox difficultyEasy = new CheckBox("Easy", game.uiSkin);
@@ -84,13 +83,13 @@ public class MainMenuScreen implements Screen {
                 }
             });
 
-            playButton.addListener(new ClickListener() {
+            /*playButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
                     game.setScreen(new GameScreen(game, MapEnum.INTRODUCTION_3, false));
                     dispose();
                 }
-            });
+            });*/
 
             endlessButton.addListener(new ClickListener() {
                 @Override
@@ -118,17 +117,17 @@ public class MainMenuScreen implements Screen {
 
             mainTable.add(headline);
             mainTable.row();
+            mainTable.add(breakLabel);
+            mainTable.row();
             mainTable.add(tutorialButton);
             mainTable.row();
-            mainTable.add(playButton);
+            //mainTable.add(playButton);
             mainTable.row();
             mainTable.add(endlessButton);
             mainTable.row();
             mainTable.add(levelButton);
             mainTable.row();
             mainTable.add(exitButton);
-            mainTable.row();
-            mainTable.add(selectBox);
             mainTable.row();
 
             stage.addActor(mainTable);
@@ -144,10 +143,9 @@ public class MainMenuScreen implements Screen {
         if(endlessModeSetupMenue) {
             Gdx.input.setInputProcessor(stage);
 
-            Label headline = new Label("Willkommen zum Pledge-Algorithmus-Spiel", game.uiSkin);
-
+            Label headline = new Label("Endlos-Modus-Menue", game.uiSkin);
+            Label breakLabel = new Label("", game.uiSkin);
             Label difficultyLabel = new Label("Schwierigkeit einstellen: ", game.uiSkin);
-            //difficultyLabel.setPosition(60, 220);
             Label mapSizeLabel = new Label("Kartengroesse einstellen: ", game.uiSkin);
 
             Table mainTable = new Table();
@@ -155,6 +153,7 @@ public class MainMenuScreen implements Screen {
             mainTable.center();
 
             TextButton playButton = new TextButton("Start", game.uiSkin);
+            TextButton backButton = new TextButton("Zurueck", game.uiSkin);
 
             String[] difficultyStrings = {"Leicht", "Mittel", "Schwer", "Experte"};
             final SelectBox<String> selectBox = new SelectBox<>(game.uiSkin);
@@ -173,11 +172,21 @@ public class MainMenuScreen implements Screen {
                 }
             });
 
+            backButton.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    game.setScreen(new MainMenuScreen(game, false));
+                    dispose();
+                }
+            });
+
 
 
 
 
             mainTable.add(headline);
+            mainTable.row();
+            mainTable.add(breakLabel);
             mainTable.row();
             mainTable.add(difficultyLabel);
             mainTable.row();
@@ -188,6 +197,8 @@ public class MainMenuScreen implements Screen {
             mainTable.add(mapSizeSelectBox);
             mainTable.row();
             mainTable.add(playButton);
+            mainTable.row();
+            mainTable.add(backButton);
 
             stage.addActor(mainTable);
         }

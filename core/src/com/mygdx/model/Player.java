@@ -25,7 +25,7 @@ public class Player {
     private TextureAtlas textureAtlas;
     private Sprite sprite;
     private float walkTimer;
-    private Animation<TextureRegion> walking;
+    private Animation<TextureAtlas.AtlasRegion> walking;
     private TextureRegion standing;
     private boolean moveRequestThisFrame;
     private Player_State state;

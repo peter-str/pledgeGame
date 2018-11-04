@@ -15,8 +15,6 @@ public class ResourcePaths {
     public static final String COMPASS = (createJarFile) ? "maps/textures/compass.png" : "core/assets/maps/textures/compass.png";
 
     //maps package
-    public static final String TESTMAP = (createJarFile) ? "maps/18x18map.tmx" : "core/assets/maps/18x18map.tmx";
-
     public static final String TUTMAP1 = (createJarFile) ? "maps/TutorialMap1.tmx" : "core/assets/maps/TutorialMap1.tmx";
     public static final String TUTMAP2 = (createJarFile) ? "maps/TutorialMap2.tmx" : "core/assets/maps/TutorialMap2.tmx";
     public static final String TUTMAP3 = (createJarFile) ? "maps/TutorialMap3.tmx" : "core/assets/maps/TutorialMap3.tmx";
@@ -24,7 +22,6 @@ public class ResourcePaths {
     public static final String TUTMAP5 = (createJarFile) ? "maps/TutorialMap5.tmx" : "core/assets/maps/TutorialMap5.tmx";
     public static final String TUTMAP6 = (createJarFile) ? "maps/TutorialMap6.tmx" : "core/assets/maps/TutorialMap6.tmx";
     public static final String TUTMAP7 = (createJarFile) ? "maps/TutorialMap7.tmx" : "core/assets/maps/TutorialMap7.tmx";
-    public static final String TUTMAP8 = (createJarFile) ? "maps/TutorialMap8.tmx" : "core/assets/maps/TutorialMap8.tmx";
 
 
     public static final String INTRODUCTIONMAP1 = (createJarFile) ? "maps/Introduction1.tmx" : "core/assets/maps/Introduction1.tmx";
@@ -38,7 +35,6 @@ public class ResourcePaths {
     public static final String PLAYER_TEXTURE = (createJarFile) ? "player/texture.atlas" : "core/assets/player/texture.atlas";
 
     //Difficulty Textures (difficulties package)
-    public static final String EASY = (createJarFile) ? "fov_high_50.png" : "core/assets/fov_high_50.png";
-    public static final String MEDIUM = (createJarFile) ? "fov_medium_75.png" : "core/assets/fov_medium.png";
+    public static final String MEDIUM = (createJarFile) ? "fov_medium.png" : "core/assets/fov_medium.png";
     public static final String HIGH = (createJarFile) ? "fov_low2.png" : "core/assets/fov_low2.png";
 }
