@@ -47,13 +47,15 @@ public abstract class AbstractMap {
     public void showInstructions(int revCounter, boolean a, boolean b, boolean c, boolean d){}
     public Window getWindow(){return null;}
     public Window getAlgoWindow(){return null;}
-    public abstract boolean getTutorialFlag();
+    public abstract boolean getTutorialFlagOfNextLevel();
 
     public TiledMap getTiledMap() {
         return tiledMap;
     }
 
     public abstract MapEnum getNextMap();
+
+    public abstract void triggerGoalAchievedMethod();
 
     public void goalAchieved(final MapEnum nextMap, final boolean tutorialFlag) {
         if (finished) {

@@ -67,7 +67,7 @@ class CollisionController {
                 ((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
                 return true;
             } else {
-                map.goalAchieved(map.getNextMap(), map.getTutorialFlag());
+                map.triggerGoalAchievedMethod();
                 return true;
             }
         }

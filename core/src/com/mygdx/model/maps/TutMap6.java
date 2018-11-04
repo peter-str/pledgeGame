@@ -82,13 +82,18 @@ public class TutMap6 extends AbstractMap {
     }
 
     @Override
-    public boolean getTutorialFlag() {
+    public boolean getTutorialFlagOfNextLevel() {
         return true;
     }
 
     @Override
     public MapEnum getNextMap() {
         return nextMap;
+    }
+
+    @Override
+    public void triggerGoalAchievedMethod() {
+        super.goalAchieved(nextMap, false);
     }
 
     @Override
@@ -119,12 +124,6 @@ public class TutMap6 extends AbstractMap {
             algoText2.setColor(Color.RED);
             justTurned = true;
         }
-    }
-
-    @Override
-    public void goalAchieved(MapEnum nextMap, boolean tutorialFlag) {
-        super.goalAchieved(nextMap, false);
-        //((Game)Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
     }
 
     @Override

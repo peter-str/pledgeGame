@@ -17,7 +17,7 @@ import com.mygdx.model.difficulties.DifficultyTutorial;
 
 import static com.mygdx.game.ResourcePaths.TUTMAP7;
 
-public class TutMap7 extends AbstractMap{
+public class TutMap7 extends AbstractMap {
     private Label algoText;
     private Label algoText2;
     private Label algoText3;
@@ -76,13 +76,18 @@ public class TutMap7 extends AbstractMap{
     }
 
     @Override
-    public boolean getTutorialFlag() {
+    public boolean getTutorialFlagOfNextLevel() {
         return true;
     }
 
     @Override
     public MapEnum getNextMap() {
         return nextMap;
+    }
+
+    @Override
+    public void triggerGoalAchievedMethod() {
+        super.goalAchieved(nextMap, false);
     }
 
     @Override
@@ -139,12 +144,6 @@ public class TutMap7 extends AbstractMap{
     public void test(int counter) {
         flag2++;
         revC = counter;
-    }
-
-    @Override
-    public void goalAchieved(MapEnum nextMap, boolean tutorialFlag) {
-        super.goalAchieved(nextMap, false);
-        //((Game)Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
     }
 
     @Override

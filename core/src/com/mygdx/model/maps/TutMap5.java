@@ -21,7 +21,7 @@ import com.mygdx.model.tutorialStrategies.level_5.Strategy5C;
 
 import static com.mygdx.game.ResourcePaths.TUTMAP5;
 
-public class TutMap5 extends AbstractMap{
+public class TutMap5 extends AbstractMap {
 
     public TutMap5(final PledgeGame game, MapEnum nextMap) {
         super(game, nextMap);
@@ -113,8 +113,8 @@ public class TutMap5 extends AbstractMap{
     }
 
     @Override
-    public boolean getTutorialFlag() {
-        return true;
+    public boolean getTutorialFlagOfNextLevel() {
+        return false;
     }
 
     @Override
@@ -123,9 +123,8 @@ public class TutMap5 extends AbstractMap{
     }
 
     @Override
-    public void goalAchieved(MapEnum nextMap, boolean tutorialFlag) {
+    public void triggerGoalAchievedMethod() {
         super.goalAchieved(nextMap, false);
-        //((Game)Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
     }
 
     @Override

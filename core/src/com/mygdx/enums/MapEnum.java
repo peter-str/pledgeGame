@@ -78,12 +78,6 @@ public enum MapEnum {
         }
     },
 
-    ENDLESS {
-        public AbstractMap getMap(PledgeGame game) {
-            return new EndlessMap(game, MAP_2);
-        }
-    },
-
     ENDLESS_MAZE {
         public AbstractMap getMap(PledgeGame game) {
             return new EndlessMazeMap(game, ENDLESS_MAZE);

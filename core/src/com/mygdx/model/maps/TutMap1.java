@@ -58,7 +58,7 @@ public class TutMap1 extends AbstractMap {
     }
 
     @Override
-    public boolean getTutorialFlag() {
+    public boolean getTutorialFlagOfNextLevel() {
         return true;
     }
 
@@ -68,7 +68,7 @@ public class TutMap1 extends AbstractMap {
     }
 
     @Override
-    public void goalAchieved(MapEnum nextMap, boolean tutorialFlag) {
+    public void triggerGoalAchievedMethod() {
         super.goalAchieved(nextMap, true);
     }
 

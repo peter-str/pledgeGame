@@ -17,7 +17,7 @@ import com.mygdx.model.tutorialStrategies.level_4.Strategy4C;
 
 import static com.mygdx.game.ResourcePaths.TUTMAP4;
 
-public class TutMap4 extends AbstractMap{
+public class TutMap4 extends AbstractMap {
 
     public TutMap4(final PledgeGame game, MapEnum nextMap) {
         super(game, nextMap);
@@ -114,7 +114,7 @@ public class TutMap4 extends AbstractMap{
     }
 
     @Override
-    public boolean getTutorialFlag() {
+    public boolean getTutorialFlagOfNextLevel() {
         return true;
     }
 
@@ -124,7 +124,7 @@ public class TutMap4 extends AbstractMap{
     }
 
     @Override
-    public void goalAchieved(MapEnum nextMap, boolean tutorialFlag) {
+    public void triggerGoalAchievedMethod() {
         super.goalAchieved(nextMap, true);
     }
 

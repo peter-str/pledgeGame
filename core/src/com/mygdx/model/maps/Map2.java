@@ -28,6 +28,11 @@ public class Map2 extends AbstractMap {
         return nextMap;
     }
 
+    @Override
+    public void triggerGoalAchievedMethod() {
+        super.goalAchieved(nextMap, false);
+    }
+
     public void message() {
         if(messageCounter == 0) {
             messageCounter++;
@@ -76,11 +81,6 @@ public class Map2 extends AbstractMap {
     }
 
     @Override
-    public void goalAchieved(MapEnum nextMap, boolean tutorialFlag) {
-        super.goalAchieved(nextMap, false);
-    }
-
-    @Override
     public Difficulty getDifficulty() {
         return new DifficultyHigh(false);
     }
@@ -96,7 +96,7 @@ public class Map2 extends AbstractMap {
     }
 
     @Override
-    public boolean getTutorialFlag() {
+    public boolean getTutorialFlagOfNextLevel() {
         return false;
     }
 }

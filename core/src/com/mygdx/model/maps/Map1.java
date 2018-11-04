@@ -23,13 +23,8 @@ public class Map1 extends AbstractMap {
     }
 
     @Override
-    public boolean getTutorialFlag() {
+    public boolean getTutorialFlagOfNextLevel() {
         return false;
-    }
-
-    @Override
-    public void goalAchieved(MapEnum nextMap, boolean tutorialFlag) {
-        super.goalAchieved(nextMap, false);
     }
 
     @Override
@@ -40,5 +35,10 @@ public class Map1 extends AbstractMap {
     @Override
     public MapEnum getNextMap() {
         return nextMap;
+    }
+
+    @Override
+    public void triggerGoalAchievedMethod() {
+        super.goalAchieved(nextMap, false);
     }
 }

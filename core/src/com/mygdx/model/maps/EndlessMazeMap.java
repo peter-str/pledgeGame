@@ -36,13 +36,18 @@ public class EndlessMazeMap extends AbstractMap {
     }
 
     @Override
-    public boolean getTutorialFlag() {
+    public boolean getTutorialFlagOfNextLevel() {
         return false;
     }
 
     @Override
     public MapEnum getNextMap() {
         return nextMap;
+    }
+
+    @Override
+    public void triggerGoalAchievedMethod() {
+
     }
 
     @Override

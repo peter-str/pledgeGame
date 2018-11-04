@@ -76,7 +76,7 @@ public class MainMenuScreen implements Screen {
         tutorialButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new GameScreen(game, MapEnum.TUTORIALMAP_6, false));
+                game.setScreen(new GameScreen(game, MapEnum.TUTORIALMAP_1, true));
                 dispose();
             }
         });
