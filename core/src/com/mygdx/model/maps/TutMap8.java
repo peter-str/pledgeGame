@@ -1,10 +1,8 @@
 package com.mygdx.model.maps;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.Timer;
@@ -12,20 +10,17 @@ import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.game.TutorialTexts;
 import com.mygdx.model.difficulties.Difficulty;
-import com.mygdx.model.difficulties.DifficultyTutorial;
-import com.mygdx.model.tutorialStrategies.TutorialStrategy;
-import com.mygdx.model.tutorialStrategies.level_5.Strategy5A;
+import com.mygdx.model.difficulties.DifficultyHigh;
 
-import static com.mygdx.game.ResourcePaths.INTRODUCTIONMAP3;
 import static com.mygdx.game.ResourcePaths.TUTMAP6;
 
-public class TutMap6 extends AbstractMap {
+public class TutMap8 extends AbstractMap {
     private Label algoText;
     private Label algoText2;
     private Label algoText3;
     private boolean justTurned = false;
 
-    public TutMap6(final PledgeGame game, MapEnum nextMap) {
+    public TutMap8(final PledgeGame game, MapEnum nextMap) {
         super(game, nextMap);
         tiledMap = new TmxMapLoader().load(TUTMAP6);
         Label textArea = new Label(TutorialTexts.LEVEL6, game.uiSkin);
@@ -57,7 +52,7 @@ public class TutMap6 extends AbstractMap {
             public void run() {
                 window.remove();
             }
-        }, 15f);
+        }, 0.1f);
     }
 
     @Override
@@ -127,6 +122,6 @@ public class TutMap6 extends AbstractMap {
 
     @Override
     public Difficulty getDifficulty() {
-        return new DifficultyTutorial();
+        return new DifficultyHigh();
     }
 }

@@ -2,9 +2,9 @@ package com.mygdx.model.maps;
 
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.mygdx.model.difficulties.Difficulty;
-import com.mygdx.model.difficulties.DifficultyEasy;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.enums.MapEnum;
+import com.mygdx.model.difficulties.DifficultyTutorial;
 
 public class Map1 extends AbstractMap {
     public Map1(final PledgeGame game, MapEnum nextMap) {
@@ -29,7 +29,7 @@ public class Map1 extends AbstractMap {
 
     @Override
     public Difficulty getDifficulty() {
-        return new DifficultyEasy(false);
+        return new DifficultyTutorial();
     }
 
     @Override

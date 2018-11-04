@@ -5,9 +5,12 @@ import com.mygdx.model.maze_algorithm.MazeCreatorClass;
 
 public class DifficultyExpert implements Difficulty {
 
-    public DifficultyExpert(boolean createMap) {
-        if(createMap)
-            createMap();
+    public DifficultyExpert() {
+
+    }
+
+    public DifficultyExpert(int size) {
+        createMap(size);
     }
 
     @Override
@@ -16,8 +19,8 @@ public class DifficultyExpert implements Difficulty {
     }
 
     @Override
-    public void createMap() {
-        new MazeCreatorClass(12, 12);
+    public void createMap(int size) {
+        new MazeCreatorClass(size, size);
     }
 
     @Override

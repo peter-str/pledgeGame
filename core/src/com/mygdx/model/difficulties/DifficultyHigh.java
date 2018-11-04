@@ -10,10 +10,13 @@ public class DifficultyHigh implements Difficulty {
 
     private Texture fieldOfView_low;
 
-    public DifficultyHigh(boolean createMap) {
+    public DifficultyHigh() {
         fieldOfView_low = new Texture(Gdx.files.internal(HIGH));
-        if(createMap)
-            createMap();
+    }
+
+    public DifficultyHigh(int size) {
+        fieldOfView_low = new Texture(Gdx.files.internal(HIGH));
+        createMap(size);
     }
 
     @Override
@@ -22,7 +25,7 @@ public class DifficultyHigh implements Difficulty {
     }
 
     @Override
-    public void createMap() {
+    public void createMap(int size) {
         new MazeCreatorClass(10, 10);
     }
 

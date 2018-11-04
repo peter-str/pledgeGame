@@ -63,8 +63,11 @@ class CollisionController {
 
     boolean goalAchieved(int x, int y) {
         if(collisionLayer.getCell(x/32, y/32).getTile().getProperties().containsKey("Ziel")) {
-            if(map.getNextMap().equals(MapEnum.ENDLESS_MAZE)) {
-                ((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
+            if(map.getNextMap() == null) {
+                game.setScreen(new MainMenuScreen(game));
+                return true;
+            } else if(map.getNextMap().equals(MapEnum.ENDLESS_MAZE)) {
+                game.setScreen(new MainMenuScreen(game));
                 return true;
             } else {
                 map.triggerGoalAchievedMethod();

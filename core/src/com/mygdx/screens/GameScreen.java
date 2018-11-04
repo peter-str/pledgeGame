@@ -53,20 +53,19 @@ public class GameScreen implements Screen, GameScreenInterface {
         this.game = game;
         switch (diff) {
             case 1:
-                difficulty = new DifficultyEasy(true);
                 break;
             case 2:
-                difficulty = new DifficultyMedium(true);
+                difficulty = new DifficultyMedium(5);
                 break;
             case 3:
-                difficulty = new DifficultyHigh(true);
+                difficulty = new DifficultyHigh(5);
                 break;
             case 4:
-                difficulty = new DifficultyExpert(true);
+                difficulty = new DifficultyExpert(5);
                 expertModeOn = true;
                 break;
             default:
-                difficulty = new DifficultyTutorial(true);
+                difficulty = new DifficultyTutorial(5);
         }
 
         map = mapEnum.getMap(game);

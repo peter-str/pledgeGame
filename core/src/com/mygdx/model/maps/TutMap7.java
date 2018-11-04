@@ -12,6 +12,7 @@ import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.game.TutorialTexts;
 import com.mygdx.model.difficulties.Difficulty;
+import com.mygdx.model.difficulties.DifficultyMedium;
 import com.mygdx.model.difficulties.DifficultyTutorial;
 
 
@@ -148,6 +149,6 @@ public class TutMap7 extends AbstractMap {
 
     @Override
     public Difficulty getDifficulty() {
-        return new DifficultyTutorial(false);
+        return new DifficultyTutorial();
     }
 }

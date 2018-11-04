@@ -8,6 +8,7 @@ import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyHigh;
+import com.mygdx.model.difficulties.DifficultyTutorial;
 import com.mygdx.screens.GameScreen;
 import com.mygdx.screens.MainMenuScreen;
 
@@ -82,7 +83,7 @@ public class Map2 extends AbstractMap {
 
     @Override
     public Difficulty getDifficulty() {
-        return new DifficultyHigh(false);
+        return new DifficultyTutorial();
     }
 
     @Override

@@ -74,6 +74,6 @@ public class TutMap1 extends AbstractMap {
 
     @Override
     public Difficulty getDifficulty() {
-        return new DifficultyTutorial(false);
+        return new DifficultyTutorial();
     }
 }

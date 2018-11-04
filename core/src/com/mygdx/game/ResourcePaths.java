@@ -24,6 +24,8 @@ public class ResourcePaths {
     public static final String TUTMAP5 = (createJarFile) ? "maps/TutorialMap5.tmx" : "core/assets/maps/TutorialMap5.tmx";
     public static final String TUTMAP6 = (createJarFile) ? "maps/TutorialMap6.tmx" : "core/assets/maps/TutorialMap6.tmx";
     public static final String TUTMAP7 = (createJarFile) ? "maps/TutorialMap7.tmx" : "core/assets/maps/TutorialMap7.tmx";
+    public static final String TUTMAP8 = (createJarFile) ? "maps/TutorialMap8.tmx" : "core/assets/maps/TutorialMap8.tmx";
+
 
     public static final String INTRODUCTIONMAP1 = (createJarFile) ? "maps/Introduction1.tmx" : "core/assets/maps/Introduction1.tmx";
     public static final String INTRODUCTIONMAP2 = (createJarFile) ? "maps/Introduction2.tmx" : "core/assets/maps/Introduction2.tmx";
@@ -37,6 +39,6 @@ public class ResourcePaths {
 
     //Difficulty Textures (difficulties package)
     public static final String EASY = (createJarFile) ? "fov_high_50.png" : "core/assets/fov_high_50.png";
-    public static final String MEDIUM = (createJarFile) ? "fov_medium_75.png" : "core/assets/fov_medium_75.png";
-    public static final String HIGH = (createJarFile) ? "fov_low.png" : "core/assets/fov_low.png";
+    public static final String MEDIUM = (createJarFile) ? "fov_medium_75.png" : "core/assets/fov_medium.png";
+    public static final String HIGH = (createJarFile) ? "fov_low2.png" : "core/assets/fov_low2.png";
 }

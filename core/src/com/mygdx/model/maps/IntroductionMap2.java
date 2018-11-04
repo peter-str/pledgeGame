@@ -85,7 +85,7 @@ public class IntroductionMap2 extends AbstractMap {
 
     @Override
     public Difficulty getDifficulty() {
-        return new DifficultyTutorial(false);
+        return new DifficultyTutorial();
     }
 
     @Override

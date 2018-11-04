@@ -20,7 +20,7 @@ public enum MapEnum {
 
     INTRODUCTION_3 {
         public AbstractMap getMap(PledgeGame game) {
-            return new IntroductionMap3(game, TUTORIALMAP_1);
+            return new IntroductionMap3(game, TUTORIALMAP_1, false);
         }
     },
 
@@ -62,7 +62,19 @@ public enum MapEnum {
 
     TUTORIALMAP_7 {
         public AbstractMap getMap(PledgeGame game) {
-            return new TutMap7(game, INTRODUCTION_3);
+            return new TutMap7(game, TUTORIALMAP_8);
+        }
+    },
+
+    TUTORIALMAP_8 {
+        public AbstractMap getMap(PledgeGame game) {
+            return new TutMap8(game, INTRODUCTION_3_2);
+        }
+    },
+
+    INTRODUCTION_3_2{
+        public AbstractMap getMap(PledgeGame game) {
+            return new IntroductionMap3(game, null, true);
         }
     },
 

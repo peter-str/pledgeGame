@@ -10,10 +10,13 @@ public class DifficultyMedium implements Difficulty {
 
     private Texture fieldOfView_medium;
 
-    public DifficultyMedium(boolean createMap) {
+    public DifficultyMedium() {
         fieldOfView_medium = new Texture(Gdx.files.internal(MEDIUM));
-        if(createMap)
-            createMap();
+    }
+
+    public DifficultyMedium(int size) {
+        fieldOfView_medium = new Texture(Gdx.files.internal(MEDIUM));
+        createMap(size);
     }
 
     @Override
@@ -22,7 +25,7 @@ public class DifficultyMedium implements Difficulty {
     }
 
     @Override
-    public void createMap() {
+    public void createMap(int size) {
         new MazeCreatorClass(7, 7);
     }
 

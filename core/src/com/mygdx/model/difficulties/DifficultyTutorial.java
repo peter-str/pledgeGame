@@ -5,9 +5,12 @@ import com.mygdx.model.maze_algorithm.MazeCreatorClass;
 
 public class DifficultyTutorial implements Difficulty {
 
-    public DifficultyTutorial(boolean createMap) {
-        if(createMap)
-            createMap();
+    public DifficultyTutorial() {
+
+    }
+
+    public DifficultyTutorial(int size) {
+        createMap(size);
     }
 
     @Override
@@ -16,7 +19,7 @@ public class DifficultyTutorial implements Difficulty {
     }
 
     @Override
-    public void createMap() {
+    public void createMap(int size) {
         new MazeCreatorClass(3, 3);
     }
 
