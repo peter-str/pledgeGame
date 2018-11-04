@@ -40,7 +40,7 @@ public class PlayerController extends InputAdapter {
             gameScreen.rotateCamera("right");
         }
         if(keycode == Input.Keys.ESCAPE) {
-            game.setScreen(new MainMenuScreen(game));
+            game.setScreen(new MainMenuScreen(game, false));
             gameScreen.dispose();
         }
 

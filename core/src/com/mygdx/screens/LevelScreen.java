@@ -74,7 +74,7 @@ public class LevelScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 ((Game)Gdx.app.getApplicationListener()).setScreen(new GameScreen(game,
-                        MapEnum.ENDLESS_MAZE, 0));
+                        MapEnum.ENDLESS_MAZE, 0, 0));
                 dispose();
             }
         });
@@ -82,7 +82,7 @@ public class LevelScreen implements Screen {
         backButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                ((Game)Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
+                ((Game)Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game, false));
                 dispose();
             }
         });

@@ -49,23 +49,34 @@ public class GameScreen implements Screen, GameScreenInterface {
             expertModeOn = true;
     }
 
-    public GameScreen(final PledgeGame game, MapEnum mapEnum, int diff) {
+    public GameScreen(final PledgeGame game, MapEnum mapEnum, int selectedDifficulty, int selectedMapSize) {
         this.game = game;
-        switch (diff) {
+        int mapSize;
+        switch(selectedMapSize) {
+            default:
+                mapSize = 3;
+                break;
             case 1:
+                mapSize = 6;
                 break;
             case 2:
-                difficulty = new DifficultyMedium(5);
+                mapSize = 10;
+                break;
+        }
+        switch (selectedDifficulty) {
+            case 0:
+                difficulty = new DifficultyTutorial(mapSize);
+                break;
+            case 1:
+                difficulty = new DifficultyMedium(mapSize);
+                break;
+            case 2:
+                difficulty = new DifficultyHigh(mapSize);
                 break;
             case 3:
-                difficulty = new DifficultyHigh(5);
-                break;
-            case 4:
-                difficulty = new DifficultyExpert(5);
+                difficulty = new DifficultyExpert(mapSize);
                 expertModeOn = true;
                 break;
-            default:
-                difficulty = new DifficultyTutorial(5);
         }
 
         map = mapEnum.getMap(game);
@@ -131,7 +142,7 @@ public class GameScreen implements Screen, GameScreenInterface {
             menuButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                    game.setScreen(new MainMenuScreen(game));
+                    game.setScreen(new MainMenuScreen(game, false));
                     dispose();
                 }
             });

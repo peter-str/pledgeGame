@@ -21,7 +21,7 @@ public class PledgeGame extends Game {
 		spriteBatch = new SpriteBatch();
 		font = new BitmapFont();
 		uiSkin = new Skin(Gdx.files.internal(ResourcePaths.UIPATH));
-		this.setScreen(new MainMenuScreen(this));
+		this.setScreen(new MainMenuScreen(this, false));
 		overlay[0] = new Texture(Gdx.files.internal(ResourcePaths.NEUTRAL));
 		overlay[1] = new Texture(Gdx.files.internal(ResourcePaths.WALL));
 	}

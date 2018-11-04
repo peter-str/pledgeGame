@@ -26,7 +26,7 @@ public class DifficultyHigh implements Difficulty {
 
     @Override
     public void createMap(int size) {
-        new MazeCreatorClass(10, 10);
+        new MazeCreatorClass(size, size);
     }
 
     @Override

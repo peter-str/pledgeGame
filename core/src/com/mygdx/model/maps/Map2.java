@@ -64,7 +64,7 @@ public class Map2 extends AbstractMap {
                             } else if(obj.equals("tutorial")) {
                                 ((Game) Gdx.app.getApplicationListener()).setScreen(new GameScreen(game, nextMap, false));
                             } else if (obj.equals("menue")) {
-                                ((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
+                                ((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game, false));
                             }
                         }
                     };

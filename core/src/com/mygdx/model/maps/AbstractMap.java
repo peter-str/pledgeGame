@@ -65,7 +65,7 @@ public abstract class AbstractMap {
                 public void result(Object obj) {
                     if (obj.equals("menu")) {
                         Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
-                        ((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game));
+                        ((Game) Gdx.app.getApplicationListener()).setScreen(new MainMenuScreen(game, false));
                         dispose();
                     } else if (obj.equals("level") && !tutorialFlag) {
                         Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
