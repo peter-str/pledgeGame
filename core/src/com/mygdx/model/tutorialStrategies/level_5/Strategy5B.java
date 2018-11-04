@@ -7,7 +7,7 @@ import com.mygdx.screens.GameScreen;
 
 public class Strategy5B implements TutorialStrategy {
     @Override
-    public void algorithm(GameScreen gameScreen) {
+    public void algorithm(final GameScreen gameScreen) {
         if(!gameScreen.getPlayer().isTop()) {
             Timer.schedule(new Timer.Task() {
                 @Override

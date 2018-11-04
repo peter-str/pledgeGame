@@ -1,13 +1,9 @@
 package com.mygdx.controller;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.model.maps.AbstractMap;
 import com.mygdx.model.Player;
-import com.mygdx.screens.MainMenuScreen;
 
 class CollisionController {
 

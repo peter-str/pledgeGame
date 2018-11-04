@@ -8,7 +8,7 @@ import com.mygdx.screens.GameScreen;
 public class Strategy3A implements TutorialStrategy {
 
     @Override
-    public void algorithm(GameScreen gameScreen) {
+    public void algorithm(final GameScreen gameScreen) {
 
         if(!gameScreen.getPlayer().isTop()) {
 

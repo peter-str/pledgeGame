@@ -50,28 +50,9 @@ public class MainMenuScreen implements Screen {
             Label headline = new Label("Willkommen zum Pledge-Algorithmus-Spiel", game.uiSkin);
             Label breakLabel = new Label("", game.uiSkin);
             TextButton tutorialButton = new TextButton("Einfuehrung", game.uiSkin);
-            //TextButton playButton = new TextButton("Start", game.uiSkin);
             TextButton endlessButton = new TextButton("Endlos-Modus", game.uiSkin);
             TextButton levelButton = new TextButton("Levelauswahl", game.uiSkin);
             TextButton exitButton = new TextButton("Exit", game.uiSkin);
-
-
-        /*CheckBox difficultySuperEasy = new CheckBox("SuperEasy", game.uiSkin);
-        CheckBox difficultyEasy = new CheckBox("Easy", game.uiSkin);
-        CheckBox difficultyMedium = new CheckBox("Medium", game.uiSkin);
-        CheckBox difficultyHigh = new CheckBox("High", game.uiSkin);
-        CheckBox difficultyExpert = new CheckBox("Expert", game.uiSkin);
-
-        final ButtonGroup buttonGroup = new ButtonGroup<CheckBox>();
-        buttonGroup.add(difficultySuperEasy, difficultyEasy, difficultyMedium, difficultyHigh, difficultyExpert);
-        difficultySuperEasy.setChecked(true);
-        int x = 165;
-        difficultySuperEasy.setPosition(x, 220);
-        difficultyEasy.setPosition(x + 90, 220);
-        difficultyMedium.setPosition(x + 140, 220);
-        difficultyHigh.setPosition(x + 220, 220);
-        difficultyExpert.setPosition(x + 270, 220);
-        */
 
             tutorialButton.addListener(new ClickListener() {
                 @Override
@@ -80,14 +61,6 @@ public class MainMenuScreen implements Screen {
                     dispose();
                 }
             });
-
-            /*playButton.addListener(new ClickListener() {
-                @Override
-                public void clicked(InputEvent event, float x, float y) {
-                    game.setScreen(new GameScreen(game, MapEnum.INTRODUCTION_3, false));
-                    dispose();
-                }
-            });*/
 
             endlessButton.addListener(new ClickListener() {
                 @Override
@@ -119,8 +92,6 @@ public class MainMenuScreen implements Screen {
             mainTable.row();
             mainTable.add(tutorialButton);
             mainTable.row();
-            //mainTable.add(playButton);
-            mainTable.row();
             mainTable.add(endlessButton);
             mainTable.row();
             mainTable.add(levelButton);
@@ -129,12 +100,6 @@ public class MainMenuScreen implements Screen {
             mainTable.row();
 
             stage.addActor(mainTable);
-            //stage.addActor(difficultyLabel);
-            //stage.addActor(difficultySuperEasy);
-        /*stage.addActor(difficultyEasy);
-        stage.addActor(difficultyMedium);
-        stage.addActor(difficultyHigh);
-        stage.addActor(difficultyExpert);*/
             stage.addActor(infoLabel);
         }
 
@@ -179,10 +144,6 @@ public class MainMenuScreen implements Screen {
                     dispose();
                 }
             });
-
-
-
-
 
             mainTable.add(headline);
             mainTable.row();

@@ -1,6 +1,5 @@
 package com.mygdx.model.maps;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -11,7 +10,6 @@ import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.game.TutorialTexts;
 import com.mygdx.model.difficulties.*;
-import com.mygdx.screens.GameScreen;
 import com.mygdx.screens.MainMenuScreen;
 
 import static com.mygdx.game.ResourcePaths.INTRODUCTIONMAP3;

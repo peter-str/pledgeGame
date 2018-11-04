@@ -9,7 +9,7 @@ public class Strategy2A implements TutorialStrategy {
     private boolean justTurned;
 
     @Override
-    public void algorithm(GameScreen gameScreen) {
+    public void algorithm(final GameScreen gameScreen) {
         if(!gameScreen.getPlayer().isTop()) {
             Timer.schedule(new Timer.Task() {
                 @Override

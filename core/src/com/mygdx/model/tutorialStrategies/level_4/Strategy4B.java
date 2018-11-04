@@ -11,7 +11,7 @@ public class Strategy4B implements TutorialStrategy {
     private boolean firstStep = false;
 
     @Override
-    public void algorithm(GameScreen gameScreen) {
+    public void algorithm(final GameScreen gameScreen) {
 
         if(!firstStep && !gameScreen.getPlayer().isTop()) {
             gameScreen.getPlayer().move(32);
@@ -55,24 +55,3 @@ public class Strategy4B implements TutorialStrategy {
         return gameScreen.getPlayer().getState() == Player.Player_State.STANDING;
     }
 }
-
-
-/*if(!gameScreen.getPlayer().isTop() && gameScreen.getPlayer().isLeft()) {
-        gameScreen.getPlayer().move(32);
-        walked = false;
-        }
-        else if(!gameScreen.getPlayer().isTop() && !gameScreen.getPlayer().isLeft() && turned) {
-        gameScreen.getPlayer().move(32);
-        turned = false;
-        walked = true;
-        }
-        else if(!gameScreen.getPlayer().isLeft() && !turned && !walked) {
-        gameScreen.getPlayer().rotateLeft();
-        gameScreen.rotateCamera("left");
-        turned = true;
-        }
-        else if(gameScreen.getPlayer().isTop()) {
-        gameScreen.getPlayer().rotateRight();
-        gameScreen.rotateCamera("right");
-        }
-*/

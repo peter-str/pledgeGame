@@ -11,7 +11,7 @@ public class Strategy5A implements TutorialStrategy {
     private int revCounter = 0;
 
     @Override
-    public void algorithm(GameScreen gameScreen) {
+    public void algorithm(final GameScreen gameScreen) {
 
         if(!firstStep && !gameScreen.getPlayer().isTop()) {
             gameScreen.getPlayer().move(32);
@@ -29,7 +29,6 @@ public class Strategy5A implements TutorialStrategy {
                 }
             }, 0.2f);
 
-            //gameScreen.getPlayer().move(32);
         } else if(!gameScreen.getPlayer().isLeft() && isCurrentlyStanding(gameScreen) && revCounter < 0) {
             turnLeft(gameScreen);
         } else if(!gameScreen.getPlayer().isTop()) {

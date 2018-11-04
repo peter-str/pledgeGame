@@ -69,7 +69,6 @@ public class PlayerController extends InputAdapter {
         }
 
         collisionController.checkSurroundings();
-        //if(expertModeOn)
         collisionController.overlay();
 
         if(up && !player.isTop())

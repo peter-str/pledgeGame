@@ -1,7 +1,6 @@
 package com.mygdx.model.tutorialStrategies.level_2;
 
 import com.badlogic.gdx.utils.Timer;
-import com.mygdx.enums.Direction;
 import com.mygdx.model.Player;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 import com.mygdx.screens.GameScreen;
@@ -9,7 +8,7 @@ import com.mygdx.screens.GameScreen;
 public class Strategy2C implements TutorialStrategy {
 
     @Override
-    public void algorithm(GameScreen gameScreen) {
+    public void algorithm(final GameScreen gameScreen) {
         if(!gameScreen.getPlayer().isTop()) {
             Timer.schedule(new Timer.Task() {
                 @Override

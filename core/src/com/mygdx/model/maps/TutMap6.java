@@ -1,10 +1,8 @@
 package com.mygdx.model.maps;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.Timer;
@@ -13,10 +11,7 @@ import com.mygdx.game.PledgeGame;
 import com.mygdx.game.TutorialTexts;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyTutorial;
-import com.mygdx.model.tutorialStrategies.TutorialStrategy;
-import com.mygdx.model.tutorialStrategies.level_5.Strategy5A;
 
-import static com.mygdx.game.ResourcePaths.INTRODUCTIONMAP3;
 import static com.mygdx.game.ResourcePaths.TUTMAP6;
 
 public class TutMap6 extends AbstractMap {

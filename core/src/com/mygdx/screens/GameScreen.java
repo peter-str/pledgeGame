@@ -24,7 +24,6 @@ public class GameScreen implements Screen, GameScreenInterface {
     private final PledgeGame game;
     private OrthographicCamera camera, camera2;
     private TiledMapRenderer tiledMapRenderer;
-    //private Texture compass;
     private Difficulty difficulty;
     private Sprite sprite;
     private Stage stage;
@@ -86,7 +85,6 @@ public class GameScreen implements Screen, GameScreenInterface {
 
     @Override
     public void show() {
-        //compass = new Texture(Gdx.files.internal(COMPASS));
         tiledMapRenderer = new OrthogonalTiledMapRenderer(map.getTiledMap());
         player = new Player(map.getStartX(), map.getStartY());
         playerController = new PlayerController(game, player, this);
@@ -111,7 +109,6 @@ public class GameScreen implements Screen, GameScreenInterface {
                 stage.addActor(map.getWindow());
             if(map.getAlgoWindow() != null)
                 stage.addActor(map.getAlgoWindow());
-            //setDifficulty(map.getDifficulty());
         }
 
         if(tutorialFlag) {
@@ -211,7 +208,6 @@ public class GameScreen implements Screen, GameScreenInterface {
         game.spriteBatch.setProjectionMatrix(camera2.combined);
         revCounter.setText("Kompass: " + String.valueOf(player.getRevCounter()));
         if(mapEnum != MapEnum.INTRODUCTION_1) {
-            //game.spriteBatch.draw(compass, revCounter.getX()-12, revCounter.getY());
             revCounter.draw(game.spriteBatch, 1);
         }
         playerController.update(delta, expertModeOn);

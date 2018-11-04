@@ -10,7 +10,7 @@ public class Strategy3B implements TutorialStrategy {
     private boolean justTurnedRight;
 
     @Override
-    public void algorithm(GameScreen gameScreen) {
+    public void algorithm(final GameScreen gameScreen) {
 
         if(!gameScreen.getPlayer().isTop()) {
             if (!gameScreen.getPlayer().isLeft() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {

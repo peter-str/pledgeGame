@@ -40,7 +40,6 @@ public class MazeCreatorClass {
         initializeCells();
         algorithm();
         createLabyrinth();
-        //printLabyrinth();
         sb = new StringBuilder();
         sb.append(getMapFileBeginning(Integer.toString((hoehe *2)+1), Integer.toString((breite*2)+1)));
         ausgeben();
