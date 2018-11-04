@@ -119,6 +119,7 @@ public class GameScreen implements Screen, GameScreenInterface {
 
             revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
             revCounter.setPosition(64, 32);
+            revCounter.setFontScale(1.5f);
 
             stage.addActor(menuButton);
             stage.addActor(playButton);
@@ -192,6 +193,7 @@ public class GameScreen implements Screen, GameScreenInterface {
         if(difficulty.hasTexture())
             game.spriteBatch.draw(difficulty.getFovTexture(), x - 334, y - 334);
 
+        map.showInstructions(player.getX() / 32, player.getY() / 32);
         map.showInstructions(player.getRevCounter(), player.isTop(), player.isRight(), player.isBottom(), player.isLeft());
 
         game.spriteBatch.setProjectionMatrix(camera2.combined);

@@ -1,9 +1,13 @@
 package com.mygdx.model.maps;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.utils.Timer;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.game.TutorialTexts;
@@ -18,6 +22,10 @@ public class TutMap7 extends AbstractMap{
     private Label algoText2;
     private Label algoText3;
     private boolean justTurned = false;
+    private boolean go = false;
+    private int flag;
+    private int revC;
+    private int flag2;
 
     public TutMap7(final PledgeGame game, MapEnum nextMap) {
         super(game, nextMap);
@@ -78,27 +86,59 @@ public class TutMap7 extends AbstractMap{
     }
 
     @Override
+    public void showInstructions(int x, int y) {
+        if (x == 24 && y == 24 && flag == 0) {
+            flag++;
+            gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
+            Gdx.input.setInputProcessor(gameScreenObserver.getStage());
+            dialog = new Dialog("Du musst umkehren!", game.uiSkin, "dialog") {
+                public void result(Object obj) {
+                    Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
+                }
+            };
+            dialog.text("Du weisst zwar, dass du nach links weiter musst, aber in einem dunklen \n" +
+                    "Labyrinth wirst du es nicht zwangslaeufig wissen. \n" +
+                    "Merke: Der Kompass darf nie einen Wert ueber 0 erreichen! \n" +
+                    "Deshalb musst du hier wieder zurueck laufen. ");
+            dialog.button("Okay");
+            dialog.show(gameScreenObserver.getStage());
+
+        }
+    }
+
+    @Override
     public void showInstructions(int revCounter, boolean up, boolean right, boolean bottom, boolean left) {
-        if(revCounter <= 0 && !up) {
+
+        if(revCounter == 0 && !up) {
             algoText.setColor(Color.RED);
             algoText2.setColor(Color.WHITE);
             algoText3.setColor(Color.WHITE);
-            if(left)
-                justTurned = false;
-        }
-
-        if((revCounter < 0 && up && left) || (revCounter == 0 && up)) {
-            algoText3.setColor(Color.RED);
+        } else if(revCounter < 0 && !left) {
+            if(flag2 == 0)
+                test(revCounter);
+            algoText.setColor(Color.WHITE);
+            algoText2.setColor(Color.RED);
+            algoText3.setColor(Color.WHITE);
+            if(revCounter-1 == revC) {
+                algoText.setColor(Color.RED);
+                algoText2.setColor(Color.WHITE);
+                algoText3.setColor(Color.WHITE);
+            }
+        } else if((revCounter < 0 && left && up) || (revCounter == 0 & up)) {
             algoText.setColor(Color.WHITE);
             algoText2.setColor(Color.WHITE);
-        }
-
-        if(revCounter < 0 && !left && !justTurned) {
-            algoText.setColor(Color.WHITE);
+            algoText3.setColor(Color.RED);
+        } else if(revCounter < 0 && left && !up) {
+            algoText.setColor(Color.RED);
+            algoText2.setColor(Color.WHITE);
             algoText3.setColor(Color.WHITE);
-            algoText2.setColor(Color.RED);
-            justTurned = true;
+            flag2 = 0;
         }
+    }
+
+    public void test(int counter) {
+        flag2++;
+        revC = counter;
     }
 
     @Override

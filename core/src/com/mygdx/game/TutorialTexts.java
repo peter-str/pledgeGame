@@ -30,9 +30,9 @@ public class TutorialTexts {
 
     //TUTORIAL LEVEL 4
     private static final String L4_1 = "Mit dem aktuellen Algorithmus laeufst du im Kreis. ";
-    private static final String L4_2 = "Das Ziel soll nun sein, den ersten Gang vor der Saeule zu nehmen. ";
+    private static final String L4_2 = "";
     private static final String L4_3 = "Was wuerdest du veraendern? ";
-    public static final String LEVEL4 = L4_1 + BREAK + L4_2 + BREAK + BREAK + L4_3 + BREAK;
+    public static final String LEVEL4 = L4_1 + BREAK + BREAK + L4_3 + BREAK;
 
     //TUTORIAL LEVEL 5
     private static final String L5_1 = "Erneut laeufst du nur im Kreis... ";
@@ -42,8 +42,8 @@ public class TutorialTexts {
 
     //TUTORIAL LEVEL 6
     private static final String L6_1 = "Der Algorithmus ist nun komplett. ";
-    private static final String L6_2 = "Du wiederholst nun nochmal das Vorgehen. ";
-    private static final String L6_3 = "Folge den rot markierten Anweisungen im unteren Fenster. ";
+    private static final String L6_2 = "Hier kannst du ihn nun selbst mal anwenden. ";
+    private static final String L6_3 = "Folge den rot markierten Anweisungen im unteren Fenster. \nBenutze die Pfeiltasten. ";
     public static final String LEVEL6 = L6_1 + BREAK + L6_2 + BREAK + L6_3;
 
     /*

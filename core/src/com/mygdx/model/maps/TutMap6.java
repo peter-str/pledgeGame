@@ -1,10 +1,13 @@
 package com.mygdx.model.maps;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.utils.Timer;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.game.TutorialTexts;
@@ -13,13 +16,15 @@ import com.mygdx.model.difficulties.DifficultyTutorial;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 import com.mygdx.model.tutorialStrategies.level_5.Strategy5A;
 
+import static com.mygdx.game.ResourcePaths.INTRODUCTIONMAP3;
 import static com.mygdx.game.ResourcePaths.TUTMAP6;
 
-public class TutMap6 extends AbstractMap{
+public class TutMap6 extends AbstractMap {
     private Label algoText;
     private Label algoText2;
     private Label algoText3;
     private boolean justTurned = false;
+    private int flag = 0;
 
     public TutMap6(final PledgeGame game, MapEnum nextMap) {
         super(game, nextMap);
@@ -48,7 +53,12 @@ public class TutMap6 extends AbstractMap{
         algoWindow.pack();
         algoWindow.setPosition(100, 0);
 
-        //algoText.setColor(Color.RED);
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                window.remove();
+            }
+        }, 15f);
     }
 
     @Override
@@ -82,22 +92,28 @@ public class TutMap6 extends AbstractMap{
     }
 
     @Override
+    public void showInstructions(int x, int y) {
+
+    }
+
+    @Override
     public void showInstructions(int revCounter, boolean up, boolean right, boolean bottom, boolean left) {
-        if(revCounter <= 0 && !up) {
+
+        if (revCounter <= 0 && !up) {
             algoText.setColor(Color.RED);
             algoText2.setColor(Color.WHITE);
             algoText3.setColor(Color.WHITE);
-            if(left)
+            if (left)
                 justTurned = false;
         }
 
-        if((revCounter < 0 && up && left) || (revCounter == 0 && up)) {
+        if ((revCounter < 0 && up && left) || (revCounter == 0 && up)) {
             algoText3.setColor(Color.RED);
             algoText.setColor(Color.WHITE);
             algoText2.setColor(Color.WHITE);
         }
 
-        if(revCounter < 0 && !left && !justTurned) {
+        if (revCounter < 0 && !left && !justTurned) {
             algoText.setColor(Color.WHITE);
             algoText3.setColor(Color.WHITE);
             algoText2.setColor(Color.RED);

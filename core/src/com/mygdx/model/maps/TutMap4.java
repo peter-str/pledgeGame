@@ -25,9 +25,9 @@ public class TutMap4 extends AbstractMap{
         Label textArea = new Label(TutorialTexts.LEVEL4, game.uiSkin);
         window = new Window("Algorithmus anpassen", game.uiSkin);
 
-        final Label algoText = new Label("Schritt 1: Laufe geradeaus ", game.uiSkin);
-        final Label algoText2 = new Label("Schritt 2: Wand vor dir, aber links keine: Drehe dich nach links ", game.uiSkin);
-        final Label algoText3 = new Label("Schritt 3: Wand vor dir: Drehe dich nach rechts ", game.uiSkin);
+        final Label algoText = new Label("S-1: Laufe geradeaus ", game.uiSkin);
+        final Label algoText2 = new Label("S-2: Wand vor dir, aber links keine: Drehe dich nach links ", game.uiSkin);
+        final Label algoText3 = new Label("S-3: Wand vor dir: Drehe dich nach rechts ", game.uiSkin);
         algoText.setFontScale(0.9f);
         algoText2.setFontScale(0.9f);
         algoText3.setFontScale(0.9f);
