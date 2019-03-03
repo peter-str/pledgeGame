@@ -21,11 +21,9 @@ public class Strategy3A implements TutorialStrategy {
         }
         else if(!gameScreen.getPlayer().isLeft() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
             gameScreen.getPlayer().rotateLeft();
-            gameScreen.rotateCamera("left");
         }
         else if(gameScreen.getPlayer().isTop() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
             gameScreen.getPlayer().rotateRight();
-            gameScreen.rotateCamera("right");
         }
     }
 }

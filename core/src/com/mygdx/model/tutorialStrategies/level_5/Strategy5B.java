@@ -17,7 +17,6 @@ public class Strategy5B implements TutorialStrategy {
             }, 0.2f);
         } else if(gameScreen.getPlayer().isTop() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
             gameScreen.getPlayer().rotateRight();
-            gameScreen.rotateCamera("right");
         }
     }
 }

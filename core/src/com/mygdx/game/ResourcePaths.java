@@ -29,7 +29,7 @@ public class ResourcePaths {
     public static final String MAZE = (createJarFile) ? "randomMap.tmx" : "core/assets/maps/randomMap.tmx";
 
     //Player class
-    public static final String PLAYER_TEXTURE = (createJarFile) ? "player/texture.atlas" : "core/assets/player/texture.atlas";
+    public static final String PLAYER_TEXTURE = (createJarFile) ? "player/playerTextures.atlas" : "core/assets/player/playerTextures.atlas";
 
     //Difficulty Textures (difficulties package)
     public static final String MEDIUM = (createJarFile) ? "fov_medium.png" : "core/assets/fov_medium.png";

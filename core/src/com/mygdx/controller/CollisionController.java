@@ -71,7 +71,7 @@ class CollisionController {
     }
 
 
-    public void overlay() {
+    void overlay() {
 
         //Neutral(keine Hindernisse in der Umgebung)
         game.spriteBatch.draw(game.overlay[0], texPosX - 320, texPosY - 320);

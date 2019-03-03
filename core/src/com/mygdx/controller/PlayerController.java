@@ -31,14 +31,12 @@ public class PlayerController extends InputAdapter {
         if(keycode == Input.Keys.DOWN)
             down = true;
 
-        if(keycode == Input.Keys.LEFT && !up && !down) {
+        if(keycode == Input.Keys.LEFT && !up && !down)
             player.rotateLeft();
-            gameScreen.rotateCamera("left");
-        }
-        if(keycode == Input.Keys.RIGHT && !up && !down) {
+
+        if(keycode == Input.Keys.RIGHT && !up && !down)
             player.rotateRight();
-            gameScreen.rotateCamera("right");
-        }
+
         if(keycode == Input.Keys.ESCAPE) {
             game.setScreen(new MainMenuScreen(game, false));
             gameScreen.dispose();

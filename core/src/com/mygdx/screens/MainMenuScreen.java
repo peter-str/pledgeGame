@@ -53,6 +53,7 @@ public class MainMenuScreen implements Screen {
             TextButton endlessButton = new TextButton("Endlos-Modus", game.uiSkin);
             TextButton levelButton = new TextButton("Levelauswahl", game.uiSkin);
             TextButton exitButton = new TextButton("Exit", game.uiSkin);
+            TextButton creditsButton = new TextButton("Credits", game.uiSkin);
 
             tutorialButton.addListener(new ClickListener() {
                 @Override
@@ -86,6 +87,13 @@ public class MainMenuScreen implements Screen {
                 }
             });
 
+            creditsButton.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    Gdx.net.openURI("https://creativecommons.org/licenses/by/3.0/");
+                }
+            });
+
             mainTable.add(headline);
             mainTable.row();
             mainTable.add(breakLabel);
@@ -97,6 +105,8 @@ public class MainMenuScreen implements Screen {
             mainTable.add(levelButton);
             mainTable.row();
             mainTable.add(exitButton);
+            mainTable.row();
+            mainTable.add(creditsButton);
             mainTable.row();
 
             stage.addActor(mainTable);

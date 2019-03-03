@@ -10,7 +10,6 @@ public class Strategy5C implements TutorialStrategy {
     public void algorithm(final GameScreen gameScreen) {
         if(!gameScreen.getPlayer().isLeft() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
             gameScreen.getPlayer().rotateLeft();
-            gameScreen.rotateCamera("left");
             try {
                 Thread.sleep(300);
             } catch (InterruptedException e) {
@@ -26,7 +25,6 @@ public class Strategy5C implements TutorialStrategy {
             }, 0.2f);
         } else if(gameScreen.getPlayer().isTop() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
             gameScreen.getPlayer().rotateLeft();
-            gameScreen.rotateCamera("left");
             try {
                 Thread.sleep(300);
             } catch (InterruptedException e) {

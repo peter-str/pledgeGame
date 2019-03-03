@@ -31,7 +31,6 @@ public class Strategy2B implements TutorialStrategy {
             }
 
             gameScreen.getPlayer().rotateRight();
-            gameScreen.rotateCamera("right");
             justTurned = true;
         }
     }

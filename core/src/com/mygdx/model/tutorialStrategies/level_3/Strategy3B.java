@@ -23,7 +23,6 @@ public class Strategy3B implements TutorialStrategy {
                     }
                 }
                 gameScreen.getPlayer().rotateLeft();
-                gameScreen.rotateCamera("left");
                 justTurnedLeft = true;
             }
 
@@ -48,7 +47,6 @@ public class Strategy3B implements TutorialStrategy {
                 }
             }
             gameScreen.getPlayer().rotateRight();
-            gameScreen.rotateCamera("right");
             justTurnedRight = true;
         }
     }

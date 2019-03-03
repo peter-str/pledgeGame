@@ -38,7 +38,6 @@ public class Strategy4B implements TutorialStrategy {
     private void turnLeft(GameScreen gameScreen) {
         if(!turnedLeft) {
             gameScreen.getPlayer().rotateLeft();
-            gameScreen.rotateCamera("left");
         }
         if(turnedLeft) {
             gameScreen.getPlayer().move(32);
@@ -48,7 +47,6 @@ public class Strategy4B implements TutorialStrategy {
 
     private void turnRight(GameScreen gameScreen) {
         gameScreen.getPlayer().rotateRight();
-        gameScreen.rotateCamera("right");
     }
 
     private boolean isCurrentlyStanding(GameScreen gameScreen) {

@@ -19,7 +19,6 @@ public class Strategy2C implements TutorialStrategy {
         }
         else if(gameScreen.getPlayer().isTop() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
             gameScreen.getPlayer().rotateLeft();
-            gameScreen.rotateCamera("left");
         }
     }
 }

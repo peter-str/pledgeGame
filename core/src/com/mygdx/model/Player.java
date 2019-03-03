@@ -40,10 +40,10 @@ public class Player {
         this.state = Player_State.STANDING;
 
         textureAtlas = new TextureAtlas(Gdx.files.internal(PLAYER_TEXTURE));
-        standing = textureAtlas.findRegion("standing_north");
+        standing = textureAtlas.findRegion("north_standing");
         this.sprite = new Sprite(standing);
 
-        walking = new Animation<>(0.3f/2f, textureAtlas.findRegions("walking_north"), PlayMode.LOOP_PINGPONG);
+        walking = new Animation<>(0.3f/2f, textureAtlas.findRegions("north_walking"), PlayMode.LOOP_PINGPONG);
     }
 
     public enum Player_State {
@@ -209,12 +209,51 @@ public class Player {
 
     public Sprite getSprite() {
         if(state == Player_State.WALKING) {
-            sprite.setRegion(walking.getKeyFrame(walkTimer));
-            return sprite;
+            switch (direction) {
+                default:
+                    return null;
+                case NORTH:
+                    walking = new Animation<>(0.3f/2f, textureAtlas.findRegions("north_walking"), PlayMode.LOOP_PINGPONG);
+                    sprite.setRegion(walking.getKeyFrame(walkTimer));
+                    return sprite;
+                case EAST:
+                    walking = new Animation<>(0.3f/2f, textureAtlas.findRegions("east_walking"), PlayMode.LOOP_PINGPONG);
+                    sprite.setRegion(walking.getKeyFrame(walkTimer));
+                    return sprite;
+                case SOUTH:
+                    walking = new Animation<>(0.3f/2f, textureAtlas.findRegions("south_walking"), PlayMode.LOOP_PINGPONG);
+                    sprite.setRegion(walking.getKeyFrame(walkTimer));
+                    return sprite;
+                case WEST:
+                    walking = new Animation<>(0.3f/2f, textureAtlas.findRegions("west_walking"), PlayMode.LOOP_PINGPONG);
+                    sprite.setRegion(walking.getKeyFrame(walkTimer));
+                    return sprite;
+            }
         }
-        else
-            sprite.setRegion(standing);
-            return sprite;
+        else {
+            switch (direction) {
+                default:
+                    sprite.setRegion(standing);
+                    return sprite;
+                case NORTH:
+                    standing = textureAtlas.findRegion("north_standing");
+                    sprite.setRegion(standing);
+                    return sprite;
+                case EAST:
+                    standing = textureAtlas.findRegion("east_standing");
+                    sprite.setRegion(standing);
+                    return sprite;
+                case SOUTH:
+                    standing = textureAtlas.findRegion("south_standing");
+                    sprite.setRegion(standing);
+                    return sprite;
+                case WEST:
+                    standing = textureAtlas.findRegion("west_standing");
+                    sprite.setRegion(standing);
+                    return sprite;
+            }
+        }
+
     }
 
     public Player_State getState() {

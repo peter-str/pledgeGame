@@ -199,8 +199,8 @@ public class GameScreen implements Screen, GameScreenInterface {
         float y = player.getAnimY();
         sprite.setPosition(x, y);
         if(!tutorialFlag) {
-            camera.position.x = x;
-            camera.position.y = y;
+            camera.position.x = x+16;
+            camera.position.y = y+16;
         }
         if(difficulty.hasTexture())
             game.spriteBatch.draw(difficulty.getFovTexture(), x - 334, y - 334);
@@ -238,19 +238,6 @@ public class GameScreen implements Screen, GameScreenInterface {
     public void dispose() {
         stage.dispose();
         map.dispose();
-    }
-
-    public void rotateCamera(String dir) {
-        if (dir.equals("left")) {
-            if(!tutorialFlag)
-                camera.rotate(270f);
-            sprite.rotate(90f);
-        }
-        if (dir.equals("right")) {
-            if(!tutorialFlag)
-                camera.rotate(90f);
-            sprite.rotate(-90f);
-        }
     }
 
     public PlayerController getPlayerController() {

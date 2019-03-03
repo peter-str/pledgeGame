@@ -29,12 +29,10 @@ public class Strategy4A implements TutorialStrategy {
                 }
             }
             gameScreen.getPlayer().rotateLeft();
-            gameScreen.rotateCamera("left");
             justTurned = true;
         }
         else if(gameScreen.getPlayer().isTop() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
             gameScreen.getPlayer().rotateLeft();
-            gameScreen.rotateCamera("left");
             justTurned = true;
         }
     }
