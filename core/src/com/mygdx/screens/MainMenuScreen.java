@@ -90,7 +90,9 @@ public class MainMenuScreen implements Screen {
             creditsButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                    Gdx.net.openURI("https://creativecommons.org/licenses/by/3.0/");
+                    game.setScreen(new CreditsScreen(game));
+                    dispose();
+                    //Gdx.net.openURI("https://creativecommons.org/licenses/by/3.0/");
                 }
             });
 

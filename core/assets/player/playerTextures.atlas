@@ -13,11 +13,18 @@ east_standing
   index: -1
 east_walking
   rotate: false
-  xy: 34, 2
+  xy: 2, 2
   size: 30, 34
   orig: 30, 34
   offset: 0, 0
   index: 1
+east_walking
+  rotate: false
+  xy: 34, 2
+  size: 30, 34
+  orig: 30, 34
+  offset: 0, 0
+  index: 0
 east_walking
   rotate: false
   xy: 66, 2
@@ -34,11 +41,18 @@ north_standing
   index: -1
 north_walking
   rotate: false
-  xy: 225, 2
+  xy: 194, 2
   size: 29, 34
   orig: 29, 34
   offset: 0, 0
   index: 1
+north_walking
+  rotate: false
+  xy: 225, 2
+  size: 29, 34
+  orig: 29, 34
+  offset: 0, 0
+  index: 0
 north_walking
   rotate: false
   xy: 256, 2
@@ -55,11 +69,18 @@ south_standing
   index: -1
 south_walking
   rotate: false
-  xy: 318, 2
+  xy: 287, 2
   size: 29, 34
   orig: 29, 34
   offset: 0, 0
   index: 1
+south_walking
+  rotate: false
+  xy: 318, 2
+  size: 29, 34
+  orig: 29, 34
+  offset: 0, 0
+  index: 0
 south_walking
   rotate: false
   xy: 349, 2
@@ -76,11 +97,18 @@ west_standing
   index: -1
 west_walking
   rotate: false
-  xy: 130, 2
+  xy: 98, 2
   size: 30, 34
   orig: 30, 34
   offset: 0, 0
   index: 1
+west_walking
+  rotate: false
+  xy: 130, 2
+  size: 30, 34
+  orig: 30, 34
+  offset: 0, 0
+  index: 0
 west_walking
   rotate: false
   xy: 162, 2

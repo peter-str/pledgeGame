@@ -48,12 +48,12 @@ public class TutMap7 extends AbstractMap {
     @Override
     public int getStartX() {
         return 32 * 20;
-    }
+    } //32*20
 
     @Override
     public int getStartY() {
         return 32 * 19;
-    }
+    } //32*19
 
     @Override
     public Window getWindow() {
@@ -131,7 +131,7 @@ public class TutMap7 extends AbstractMap {
         }
     }
 
-    public void test(int counter) {
+    private void test(int counter) {
         flag2++;
         revC = counter;
     }

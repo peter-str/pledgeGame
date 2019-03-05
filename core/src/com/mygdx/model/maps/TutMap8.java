@@ -12,17 +12,19 @@ import com.mygdx.game.TutorialTexts;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyHigh;
 
-import static com.mygdx.game.ResourcePaths.TUTMAP6;
+import static com.mygdx.game.ResourcePaths.INTRODUCTIONMAP3;
 
 public class TutMap8 extends AbstractMap {
     private Label algoText;
     private Label algoText2;
     private Label algoText3;
-    private boolean justTurned = false;
+    //private boolean justTurned = false;
+    private int revC;
+    private int flag2;
 
     public TutMap8(final PledgeGame game, MapEnum nextMap) {
         super(game, nextMap);
-        tiledMap = new TmxMapLoader().load(TUTMAP6);
+        tiledMap = new TmxMapLoader().load(INTRODUCTIONMAP3);
         Label textArea = new Label(TutorialTexts.LEVEL6, game.uiSkin);
         window = new Window("Algorithmus fertiggestellt", game.uiSkin);
 
@@ -57,7 +59,7 @@ public class TutMap8 extends AbstractMap {
 
     @Override
     public int getStartX() {
-        return 32;
+        return 96;
     }
 
     @Override
@@ -98,7 +100,32 @@ public class TutMap8 extends AbstractMap {
     @Override
     public void showInstructions(int revCounter, boolean up, boolean right, boolean bottom, boolean left) {
 
-        if (revCounter <= 0 && !up) {
+        if(revCounter == 0 && !up) {
+            algoText.setColor(Color.RED);
+            algoText2.setColor(Color.WHITE);
+            algoText3.setColor(Color.WHITE);
+        } else if(revCounter < 0 && !left) {
+            if(flag2 == 0)
+                test(revCounter);
+            algoText.setColor(Color.WHITE);
+            algoText2.setColor(Color.RED);
+            algoText3.setColor(Color.WHITE);
+            if(revCounter-1 == revC) {
+                algoText.setColor(Color.RED);
+                algoText2.setColor(Color.WHITE);
+                algoText3.setColor(Color.WHITE);
+            }
+        } else if((revCounter < 0 && left && up) || (revCounter == 0 & up)) {
+            algoText.setColor(Color.WHITE);
+            algoText2.setColor(Color.WHITE);
+            algoText3.setColor(Color.RED);
+        } else if(revCounter < 0 && left && !up) {
+            algoText.setColor(Color.RED);
+            algoText2.setColor(Color.WHITE);
+            algoText3.setColor(Color.WHITE);
+            flag2 = 0;
+        }
+        /*if (revCounter <= 0 && !up) {
             algoText.setColor(Color.RED);
             algoText2.setColor(Color.WHITE);
             algoText3.setColor(Color.WHITE);
@@ -117,7 +144,12 @@ public class TutMap8 extends AbstractMap {
             algoText3.setColor(Color.WHITE);
             algoText2.setColor(Color.RED);
             justTurned = true;
-        }
+        }*/
+    }
+
+    private void test(int counter) {
+        flag2++;
+        revC = counter;
     }
 
     @Override

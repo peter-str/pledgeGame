@@ -46,7 +46,7 @@ public class IntroductionMap3 extends AbstractMap {
 
     @Override
     public int getStartX() {
-        return 32;
+        return 96;
     }
 
     @Override
