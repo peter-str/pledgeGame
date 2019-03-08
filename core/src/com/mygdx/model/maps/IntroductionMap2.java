@@ -36,7 +36,7 @@ public class IntroductionMap2 extends AbstractMap {
 
     @Override
     public void showInstructions(int x, int y) {
-        if((x == 15 || x == 16) && y == 6 && flag == 0) {
+        if((x == 15 || x == 16) && y == 5 && flag == 0) {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());
