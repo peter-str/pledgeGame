@@ -1,8 +1,8 @@
 package com.mygdx.model.maze_algorithm;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+//import java.io.File;
+//import java.io.FileOutputStream;
+//import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
@@ -193,9 +193,9 @@ public class MazeCreatorClass {
     }
 
     private void createMapFile(String content) {
-        File file = new File(MAZE);
+        //File file = new File(MAZE);
 
-        try (FileOutputStream fop = new FileOutputStream(file)) {
+        /*try (FileOutputStream fop = new FileOutputStream(file)) {
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -212,7 +212,7 @@ public class MazeCreatorClass {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     private String getMapFileBeginning(String x, String y) {

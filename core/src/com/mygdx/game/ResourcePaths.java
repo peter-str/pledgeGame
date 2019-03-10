@@ -4,7 +4,7 @@ public class ResourcePaths {
 
     private ResourcePaths() {}
 
-    private static boolean createJarFile = false;
+    private static boolean createJarFile = true;
 
     //PledgeGame Class (package game)
     public static final String UIPATH = (createJarFile) ? "skins/uiskin.json" : "core/assets/skins/uiskin.json";

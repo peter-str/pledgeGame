@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mygdx.screens.MainMenuScreen;
 
+import static com.mygdx.game.ResourcePaths.UIPATH;
+
 
 public class PledgeGame extends Game {
 
@@ -20,7 +22,7 @@ public class PledgeGame extends Game {
 	public void create() {
 		spriteBatch = new SpriteBatch();
 		font = new BitmapFont();
-		uiSkin = new Skin(Gdx.files.internal(ResourcePaths.UIPATH));
+		uiSkin = new Skin(Gdx.files.internal(UIPATH));
 		this.setScreen(new MainMenuScreen(this, false));
 		overlay[0] = new Texture(Gdx.files.internal(ResourcePaths.NEUTRAL));
 		overlay[1] = new Texture(Gdx.files.internal(ResourcePaths.WALL));
