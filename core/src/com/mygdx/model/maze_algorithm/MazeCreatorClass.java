@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
 
+import static com.mygdx.game.ResourcePaths.FINISH_TEX;
+import static com.mygdx.game.ResourcePaths.FLOOR_TEX;
+import static com.mygdx.game.ResourcePaths.WALL_TEX;
+
 public class MazeCreatorClass {
 
     private int[][] labyrinth;
@@ -27,9 +31,9 @@ public class MazeCreatorClass {
     public MazeCreatorClass(int height, int width) {
         this.height = height;
         this.width = width;
-        wall = new Texture(Gdx.files.internal("maps/textures/wall_1.png"));
-        floor = new Texture(Gdx.files.internal("maps/textures/floor_city.png"));
-        finish = new Texture(Gdx.files.internal("maps/textures/finish_flag.png"));
+        wall = new Texture(Gdx.files.internal(WALL_TEX));
+        floor = new Texture(Gdx.files.internal(FLOOR_TEX));
+        finish = new Texture(Gdx.files.internal(FINISH_TEX));
 
         labyrinth = new int[(height * 2) + 1][(width * 2) + 1];
 
@@ -53,37 +57,38 @@ public class MazeCreatorClass {
     public TiledMap getTiledMap() {
         TiledMap map = new TiledMap();
         MapLayers layers = map.getLayers();
-        TextureRegion region;
+        TextureRegion wallRegion = new TextureRegion();
+        wallRegion.setRegion(wall);
+        TextureRegion floorRegion = new TextureRegion();
+        floorRegion.setRegion(floor);
+        TextureRegion finishRegion = new TextureRegion();
+        finishRegion.setRegion(finish);
 
         TiledMapTileLayer layer1 = new TiledMapTileLayer((height * 2) + 1, (width * 2) + 1, 32, 32);
-        TiledMapTileLayer.Cell cell;
+
+        TiledMapTileLayer.Cell wallCell = new TiledMapTileLayer.Cell();
+        wallCell.setTile(new StaticTiledMapTile(wallRegion));
+        wallCell.getTile().getProperties().put("Wand", null);
+
+        TiledMapTileLayer.Cell floorCell = new TiledMapTileLayer.Cell();
+        floorCell.setTile(new StaticTiledMapTile(floorRegion));
+
+        TiledMapTileLayer.Cell finishCell = new TiledMapTileLayer.Cell();
+        finishCell.setTile(new StaticTiledMapTile(finishRegion));
+        finishCell.getTile().getProperties().put("Ziel", null);
 
         for (int i = 0; i < labyrinth.length; i++) {
             for (int j = 0; j < labyrinth[i].length; j++) {
                 //System.out.print(labyrinth[i][j]);
                 if (labyrinth[i][j] == 1) {
-                    region = new TextureRegion();
-                    region.setRegion(wall);
-                    cell = new TiledMapTileLayer.Cell();
-                    cell.setTile(new StaticTiledMapTile(region));
-                    cell.getTile().getProperties().put("Wand", null);
-                    layer1.setCell(j, Math.abs(i-(labyrinth.length-1)), cell);
+                    layer1.setCell(j, Math.abs(i-(labyrinth.length-1)), wallCell);
                 }
                 if (labyrinth[i][j] == 0) {
-                    region = new TextureRegion();
-                    region.setRegion(floor);
-                    cell = new TiledMapTileLayer.Cell();
-                    cell.setTile(new StaticTiledMapTile(region));
-                    layer1.setCell(j, Math.abs(i-(labyrinth.length-1)), cell);
+                    layer1.setCell(j, Math.abs(i-(labyrinth.length-1)), floorCell);
                 }
 
                 if (labyrinth[i][j] == 2) {
-                    region = new TextureRegion();
-                    region.setRegion(finish);
-                    cell = new TiledMapTileLayer.Cell();
-                    cell.setTile(new StaticTiledMapTile(region));
-                    cell.getTile().getProperties().put("Ziel", null);
-                    layer1.setCell(j, Math.abs(i-(labyrinth.length-1)), cell);
+                    layer1.setCell(j, Math.abs(i-(labyrinth.length-1)), finishCell);
                 }
             }
             //System.out.println();
