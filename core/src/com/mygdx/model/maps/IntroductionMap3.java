@@ -42,6 +42,10 @@ public class IntroductionMap3 extends AbstractMap {
             algoWindow.pack();
             algoWindow.setPosition(100, 0);
         }
+
+        if(!showAlgoWindow) {
+
+        }
     }
 
     @Override

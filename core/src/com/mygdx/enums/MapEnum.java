@@ -1,5 +1,6 @@
 package com.mygdx.enums;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.model.maps.*;
 
@@ -79,7 +80,7 @@ public enum MapEnum {
 
     ENDLESS_MAZE {
         public AbstractMap getMap(PledgeGame game) {
-            return new EndlessMazeMap(game, null);
+            return new EndlessMazeMap(game, null, null);
         }
     };
 

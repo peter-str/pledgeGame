@@ -1,8 +1,7 @@
 package com.mygdx.model.maps;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.loaders.resolvers.ExternalFileHandleResolver;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
@@ -12,16 +11,16 @@ import com.mygdx.game.TutorialTexts;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.screens.MainMenuScreen;
 
-import static com.mygdx.game.ResourcePaths.MAZE;
-
 public class EndlessMazeMap extends AbstractMap {
     private Label algoText;
     private Label algoText2;
     private Label algoText3;
 
-    public EndlessMazeMap(final PledgeGame game, MapEnum nextMap) {
+    public EndlessMazeMap(final PledgeGame game, MapEnum nextMap, TiledMap map) {
         super(game, nextMap);
-        tiledMap = new TmxMapLoader().load(MAZE);
+        //tiledMap = new TmxMapLoader().load("maps/randomMap.tmx");
+
+        tiledMap = map;
 
         algoText = new Label("S-1: Laufe geradeaus. \nWenn links frei und Kompass < 0, dann S-2, wenn Weg versperrt, dann S-3 ", game.uiSkin);
         algoText2 = new Label("S-2: Nach links drehen und Kompass + 1 und weiter mit S-1 ", game.uiSkin);

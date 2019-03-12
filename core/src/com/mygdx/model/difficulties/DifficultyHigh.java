@@ -2,6 +2,7 @@ package com.mygdx.model.difficulties;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.mygdx.model.maze_algorithm.MazeCreatorClass;
 
 import static com.mygdx.game.ResourcePaths.HIGH;
@@ -9,6 +10,7 @@ import static com.mygdx.game.ResourcePaths.HIGH;
 public class DifficultyHigh implements Difficulty {
 
     private Texture fieldOfView_low;
+    private MazeCreatorClass mazeCreator;
 
     public DifficultyHigh() {
         fieldOfView_low = new Texture(Gdx.files.internal(HIGH));
@@ -26,11 +28,16 @@ public class DifficultyHigh implements Difficulty {
 
     @Override
     public void createMap(int size) {
-        new MazeCreatorClass(size, size);
+        mazeCreator = new MazeCreatorClass(size, size);
     }
 
     @Override
     public boolean hasTexture() {
         return true;
+    }
+
+    @Override
+    public TiledMap getTiledMap() {
+        return mazeCreator.getTiledMap();
     }
 }

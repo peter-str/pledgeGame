@@ -42,7 +42,7 @@ public class PlayerController extends InputAdapter {
             gameScreen.dispose();
         }
 
-        if(keycode == Input.Keys.F1) {
+        if(keycode == Input.Keys.T) {
             game.setScreen(new GameScreen(game, MapEnum.TUTORIALMAP_1, true));
             gameScreen.dispose();
         }

@@ -29,6 +29,11 @@ public abstract class AbstractMap {
         this.nextMap = nextMap;
     }
 
+    public AbstractMap(final PledgeGame game, MapEnum nextMap, TiledMap map) {
+        this.game = game;
+        this.nextMap = nextMap;
+    }
+
     public void register(GameScreenInterface newObserver) {
         gameScreenObserver = newObserver;
     }

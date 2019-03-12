@@ -144,7 +144,7 @@ public class MainMenuScreen implements Screen {
             playButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                    game.setScreen(new GameScreen(game, MapEnum.ENDLESS_MAZE, selectBox.getSelectedIndex(), mapSizeSelectBox.getSelectedIndex(), showAlgoWindowButton.isChecked()));
+                    game.setScreen(new GameScreen(game, selectBox.getSelectedIndex(), mapSizeSelectBox.getSelectedIndex(), showAlgoWindowButton.isChecked()));
                     dispose();
                 }
             });

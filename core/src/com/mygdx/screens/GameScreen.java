@@ -17,6 +17,7 @@ import com.mygdx.game.PledgeGame;
 import com.mygdx.model.*;
 import com.mygdx.model.difficulties.*;
 import com.mygdx.model.maps.AbstractMap;
+import com.mygdx.model.maps.EndlessMazeMap;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 
 public class GameScreen implements Screen, GameScreenInterface {
@@ -50,7 +51,7 @@ public class GameScreen implements Screen, GameScreenInterface {
             expertModeOn = true;
     }
 
-    public GameScreen(final PledgeGame game, MapEnum mapEnum, int selectedDifficulty, int selectedMapSize, boolean showAlgoWindow) {
+    public GameScreen(final PledgeGame game, int selectedDifficulty, int selectedMapSize, boolean showAlgoWindow) {
         this.game = game;
         int mapSize;
         this.showAlgoWindow = showAlgoWindow;
@@ -82,7 +83,7 @@ public class GameScreen implements Screen, GameScreenInterface {
                 break;
         }
 
-        map = mapEnum.getMap(game);
+        map = new EndlessMazeMap(game, null, difficulty.getTiledMap());
         map.register(this);
     }
 
@@ -112,6 +113,11 @@ public class GameScreen implements Screen, GameScreenInterface {
                 stage.addActor(map.getWindow());
             if(map.getAlgoWindow() != null && showAlgoWindow)
                 stage.addActor(map.getAlgoWindow());
+            if(mapEnum == MapEnum.INTRODUCTION_3) {
+               Label hilfeLabel = new Label("Druecke 'T', um ins Tutorial zu gelangen.", game.uiSkin);
+               hilfeLabel.setPosition(Gdx.graphics.getWidth() - hilfeLabel.getWidth(), 0);
+               stage.addActor(hilfeLabel);
+            }
         }
 
         if(tutorialFlag) {
@@ -213,6 +219,7 @@ public class GameScreen implements Screen, GameScreenInterface {
         if(mapEnum != MapEnum.INTRODUCTION_1) {
             revCounter.draw(game.spriteBatch, 1);
         }
+
         playerController.update(delta, expertModeOn);
 
         game.spriteBatch.end();
