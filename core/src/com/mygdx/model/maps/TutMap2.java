@@ -33,7 +33,6 @@ public class TutMap2 extends AbstractMap {
         final String stepB = "S-2: Wenn eine Wand vor dir ist, drehe dich nach rechts. ";
         final String stepC = "S-2: Wenn eine Wand vor dir ist, drehe dich nach unten. ";
         final Label finalStep = new Label("", game.uiSkin);
-        finalStep.setFontScale(0.9f);
 
         CheckBox checkBoxA = new CheckBox("links", game.uiSkin);
         CheckBox checkBoxB = new CheckBox("rechts", game.uiSkin);
@@ -78,8 +77,7 @@ public class TutMap2 extends AbstractMap {
         window.setPosition(64, Gdx.graphics.getHeight());
 
         algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
-        Label algoText = new Label("S-1: Laufe geradeaus. ", game.uiSkin);
-        algoText.setFontScale(0.9f);
+        Label algoText = new Label("S-1: Laufe einen Schritt geradeaus. ", game.uiSkin);
         algoWindow.add(algoText);
         algoWindow.row();
         algoWindow.add(finalStep);

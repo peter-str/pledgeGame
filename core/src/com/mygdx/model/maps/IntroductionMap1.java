@@ -47,8 +47,8 @@ public class IntroductionMap1 extends AbstractMap {
             };
             dialog.text("Ein neuer Tag, eine neue Expedition. \n" +
                     "Dummerweise hast du deinen Kompass verloren, den du auf deinen Reisen \n" +
-                    "unbedingt benoetigst. Du kannst dich erinnern, ihn das letzte Mal am Stadtbrunnen \n" +
-                    "benutzt zu haben. Moeglicherweise liegt er noch dort... \n" +
+                    "unbedingt benötigst. Du kannst dich erinnern, ihn das letzte Mal am Stadtbrunnen \n" +
+                    "benutzt zu haben. Möglicherweise liegt er noch dort... \n" +
                     "(Benutze die Pfeiltasten) ");
             dialog.button("Okay");
             dialog.show(gameScreenObserver.getStage());
@@ -58,16 +58,19 @@ public class IntroductionMap1 extends AbstractMap {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());
-            dialog = new Dialog("Beruehrungsanzeige", game.uiSkin, "dialog") {
+            dialog = new Dialog("Berührungsanzeige", game.uiSkin, "dialog") {
                 public void result(Object obj) {
                     Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
                 }
             };
-            dialog.text("Beobachte die Anzeige im unteren linken Rand. \n" +
-                    "Diese zeigt dir an, ob vor, hinter, links oder rechts von dir ein Hindernis ist. \n" +
-                    "Das wirst du spaeter noch benutzen muessen. ");
+            dialog.text("Beobachte die Anzeige am unteren linken Rand. \n" +
+                    "Diese zeigt dir an, ob in deiner unmittelbaren Umgebung ein Hindernis ist. \n" +
+                    "Wird ein rotes X angezeigt, so ist der Weg nicht frei. \n" +
+                    "In deiner aktuellen Position (Blickrichtung) ist der Weg links und rechts nicht frei, \n" +
+                    "nach vorne und hinten jedoch schon. ");
             dialog.button("Okay");
             dialog.show(gameScreenObserver.getStage());
+            dialog.setPosition((Gdx.graphics.getWidth() - dialog.getWidth())/2f, Gdx.graphics.getHeight() - dialog.getHeight()*2f);
         }
 
         if((x == 23 || x == 26) && y == 18 && flag == 2) {
@@ -82,7 +85,7 @@ public class IntroductionMap1 extends AbstractMap {
             dialog.text("Du hast deinen Kompass auf dem Rand des Brunnens wiedergefunden. \n" +
                     "Prima! \n" +
                     "Nun kannst du dich auf die Expedition begeben. \n" +
-                    "Verlasse die Stadt. ");
+                    "Verlasse die Stadt über den Weg im Norden. ");
             dialog.button("Okay");
             dialog.show(gameScreenObserver.getStage());
         }

@@ -36,24 +36,18 @@ public class MainMenuScreen implements Screen {
         if(!endlessModeSetupMenue) {
             Gdx.input.setInputProcessor(stage);
 
-            Label infoLabel = new Label("Info: Mit der Escape-Taste kommst du jederzeit ins Hauptmenue zurueck", game.uiSkin);
-            infoLabel.setPosition(60, 185);
-            infoLabel.setColor(Color.RED);
-
-            Label difficultyLabel = new Label("Schwierigkeit: ", game.uiSkin);
-            difficultyLabel.setPosition(60, 220);
-
             Table mainTable = new Table();
             mainTable.setFillParent(true);
             mainTable.center();
 
             Label headline = new Label("Willkommen zum Pledge-Algorithmus-Spiel", game.uiSkin);
             Label breakLabel = new Label("", game.uiSkin);
-            TextButton tutorialButton = new TextButton("Einfuehrung", game.uiSkin);
+            TextButton tutorialButton = new TextButton("Einführung", game.uiSkin);
             TextButton endlessButton = new TextButton("Endlos-Modus", game.uiSkin);
             TextButton levelButton = new TextButton("Levelauswahl", game.uiSkin);
-            TextButton exitButton = new TextButton("Exit", game.uiSkin);
             TextButton creditsButton = new TextButton("Credits", game.uiSkin);
+            Label infoLabel = new Label("Info: Mit der Escape-Taste kommst du ins Hauptmenü zurück", game.uiSkin);
+            infoLabel.setColor(Color.RED);
 
             tutorialButton.addListener(new ClickListener() {
                 @Override
@@ -80,13 +74,6 @@ public class MainMenuScreen implements Screen {
                 }
             });
 
-            exitButton.addListener(new ClickListener() {
-                @Override
-                public void clicked(InputEvent event, float x, float y) {
-                    Gdx.app.exit();
-                }
-            });
-
             creditsButton.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
@@ -100,44 +87,46 @@ public class MainMenuScreen implements Screen {
             mainTable.row();
             mainTable.add(breakLabel);
             mainTable.row();
-            mainTable.add(tutorialButton);
+            mainTable.add(tutorialButton).size(200, 40);
             mainTable.row();
-            mainTable.add(endlessButton);
+            mainTable.add(endlessButton).size(200,40);
             mainTable.row();
-            mainTable.add(levelButton);
+            mainTable.add(levelButton).size(200,40);
             mainTable.row();
-            mainTable.add(exitButton);
+            mainTable.add(creditsButton).size(200,40);
             mainTable.row();
-            mainTable.add(creditsButton);
+            mainTable.add(breakLabel);
             mainTable.row();
+            mainTable.add(breakLabel);
+            mainTable.row();
+            mainTable.add(infoLabel);
 
             stage.addActor(mainTable);
-            stage.addActor(infoLabel);
         }
 
         if(endlessModeSetupMenue) {
             Gdx.input.setInputProcessor(stage);
 
-            Label headline = new Label("Endlos-Modus-Menue", game.uiSkin);
-            Label infoLabel = new Label ("Jedes Level das du hier startest wird neu generiert. \n" +
+            Label headline = new Label("Endlos-Modus-Menü", game.uiSkin);
+            Label infoLabel = new Label ("Jedes Level, das du hier startest, wird neu generiert. \n" +
                     "Du spielst also niemals zweimal das gleiche Level hintereinander. ", game.uiSkin);
             Label breakLabel = new Label("", game.uiSkin);
             Label difficultyLabel = new Label("Schwierigkeit einstellen: ", game.uiSkin);
-            Label mapSizeLabel = new Label("Kartengroesse einstellen: ", game.uiSkin);
+            Label mapSizeLabel = new Label("Kartengröße einstellen: ", game.uiSkin);
 
             Table mainTable = new Table();
             mainTable.setFillParent(true);
             mainTable.center();
 
             TextButton playButton = new TextButton("Start", game.uiSkin);
-            TextButton backButton = new TextButton("Zurueck", game.uiSkin);
+            TextButton backButton = new TextButton("Zurück", game.uiSkin);
             final TextButton showAlgoWindowButton = new TextButton("Algorithmus anzeigen", game.uiSkin, "toggle");
 
             String[] difficultyStrings = {"Leicht", "Mittel", "Schwer", "Experte"};
             final SelectBox<String> selectBox = new SelectBox<>(game.uiSkin);
             selectBox.setItems(difficultyStrings);
 
-            String[] mapSizeStrings = {"Klein", "Mittel", "Gross"};
+            String[] mapSizeStrings = {"Klein", "Mittel", "Groß"};
             final SelectBox<String> mapSizeSelectBox = new SelectBox<>(game.uiSkin);
             mapSizeSelectBox.setItems(mapSizeStrings);
 
@@ -167,23 +156,23 @@ public class MainMenuScreen implements Screen {
             mainTable.row();
             mainTable.add(difficultyLabel);
             mainTable.row();
-            mainTable.add(selectBox);
+            mainTable.add(selectBox).size(100,25);
             mainTable.row();
             mainTable.add(mapSizeLabel);
             mainTable.row();
-            mainTable.add(mapSizeSelectBox);
+            mainTable.add(mapSizeSelectBox).size(100,25);
             mainTable.row();
             mainTable.add(breakLabel);
             mainTable.row();
-            mainTable.add(showAlgoWindowButton);
+            mainTable.add(showAlgoWindowButton).size(170,25);
             mainTable.row();
             mainTable.add(breakLabel);
             mainTable.row();
-            mainTable.add(playButton);
+            mainTable.add(playButton).size(170,25);
             mainTable.row();
             mainTable.add(breakLabel);
             mainTable.row();
-            mainTable.add(backButton);
+            mainTable.add(backButton).size(170,25);
 
             stage.addActor(mainTable);
         }

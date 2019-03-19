@@ -3,6 +3,7 @@ package com.mygdx.screens;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -38,6 +39,7 @@ public class GameScreen implements Screen, GameScreenInterface {
     private TutorialStrategy strategy;
     private boolean playMode;
     private boolean showAlgoWindow;
+    private Texture compassBackground;
 
     public GameScreen(final PledgeGame game, MapEnum mapEnum, boolean tutorialFlag) {
         this.game = game;
@@ -99,6 +101,7 @@ public class GameScreen implements Screen, GameScreenInterface {
         stage = new Stage();
         sprite = player.getSprite();
         sprite.translate(map.getStartX(), map.getStartY());
+        compassBackground = new Texture(Gdx.files.internal("collision/compass_background.png"));
 
         if(!tutorialFlag) {
             camera.position.x = player.getX();
@@ -107,14 +110,14 @@ public class GameScreen implements Screen, GameScreenInterface {
             camera2.position.y = player.getY();
             Gdx.input.setInputProcessor(playerController);
             revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
-            revCounter.setPosition(player.getX() - 320, player.getY() - 200);
-            revCounter.setFontScale(1.5f);
+            revCounter.setPosition(player.getX() - 320, player.getY() - 203);
+            //revCounter.setFontScale(1.5f);
             if(map.getWindow() != null)
                 stage.addActor(map.getWindow());
             if(map.getAlgoWindow() != null && showAlgoWindow)
                 stage.addActor(map.getAlgoWindow());
             if(mapEnum == MapEnum.INTRODUCTION_3) {
-               Label hilfeLabel = new Label("Druecke 'T', um ins Tutorial zu gelangen.", game.uiSkin);
+               Label hilfeLabel = new Label("Drücke 'T', um ins Tutorial zu gelangen.", game.uiSkin);
                hilfeLabel.setPosition(Gdx.graphics.getWidth() - hilfeLabel.getWidth(), 0);
                stage.addActor(hilfeLabel);
             }
@@ -123,21 +126,25 @@ public class GameScreen implements Screen, GameScreenInterface {
         if(tutorialFlag) {
             Gdx.input.setInputProcessor(stage);
             camera.translate(-64,-64);
-            TextButton menuButton = new TextButton("Menue", game.uiSkin);
+            TextButton menuButton = new TextButton("Hauptmenü", game.uiSkin);
             menuButton.setPosition(0, 0);
+            menuButton.setSize(90, 25);
 
             TextButton playButton = new TextButton("Play/Pause", game.uiSkin);
             playButton.setPosition(menuButton.getWidth(), 0);
+            playButton.setSize(90, 25);
 
-            TextButton stepButton = new TextButton("Schritt", game.uiSkin);
+            TextButton stepButton = new TextButton("1 Schritt", game.uiSkin);
             stepButton.setPosition(playButton.getX() + playButton.getWidth(), 0);
+            stepButton.setSize(90, 25);
 
             TextButton resetButton = new TextButton("Reset", game.uiSkin);
             resetButton.setPosition(stepButton.getX() + stepButton.getWidth(), 0);
+            resetButton.setSize(90, 25);
 
             revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
             revCounter.setPosition(64, 32);
-            revCounter.setFontScale(1.5f);
+            //revCounter.setFontScale(1.5f);
 
             stage.addActor(menuButton);
             stage.addActor(playButton);
@@ -217,6 +224,7 @@ public class GameScreen implements Screen, GameScreenInterface {
         game.spriteBatch.setProjectionMatrix(camera2.combined);
         revCounter.setText("Kompass: " + String.valueOf(player.getRevCounter()));
         if(mapEnum != MapEnum.INTRODUCTION_1) {
+            game.spriteBatch.draw(compassBackground, revCounter.getX(), revCounter.getY()-5);
             revCounter.draw(game.spriteBatch, 1);
         }
 

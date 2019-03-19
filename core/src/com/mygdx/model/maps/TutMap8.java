@@ -28,13 +28,9 @@ public class TutMap8 extends AbstractMap {
         Label textArea = new Label(TutorialTexts.LEVEL6, game.uiSkin);
         window = new Window("Algorithmus fertiggestellt", game.uiSkin);
 
-        algoText = new Label("S-1: Laufe geradeaus. \nWenn links frei und Kompass < 0, dann S-2, wenn Weg versperrt, dann S-3 ", game.uiSkin);
-        algoText2 = new Label("S-2: Nach links drehen und Kompass + 1 und weiter mit S-1 ", game.uiSkin);
-        algoText3 = new Label("S-3: Nach rechts drehen und Kompass - 1 und weiter mit S-1 ", game.uiSkin);
-        algoText.setFontScale(0.9f);
-        algoText2.setFontScale(0.9f);
-        algoText3.setFontScale(0.9f);
-
+        algoText = new Label("S-1: Laufe einen Schritt geradeaus (in Blickrichtung). \nWenn links frei und Kompass < 0, dann weiter mit S-2,\n wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ", game.uiSkin);
+        algoText2 = new Label("S-2: Nach links drehen (Kompass um 1 erhöhen) und weiter mit S-1 ", game.uiSkin);
+        algoText3 = new Label("S-3: Nach rechts drehen (Kompass um 1 verringern) und weiter mit S-1 ", game.uiSkin);
 
         window.add(textArea);
         window.pack();

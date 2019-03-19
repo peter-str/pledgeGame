@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
@@ -16,6 +17,8 @@ public class CreditsScreen implements Screen {
     private final PledgeGame game;
     private OrthographicCamera camera;
     private Stage stage;
+    private Texture libgdxPNG;
+    private Texture myNamePNG;
 
     public CreditsScreen(final PledgeGame game) {
         this.game = game;
@@ -34,16 +37,19 @@ public class CreditsScreen implements Screen {
         Table mainTable = new Table();
         mainTable.setFillParent(true);
         mainTable.top();
+        mainTable.padTop(25);
+
+        Table subTable = new Table();
 
         Label tilesetHeadline = new Label("Tileset: ", game.uiSkin);
         //tilesetHeadline.setColor(Color.RED);
         Label tilesetTitle = new Label("\"JohtoAllstarMix-Tileset\" ", game.uiSkin);
-        tilesetTitle.setColor(Color.ROYAL);
+        tilesetTitle.setColor(Color.valueOf("#0645AD"));
         Label tilesetAuthorLink = new Label("mepotes,", game.uiSkin);
-        tilesetAuthorLink.setColor(Color.ROYAL);
+        tilesetAuthorLink.setColor(Color.valueOf("#0645AD"));
         Label tilesetAuthors = new Label("Pokemon Gaia Project, Zetavares and Mapmaster ", game.uiSkin);
         Label tilesetLicense = new Label("CC BY-NC-SA 2.0 DE", game.uiSkin);
-        tilesetLicense.setColor(Color.ROYAL);
+        tilesetLicense.setColor(Color.valueOf("#0645AD"));
 
         tilesetTitle.addListener(new ClickListener(){
             @Override
@@ -68,11 +74,11 @@ public class CreditsScreen implements Screen {
 
         Label playerSpriteHeadline = new Label("Player Sprite: ", game.uiSkin);
         Label playerSpriteTitle = new Label("\"RPG Character/MainGuySpriteSheet\" ", game.uiSkin);
-        playerSpriteTitle.setColor(Color.ROYAL);
+        playerSpriteTitle.setColor(Color.valueOf("#0645AD"));
         Label playerSpriteAuthorLink = new Label("Curt", game.uiSkin);
-        playerSpriteAuthorLink.setColor(Color.ROYAL);
+        playerSpriteAuthorLink.setColor(Color.valueOf("#0645AD"));
         Label playerSpriteLicense = new Label("CC BY 3.0", game.uiSkin);
-        playerSpriteLicense.setColor(Color.ROYAL);
+        playerSpriteLicense.setColor(Color.valueOf("#0645AD"));
 
         playerSpriteTitle.addListener(new ClickListener(){
             @Override
@@ -96,9 +102,9 @@ public class CreditsScreen implements Screen {
         });
 
         Label fountainTitle = new Label("\"Tile: Fountain\" ", game.uiSkin);
-        fountainTitle.setColor(Color.ROYAL);
+        fountainTitle.setColor(Color.valueOf("#0645AD"));
         Label fountainAuthorLink = new Label("XDinky", game.uiSkin);
-        fountainAuthorLink.setColor(Color.ROYAL);
+        fountainAuthorLink.setColor(Color.valueOf("#0645AD"));
 
         fountainTitle.addListener(new ClickListener(){
             @Override
@@ -117,9 +123,9 @@ public class CreditsScreen implements Screen {
 
 
         Label assetsTitle = new Label("\"Nature Basic Tile Set\" ", game.uiSkin);
-        assetsTitle.setColor(Color.ROYAL);
+        assetsTitle.setColor(Color.valueOf("#0645AD"));
         Label assetsAuthorLink = new Label("Liz Molnar", game.uiSkin);
-        assetsAuthorLink.setColor(Color.ROYAL);
+        assetsAuthorLink.setColor(Color.valueOf("#0645AD"));
 
         assetsTitle.addListener(new ClickListener(){
             @Override
@@ -136,7 +142,8 @@ public class CreditsScreen implements Screen {
         });
 
 
-        TextButton backButton = new TextButton("Zurueck", game.uiSkin);
+        TextButton backButton = new TextButton("Zurück", game.uiSkin);
+        backButton.setSize(100f,20f);
         backButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -145,6 +152,10 @@ public class CreditsScreen implements Screen {
             }
         });
 
+        mainTable.add(new Label("Credits (Externe Verlinkungen sind blau markiert):", game.uiSkin));
+        mainTable.row();
+        mainTable.add(new Label("", game.uiSkin));
+        mainTable.row();
         mainTable.add(tilesetHeadline);
         mainTable.row();
         mainTable.add(tilesetTitle);
@@ -177,7 +188,9 @@ public class CreditsScreen implements Screen {
         mainTable.row();
         mainTable.add(new Label("CC0 licensed objects/No Copyright:", game.uiSkin));
         mainTable.row();
+        /*
         mainTable.add(fountainTitle);
+        mainTable.add(assetsTitle);
         mainTable.row();
         mainTable.add(new Label("by", game.uiSkin));
         mainTable.row();
@@ -185,12 +198,45 @@ public class CreditsScreen implements Screen {
         mainTable.row();
         mainTable.add(new Label("", game.uiSkin));
         mainTable.row();
-        mainTable.add(assetsTitle);
+
         mainTable.row();
         mainTable.add(new Label("by", game.uiSkin));
         mainTable.row();
         mainTable.add(assetsAuthorLink);
+        */
 
+        subTable.add(fountainTitle).spaceRight(50);
+        subTable.add(assetsTitle);
+        subTable.row();
+        subTable.add(new Label("by", game.uiSkin)).spaceRight(50);
+        subTable.add(new Label("by", game.uiSkin));
+        subTable.row();
+        subTable.add(fountainAuthorLink).spaceRight(50);
+        subTable.add(assetsAuthorLink);
+        mainTable.add(subTable);
+
+        libgdxPNG = new Texture(Gdx.files.internal("libgdx.png"));
+        myNamePNG = new Texture(Gdx.files.internal("myName.png"));
+        Image myNameImage = new Image(myNamePNG);
+        myNameImage.setPosition(Gdx.graphics.getWidth()/2f - myNamePNG.getWidth()/2f, 0);
+        myNameImage.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Gdx.net.openURI("https://github.com/peter-str");
+            }
+        });
+
+        Image libgdxImage = new Image(libgdxPNG);
+        libgdxImage.setPosition(Gdx.graphics.getWidth() - libgdxPNG.getWidth() - 5, 5);
+        libgdxImage.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Gdx.net.openURI("https://libgdx.badlogicgames.com/");
+            }
+        });
+
+        stage.addActor(myNameImage);
+        stage.addActor(libgdxImage);
         stage.addActor(mainTable);
         stage.addActor(backButton);
     }
@@ -201,7 +247,6 @@ public class CreditsScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         camera.update();
-
         stage.act();
         stage.draw();
     }

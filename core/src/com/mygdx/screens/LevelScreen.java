@@ -38,12 +38,12 @@ public class LevelScreen implements Screen {
         mainTable.setFillParent(true);
         mainTable.center();
 
-        Label headline = new Label("Leveluebersicht", game.uiSkin);
+        Label headline = new Label("Levelübersicht", game.uiSkin);
         Label breakLabel = new Label("", game.uiSkin);
 
-        TextButton introductionLevel1 = new TextButton("Einfuehrungslevel 1", game.uiSkin);
-        TextButton introductionLevel2 = new TextButton("Einfuehrungslevel 2", game.uiSkin);
-        TextButton introductionLevel3 = new TextButton("Einfuehrungslevel 3", game.uiSkin);
+        TextButton introductionLevel1 = new TextButton("Einführungslevel 1", game.uiSkin);
+        TextButton introductionLevel2 = new TextButton("Einführungslevel 2", game.uiSkin);
+        TextButton introductionLevel3 = new TextButton("Einführungslevel 3", game.uiSkin);
 
         TextButton tutorialLevel1 = new TextButton("Tutoriallevel 1", game.uiSkin);
         TextButton tutorialLevel2 = new TextButton("Tutoriallevel 2", game.uiSkin);
@@ -55,7 +55,7 @@ public class LevelScreen implements Screen {
         TextButton tutorialLevel8 = new TextButton("Tutoriallevel 8", game.uiSkin);
 
         TextButton finalLevel = new TextButton("Endlevel", game.uiSkin);
-        TextButton backButton = new TextButton("Zurueck", game.uiSkin);
+        TextButton backButton = new TextButton("Zurück", game.uiSkin);
 
 
         introductionLevel1.addListener(new ClickListener() {
@@ -167,33 +167,33 @@ public class LevelScreen implements Screen {
         mainTable.row();
         mainTable.add(breakLabel);
         mainTable.row();
-        mainTable.add(introductionLevel1);
+        mainTable.add(introductionLevel1).size(150,25);
         mainTable.row();
-        mainTable.add(introductionLevel2);
+        mainTable.add(introductionLevel2).size(150,25);
         mainTable.row();
-        mainTable.add(introductionLevel3);
+        mainTable.add(introductionLevel3).size(150,25);
         mainTable.row();
-        mainTable.add(tutorialLevel1);
+        mainTable.add(tutorialLevel1).size(150,25);
         mainTable.row();
-        mainTable.add(tutorialLevel2);
+        mainTable.add(tutorialLevel2).size(150,25);
         mainTable.row();
-        mainTable.add(tutorialLevel3);
+        mainTable.add(tutorialLevel3).size(150,25);
         mainTable.row();
-        mainTable.add(tutorialLevel4);
+        mainTable.add(tutorialLevel4).size(150,25);
         mainTable.row();
-        mainTable.add(tutorialLevel5);
+        mainTable.add(tutorialLevel5).size(150,25);
         mainTable.row();
-        mainTable.add(tutorialLevel6);
+        mainTable.add(tutorialLevel6).size(150,25);
         mainTable.row();
-        mainTable.add(tutorialLevel7);
+        mainTable.add(tutorialLevel7).size(150,25);
         mainTable.row();
-        mainTable.add(tutorialLevel8);
+        mainTable.add(tutorialLevel8).size(150,25);
         mainTable.row();
-        mainTable.add(finalLevel);
+        mainTable.add(finalLevel).size(150,25);
         mainTable.row();
         mainTable.add(breakLabel);
         mainTable.row();
-        mainTable.add(backButton);
+        mainTable.add(backButton).size(150,25);
 
         stage.addActor(mainTable);
     }

@@ -83,9 +83,9 @@ public abstract class AbstractMap {
                 }
             };
             dialog.text("Super, du hast es geschafft! " +
-                    "\nZurueck zum Hauptmenue oder naechstes Level? ");
-            dialog.button("Hauptmenue", "menu");
-            dialog.button("Naechstes Level", "level");
+                    "\nZurück zum Hauptmenü oder nächstes Level? ");
+            dialog.button("Hauptmenü", "menu");
+            dialog.button("Nächstes Level", "level");
             dialog.show(gameScreenObserver.getStage());
         }
     }

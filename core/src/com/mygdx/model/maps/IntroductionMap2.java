@@ -46,7 +46,7 @@ public class IntroductionMap2 extends AbstractMap {
                 }
             };
             dialog.text("Du kannst hier nicht weiter, finde einen anderen Weg! \n" +
-                    "Moeglicherweise gibt es einen Weg durch den Wald... ");
+                    "Möglicherweise gibt es einen Weg durch den Wald... ");
             dialog.button("Okay");
             dialog.show(gameScreenObserver.getStage());
         }
@@ -60,8 +60,8 @@ public class IntroductionMap2 extends AbstractMap {
                     Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
                 }
             };
-            dialog.text("Beobachte deinen Kompass (die Zahl), am linken Rand. \n" +
-                    "Kannst du herausfinden, wie er funktioniert? \n" +
+            dialog.text("Beobachte deinen Kompass, der am linken Rand angezeigt wird. \n" +
+                    "Kannst du herausfinden, wann sich der Wert der Zahl verändert? \n" +
                     "Drehe dich nach links und rechts, um es herauszufinden. ");
             dialog.button("Okay");
             dialog.show(gameScreenObserver.getStage());
@@ -71,13 +71,13 @@ public class IntroductionMap2 extends AbstractMap {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());
-            dialog = new Dialog("Ein Hoehleneingang!", game.uiSkin, "dialog") {
+            dialog = new Dialog("Ein Höhleneingang!", game.uiSkin, "dialog") {
                 public void result(Object obj) {
                     Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
                     gameScreenObserver.getPlayerController().keyDown(Input.Keys.UP);
                 }
             };
-            dialog.text("Du entdeckst einen Hoehleneingang und entscheidest dich hineinzugehen. ");
+            dialog.text("Du entdeckst einen Höhleneingang und entscheidest dich hineinzugehen. ");
             dialog.button("Okay");
             dialog.show(gameScreenObserver.getStage());
         }

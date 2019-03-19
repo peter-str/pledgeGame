@@ -25,29 +25,26 @@ public class TutMap4 extends AbstractMap {
         Label textArea = new Label(TutorialTexts.LEVEL4, game.uiSkin);
         window = new Window("Algorithmus anpassen", game.uiSkin);
 
-        final Label algoText = new Label("S-1: Laufe geradeaus ", game.uiSkin);
+        final Label algoText = new Label("S-1: Laufe einen Schritt geradeaus ", game.uiSkin);
         final Label algoText2 = new Label("S-2: Wand vor dir, aber links keine: Drehe dich nach links ", game.uiSkin);
         final Label algoText3 = new Label("S-3: Wand vor dir: Drehe dich nach rechts ", game.uiSkin);
-        algoText.setFontScale(0.9f);
-        algoText2.setFontScale(0.9f);
-        algoText3.setFontScale(0.9f);
 
         final String stepA = "";
         final String stepB = "";
         final String stepC = "";
         final Label finalStep = new Label("", game.uiSkin);
 
-        CheckBox checkBoxA = new CheckBox("Das Drehen nach Rechts muss angepasst werden. ", game.uiSkin);
-        CheckBox checkBoxB = new CheckBox("Nach jedem Schritt ueberpruefen, ob links keine Wand ist. ", game.uiSkin);
+        CheckBox checkBoxA = new CheckBox("Das Drehen nach rechts muss angepasst werden. ", game.uiSkin);
+        CheckBox checkBoxB = new CheckBox("Nach jedem Schritt überprüfen, ob links keine Wand ist. ", game.uiSkin);
 
 
         checkBoxA.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 notifyObserver(new Strategy4A());
-                algoText.setText("S-1: Laufe geradeaus, wenn links frei, dann 2, wenn vorne versperrt, dann 3 ");
-                algoText2.setText("S-2: Nach links drehen, dann 1 ");
-                algoText3.setText("S-3: Nach links drehen, dann 1 ");
+                algoText.setText("S-1: Laufe einen Schritt geradeaus. \nWenn links frei, dann S-2, wenn vorne versperrt, dann S-3 ");
+                algoText2.setText("S-2: Nach links drehen, dann S-1 ");
+                algoText3.setText("S-3: Nach links drehen, dann S-1 ");
                 algoWindow.pack();
             }
         });
@@ -56,9 +53,9 @@ public class TutMap4 extends AbstractMap {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 notifyObserver(new Strategy4B());
-                algoText.setText("S-1: Laufe geradeaus, wenn links frei, dann 2, wenn vorne versperrt, dann 3 ");
-                algoText2.setText("S-2: Nach links drehen, dann 1 ");
-                algoText3.setText("S-3: Nach rechts drehen, dann 1 ");
+                algoText.setText("S-1: Laufe einen Schritt geradeaus. \nWenn links frei, dann S-2, wenn vorne versperrt, dann S-3 ");
+                algoText2.setText("S-2: Nach links drehen, dann S-1 ");
+                algoText3.setText("S-3: Nach rechts drehen, dann S-1 ");
                 algoWindow.pack();
             }
         });

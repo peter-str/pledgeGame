@@ -29,24 +29,21 @@ public class TutMap5 extends AbstractMap {
         Label textArea = new Label(TutorialTexts.LEVEL5, game.uiSkin);
         window = new Window("Algorithmus finalisieren", game.uiSkin);
 
-        final Label algoText = new Label("S-1: Laufe geradeaus, wenn links frei, dann 2, wenn vorne versperrt, dann 3 ", game.uiSkin);
-        final Label algoText2 = new Label("S-2: Nach links drehen, dann 1 ", game.uiSkin);
-        final Label algoText3 = new Label("S-3: Nach rechts drehen, dann 1 ", game.uiSkin);
-        algoText.setFontScale(0.9f);
-        algoText2.setFontScale(0.9f);
-        algoText3.setFontScale(0.9f);
+        final Label algoText = new Label("S-1: Laufe einen Schritt geradeaus.\nWenn links frei und Kompass < 0, dann weiter mit S-2,\n wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ", game.uiSkin);
+        final Label algoText2 = new Label("S-2: Nach links drehen, dann S-1 ", game.uiSkin);
+        final Label algoText3 = new Label("S-3: Nach rechts drehen, dann S-1 ", game.uiSkin);
 
         CheckBox checkBoxA = new CheckBox("Maximal genauso oft wie die Anzahl der Rechtsdrehungen", game.uiSkin);
         CheckBox checkBoxB = new CheckBox("Weniger als die Anzahl der Rechtsdrehungen", game.uiSkin);
-        CheckBox checkBoxC = new CheckBox("Oefter als die Anzahl der Rechtsdrehungen", game.uiSkin);
+        CheckBox checkBoxC = new CheckBox("Öfter als die Anzahl der Rechtsdrehungen", game.uiSkin);
 
         checkBoxA.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 notifyObserver(new Strategy5A());
-                algoText.setText("S-1: Laufe geradeaus. \nWenn links frei und Kompass < 0, dann S-2, wenn Weg versperrt, dann S-3 ");
-                algoText2.setText("S-2: Nach links drehen und Kompass + 1 und weiter mit S-1 ");
-                algoText3.setText("S-3: Nach rechts drehen und Kompass - 1 und weiter mit S-1 ");
+                algoText.setText("S-1: Laufe einen Schritt geradeaus. \nWenn links frei und Kompass < 0, dann weiter mit S-2,\n wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ");
+                algoText2.setText("S-2: Nach links drehen (Kompass um 1 erhöhen) und weiter mit S-1 ");
+                algoText3.setText("S-3: Nach rechts drehen (Kompass um 1 verringern) und weiter mit S-1 ");
                 algoWindow.pack();
             }
         });
@@ -55,9 +52,9 @@ public class TutMap5 extends AbstractMap {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 notifyObserver(new Strategy5B());
-                algoText.setText("S-1: Laufe geradeaus. Wenn Weg versperrt, dann S-3 ");
-                algoText2.setText("S-2: Nach links drehen und Kompass + 1 und weiter mit S-1 ");
-                algoText3.setText("S-3: Nach rechts drehen und Kompass - 1 und weiter mit S-1 ");
+                algoText.setText("S-1: Laufe einen Schritt geradeaus. Wenn Weg nach vorne nicht frei, dann S-3 ");
+                algoText2.setText("S-2: Nach links drehen (Kompass um 1 erhöhen) und weiter mit S-1 ");
+                algoText3.setText("S-3: Nach rechts drehen (Kompass um 1 verringern) und weiter mit S-1 ");
                 algoWindow.pack();
             }
         });

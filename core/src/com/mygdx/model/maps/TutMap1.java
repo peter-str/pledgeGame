@@ -25,8 +25,7 @@ public class TutMap1 extends AbstractMap {
         window.setPosition(64, Gdx.graphics.getHeight());
 
         algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
-        Label algoText = new Label("S-1: Laufe geradeaus. ", game.uiSkin);
-        algoText.setFontScale(0.9f);
+        Label algoText = new Label("S-1: Laufe einen Schritt geradeaus. ", game.uiSkin);
         algoWindow.add(algoText);
         algoWindow.pack();
         algoWindow.setPosition(Gdx.graphics.getWidth() / algoWindow.getWidth() + 64, Gdx.graphics.getHeight()/2f);

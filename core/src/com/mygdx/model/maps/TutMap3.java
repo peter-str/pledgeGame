@@ -1,6 +1,7 @@
 package com.mygdx.model.maps;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
@@ -27,11 +28,11 @@ public class TutMap3 extends AbstractMap {
         tiledMap = new TmxMapLoader().load(TUTMAP3);
         Label textArea = new Label(TutorialTexts.LEVEL3, game.uiSkin);
         window = new Window("Die dritte Regel", game.uiSkin);
+        //window.setColor(Color.WHITE);
 
         final String stepA = "S-2: Wand vor dir, aber links keine: Drehe dich nach links. ";
         final String stepB = "S-2: Wand vor dir, aber links keine: Drehe dich nach rechts. ";
         final Label finalStep = new Label("2: -", game.uiSkin);
-        finalStep.setFontScale(0.9f);
 
         CheckBox checkBoxA = new CheckBox("Wenn eine Wand vor dir ist, aber links keine, drehe dich nach links", game.uiSkin);
         CheckBox checkBoxB = new CheckBox("Wenn eine Wand vor dir ist, aber links keine, drehe dich nach rechts", game.uiSkin);
@@ -65,10 +66,8 @@ public class TutMap3 extends AbstractMap {
         window.setPosition(64, Gdx.graphics.getHeight());
 
         algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
-        Label algoText = new Label("S-1: Laufe geradeaus", game.uiSkin);
+        Label algoText = new Label("S-1: Laufe einen Schritt geradeaus", game.uiSkin);
         Label algoText2 = new Label("S-3: Wand vor dir: Drehe dich nach rechts ", game.uiSkin);
-        algoText.setFontScale(0.9f);
-        algoText2.setFontScale(0.9f);
         algoWindow.add(algoText);
         algoWindow.row();
         algoWindow.add(finalStep);

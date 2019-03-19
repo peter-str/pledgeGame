@@ -28,12 +28,9 @@ public class TutMap7 extends AbstractMap {
         super(game, nextMap);
         tiledMap = new TmxMapLoader().load(TUTMAP7);
 
-        algoText = new Label("S-1: Laufe geradeaus. \nWenn links frei und Kompass < 0, dann S-2, wenn Weg versperrt, dann S-3 ", game.uiSkin);
-        algoText2 = new Label("S-2: Nach links drehen und Kompass + 1 und weiter mit S-1 ", game.uiSkin);
-        algoText3 = new Label("S-3: Nach rechts drehen und Kompass - 1 und weiter mit S-1 ", game.uiSkin);
-        algoText.setFontScale(0.9f);
-        algoText2.setFontScale(0.9f);
-        algoText3.setFontScale(0.9f);
+        algoText = new Label("S-1: Laufe einen Schritt geradeaus (in Blickrichtung). \nWenn links frei und Kompass < 0, dann weiter mit S-2,\n wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ", game.uiSkin);
+        algoText2 = new Label("S-2: Nach links drehen (Kompass um 1 erhöhen) und weiter mit S-1 ", game.uiSkin);
+        algoText3 = new Label("S-3: Nach rechts drehen (Kompass um 1 verringern) und weiter mit S-1 ", game.uiSkin);
 
         algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
         algoWindow.add(algoText);
@@ -91,10 +88,10 @@ public class TutMap7 extends AbstractMap {
                     Gdx.input.setInputProcessor(gameScreenObserver.getPlayerController());
                 }
             };
-            dialog.text("Du weisst zwar, dass du nach links weiter musst, aber in einem dunklen \n" +
-                    "Labyrinth wirst du es nicht zwangslaeufig wissen. \n" +
-                    "Merke: Der Kompass darf nie einen Wert ueber 0 erreichen! \n" +
-                    "Deshalb musst du hier wieder zurueck laufen. ");
+            dialog.text("Du weißt zwar, dass du nach links weiter musst, aber in einem dunklen \n" +
+                    "Labyrinth wirst du es nicht zwangsläufig wissen. \n" +
+                    "Merke: Der Kompass darf nie einen Wert über 0 erreichen! \n" +
+                    "Deshalb musst du hier wieder zurücklaufen. ");
             dialog.button("Okay");
             dialog.show(gameScreenObserver.getStage());
 
