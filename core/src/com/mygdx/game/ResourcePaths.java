@@ -2,12 +2,13 @@ package com.mygdx.game;
 
 public class ResourcePaths {
 
-    private ResourcePaths() {}
+    private ResourcePaths() {
+    }
 
     //PledgeGame Class (package game) and random map textures
     public static final String UIPATH = "skins/uiskin.json";
     public static final String NEUTRAL = "collision/neutral.png";
-    public static final String WALL =  "collision/blocked.png";
+    public static final String WALL = "collision/blocked.png";
     public static final String WALL_TEX = "maps/textures/wall_1.png";
     public static final String FLOOR_TEX = "maps/textures/floor_city.png";
     public static final String FINISH_TEX = "maps/textures/finish_flag.png";

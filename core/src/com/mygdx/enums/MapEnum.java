@@ -1,6 +1,5 @@
 package com.mygdx.enums;
 
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.model.maps.*;
 
@@ -72,7 +71,7 @@ public enum MapEnum {
         }
     },
 
-    INTRODUCTION_3_2{
+    INTRODUCTION_3_2 {
         public AbstractMap getMap(PledgeGame game) {
             return new IntroductionMap3(game, null, true);
         }

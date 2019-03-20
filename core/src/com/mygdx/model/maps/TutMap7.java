@@ -14,7 +14,6 @@ import com.mygdx.game.TutorialTexts;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyMedium;
 
-
 import static com.mygdx.game.ResourcePaths.TUTMAP7;
 
 public class TutMap7 extends AbstractMap {
@@ -95,33 +94,33 @@ public class TutMap7 extends AbstractMap {
                     "Deshalb musst du hier wieder zurücklaufen. ");
             dialog.button("Okay");
             dialog.show(gameScreenObserver.getStage());
-            dialog.setPosition((Gdx.graphics.getWidth() - dialog.getWidth())/2f, Gdx.graphics.getHeight() - dialog.getHeight()*2f);
+            dialog.setPosition((Gdx.graphics.getWidth() - dialog.getWidth()) / 2f, Gdx.graphics.getHeight() - dialog.getHeight() * 2f);
         }
     }
 
     @Override
     public void showInstructions(int revCounter, boolean up, boolean right, boolean bottom, boolean left) {
 
-        if(revCounter == 0 && !up) {
+        if (revCounter == 0 && !up) {
             algoText.setColor(Color.RED);
             algoText2.setColor(Color.WHITE);
             algoText3.setColor(Color.WHITE);
-        } else if(revCounter < 0 && !left) {
-            if(flag2 == 0)
+        } else if (revCounter < 0 && !left) {
+            if (flag2 == 0)
                 test(revCounter);
             algoText.setColor(Color.WHITE);
             algoText2.setColor(Color.RED);
             algoText3.setColor(Color.WHITE);
-            if(revCounter-1 == revC) {
+            if (revCounter - 1 == revC) {
                 algoText.setColor(Color.RED);
                 algoText2.setColor(Color.WHITE);
                 algoText3.setColor(Color.WHITE);
             }
-        } else if((revCounter < 0 && left && up) || (revCounter == 0 & up)) {
+        } else if ((revCounter < 0 && left && up) || (revCounter == 0 & up)) {
             algoText.setColor(Color.WHITE);
             algoText2.setColor(Color.WHITE);
             algoText3.setColor(Color.RED);
-        } else if(revCounter < 0 && left && !up) {
+        } else if (revCounter < 0 && left && !up) {
             algoText.setColor(Color.RED);
             algoText2.setColor(Color.WHITE);
             algoText3.setColor(Color.WHITE);

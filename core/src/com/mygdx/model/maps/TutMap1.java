@@ -5,13 +5,13 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.Align;
+import com.mygdx.enums.MapEnum;
+import com.mygdx.game.PledgeGame;
 import com.mygdx.game.TutorialTexts;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.difficulties.DifficultyTutorial;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 import com.mygdx.model.tutorialStrategies.level_1.Strategy1A;
-import com.mygdx.game.PledgeGame;
-import com.mygdx.enums.MapEnum;
 
 import static com.mygdx.game.ResourcePaths.TUTMAP1;
 
@@ -29,7 +29,7 @@ public class TutMap1 extends AbstractMap {
         Label algoText = new Label("S-1: Laufe einen Schritt geradeaus. ", game.uiSkin);
         algoWindow.align(Align.left).add(algoText);
         algoWindow.pack();
-        algoWindow.setPosition(Gdx.graphics.getWidth() / algoWindow.getWidth() + 64, Gdx.graphics.getHeight()/2f);
+        algoWindow.setPosition(Gdx.graphics.getWidth() / algoWindow.getWidth() + 64, Gdx.graphics.getHeight() / 2f);
     }
 
     @Override

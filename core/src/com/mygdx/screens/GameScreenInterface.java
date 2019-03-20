@@ -6,6 +6,8 @@ import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 
 public interface GameScreenInterface {
     void updateStrategy(TutorialStrategy strategy);
+
     PlayerController getPlayerController();
+
     Stage getStage();
 }

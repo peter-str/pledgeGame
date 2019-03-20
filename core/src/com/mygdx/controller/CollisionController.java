@@ -2,8 +2,8 @@ package com.mygdx.controller;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.mygdx.game.PledgeGame;
-import com.mygdx.model.maps.AbstractMap;
 import com.mygdx.model.Player;
+import com.mygdx.model.maps.AbstractMap;
 
 class CollisionController {
 
@@ -25,7 +25,7 @@ class CollisionController {
     }
 
     private boolean checkCollision(int x, int y) {
-        return collisionLayer.getCell(x/32,y/32).getTile().getProperties().containsKey("Wand");
+        return collisionLayer.getCell(x / 32, y / 32).getTile().getProperties().containsKey("Wand");
     }
 
     void checkSurroundings() {
@@ -58,8 +58,8 @@ class CollisionController {
     }
 
     boolean goalAchieved(int x, int y) {
-        if(collisionLayer.getCell(x/32, y/32).getTile().getProperties().containsKey("Ziel")) {
-            if(map.getNextMap() == null) {
+        if (collisionLayer.getCell(x / 32, y / 32).getTile().getProperties().containsKey("Ziel")) {
+            if (map.getNextMap() == null) {
                 map.showWinningMessage();
                 return true;
             } else {
@@ -77,19 +77,19 @@ class CollisionController {
         game.spriteBatch.draw(game.overlay[0], texPosX - 320, texPosY - 320);
 
         //Wände werden eingeblendet (OBEN, RECHTS, UNTEN, LINKS)
-        if(player.isTop()) {
+        if (player.isTop()) {
             game.spriteBatch.draw(game.overlay[1], texPosX - 288, texPosY - 256);
         }
 
-        if(player.isRight()) {
+        if (player.isRight()) {
             game.spriteBatch.draw(game.overlay[1], texPosX - 256, texPosY - 288);
         }
 
-        if(player.isBottom()) {
+        if (player.isBottom()) {
             game.spriteBatch.draw(game.overlay[1], texPosX - 288, texPosY - 320);
         }
 
-        if(player.isLeft()) {
+        if (player.isLeft()) {
             game.spriteBatch.draw(game.overlay[1], texPosX - 320, texPosY - 288);
         }
     }

@@ -36,7 +36,7 @@ public class IntroductionMap1 extends AbstractMap {
 
     @Override
     public void showInstructions(int x, int y) {
-        if(flag == 0) {
+        if (flag == 0) {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());
@@ -54,7 +54,7 @@ public class IntroductionMap1 extends AbstractMap {
             dialog.show(gameScreenObserver.getStage());
         }
 
-        if(x == 15 && y == 21 && flag == 1) {
+        if (x == 15 && y == 21 && flag == 1) {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());
@@ -70,10 +70,10 @@ public class IntroductionMap1 extends AbstractMap {
                     "nach vorne und hinten jedoch schon. ");
             dialog.button("Okay");
             dialog.show(gameScreenObserver.getStage());
-            dialog.setPosition((Gdx.graphics.getWidth() - dialog.getWidth())/2f, Gdx.graphics.getHeight() - dialog.getHeight()*2f);
+            dialog.setPosition((Gdx.graphics.getWidth() - dialog.getWidth()) / 2f, Gdx.graphics.getHeight() - dialog.getHeight() * 2f);
         }
 
-        if((x == 23 || x == 26) && y == 18 && flag == 2) {
+        if ((x == 23 || x == 26) && y == 18 && flag == 2) {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());

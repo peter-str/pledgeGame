@@ -12,9 +12,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
 
-import static com.mygdx.game.ResourcePaths.FINISH_TEX;
-import static com.mygdx.game.ResourcePaths.FLOOR_TEX;
-import static com.mygdx.game.ResourcePaths.WALL_TEX;
+import static com.mygdx.game.ResourcePaths.*;
 
 public class MazeCreatorClass {
 
@@ -81,14 +79,14 @@ public class MazeCreatorClass {
             for (int j = 0; j < labyrinth[i].length; j++) {
                 //System.out.print(labyrinth[i][j]);
                 if (labyrinth[i][j] == 1) {
-                    layer1.setCell(j, Math.abs(i-(labyrinth.length-1)), wallCell);
+                    layer1.setCell(j, Math.abs(i - (labyrinth.length - 1)), wallCell);
                 }
                 if (labyrinth[i][j] == 0) {
-                    layer1.setCell(j, Math.abs(i-(labyrinth.length-1)), floorCell);
+                    layer1.setCell(j, Math.abs(i - (labyrinth.length - 1)), floorCell);
                 }
 
                 if (labyrinth[i][j] == 2) {
-                    layer1.setCell(j, Math.abs(i-(labyrinth.length-1)), finishCell);
+                    layer1.setCell(j, Math.abs(i - (labyrinth.length - 1)), finishCell);
                 }
             }
             //System.out.println();
@@ -232,9 +230,4 @@ public class MazeCreatorClass {
             System.out.println();
         }
     }
-
-    public static void main(String[] args) {
-        new MazeCreatorClass(6, 6);
-    }
-
 }

@@ -22,7 +22,7 @@ public class Strategy2B implements TutorialStrategy {
 
         } else if (gameScreen.getPlayer().isTop() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
 
-           if (justTurned) {
+            if (justTurned) {
                 try {
                     Thread.sleep(300);
                 } catch (InterruptedException e) {

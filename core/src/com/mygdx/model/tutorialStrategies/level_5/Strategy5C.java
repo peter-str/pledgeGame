@@ -8,14 +8,14 @@ import com.mygdx.screens.GameScreen;
 public class Strategy5C implements TutorialStrategy {
     @Override
     public void algorithm(final GameScreen gameScreen) {
-        if(!gameScreen.getPlayer().isLeft() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
+        if (!gameScreen.getPlayer().isLeft() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
             gameScreen.getPlayer().rotateLeft();
             try {
                 Thread.sleep(300);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        } else if(!gameScreen.getPlayer().isTop()) {
+        } else if (!gameScreen.getPlayer().isTop()) {
 
             Timer.schedule(new Timer.Task() {
                 @Override
@@ -23,7 +23,7 @@ public class Strategy5C implements TutorialStrategy {
                     gameScreen.getPlayer().move(32);
                 }
             }, 0.2f);
-        } else if(gameScreen.getPlayer().isTop() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
+        } else if (gameScreen.getPlayer().isTop() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
             gameScreen.getPlayer().rotateLeft();
             try {
                 Thread.sleep(300);

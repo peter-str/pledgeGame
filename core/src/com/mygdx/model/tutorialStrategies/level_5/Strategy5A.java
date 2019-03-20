@@ -13,15 +13,14 @@ public class Strategy5A implements TutorialStrategy {
     @Override
     public void algorithm(final GameScreen gameScreen) {
 
-        if(!firstStep && !gameScreen.getPlayer().isTop()) {
+        if (!firstStep && !gameScreen.getPlayer().isTop()) {
             gameScreen.getPlayer().move(32);
             firstStep = true;
-        }
-        else {
+        } else {
             firstStep = true;
         }
 
-        if(!gameScreen.getPlayer().isTop() && gameScreen.getPlayer().isLeft()) {
+        if (!gameScreen.getPlayer().isTop() && gameScreen.getPlayer().isLeft()) {
             Timer.schedule(new Timer.Task() {
                 @Override
                 public void run() {
@@ -29,21 +28,21 @@ public class Strategy5A implements TutorialStrategy {
                 }
             }, 0.2f);
 
-        } else if(!gameScreen.getPlayer().isLeft() && isCurrentlyStanding(gameScreen) && revCounter < 0) {
+        } else if (!gameScreen.getPlayer().isLeft() && isCurrentlyStanding(gameScreen) && revCounter < 0) {
             turnLeft(gameScreen);
-        } else if(!gameScreen.getPlayer().isTop()) {
+        } else if (!gameScreen.getPlayer().isTop()) {
             gameScreen.getPlayer().move(32);
-        } else if(isCurrentlyStanding(gameScreen)) {
+        } else if (isCurrentlyStanding(gameScreen)) {
             turnRight(gameScreen);
             revCounter--;
         }
     }
 
     private void turnLeft(GameScreen gameScreen) {
-        if(!turnedLeft) {
+        if (!turnedLeft) {
             gameScreen.getPlayer().rotateLeft();
         }
-        if(turnedLeft) {
+        if (turnedLeft) {
             gameScreen.getPlayer().move(32);
             revCounter++;
         }

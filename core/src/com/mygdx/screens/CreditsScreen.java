@@ -8,7 +8,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.game.PledgeGame;
 
@@ -48,21 +51,21 @@ public class CreditsScreen implements Screen {
         Label tilesetLicense = new Label("CC BY-NC-SA 2.0 DE", game.uiSkin);
         tilesetLicense.setColor(Color.valueOf("#0645AD"));
 
-        tilesetTitle.addListener(new ClickListener(){
+        tilesetTitle.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.net.openURI("https://fanart.pokefans.net/tilesets/12572");
             }
         });
 
-        tilesetAuthorLink.addListener(new ClickListener(){
+        tilesetAuthorLink.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.net.openURI("https://user.pokefans.net/profile/mepotes");
             }
         });
 
-        tilesetLicense.addListener(new ClickListener(){
+        tilesetLicense.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.net.openURI("https://creativecommons.org/licenses/by-nc-sa/2.0/de/");
@@ -77,21 +80,21 @@ public class CreditsScreen implements Screen {
         Label playerSpriteLicense = new Label("CC BY 3.0", game.uiSkin);
         playerSpriteLicense.setColor(Color.valueOf("#0645AD"));
 
-        playerSpriteTitle.addListener(new ClickListener(){
+        playerSpriteTitle.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.net.openURI("https://opengameart.org/content/rpg-character");
             }
         });
 
-        playerSpriteAuthorLink.addListener(new ClickListener(){
+        playerSpriteAuthorLink.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.net.openURI("https://opengameart.org/users/curt");
             }
         });
 
-        playerSpriteLicense.addListener(new ClickListener(){
+        playerSpriteLicense.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.net.openURI("https://creativecommons.org/licenses/by/3.0/");
@@ -103,14 +106,14 @@ public class CreditsScreen implements Screen {
         Label fountainAuthorLink = new Label("XDinky", game.uiSkin);
         fountainAuthorLink.setColor(Color.valueOf("#0645AD"));
 
-        fountainTitle.addListener(new ClickListener(){
+        fountainTitle.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.net.openURI("https://www.deviantart.com/xdinky/art/Tile-Fountain-203289664");
             }
         });
 
-        fountainAuthorLink.addListener(new ClickListener(){
+        fountainAuthorLink.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.net.openURI("https://www.deviantart.com/xdinky");
@@ -118,20 +121,19 @@ public class CreditsScreen implements Screen {
         });
 
 
-
         Label assetsTitle = new Label("\"Nature Basic Tile Set\" ", game.uiSkin);
         assetsTitle.setColor(Color.valueOf("#0645AD"));
         Label assetsAuthorLink = new Label("Liz Molnar", game.uiSkin);
         assetsAuthorLink.setColor(Color.valueOf("#0645AD"));
 
-        assetsTitle.addListener(new ClickListener(){
+        assetsTitle.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.net.openURI("https://raventale.itch.io/nature-tile-set");
             }
         });
 
-        assetsAuthorLink.addListener(new ClickListener(){
+        assetsAuthorLink.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 Gdx.net.openURI("https://raventale.itch.io/");
@@ -140,7 +142,7 @@ public class CreditsScreen implements Screen {
 
 
         TextButton backButton = new TextButton("Zurück", game.uiSkin);
-        backButton.setSize(100f,20f);
+        backButton.setSize(100f, 20f);
         backButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -202,7 +204,7 @@ public class CreditsScreen implements Screen {
         libgdxPNG = new Texture(Gdx.files.internal("libgdx.png"));
         myNamePNG = new Texture(Gdx.files.internal("myName.png"));
         Image myNameImage = new Image(myNamePNG);
-        myNameImage.setPosition(Gdx.graphics.getWidth()/2f - myNamePNG.getWidth()/2f, 0);
+        myNameImage.setPosition(Gdx.graphics.getWidth() / 2f - myNamePNG.getWidth() / 2f, 0);
         myNameImage.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {

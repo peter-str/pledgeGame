@@ -23,7 +23,7 @@ public class DifficultyExpert implements Difficulty {
 
     @Override
     public void createMap(int size) {
-       mazeCreator = new MazeCreatorClass(size, size);
+        mazeCreator = new MazeCreatorClass(size, size);
     }
 
     @Override

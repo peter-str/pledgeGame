@@ -13,33 +13,32 @@ public class Strategy4B implements TutorialStrategy {
     @Override
     public void algorithm(final GameScreen gameScreen) {
 
-        if(!firstStep && !gameScreen.getPlayer().isTop()) {
+        if (!firstStep && !gameScreen.getPlayer().isTop()) {
             gameScreen.getPlayer().move(32);
             firstStep = true;
-        }
-        else {
+        } else {
             firstStep = true;
         }
 
-        if(!gameScreen.getPlayer().isTop() && gameScreen.getPlayer().isLeft()) {
+        if (!gameScreen.getPlayer().isTop() && gameScreen.getPlayer().isLeft()) {
             Timer.schedule(new Timer.Task() {
                 @Override
                 public void run() {
                     gameScreen.getPlayer().move(32);
                 }
             }, 0.2f);
-        } else if(!gameScreen.getPlayer().isLeft() && isCurrentlyStanding(gameScreen)) {
+        } else if (!gameScreen.getPlayer().isLeft() && isCurrentlyStanding(gameScreen)) {
             turnLeft(gameScreen);
-        } else if(isCurrentlyStanding(gameScreen)) {
+        } else if (isCurrentlyStanding(gameScreen)) {
             turnRight(gameScreen);
         }
     }
 
     private void turnLeft(GameScreen gameScreen) {
-        if(!turnedLeft) {
+        if (!turnedLeft) {
             gameScreen.getPlayer().rotateLeft();
         }
-        if(turnedLeft) {
+        if (turnedLeft) {
             gameScreen.getPlayer().move(32);
         }
         turnedLeft = !turnedLeft;

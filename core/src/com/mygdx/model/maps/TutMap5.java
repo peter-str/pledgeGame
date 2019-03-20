@@ -89,13 +89,13 @@ public class TutMap5 extends AbstractMap {
         algoWindow.row();
         algoWindow.add(algoText3).align(Align.left);
         algoWindow.pack();
-        algoWindow.setPosition(Gdx.graphics.getWidth() / algoWindow.getWidth() + 64, Gdx.graphics.getHeight()/2f);
+        algoWindow.setPosition(Gdx.graphics.getWidth() / algoWindow.getWidth() + 64, Gdx.graphics.getHeight() / 2f);
         //Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight()/2f - algoWindow.getHeight()
     }
 
     @Override
     public int getStartX() {
-        return 3*32;
+        return 3 * 32;
     }
 
     @Override

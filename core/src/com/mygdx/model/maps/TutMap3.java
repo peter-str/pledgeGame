@@ -73,7 +73,7 @@ public class TutMap3 extends AbstractMap {
         algoWindow.row();
         algoWindow.align(Align.left).add(algoText2).align(Align.left);
         algoWindow.pack();
-        algoWindow.setPosition(Gdx.graphics.getWidth() / algoWindow.getWidth() + 64, Gdx.graphics.getHeight()/2f);
+        algoWindow.setPosition(Gdx.graphics.getWidth() / algoWindow.getWidth() + 64, Gdx.graphics.getHeight() / 2f);
     }
 
     @Override

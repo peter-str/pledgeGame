@@ -2,7 +2,8 @@ package com.mygdx.game;
 
 public class TutorialTexts {
 
-    private TutorialTexts() {}
+    private TutorialTexts() {
+    }
 
     private static final String BREAK = "\n";
 

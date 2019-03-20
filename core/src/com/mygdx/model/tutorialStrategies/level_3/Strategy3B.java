@@ -12,7 +12,7 @@ public class Strategy3B implements TutorialStrategy {
     @Override
     public void algorithm(final GameScreen gameScreen) {
 
-        if(!gameScreen.getPlayer().isTop()) {
+        if (!gameScreen.getPlayer().isTop()) {
             if (!gameScreen.getPlayer().isLeft() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
 
                 if (justTurnedLeft) {
@@ -37,8 +37,7 @@ public class Strategy3B implements TutorialStrategy {
             }, 0.2f);
 
 
-        }
-        else if(gameScreen.getPlayer().isTop() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
+        } else if (gameScreen.getPlayer().isTop() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
             if (justTurnedRight) {
                 try {
                     Thread.sleep(300);

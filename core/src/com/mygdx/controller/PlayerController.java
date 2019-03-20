@@ -25,24 +25,24 @@ public class PlayerController extends InputAdapter {
 
     @Override
     public boolean keyDown(int keycode) {
-        if(keycode == Input.Keys.UP)
+        if (keycode == Input.Keys.UP)
             up = true;
 
-        if(keycode == Input.Keys.DOWN)
+        if (keycode == Input.Keys.DOWN)
             down = true;
 
-        if(keycode == Input.Keys.LEFT && !up && !down)
+        if (keycode == Input.Keys.LEFT && !up && !down)
             player.rotateLeft();
 
-        if(keycode == Input.Keys.RIGHT && !up && !down)
+        if (keycode == Input.Keys.RIGHT && !up && !down)
             player.rotateRight();
 
-        if(keycode == Input.Keys.ESCAPE) {
+        if (keycode == Input.Keys.ESCAPE) {
             game.setScreen(new MainMenuScreen(game, false));
             gameScreen.dispose();
         }
 
-        if(keycode == Input.Keys.T) {
+        if (keycode == Input.Keys.T) {
             game.setScreen(new GameScreen(game, MapEnum.TUTORIALMAP_1, true));
             gameScreen.dispose();
         }
@@ -51,17 +51,17 @@ public class PlayerController extends InputAdapter {
 
     @Override
     public boolean keyUp(int keycode) {
-        if(keycode == Input.Keys.UP)
+        if (keycode == Input.Keys.UP)
             up = false;
 
-        if(keycode == Input.Keys.DOWN)
+        if (keycode == Input.Keys.DOWN)
             down = false;
 
         return false;
     }
 
     public void update(float delta, boolean expertModeOn) {
-        if(collisionController.goalAchieved(player.getX(), player.getY())) {
+        if (collisionController.goalAchieved(player.getX(), player.getY())) {
             gameScreen.setPlayMode(false);
             return;
         }
@@ -69,10 +69,10 @@ public class PlayerController extends InputAdapter {
         collisionController.checkSurroundings();
         collisionController.overlay();
 
-        if(up && !player.isTop())
+        if (up && !player.isTop())
             player.move(32);
 
-        if(down && !player.isBottom())
+        if (down && !player.isBottom())
             player.move(-32);
     }
 }

@@ -1,6 +1,7 @@
 package com.mygdx.screens;
 
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -15,7 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.controller.PlayerController;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
-import com.mygdx.model.*;
+import com.mygdx.model.Player;
 import com.mygdx.model.difficulties.*;
 import com.mygdx.model.maps.AbstractMap;
 import com.mygdx.model.maps.EndlessMazeMap;
@@ -49,7 +50,7 @@ public class GameScreen implements Screen, GameScreenInterface {
         this.mapEnum = mapEnum;
         this.tutorialFlag = tutorialFlag;
         difficulty = map.getDifficulty();
-        if(difficulty.getClass().equals(DifficultyExpert.class))
+        if (difficulty.getClass().equals(DifficultyExpert.class))
             expertModeOn = true;
     }
 
@@ -58,7 +59,7 @@ public class GameScreen implements Screen, GameScreenInterface {
         int mapSize;
         this.showAlgoWindow = showAlgoWindow;
 
-        switch(selectedMapSize) {
+        switch (selectedMapSize) {
             default:
                 mapSize = 3;
                 break;
@@ -103,7 +104,7 @@ public class GameScreen implements Screen, GameScreenInterface {
         sprite.translate(map.getStartX(), map.getStartY());
         compassBackground = new Texture(Gdx.files.internal("collision/compass_background.png"));
 
-        if(!tutorialFlag) {
+        if (!tutorialFlag) {
             camera.position.x = player.getX();
             camera.position.y = player.getY();
             camera2.position.x = player.getX();
@@ -111,20 +112,20 @@ public class GameScreen implements Screen, GameScreenInterface {
             Gdx.input.setInputProcessor(playerController);
             revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
             revCounter.setPosition(player.getX() - 320, player.getY() - 203);
-            if(map.getWindow() != null)
+            if (map.getWindow() != null)
                 stage.addActor(map.getWindow());
-            if(map.getAlgoWindow() != null && showAlgoWindow)
+            if (map.getAlgoWindow() != null && showAlgoWindow)
                 stage.addActor(map.getAlgoWindow());
-            if(mapEnum == MapEnum.INTRODUCTION_3) {
-               Label hilfeLabel = new Label("Drücke 'T', um ins Tutorial zu gelangen.", game.uiSkin);
-               hilfeLabel.setPosition(Gdx.graphics.getWidth() - hilfeLabel.getWidth(), 0);
-               stage.addActor(hilfeLabel);
+            if (mapEnum == MapEnum.INTRODUCTION_3) {
+                Label hilfeLabel = new Label("Drücke 'T', um ins Tutorial zu gelangen.", game.uiSkin);
+                hilfeLabel.setPosition(Gdx.graphics.getWidth() - hilfeLabel.getWidth(), 0);
+                stage.addActor(hilfeLabel);
             }
         }
 
-        if(tutorialFlag) {
+        if (tutorialFlag) {
             Gdx.input.setInputProcessor(stage);
-            camera.translate(-64,-64);
+            camera.translate(-64, -64);
             TextButton menuButton = new TextButton("Hauptmenü", game.uiSkin);
             menuButton.setPosition(0, 0);
             menuButton.setSize(90, 25);
@@ -193,12 +194,12 @@ public class GameScreen implements Screen, GameScreenInterface {
         camera2.update();
         map.message();
 
-        if(!expertModeOn) {
+        if (!expertModeOn) {
             tiledMapRenderer.setView(camera);
             tiledMapRenderer.render();
         }
 
-        if(playMode) {
+        if (playMode) {
             strategy.algorithm(this);
         }
 
@@ -209,11 +210,11 @@ public class GameScreen implements Screen, GameScreenInterface {
         float x = player.getAnimX();
         float y = player.getAnimY();
         sprite.setPosition(x, y);
-        if(!tutorialFlag) {
-            camera.position.x = x+16;
-            camera.position.y = y+16;
+        if (!tutorialFlag) {
+            camera.position.x = x + 16;
+            camera.position.y = y + 16;
         }
-        if(difficulty.hasTexture())
+        if (difficulty.hasTexture())
             game.spriteBatch.draw(difficulty.getFovTexture(), x - 334, y - 334);
 
         map.showInstructions(player.getX() / 32, player.getY() / 32);
@@ -221,8 +222,8 @@ public class GameScreen implements Screen, GameScreenInterface {
 
         game.spriteBatch.setProjectionMatrix(camera2.combined);
         revCounter.setText("Kompass: " + String.valueOf(player.getRevCounter()));
-        if(mapEnum != MapEnum.INTRODUCTION_1) {
-            game.spriteBatch.draw(compassBackground, revCounter.getX(), revCounter.getY()-5);
+        if (mapEnum != MapEnum.INTRODUCTION_1) {
+            game.spriteBatch.draw(compassBackground, revCounter.getX(), revCounter.getY() - 5);
             revCounter.draw(game.spriteBatch, 1);
         }
 
@@ -236,16 +237,20 @@ public class GameScreen implements Screen, GameScreenInterface {
     }
 
     @Override
-    public void resize(int width, int height) {    }
+    public void resize(int width, int height) {
+    }
 
     @Override
-    public void pause() {    }
+    public void pause() {
+    }
 
     @Override
-    public void resume() {    }
+    public void resume() {
+    }
 
     @Override
-    public void hide() {    }
+    public void hide() {
+    }
 
     @Override
     public void dispose() {
@@ -265,8 +270,14 @@ public class GameScreen implements Screen, GameScreenInterface {
     public AbstractMap getMap() {
         return map;
     }
-    public Player getPlayer() {return player;}
-    public void setPlayMode(boolean playMode) {this.playMode = playMode;}
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayMode(boolean playMode) {
+        this.playMode = playMode;
+    }
 
     public void setDifficulty(Difficulty diff) {
         difficulty = diff;

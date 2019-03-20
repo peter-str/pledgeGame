@@ -5,7 +5,10 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 
 public interface Difficulty {
     Texture getFovTexture();
+
     void createMap(int size);
+
     boolean hasTexture();
+
     TiledMap getTiledMap();
 }

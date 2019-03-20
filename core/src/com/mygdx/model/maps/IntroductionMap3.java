@@ -10,7 +10,8 @@ import com.badlogic.gdx.utils.Align;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.game.TutorialTexts;
-import com.mygdx.model.difficulties.*;
+import com.mygdx.model.difficulties.Difficulty;
+import com.mygdx.model.difficulties.DifficultyExpert;
 import com.mygdx.screens.MainMenuScreen;
 
 import static com.mygdx.game.ResourcePaths.INTRODUCTIONMAP3;
@@ -26,7 +27,7 @@ public class IntroductionMap3 extends AbstractMap {
         super(game, nextMap);
         tiledMap = new TmxMapLoader().load(INTRODUCTIONMAP3);
         this.showAlgoWindow = showAlgoWindow;
-        if(showAlgoWindow) {
+        if (showAlgoWindow) {
             algoText = new Label("S-1: Laufe einen Schritt geradeaus (in Blickrichtung). \n         Wenn links frei und Kompass < 0, dann weiter mit S-2,\n         wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ", game.uiSkin);
             algoText2 = new Label("S-2: Nach links drehen (Kompass um 1 erhöhen) und weiter mit S-1 ", game.uiSkin);
             algoText3 = new Label("S-3: Nach rechts drehen (Kompass um 1 verringern) und weiter mit S-1 ", game.uiSkin);
@@ -41,7 +42,7 @@ public class IntroductionMap3 extends AbstractMap {
             algoWindow.setPosition(100, 0);
         }
 
-        if(!showAlgoWindow) {
+        if (!showAlgoWindow) {
 
         }
     }
@@ -68,7 +69,7 @@ public class IntroductionMap3 extends AbstractMap {
 
     @Override
     public void showInstructions(int x, int y) {
-        if(flag == 0 && !showAlgoWindow) {
+        if (flag == 0 && !showAlgoWindow) {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());
@@ -84,7 +85,7 @@ public class IntroductionMap3 extends AbstractMap {
             dialog.show(gameScreenObserver.getStage());
         }
 
-        if(flag == 0 && showAlgoWindow) {
+        if (flag == 0 && showAlgoWindow) {
             flag++;
             gameScreenObserver.getPlayerController().keyUp(Input.Keys.UP);
             Gdx.input.setInputProcessor(gameScreenObserver.getStage());

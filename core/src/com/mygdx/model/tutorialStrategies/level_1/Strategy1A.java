@@ -6,7 +6,7 @@ import com.mygdx.screens.GameScreen;
 public class Strategy1A implements TutorialStrategy {
     @Override
     public void algorithm(GameScreen gameScreen) {
-        if(!gameScreen.getPlayer().isTop()) {
+        if (!gameScreen.getPlayer().isTop()) {
             gameScreen.getPlayer().move(32);
         }
     }

@@ -96,26 +96,26 @@ public class TutMap8 extends AbstractMap {
     @Override
     public void showInstructions(int revCounter, boolean up, boolean right, boolean bottom, boolean left) {
 
-        if(revCounter == 0 && !up) {
+        if (revCounter == 0 && !up) {
             algoText.setColor(Color.RED);
             algoText2.setColor(Color.WHITE);
             algoText3.setColor(Color.WHITE);
-        } else if(revCounter < 0 && !left) {
-            if(flag2 == 0)
+        } else if (revCounter < 0 && !left) {
+            if (flag2 == 0)
                 test(revCounter);
             algoText.setColor(Color.WHITE);
             algoText2.setColor(Color.RED);
             algoText3.setColor(Color.WHITE);
-            if(revCounter-1 == revC) {
+            if (revCounter - 1 == revC) {
                 algoText.setColor(Color.RED);
                 algoText2.setColor(Color.WHITE);
                 algoText3.setColor(Color.WHITE);
             }
-        } else if((revCounter < 0 && left && up) || (revCounter == 0 & up)) {
+        } else if ((revCounter < 0 && left && up) || (revCounter == 0 & up)) {
             algoText.setColor(Color.WHITE);
             algoText2.setColor(Color.WHITE);
             algoText3.setColor(Color.RED);
-        } else if(revCounter < 0 && left && !up) {
+        } else if (revCounter < 0 && left && !up) {
             algoText.setColor(Color.RED);
             algoText2.setColor(Color.WHITE);
             algoText3.setColor(Color.WHITE);

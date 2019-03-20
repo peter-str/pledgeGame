@@ -10,7 +10,7 @@ public class Strategy2A implements TutorialStrategy {
 
     @Override
     public void algorithm(final GameScreen gameScreen) {
-        if(!gameScreen.getPlayer().isTop()) {
+        if (!gameScreen.getPlayer().isTop()) {
             Timer.schedule(new Timer.Task() {
                 @Override
                 public void run() {
@@ -18,8 +18,7 @@ public class Strategy2A implements TutorialStrategy {
                     justTurned = false;
                 }
             }, 0.2f);
-        }
-        else if(gameScreen.getPlayer().isTop() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
+        } else if (gameScreen.getPlayer().isTop() && gameScreen.getPlayer().getState() == Player.Player_State.STANDING) {
 
             if (justTurned) {
                 try {

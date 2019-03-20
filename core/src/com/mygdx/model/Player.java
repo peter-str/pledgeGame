@@ -43,7 +43,7 @@ public class Player {
         standing = textureAtlas.findRegion("north_standing");
         this.sprite = new Sprite(standing);
 
-        walking = new Animation<>(0.3f/2f, textureAtlas.findRegions("north_walking"), PlayMode.LOOP_PINGPONG);
+        walking = new Animation<>(0.3f / 2f, textureAtlas.findRegions("north_walking"), PlayMode.LOOP_PINGPONG);
     }
 
     public enum Player_State {
@@ -52,7 +52,7 @@ public class Player {
     }
 
     public void move(int dir) {
-        if(state == Player_State.WALKING) {
+        if (state == Player_State.WALKING) {
             moveRequestThisFrame = true;
             return;
         }
@@ -99,16 +99,16 @@ public class Player {
     }
 
     public void update(float delta) {
-        if(state == Player_State.WALKING) {
+        if (state == Player_State.WALKING) {
             animTimer += delta;
             walkTimer += delta;
-            animX = Interpolation.linear.apply(srcX, destX, animTimer/ANIM_TIME);
-            animY = Interpolation.linear.apply(srcY, destY, animTimer/ANIM_TIME);
-            if(animTimer > ANIM_TIME) {
-                float leftOverTime = animTimer-ANIM_TIME;
+            animX = Interpolation.linear.apply(srcX, destX, animTimer / ANIM_TIME);
+            animY = Interpolation.linear.apply(srcY, destY, animTimer / ANIM_TIME);
+            if (animTimer > ANIM_TIME) {
+                float leftOverTime = animTimer - ANIM_TIME;
                 walkTimer -= leftOverTime;
                 finishMove();
-                if(!moveRequestThisFrame)
+                if (!moveRequestThisFrame)
                     walkTimer = 0;
             }
         }
@@ -208,29 +208,28 @@ public class Player {
     }
 
     public Sprite getSprite() {
-        if(state == Player_State.WALKING) {
+        if (state == Player_State.WALKING) {
             switch (direction) {
                 default:
                     return null;
                 case NORTH:
-                    walking = new Animation<>(0.3f/2f, textureAtlas.findRegions("north_walking"), PlayMode.LOOP_PINGPONG);
+                    walking = new Animation<>(0.3f / 2f, textureAtlas.findRegions("north_walking"), PlayMode.LOOP_PINGPONG);
                     sprite.setRegion(walking.getKeyFrame(walkTimer));
                     return sprite;
                 case EAST:
-                    walking = new Animation<>(0.3f/2f, textureAtlas.findRegions("east_walking"), PlayMode.LOOP_PINGPONG);
+                    walking = new Animation<>(0.3f / 2f, textureAtlas.findRegions("east_walking"), PlayMode.LOOP_PINGPONG);
                     sprite.setRegion(walking.getKeyFrame(walkTimer));
                     return sprite;
                 case SOUTH:
-                    walking = new Animation<>(0.3f/2f, textureAtlas.findRegions("south_walking"), PlayMode.LOOP_PINGPONG);
+                    walking = new Animation<>(0.3f / 2f, textureAtlas.findRegions("south_walking"), PlayMode.LOOP_PINGPONG);
                     sprite.setRegion(walking.getKeyFrame(walkTimer));
                     return sprite;
                 case WEST:
-                    walking = new Animation<>(0.3f/2f, textureAtlas.findRegions("west_walking"), PlayMode.LOOP_PINGPONG);
+                    walking = new Animation<>(0.3f / 2f, textureAtlas.findRegions("west_walking"), PlayMode.LOOP_PINGPONG);
                     sprite.setRegion(walking.getKeyFrame(walkTimer));
                     return sprite;
             }
-        }
-        else {
+        } else {
             switch (direction) {
                 default:
                     sprite.setRegion(standing);

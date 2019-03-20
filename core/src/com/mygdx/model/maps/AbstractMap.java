@@ -3,14 +3,15 @@ package com.mygdx.model.maps;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.mygdx.enums.MapEnum;
+import com.mygdx.game.PledgeGame;
 import com.mygdx.model.difficulties.Difficulty;
 import com.mygdx.model.tutorialStrategies.TutorialStrategy;
 import com.mygdx.screens.GameScreen;
-import com.mygdx.game.PledgeGame;
 import com.mygdx.screens.GameScreenInterface;
 import com.mygdx.screens.MainMenuScreen;
-import com.mygdx.enums.MapEnum;
 
 public abstract class AbstractMap {
 
@@ -42,16 +43,30 @@ public abstract class AbstractMap {
         gameScreenObserver.updateStrategy(strategy);
     }
 
-    public void message(){}
+    public void message() {
+    }
+
     public abstract int getStartX();
+
     public abstract int getStartY();
-    public void setStartX(int x){};
-    public void setStartY(int x){};
-    public void showWinningMessage(){}
-    public void showInstructions(int x, int y){}
-    public void showInstructions(int revCounter, boolean a, boolean b, boolean c, boolean d){}
-    public Window getWindow(){return null;}
-    public Window getAlgoWindow(){return null;}
+
+    public void showWinningMessage() {
+    }
+
+    public void showInstructions(int x, int y) {
+    }
+
+    public void showInstructions(int revCounter, boolean a, boolean b, boolean c, boolean d) {
+    }
+
+    public Window getWindow() {
+        return null;
+    }
+
+    public Window getAlgoWindow() {
+        return null;
+    }
+
     public abstract boolean getTutorialFlagOfNextLevel();
 
     public TiledMap getTiledMap() {
@@ -90,7 +105,9 @@ public abstract class AbstractMap {
         }
     }
 
-    public TutorialStrategy getStartStrategy() {return null;}
+    public TutorialStrategy getStartStrategy() {
+        return null;
+    }
 
     public abstract Difficulty getDifficulty();
 

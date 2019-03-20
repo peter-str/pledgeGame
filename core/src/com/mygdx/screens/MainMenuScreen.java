@@ -7,7 +7,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
@@ -33,7 +36,7 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void show() {
-        if(!endlessModeSetupMenue) {
+        if (!endlessModeSetupMenue) {
             Gdx.input.setInputProcessor(stage);
 
             Table mainTable = new Table();
@@ -89,11 +92,11 @@ public class MainMenuScreen implements Screen {
             mainTable.row();
             mainTable.add(tutorialButton).size(200, 40);
             mainTable.row();
-            mainTable.add(endlessButton).size(200,40);
+            mainTable.add(endlessButton).size(200, 40);
             mainTable.row();
-            mainTable.add(levelButton).size(200,40);
+            mainTable.add(levelButton).size(200, 40);
             mainTable.row();
-            mainTable.add(creditsButton).size(200,40);
+            mainTable.add(creditsButton).size(200, 40);
             mainTable.row();
             mainTable.add(breakLabel);
             mainTable.row();
@@ -104,11 +107,11 @@ public class MainMenuScreen implements Screen {
             stage.addActor(mainTable);
         }
 
-        if(endlessModeSetupMenue) {
+        if (endlessModeSetupMenue) {
             Gdx.input.setInputProcessor(stage);
 
             Label headline = new Label("Endlos-Modus-Menü", game.uiSkin);
-            Label infoLabel = new Label ("Jedes Level, das du hier startest, wird neu generiert. \n" +
+            Label infoLabel = new Label("Jedes Level, das du hier startest, wird neu generiert. \n" +
                     "Du spielst also niemals zweimal das gleiche Level hintereinander. ", game.uiSkin);
             Label breakLabel = new Label("", game.uiSkin);
             Label difficultyLabel = new Label("Schwierigkeit einstellen: ", game.uiSkin);
@@ -156,23 +159,23 @@ public class MainMenuScreen implements Screen {
             mainTable.row();
             mainTable.add(difficultyLabel);
             mainTable.row();
-            mainTable.add(selectBox).size(100,25);
+            mainTable.add(selectBox).size(100, 25);
             mainTable.row();
             mainTable.add(mapSizeLabel);
             mainTable.row();
-            mainTable.add(mapSizeSelectBox).size(100,25);
+            mainTable.add(mapSizeSelectBox).size(100, 25);
             mainTable.row();
             mainTable.add(breakLabel);
             mainTable.row();
-            mainTable.add(showAlgoWindowButton).size(170,25);
+            mainTable.add(showAlgoWindowButton).size(170, 25);
             mainTable.row();
             mainTable.add(breakLabel);
             mainTable.row();
-            mainTable.add(playButton).size(170,25);
+            mainTable.add(playButton).size(170, 25);
             mainTable.row();
             mainTable.add(breakLabel);
             mainTable.row();
-            mainTable.add(backButton).size(170,25);
+            mainTable.add(backButton).size(170, 25);
 
             stage.addActor(mainTable);
         }
