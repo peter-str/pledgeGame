@@ -18,10 +18,7 @@ public class EndlessMazeMap extends AbstractMap {
 
     public EndlessMazeMap(final PledgeGame game, MapEnum nextMap, TiledMap map) {
         super(game, nextMap);
-        //tiledMap = new TmxMapLoader().load("maps/randomMap.tmx");
-
         tiledMap = map;
-
         algoText = new Label("S-1: Laufe einen Schritt geradeaus (in Blickrichtung). \nWenn links frei und Kompass < 0, dann weiter mit S-2,\n wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ", game.uiSkin);
         algoText2 = new Label("S-2: Nach links drehen (Kompass um 1 erhöhen) und weiter mit S-1 ", game.uiSkin);
         algoText3 = new Label("S-3: Nach rechts drehen (Kompass um 1 verringern) und weiter mit S-1 ", game.uiSkin);

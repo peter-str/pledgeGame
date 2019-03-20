@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
@@ -18,7 +19,6 @@ public class TutMap8 extends AbstractMap {
     private Label algoText;
     private Label algoText2;
     private Label algoText3;
-    //private boolean justTurned = false;
     private int revC;
     private int flag2;
 
@@ -28,7 +28,7 @@ public class TutMap8 extends AbstractMap {
         Label textArea = new Label(TutorialTexts.LEVEL6, game.uiSkin);
         window = new Window("Algorithmus fertiggestellt", game.uiSkin);
 
-        algoText = new Label("S-1: Laufe einen Schritt geradeaus (in Blickrichtung). \nWenn links frei und Kompass < 0, dann weiter mit S-2,\n wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ", game.uiSkin);
+        algoText = new Label("S-1: Laufe einen Schritt geradeaus (in Blickrichtung). \n         Wenn links frei und Kompass < 0, dann weiter mit S-2,\n         wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ", game.uiSkin);
         algoText2 = new Label("S-2: Nach links drehen (Kompass um 1 erhöhen) und weiter mit S-1 ", game.uiSkin);
         algoText3 = new Label("S-3: Nach rechts drehen (Kompass um 1 verringern) und weiter mit S-1 ", game.uiSkin);
 
@@ -37,11 +37,11 @@ public class TutMap8 extends AbstractMap {
         window.setPosition(0, Gdx.graphics.getHeight());
 
         algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
-        algoWindow.add(algoText);
+        algoWindow.add(algoText).align(Align.left);
         algoWindow.row();
-        algoWindow.add(algoText2);
+        algoWindow.add(algoText2).align(Align.left);
         algoWindow.row();
-        algoWindow.add(algoText3);
+        algoWindow.add(algoText3).align(Align.left);
         algoWindow.pack();
         algoWindow.setPosition(100, 0);
 
@@ -55,12 +55,12 @@ public class TutMap8 extends AbstractMap {
 
     @Override
     public int getStartX() {
-        return 96;
+        return 32 * 6;
     }
 
     @Override
     public int getStartY() {
-        return 32;
+        return 32 * 5;
     }
 
     @Override
@@ -121,26 +121,6 @@ public class TutMap8 extends AbstractMap {
             algoText3.setColor(Color.WHITE);
             flag2 = 0;
         }
-        /*if (revCounter <= 0 && !up) {
-            algoText.setColor(Color.RED);
-            algoText2.setColor(Color.WHITE);
-            algoText3.setColor(Color.WHITE);
-            if (left)
-                justTurned = false;
-        }
-
-        if ((revCounter < 0 && up && left) || (revCounter == 0 && up)) {
-            algoText3.setColor(Color.RED);
-            algoText.setColor(Color.WHITE);
-            algoText2.setColor(Color.WHITE);
-        }
-
-        if (revCounter < 0 && !left && !justTurned) {
-            algoText.setColor(Color.WHITE);
-            algoText3.setColor(Color.WHITE);
-            algoText2.setColor(Color.RED);
-            justTurned = true;
-        }*/
     }
 
     private void test(int counter) {

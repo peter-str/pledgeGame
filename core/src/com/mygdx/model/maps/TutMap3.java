@@ -1,7 +1,6 @@
 package com.mygdx.model.maps;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.ButtonGroup;
@@ -9,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.game.TutorialTexts;
@@ -28,11 +28,10 @@ public class TutMap3 extends AbstractMap {
         tiledMap = new TmxMapLoader().load(TUTMAP3);
         Label textArea = new Label(TutorialTexts.LEVEL3, game.uiSkin);
         window = new Window("Die dritte Regel", game.uiSkin);
-        //window.setColor(Color.WHITE);
 
         final String stepA = "S-2: Wand vor dir, aber links keine: Drehe dich nach links. ";
         final String stepB = "S-2: Wand vor dir, aber links keine: Drehe dich nach rechts. ";
-        final Label finalStep = new Label("2: -", game.uiSkin);
+        final Label finalStep = new Label("S-2: -", game.uiSkin);
 
         CheckBox checkBoxA = new CheckBox("Wenn eine Wand vor dir ist, aber links keine, drehe dich nach links", game.uiSkin);
         CheckBox checkBoxB = new CheckBox("Wenn eine Wand vor dir ist, aber links keine, drehe dich nach rechts", game.uiSkin);
@@ -68,11 +67,11 @@ public class TutMap3 extends AbstractMap {
         algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
         Label algoText = new Label("S-1: Laufe einen Schritt geradeaus", game.uiSkin);
         Label algoText2 = new Label("S-3: Wand vor dir: Drehe dich nach rechts ", game.uiSkin);
-        algoWindow.add(algoText);
+        algoWindow.align(Align.left).add(algoText).align(Align.left);
         algoWindow.row();
-        algoWindow.add(finalStep);
+        algoWindow.add(finalStep).align(Align.left);
         algoWindow.row();
-        algoWindow.add(algoText2);
+        algoWindow.align(Align.left).add(algoText2).align(Align.left);
         algoWindow.pack();
         algoWindow.setPosition(Gdx.graphics.getWidth() / algoWindow.getWidth() + 64, Gdx.graphics.getHeight()/2f);
     }

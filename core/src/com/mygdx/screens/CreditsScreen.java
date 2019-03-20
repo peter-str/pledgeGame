@@ -39,10 +39,7 @@ public class CreditsScreen implements Screen {
         mainTable.top();
         mainTable.padTop(25);
 
-        Table subTable = new Table();
-
         Label tilesetHeadline = new Label("Tileset: ", game.uiSkin);
-        //tilesetHeadline.setColor(Color.RED);
         Label tilesetTitle = new Label("\"JohtoAllstarMix-Tileset\" ", game.uiSkin);
         tilesetTitle.setColor(Color.valueOf("#0645AD"));
         Label tilesetAuthorLink = new Label("mepotes,", game.uiSkin);
@@ -152,68 +149,55 @@ public class CreditsScreen implements Screen {
             }
         });
 
-        mainTable.add(new Label("Credits (Externe Verlinkungen sind blau markiert):", game.uiSkin));
+        mainTable.add(new Label("Credits (Externe Verlinkungen sind blau markiert):", game.uiSkin)).colspan(2);
         mainTable.row();
-        mainTable.add(new Label("", game.uiSkin));
+        mainTable.add(new Label("", game.uiSkin)).colspan(2);
         mainTable.row();
-        mainTable.add(tilesetHeadline);
+        mainTable.add(tilesetHeadline).spaceBottom(10).colspan(2);
         mainTable.row();
-        mainTable.add(tilesetTitle);
+        mainTable.add(tilesetTitle).colspan(2);
         mainTable.row();
-        mainTable.add(new Label("by", game.uiSkin));
+        mainTable.add(new Label("by", game.uiSkin)).colspan(2);
         mainTable.row();
-        mainTable.add(tilesetAuthorLink);
+        mainTable.add(tilesetAuthorLink).colspan(2);
         mainTable.row();
-        mainTable.add(tilesetAuthors);
+        mainTable.add(tilesetAuthors).colspan(2);
         mainTable.row();
-        mainTable.add(new Label("is licensed under ", game.uiSkin));
+        mainTable.add(new Label("is licensed under ", game.uiSkin)).colspan(2);
         mainTable.row();
-        mainTable.add(tilesetLicense);
+        mainTable.add(tilesetLicense).colspan(2);
         mainTable.row();
-        mainTable.add(new Label("", game.uiSkin));
+        mainTable.add(new Label("", game.uiSkin)).colspan(2);
         mainTable.row();
-        mainTable.add(playerSpriteHeadline);
+        mainTable.add(new Label("", game.uiSkin)).colspan(2);
         mainTable.row();
-        mainTable.add(playerSpriteTitle);
+        mainTable.add(playerSpriteHeadline).spaceBottom(10).colspan(2);
         mainTable.row();
-        mainTable.add(new Label("by", game.uiSkin));
+        mainTable.add(playerSpriteTitle).colspan(2);
         mainTable.row();
-        mainTable.add(playerSpriteAuthorLink);
+        mainTable.add(new Label("by", game.uiSkin)).colspan(2);
         mainTable.row();
-        mainTable.add(new Label("is licensed under ", game.uiSkin));
+        mainTable.add(playerSpriteAuthorLink).colspan(2);
         mainTable.row();
-        mainTable.add(playerSpriteLicense);
+        mainTable.add(new Label("is licensed under ", game.uiSkin)).colspan(2);
         mainTable.row();
-        mainTable.add(new Label("", game.uiSkin));
+        mainTable.add(playerSpriteLicense).colspan(2);
         mainTable.row();
-        mainTable.add(new Label("CC0 licensed objects/No Copyright:", game.uiSkin));
+        mainTable.add(new Label("", game.uiSkin)).colspan(2);
         mainTable.row();
-        /*
+        mainTable.add(new Label("", game.uiSkin)).colspan(2);
+        mainTable.row();
+        mainTable.add(new Label("CC0 licensed objects/No Copyright:", game.uiSkin)).spaceBottom(10).colspan(2);
+        mainTable.row();
+
         mainTable.add(fountainTitle);
         mainTable.add(assetsTitle);
         mainTable.row();
         mainTable.add(new Label("by", game.uiSkin));
-        mainTable.row();
-        mainTable.add(fountainAuthorLink);
-        mainTable.row();
-        mainTable.add(new Label("", game.uiSkin));
-        mainTable.row();
-
-        mainTable.row();
         mainTable.add(new Label("by", game.uiSkin));
         mainTable.row();
+        mainTable.add(fountainAuthorLink);
         mainTable.add(assetsAuthorLink);
-        */
-
-        subTable.add(fountainTitle).spaceRight(50);
-        subTable.add(assetsTitle);
-        subTable.row();
-        subTable.add(new Label("by", game.uiSkin)).spaceRight(50);
-        subTable.add(new Label("by", game.uiSkin));
-        subTable.row();
-        subTable.add(fountainAuthorLink).spaceRight(50);
-        subTable.add(assetsAuthorLink);
-        mainTable.add(subTable);
 
         libgdxPNG = new Texture(Gdx.files.internal("libgdx.png"));
         myNamePNG = new Texture(Gdx.files.internal("myName.png"));

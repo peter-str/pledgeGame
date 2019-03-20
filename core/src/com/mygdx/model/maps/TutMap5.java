@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.game.TutorialTexts;
@@ -29,7 +30,7 @@ public class TutMap5 extends AbstractMap {
         Label textArea = new Label(TutorialTexts.LEVEL5, game.uiSkin);
         window = new Window("Algorithmus finalisieren", game.uiSkin);
 
-        final Label algoText = new Label("S-1: Laufe einen Schritt geradeaus.\nWenn links frei und Kompass < 0, dann weiter mit S-2,\n wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ", game.uiSkin);
+        final Label algoText = new Label("S-1: Laufe einen Schritt geradeaus.\n         Wenn links frei und Kompass < 0, dann weiter mit S-2,\n         wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ", game.uiSkin);
         final Label algoText2 = new Label("S-2: Nach links drehen, dann S-1 ", game.uiSkin);
         final Label algoText3 = new Label("S-3: Nach rechts drehen, dann S-1 ", game.uiSkin);
 
@@ -41,7 +42,7 @@ public class TutMap5 extends AbstractMap {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 notifyObserver(new Strategy5A());
-                algoText.setText("S-1: Laufe einen Schritt geradeaus. \nWenn links frei und Kompass < 0, dann weiter mit S-2,\n wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ");
+                algoText.setText("S-1: Laufe einen Schritt geradeaus. \n         Wenn links frei und Kompass < 0, dann weiter mit S-2,\n         wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ");
                 algoText2.setText("S-2: Nach links drehen (Kompass um 1 erhöhen) und weiter mit S-1 ");
                 algoText3.setText("S-3: Nach rechts drehen (Kompass um 1 verringern) und weiter mit S-1 ");
                 algoWindow.pack();
@@ -82,11 +83,11 @@ public class TutMap5 extends AbstractMap {
         window.setPosition(64, Gdx.graphics.getHeight());
 
         algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
-        algoWindow.add(algoText);
+        algoWindow.add(algoText).align(Align.left);
         algoWindow.row();
-        algoWindow.add(algoText2);
+        algoWindow.add(algoText2).align(Align.left);
         algoWindow.row();
-        algoWindow.add(algoText3);
+        algoWindow.add(algoText3).align(Align.left);
         algoWindow.pack();
         algoWindow.setPosition(Gdx.graphics.getWidth() / algoWindow.getWidth() + 64, Gdx.graphics.getHeight()/2f);
         //Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight()/2f - algoWindow.getHeight()

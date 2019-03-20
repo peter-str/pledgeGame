@@ -1,10 +1,10 @@
 package com.mygdx.model.maps;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
@@ -18,7 +18,8 @@ public class TutMap6 extends AbstractMap {
     private Label algoText;
     private Label algoText2;
     private Label algoText3;
-    private boolean justTurned = false;
+    private int revC;
+    private int flag;
 
     public TutMap6(final PledgeGame game, MapEnum nextMap) {
         super(game, nextMap);
@@ -26,20 +27,20 @@ public class TutMap6 extends AbstractMap {
         Label textArea = new Label(TutorialTexts.LEVEL6, game.uiSkin);
         window = new Window("Algorithmus fertiggestellt", game.uiSkin);
 
-        algoText = new Label("S-1: Laufe einen Schritt geradeaus (in Blickrichtung). \nWenn links frei und Kompass < 0, dann weiter mit S-2,\n wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ", game.uiSkin);
+        algoText = new Label("S-1: Laufe einen Schritt geradeaus (in Blickrichtung). \n         Wenn links frei und Kompass < 0, dann weiter mit S-2,\n         wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ", game.uiSkin);
         algoText2 = new Label("S-2: Nach links drehen (Kompass um 1 erhöhen) und weiter mit S-1 ", game.uiSkin);
         algoText3 = new Label("S-3: Nach rechts drehen (Kompass um 1 verringern) und weiter mit S-1 ", game.uiSkin);
 
         window.add(textArea);
         window.pack();
-        window.setPosition(0, Gdx.graphics.getHeight());
+        window.setPosition(100, 150);
 
         algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
-        algoWindow.add(algoText);
+        algoWindow.add(algoText).align(Align.left);
         algoWindow.row();
-        algoWindow.add(algoText2);
+        algoWindow.add(algoText2).align(Align.left);
         algoWindow.row();
-        algoWindow.add(algoText3);
+        algoWindow.add(algoText3).align(Align.left);
         algoWindow.pack();
         algoWindow.setPosition(100, 0);
 
@@ -94,26 +95,36 @@ public class TutMap6 extends AbstractMap {
     @Override
     public void showInstructions(int revCounter, boolean up, boolean right, boolean bottom, boolean left) {
 
-        if (revCounter <= 0 && !up) {
+        if(revCounter == 0 && !up) {
             algoText.setColor(Color.RED);
             algoText2.setColor(Color.WHITE);
             algoText3.setColor(Color.WHITE);
-            if (left)
-                justTurned = false;
-        }
-
-        if ((revCounter < 0 && up && left) || (revCounter == 0 && up)) {
-            algoText3.setColor(Color.RED);
+        } else if(revCounter < 0 && !left) {
+            if(flag == 0)
+                test(revCounter);
+            algoText.setColor(Color.WHITE);
+            algoText2.setColor(Color.RED);
+            algoText3.setColor(Color.WHITE);
+            if(revCounter-1 == revC) {
+                algoText.setColor(Color.RED);
+                algoText2.setColor(Color.WHITE);
+                algoText3.setColor(Color.WHITE);
+            }
+        } else if((revCounter < 0 && left && up) || (revCounter == 0 & up)) {
             algoText.setColor(Color.WHITE);
             algoText2.setColor(Color.WHITE);
-        }
-
-        if (revCounter < 0 && !left && !justTurned) {
-            algoText.setColor(Color.WHITE);
+            algoText3.setColor(Color.RED);
+        } else if(revCounter < 0 && left && !up) {
+            algoText.setColor(Color.RED);
+            algoText2.setColor(Color.WHITE);
             algoText3.setColor(Color.WHITE);
-            algoText2.setColor(Color.RED);
-            justTurned = true;
+            flag = 0;
         }
+    }
+
+    private void test(int counter) {
+        flag++;
+        revC = counter;
     }
 
     @Override

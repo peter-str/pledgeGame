@@ -111,7 +111,6 @@ public class GameScreen implements Screen, GameScreenInterface {
             Gdx.input.setInputProcessor(playerController);
             revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
             revCounter.setPosition(player.getX() - 320, player.getY() - 203);
-            //revCounter.setFontScale(1.5f);
             if(map.getWindow() != null)
                 stage.addActor(map.getWindow());
             if(map.getAlgoWindow() != null && showAlgoWindow)
@@ -144,7 +143,6 @@ public class GameScreen implements Screen, GameScreenInterface {
 
             revCounter = new Label(String.valueOf(player.getRevCounter()), game.uiSkin);
             revCounter.setPosition(64, 32);
-            //revCounter.setFontScale(1.5f);
 
             stage.addActor(menuButton);
             stage.addActor(playButton);

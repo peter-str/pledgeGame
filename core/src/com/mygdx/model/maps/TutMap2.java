@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.game.TutorialTexts;
@@ -78,9 +79,9 @@ public class TutMap2 extends AbstractMap {
 
         algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
         Label algoText = new Label("S-1: Laufe einen Schritt geradeaus. ", game.uiSkin);
-        algoWindow.add(algoText);
+        algoWindow.align(Align.left).add(algoText).align(Align.left);
         algoWindow.row();
-        algoWindow.add(finalStep);
+        algoWindow.add(finalStep).align(Align.left);
         algoWindow.pack();
         algoWindow.setPosition(Gdx.graphics.getWidth() / algoWindow.getWidth() + 64, Gdx.graphics.getHeight()/2f);
     }

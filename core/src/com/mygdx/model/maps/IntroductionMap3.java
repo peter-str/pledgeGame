@@ -6,6 +6,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.utils.Align;
 import com.mygdx.enums.MapEnum;
 import com.mygdx.game.PledgeGame;
 import com.mygdx.game.TutorialTexts;
@@ -26,16 +27,16 @@ public class IntroductionMap3 extends AbstractMap {
         tiledMap = new TmxMapLoader().load(INTRODUCTIONMAP3);
         this.showAlgoWindow = showAlgoWindow;
         if(showAlgoWindow) {
-            algoText = new Label("S-1: Laufe einen Schritt geradeaus (in Blickrichtung). \nWenn links frei und Kompass < 0, dann weiter mit S-2,\n wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ", game.uiSkin);
+            algoText = new Label("S-1: Laufe einen Schritt geradeaus (in Blickrichtung). \n         Wenn links frei und Kompass < 0, dann weiter mit S-2,\n         wenn der Weg nach vorne nicht frei ist, dann weiter mit S-3 ", game.uiSkin);
             algoText2 = new Label("S-2: Nach links drehen (Kompass um 1 erhöhen) und weiter mit S-1 ", game.uiSkin);
             algoText3 = new Label("S-3: Nach rechts drehen (Kompass um 1 verringern) und weiter mit S-1 ", game.uiSkin);
 
             algoWindow = new Window(TutorialTexts.ALGO_WINDOW_HEADLINE, game.uiSkin);
-            algoWindow.add(algoText);
+            algoWindow.add(algoText).align(Align.left);
             algoWindow.row();
-            algoWindow.add(algoText2);
+            algoWindow.add(algoText2).align(Align.left);
             algoWindow.row();
-            algoWindow.add(algoText3);
+            algoWindow.add(algoText3).align(Align.left);
             algoWindow.pack();
             algoWindow.setPosition(100, 0);
         }
@@ -47,12 +48,12 @@ public class IntroductionMap3 extends AbstractMap {
 
     @Override
     public int getStartX() {
-        return 32 * 6;
+        return 32 * 12;
     }
 
     @Override
     public int getStartY() {
-        return 32 * 5;
+        return 32 * 6;
     }
 
     @Override
