@@ -46,7 +46,7 @@ public class TutMap4 extends AbstractMap {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 notifyObserver(new Strategy4A());
-                algoText.setText("S-1: Laufe einen Schritt geradeaus. \nWenn links frei, dann S-2, wenn vorne versperrt, dann S-3 ");
+                algoText.setText("S-1: Laufe einen Schritt geradeaus. \n         Wenn links frei, dann S-2, wenn vorne versperrt, dann S-3 ");
                 algoText2.setText("S-2: Nach links drehen, dann S-1 ");
                 algoText3.setText("S-3: Nach links drehen, dann S-1 ");
                 algoWindow.pack();
@@ -57,7 +57,7 @@ public class TutMap4 extends AbstractMap {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 notifyObserver(new Strategy4B());
-                algoText.setText("S-1: Laufe einen Schritt geradeaus. \nWenn links frei, dann S-2, wenn vorne versperrt, dann S-3 ");
+                algoText.setText("S-1: Laufe einen Schritt geradeaus. \n         Wenn links frei, dann S-2, wenn vorne versperrt, dann S-3 ");
                 algoText2.setText("S-2: Nach links drehen, dann S-1 ");
                 algoText3.setText("S-3: Nach rechts drehen, dann S-1 ");
                 algoWindow.pack();
