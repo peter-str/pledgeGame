@@ -1,0 +1,4 @@
+Maze Explorer
+In der Informatik beschäftigt man sich häufig mit Algorithmen. Einer davon widmet sich dem Problem aus einem rechtwinkligen Labyrinth stets den Ausgang zu finden. Doch das ist noch nicht alles! Das Labyrinth kann sich auch in vollkommener Dunkelheit befinden und man benötigt keinerlei Hilfsmittel. Kannst Du dir das vorstellen?
+Mit Maze Explorer kannst du den Algorithmus kennenlernen und in etlichen Labyrinthen ausprobieren.
+Schaffst Du es im Dunkeln aus dem Labyrinth zu entkommen?
